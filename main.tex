@@ -1,0 +1,82 @@
+\documentclass[oneside]{book}
+
+\include{preamble}
+\geometry{left=2.54cm}
+\geometry{right=2.54cm}
+\colorlet{chaptergrey}{black}
+
+\include{title}
+
+\begin{document}
+
+\begin{center} 
+    \begin{minipage}{\textwidth}
+        \maketitle
+        \begin{center}
+        \begin{tabular}{c}
+            UNIVERSITY OF COLORADO BOULDER \\
+            \hline \\
+        \end{tabular}
+        \\
+        \includegraphics[scale=0.2]{Graphics/CU.png}
+        \end{center}
+    \end{minipage}
+\end{center}
+
+\frontmatter
+
+\tableofcontents
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\pagebreak
+
+\mainmatter
+
+\begin{savequote}
+I go by the name of Vector. It's a mathematical term, represented by an arrow with both direction and magnitude. Vector! That's me, because I commit crimes with both direction and magnitude. Oh yeah!
+\\
+\\
+Victor (Vector) Perkins
+\end{savequote}
+\chapter{Vectors and Matrices}
+
+    \input{Chapters/vectorsAndMatrices.tex}
+
+\begin{savequote}
+\includegraphics[scale=0.45]{Graphics/ml.png}
+\end{savequote}
+\chapter{Systems of Linear Equations}
+
+    \input{Chapters/systemsOfLinearEquations.tex}
+
+\begin{savequote}
+
+\end{savequote}
+\chapter{Determinants and Eigenvalues}
+
+    \input{Chapters/determinantsAndEigenvalues.tex}
+
+\begin{savequote}
+
+\end{savequote}
+\chapter{Finite Dimensional Vector Spaces}
+
+    \input{Chapters/finiteDimensionalVectorSpaces.tex}
+
+\begin{savequote}
+\includegraphics[scale=0.45]{Graphics/rotationmatrix.png}
+\end{savequote}
+\chapter{Linear Transformations}
+
+    \input{Chapters/linearTransformations.tex}
+
+\begin{savequote}
+
+\end{savequote}
+\chapter{Orthogonality}
+
+    \input{Chapters/orthogonality.tex}
+        
+\end{document}

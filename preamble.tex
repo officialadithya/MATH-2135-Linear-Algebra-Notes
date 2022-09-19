@@ -1,0 +1,164 @@
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage[english]{babel}
+\usepackage{cancel}
+\usepackage{quotchap}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{marvosym}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{polynom}
+\usepackage{braket}
+\usepackage{fontawesome}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage[most]{tcolorbox}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{def/.append style={axis x line=middle, axis y line=middle, xlabel={\(x\)}, ylabel={\(y\)}, axis equal}}
+\pgfplotsset{compat=1.17}
+\graphicspath{{./images/}}
+\usetikzlibrary{fit,shapes}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\usepackage{fix-cm} 
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{50}{60}} 
+\makeatother
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand*{\?}{\stackrel{?}{=}}
+\newcommand*{\dd}{\text{d}}
+\newcommand*{\thus}{.^..}
+%\renewcommand*{\and}{\wedge}
+%\renewcommand*{\or}{\vee}
+\newcommand*{\curl}{\text{curl\,}}
+\newcommand*{\range}{\text{ran\,}}
+\renewcommand*{\div}{\text{div\,}}
+\newcommand*{\Difficulty}{\Radioactivity}
+\newcommand*{\Stop}{\Stopsign}
+\newcommand*{\DOTHISLATER}{\begin{center}\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\end{center}}
+\newcommand*{\laplace}[2][]{\mathcal{L}^{#1}\left\{#2\right\}}
+\newcommand*{\powerset}[1]{\mathcal{P}\left(#1\right)}
+\renewcommand*{\vec}[1]{\overset{_{\rightharpoonup}}{#1}}
+\renewcommand*{\gcd}[2]{\text{gcd}\left(#1,#2\right)}
+%\renewcommand*{\vec}[1]{\mathbf{#1}}
+\newcommand*{\nin}{\notin}
+\newcommand*{\nequiv}{\not\equiv}
+\newcommand*{\Span}{\text{span\,}}
+\newcommand*{\proj}{\text{proj\,}}
+\newcommand*{\rank}{\text{rank\,}}
+\newcommand*{\trace}{\text{trace\,}}
+
+
+\usepackage{sfmath}
+\renewcommand{\familydefault}{\sfdefault}
+
+% \renewcommand*{\qedsymbol}{\(\blacksquare\)}
+
+\newtcbtheorem[number within=section]{definition}{Definition}{
+                before skip=0.5cm,
+                lower separated=false,
+                breakable,
+                colback=white,
+                colframe=black,fonttitle=\bfseries,
+                colbacktitle=black,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                boxed title style={boxrule=0pt,colframe=white},
+                }{def}
+                
+\newtcbtheorem[number within=section]{example}{Example}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=gray!15,
+                colframe=white!10!black,fonttitle=\bfseries,
+                colbacktitle=black,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{exa}
+                
+\newtcbtheorem[number within=section]{exercise}{Exercise}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=gray!15,
+                colframe=white!10!black,fonttitle=\bfseries,
+                colbacktitle=black,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{exe}
+                
+\newtcbtheorem[number within=section]{theorem}{Theorem}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=white,
+                colframe=black,fonttitle=\bfseries,
+                colbacktitle=black,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{thm}
+                
+\newtcbtheorem[number within=section]{solution}{Solution}{
+                lower separated=false,
+                before skip=0.5cm,
+                breakable,
+                colback=white,
+                colframe=black,fonttitle=\bfseries,
+                colbacktitle=black,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{sol}
+            
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuration for Syntax Highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{code}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=code}
+
+\newenvironment{code}{\fontfamily{lmtt}\selectfont}{\par}

@@ -1,0 +1,1006 @@
+\section{Lecture 6: September 2, 2022}
+
+    \subsection{Systems of Linear Equations}
+    
+        Consider the following definitions.
+        \begin{definition}{\Stop\,\,Linear Equations}{lineq}
+        
+            A linear equation is an equation of the form 
+            \begin{equation*}
+                a_1x_1+\cdots+a_nx_n=b.
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Systems of Linear Equations}{syslineq}
+        
+            A system of linear equations is a system of the form 
+            \begin{align*}
+                a_{11}x_1+\cdots+a_{1n}x_n&=b_1 \\
+                &\vdots \\
+                a_{m1}x_1+\cdots+a_{mn}x_n&=b_m.
+            \end{align*}
+            
+        \end{definition}
+        \pagebreak
+        
+\pagebreak
+        
+\section{Lecture 7: September 7, 2022}
+
+    \subsection{Systems of Linear Equations as Matrices}
+
+        We may write systems of linear equations in terms of matrices as
+        \begin{equation*}
+            A\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}=\begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix},
+        \end{equation*}
+        where \(A\) is the matrix with entries \(a_{ij}\). Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Characterizing Solutions of Linear Systems}{charsollinsys}
+            
+            A system of linear equations can either have
+            \begin{enumerate}
+                \item No solution.
+                \item One unique solution.
+                \item Infinitely many solutions.
+            \end{enumerate}
+            
+        \end{theorem}
+
+    \subsection{Matrix Row Operations}
+    
+        Consider the following operations.
+        \begin{enumerate}
+            \item Multiplication of a row by a nonzero scalar. Notated as \(c\langle r_1\rangle\to\langle r_1\rangle\).
+            \item Addition of a scalar multiple of one row to another. Notated as \(\langle r_1\rangle +(c)\langle r_2\rangle\to\langle r_1\rangle\)
+            \item Switching the elements of two rows. Notated as \(\langle r_1 \rangle \leftrightarrow \langle r_2 \rangle\).
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Row Operation 1}{rowop1}
+        
+            Consider the matrix \(\begin{bmatrix} 3 & 1 & -1 \\ 1 & 0 & 1 \\ -1 & 1 & 5 \end{bmatrix}\). Find \(4\langle 3\rangle\to\langle 3\rangle\).
+            \\
+            \\
+            We obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    3 & 1 & -1 \\
+                    1 & 0 & 1 \\
+                    -4 & 4 & 20
+                \end{bmatrix}.
+            \end{equation*}
+    
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Row Operation 2}{rowop2}
+        
+            Consider the matrix \(\begin{bmatrix} 3 & 1 & -1 \\ 1 & 0 & 1 \\ -1 & 1 & 5 \end{bmatrix}\). Find \(\langle 1\rangle +(-3)\langle 2\rangle\to\langle 1\rangle\).
+            \\
+            \\
+            We obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    0 & 1 & -4 \\
+                    1 & 0 & 1 \\
+                    -1 & 1 & 5
+                \end{bmatrix}.
+            \end{equation*}
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Row Operation 3}{rowop3}
+        
+            Consider the matrix \(\begin{bmatrix} 3 & 1 & -1 \\ 1 & 0 & 1 \\ -1 & 1 & 5 \end{bmatrix}\). Find \(\langle 2\rangle\leftrightarrow\langle 3\rangle\).
+            \\
+            \\
+            We obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    3 & 1 & -1 \\
+                    -1 & 1 & 5 \\
+                    1 & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+    
+        \end{example}
+        
+\pagebreak
+        
+\section{Lecture 8: September 9, 2022}
+
+    \subsection{Solving Linear Systems}
+    
+        Given a linear system of equations, we solve by the following steps.
+        \begin{enumerate}
+            \item Convert the linear system into the matrix equation \(AX=B\), written \([A|B]\).
+            \item Use the three row operations to reduce \([A|B]\) to one with ``lots of zeroes and ones.''
+            \item Perform back substitution and analyze the solution set.
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,No Solution}{nosols}
+            
+            Consider the matrix
+            \begin{equation*}
+                \begin{bmatrix} 
+                3 & -6 & 0 & 3 & | & 9 \\
+                -2 & 4 & 2 & -1 & | & -11 \\
+                4 & -8 & 6 & 7 & | & -5
+                \end{bmatrix}.
+            \end{equation*}
+            By row operations, we obtain
+            \begin{equation*}
+                \begin{bmatrix} 
+                1 & -2 & 0 & 1 & | & 3 \\
+                0 & 0 & 1 & \frac{1}{2} & | & -\frac{5}{2} \\
+                0 & 0 & 0 & 0 & | & -2
+                \end{bmatrix}.
+            \end{equation*}
+            Looking at the last row, we see the equation \(0=-2\), which is not true. Hence, the system has no solution.
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Infinitely Many Solutions}{infmanysols}
+            
+            Consider the matrix
+            \begin{equation*}
+                \begin{bmatrix} 
+                3 & 1 & 7 & 2 & | & 13 \\
+                2 & -4 & 14 & -1 & | & -10 \\
+                5 & 11 & -7 & 8 & | & 59 \\
+                2 & 5 & -4 & -3 & | & 39
+                \end{bmatrix}.
+            \end{equation*}
+            By row operations, we obtain
+            \begin{equation*}
+                \begin{bmatrix} 
+                1 & \frac{1}{3} & \frac{7}{3} & \frac{2}{3} & | & \frac{13}{3} \\
+                0 & 1 & -2 & \frac{1}{2} & | & 4 \\
+                0 & 0 & 0 & 1 & | & 59 \\
+                0 & 0 & 0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We see that \(x_1\), \(x_2\), and \(x_4\) are determined because their respective column has a \(1\) in the correct position. In contrast, \(x_3\) is a free variable. To find the solution set, let \(x_3=c\in\mathbb{R}\) and solve for \(x_1\), \(x_2\), and \(x_4\) in terms of \(c\). We have \(x_4=-2\). Then to find \(x_2\) we have
+            \begin{equation*}
+                x_2-2x_3+\frac{1}{2}x_4=4\implies x_2-2+\frac{1}{2}(-2)=4\implies x_2=2c+5.
+            \end{equation*}
+            For \(x_1\), we have
+            \begin{equation*}
+                x_1+\frac{1}{3}x_2+\frac{7}{3}x_3+\frac{2}{3}x_4=\frac{13}{3}\implies x_1=-3c+4.
+            \end{equation*}
+            The solution set is then \(\{(-3c+4,2c+5,c,-2):c\in\mathbb{R}\}\).
+        \end{example}
+        \vphantom
+        \\
+        \\
+        We generally agree that back substitution is not much fun. Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,No More Back Substitution}{nomorebacksub}
+            Note that the matrix 
+            \begin{equation*}
+                \begin{bmatrix} 3 & -3 & -2 &| &23 \\ -6 & 4 & 3 &| &-40 \\ -2 & 1 & 1 &| &-12 \end{bmatrix}
+            \end{equation*}
+            reduces into
+            \begin{equation*}
+                \begin{bmatrix} 1 & -1 & -\frac{2}{3} &| &\frac{23}{3} \\ 0 & 1 & \frac{1}{3} &| &-\frac{10}{3} \\ 0 & 0 & 1 &| &2 \end{bmatrix}.
+            \end{equation*}
+            We may now ``get rid of'' \(-1\), \(-\frac{2}{3}\), and \(\frac{1}{3}\). We perform \(-\frac{1}{3}\langle 3\rangle+\langle 2\rangle\to\langle2\rangle\) which produces
+            \begin{equation*}
+                \begin{bmatrix} 1 & -1 & -\frac{2}{3} &| &\frac{23}{3} \\ 0 & 1 & 0 &| & -4 \\ 0 & 0 & 1 & | & 2 \end{bmatrix}.
+            \end{equation*}
+            Then, we will perform \(\langle 1\rangle + \langle 2\rangle\to\langle1\rangle\), yielding
+            \begin{equation*}
+                \begin{bmatrix} 1 & 0 & -\frac{2}{3} &| & \frac{23}{3}-4 \\ 0 & 1 & 0 &| & -4 \\ 0 & 0 & 1 & | & 2 \end{bmatrix}.
+            \end{equation*}
+            Finally, we will perform \(\frac{2}{3}\langle3\rangle+\langle1\rangle\to 1\), obtaining
+            \begin{equation*}
+                \begin{bmatrix}
+                1 & 0 & 0 & | & 5 \\
+                0 & 1 & 0 & | & -4 \\
+                0 & 0 & 1 & | & 2
+            \end{bmatrix}
+            \end{equation*}
+            which means \(x_1=5\), \(x_2=-4\), and \(x_3=2\).
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Row Operations}{rowops}
+        
+            Suppose \(A\in\mathcal{M}_{mn}\) and \(B\in\mathcal{M}_{np}\). Then,
+            \begin{enumerate}
+                \item If \(R\) is a row operation, \(R(AB)=(R(A))B\).
+                \item If \(R_1,\ldots,R_n\) are row operations, \(R_n(
+                \ldots(R_2(R_1(AB)))\ldots)=(R_n(\ldots(R_2(R_1(A)))\ldots))B\).
+            \end{enumerate}
+            \begin{proof}
+                For \((1)\), see Assignment 2, Question 2 for the relationship between matrix multiplication and row operations. For \((2)\), use induction on \(k\).
+            \end{proof}
+            \DOTHISLATER
+        \end{theorem}
+        
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    Consider the following examples of solving linear systems.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Linear System 1}{linsys1}
+        Solve the following system:
+        \begin{equation*}
+            \begin{bmatrix}
+                2 & -1 & 1 & | & 0 \\
+                1 & 3 & 4 & | & 0
+            \end{bmatrix}
+        \end{equation*}
+        We first perform the row operation \(\frac{1}{2}\langle 1\rangle\to\langle 1\rangle\), which produces
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -\frac{1}{2} & \frac{1}{2} & | & 0 \\
+                1 & 3 & 4 & | & 0
+            \end{bmatrix}.
+        \end{equation*}
+        Then, we perform \(\langle 1\rangle -\langle 2\rangle\to\langle 2\rangle\). We obtain
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -\frac{1}{2} & \frac{1}{2} & | & 0 \\
+                0 & -\frac{7}{2} & -\frac{7}{2} & | & 0
+            \end{bmatrix}.
+        \end{equation*}
+        Next, we have \(-\frac{2}{7}\langle 2\rangle\to\langle 2\rangle\). This yields
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -\frac{1}{2} & \frac{1}{2} & | & 0 \\
+                0 & 1 & 1 & | & 0
+            \end{bmatrix}. 
+        \end{equation*}
+        From here, let \(x_3=c\). Then, \(x_2=-c\). To find \(x_1\), we use the equation 
+        \begin{equation*}
+            x_1-\frac{1}{2}(-c)+\frac{1}{2}c=0,
+        \end{equation*}
+        which implies that \(x_1=-c\). Thus, the solution set is \(\{(-c,-c,c):c\in\mathbb{R}\}\).
+    \end{example}
+    \pagebreak
+    \begin{example}{\Difficulty\,\Difficulty\,\,Linear System 2}{linsys2}
+        Solve the following system:
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -2 & 1 & 2 & | & 1 \\
+                1 & 1 & -1 & 1 & | & 2 \\
+                1 & 7 & -5 & -1 & | & 3
+            \end{bmatrix}
+        \end{equation*}
+        First, we perform \(\langle 1\rangle -\langle 2\rangle\to\langle 2\rangle\), yielding
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -2 & 1 & 2 & | & 1 \\
+                0 & -3 & 2 & 1 & | & -1 \\
+                1 & 7 & -5 & -1 & | & 3
+            \end{bmatrix}.
+        \end{equation*}
+        Then, we perform \(\langle 1\rangle-\langle 3\rangle\to\langle 3\rangle\). We obtain
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -2 & 1 & 2 & | & 1 \\
+                0 & -3 & 2 & 1 & | & -1 \\
+                0 & -9 & 6 & 3 & | & -2 
+            \end{bmatrix}.
+        \end{equation*}
+        Then, we have \(-\frac{1}{3}\langle 2\rangle\to\langle 2\rangle\). This produces
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & -2 & 1 & 2 & | & 1 \\
+                0 & 1 & -\frac{2}{3} & -\frac{1}{3} & | & \frac{1}{3} \\
+                0 & -9 & 6 & 3 & | & -2
+            \end{bmatrix}.
+        \end{equation*}
+        Our final row operation is \(\langle3\rangle+9\langle2\rangle\to\langle 3\rangle\). This provides us with
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & -2 & 1 & 2 & | & 1 \\
+                 0 & 1 & -\frac{2}{3} & -\frac{1}{3} & | & \frac{1}{3} \\
+                 0 & 0 & 0 & 0 & | & 1
+            \end{bmatrix},
+        \end{equation*}
+        meaning that there is no solution to the system.
+    \end{example}
+    \pagebreak
+    \begin{example}{\Difficulty\,\Difficulty\,\,Linear System 3}{linsys3}
+        Solve the following system:
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & -1 & 2 & | & 1 \\
+                 2 & 0 & 2 & | & 1 \\
+                 1 & -3 & 4 & | & 2
+            \end{bmatrix}
+        \end{equation*}
+        Our first row operation is \(2\langle1\rangle-\langle2\rangle\to\langle2\rangle\). This produces
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & -1 & 2 & | & 1 \\
+                 0 & -2 & 2 & | & 1 \\
+                 1 & -3 & 4 & | & 2
+            \end{bmatrix}.
+        \end{equation*}
+        Then, we have \(\langle1\rangle-\langle3\rangle\to\langle3\rangle\), providing
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & -1 & 2 & | & 1 \\
+                 0 & -2 & 2 & | & 1 \\
+                 0 & 2 & -2 & | & -1
+            \end{bmatrix}.
+        \end{equation*}
+        Next, we perform \(\langle2\rangle+\langle3\rangle\to\langle3\rangle\). We obtain
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & -1 & 2 & | & 1 \\
+                 0 & -2 & 2 & | & 1 \\
+                 0 & 0 & 0 & | & 0
+            \end{bmatrix}.
+        \end{equation*}
+        We perform another row operation, \(-\frac{1}{2}\langle 2\rangle\to\langle 2\rangle\). This yields
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & -1 & 2 & | & 1 \\
+                 0 & 1 & -1 & | & -\frac{1}{2} \\
+                 0 & 0 & 0 & | & 0
+            \end{bmatrix}.
+        \end{equation*}
+        Next, we have \(\langle2\rangle+\langle1\rangle\to\langle1\rangle\), which gives
+        \begin{equation*}
+            \begin{bmatrix}
+                 1 & 0 & 1 & | & \frac{1}{2} \\
+                 0 & 1 & -1 & | & -\frac{1}{2} \\
+                 0 & 0 & 0 & | & 0
+            \end{bmatrix}.
+        \end{equation*}
+        Let \(x_3=c\). Then, \(x_2=-\frac{1}{2}+c\) and \(x_1=\frac{1}{2}-c\). This means the solution set is \(\{\left(\frac{1}{2}-c,-\frac{1}{2}+c,c\right):c\in\mathbb{R}\}\).
+    \end{example}
+
+\pagebreak
+
+\section{Lecture 9: September 12, 2022}
+
+    \subsection{Formalizing Previous Notions Part I}
+
+    Consider the following definitions.
+    \begin{definition}{\Stop\,\,Row Echelon Form}{rowechelon}
+        
+        A matrix \(A\) is in row echelon form if and only if
+        \begin{enumerate}
+            \item All rows consisting of only zeroes are at the bottom.
+            \item The leading coefficient, or the pivot, of a nonzero row is always strictly to the right of the leading coefficient of the row above it.
+        \end{enumerate}
+    
+    \end{definition}
+    \begin{definition}{\Stop\,\,Reduced Row Echelon Form}{redrowechelon}
+    
+        A matrix \(A\) is in reduced row echelon form if and only if
+        \begin{enumerate}
+            \item The first nonzero entry in each row is one.
+            \item Each successive row has its first nonzero entry in a later column.
+            \item All entries above and below the first nonzero entry are zero.
+            \item All rows consisting of only zeroes are at the bottom.
+        \end{enumerate}
+        
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Note that every matrix has a unique reduced row echelon form.
+    \\
+    \\
+    Consider the following theorems and definitions.
+    \begin{theorem}{\Stop\,\,Number of Solutions to a Linear System}{numsollinsys}
+    
+        Let \(AX=B\) be a system of linear equations. Let \(C\) be the reduced row echelon form augmented matrix obtained by row reducing \([A|B]\). Then,
+        \begin{enumerate}
+            \item If there is a row of \(C\) having all zeroes to the left of the augmentation bar but with its last entry nonzero, \(AX=B\) has no solution.
+            \item If not, and if one of the columns of \(C\) to the left of the augmentation bar has no nonzero pivot entry, \(AX=B\) has an infinite number of solutions. The nonpivot columns correspond to (independent) variables that can take on any value, and the values of the remaining (dependent) variables are determined from those.
+            \item Otherwise \(AX=B\) has a unique solution.
+        \end{enumerate}
+    
+    \end{theorem}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    Consider the following definitions.
+    \begin{definition}{\Stop\,\,Homogeneous Systems}{homosys}
+    
+        Given \(A\in\mathcal{M}_{mn}\), the homogeneous system associated with \(A\) is
+        \begin{equation*}
+            AX=\begin{bmatrix}
+            0 \\
+            \vdots \\
+            0
+            \end{bmatrix}.
+        \end{equation*}
+    
+    \end{definition}
+    \begin{theorem}{\Stop\,\,Solutions to Homogeneous Systems}{solstohomosys}
+    
+        Given \(A\in\mathcal{M}_{mn}\), the homogeneous system always has at least one solution, called the \textit{trivial solution}. Namely,
+        \begin{equation*}
+            x_1=0,\quad x_2=0,\quad\ldots,\quad x_n=0.
+        \end{equation*}
+        Also, consider the following.
+        \begin{enumerate}
+            \item If \(m<n\), the solution set is infinite. 
+            \item If \(X=\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}\) and \(X_\sim=\begin{bmatrix} x_{\sim 1} \\ \vdots \\ x_{\sim n} \end{bmatrix}\) are solutions,
+            \begin{equation*}
+                cX+X_\sim
+            \end{equation*}
+            is a solution for any \(c\in\mathbb{R}\).
+            \item If \(AX=\begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix}\) and \(A\hat{X}=B=\begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix}\),
+            \begin{equation*}
+                cX+\hat{X}
+            \end{equation*}
+            is a solution to \([A|B]\). Notice that (2) is a special case of (3).
+            \begin{proof}
+                Consider \(A(cX+\hat{X})\). We wish to show that \(A(cX+\hat{X})=B\). We see that
+                \begin{align*}
+                    A(cX+\hat{X})&=A(cX)+A\hat{X} \\
+                    &=cAX+A\hat{X} \\
+                    &=\begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix}+\begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix} \\
+                    &=B,
+                \end{align*}
+                as desired.
+            \end{proof}
+            This process is analogous to solving homogeneous differential equations to solve nonhomogeneous differential equations.
+        \end{enumerate}
+    
+    \end{theorem}
+    \begin{definition}{\Stop\,\,Equivalence of Linear Systems}{sysequiv}
+        Two systems \([A|B]\) and \([A_\sim|B_\sim]\) are equivalent if and only if
+        \begin{equation*}
+            AX=B\wedge A_\sim X=B_\sim.
+        \end{equation*}
+        That is, if they have the same solution sets.
+    \end{definition}
+    \begin{definition}{\Stop\,\,Row Equivalence}{rowequiv}
+        A matrix \(A\) is row equivalent to a matrix \(B\) if \(B\) can be obtained by a finite number of row operations conducted on \(A\).
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    For example, Gaussian Elimination and Gauss-Jordan Elimination produce matrices that are row equivalent to the original matrix.
+    \\
+    \\
+    One may ask: What is the relationship between these relations? We see that row equivalence implies system equivalence. But, two systems can have the same solution set, but have different sizes, making row equivalence impossible. For the latter case, consider two matrices of different sizes, but with an empty solution set. Recall from discrete mathematics,
+    \begin{definition}{\Stop\,\,Equivalence Relations}{equivrel}
+        
+        A relation \(\sim\) on a set \(S\) is an equivalence relation on \(S\) if and only if \(\sim\) is reflexive, symmetric, and transitive. That is, if
+        \begin{enumerate}
+            \item \(\forall a\in S, a\sim a\).
+            \item \(\forall a, b\in S, a\sim b\implies b\sim a\)
+            \item \(\forall a, b, c\in S, a\sim b\wedge b\sim c\implies a\sim c\).
+        \end{enumerate}
+        
+    \end{definition}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    Consider the following theorem.
+    \begin{theorem}{\Stop\,\,System Equivalence and Row Equivalence are Equivalence Relations}{equivrelrowsysequiv}
+    
+        First, consider the following table.
+        \begin{center}
+            \begin{tabular}{c|c}
+                \hline
+                Row Operation & Reverse Operation \\
+                \hline
+                \(c\langle i\rangle \to \langle i\rangle\) & \(\frac{1}{c}\langle i\rangle \to \langle i \rangle\) \\
+                \(c\langle i \rangle+\langle j \rangle \to\langle j\rangle\) & \(-c\langle i \rangle+\langle j \rangle\to\langle j \rangle\) \\
+                \(\langle i \rangle \leftrightarrow \langle j \rangle\) & \(\langle i \rangle \leftrightarrow \langle j \rangle\) \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \vphantom
+        \\
+        \\
+        \begin{proof}
+            We will consider row equivalence first, and wish to show that row equivalence is reflexive, symmetric, and transitive. Reflexivity is trivial. We can simply not perform any row operations on a matrix \(A\), and we are left with \(A\). The above table can be used to show that row equivalence is symmetric. If a sequence of row operations is carried out on \(A\) and produces a matrix \(B\), we can simply carry out the reverse operations on \(B\) to lead us back to \(A\). For transitivity, if a sequence of row operations is carried out on \(A\) and leads to \(B\), and a second sequence of row operations is performed on \(B\) and leads to \(C\), we simply carry out the sequences, in sequence, on \(A\) to get us to \(C\).
+            \\
+            \\
+            Now, we consider system equivalence. The system \([A|B]\), of course, has the same solution set as itself. If the system \([A|B]\) has the same solution set as \([C|D]\), \([C|D]\) has the same solution set as \([A|B]\). If \([A|B]\) has the same solution set as \([C|D]\) and \([C|D]\) has the same solution set as the system \([E|F]\), \([A|B]\) has the same solution set as \([E|F]\).
+        \end{proof}
+        
+    \end{theorem}
+
+\pagebreak
+
+\section{Lecture 10: September 14, 2022}
+
+    \subsection{Formalizing Previous Notions Part II}
+    
+        Consider the following formalization of our last discoveries.
+        \begin{theorem}{\Stop\,\,Row Equivalence Implies System Equivalence}{rowsyseq}
+        
+            If \([A|B]\) is equivalent to \([C|D]\), \([A|B]\) is equivalent to \([C|D]\). We assume that 
+            \begin{equation*}
+                R_n(R_{n-1}(\ldots R_1([A|B]))\ldots)
+            \end{equation*}
+            We will use induction on \(n\). The base case is \(R_1([A|B])=[C|D]\). There are three cases,
+            \begin{enumerate}
+                \item \(R_1\) is \(c\langle i\rangle\to\langle i\rangle\).
+                    We have that \(R_1\) is \(c\langle i \rangle \to \langle i \rangle\) for \(c\neq0\). The system has the form
+                    \begin{align*}
+                        a_{11}x_1+\cdots+a_{1n}x_n&=b_1 \\
+                        &\vdots \\
+                        a_{i1}x_1+\cdots+a_{in}x_n&=b_i \\
+                        &\vdots \\
+                        a_{m1}x_1+\cdots+a_{mn}x_n&=b_m.
+                    \end{align*}
+                    After \(c\langle i \rangle \to \langle i \rangle\), the system is
+                    \begin{align*}
+                        a_{11}x_1+\cdots+a_{1n}x_n&=b_1 \\
+                        &\vdots \\
+                        ca_{i1}x_1+\cdots+ca_{in}x_n&=cb_i \\
+                        &\vdots \\
+                        a_{m1}x_1+\cdots+a_{mn}x_n&=b_m.
+                    \end{align*}
+                    We see that the solution sets are the same. The first and third rows are the same, so the solution sets will be the same. For the second row, simply factor by \(c\) and divide.
+                \item \(R_1\) is \(\langle c\rangle\langle j \rangle+\langle i\rangle\to \langle i\rangle\).
+                \item \(R_1\) is \(\langle i \rangle \leftrightarrow \langle j\rangle\).
+            \end{enumerate}
+            \vphantom
+            \\
+            \\
+            The proposition for \(n=k\) is,
+            \begin{equation*}
+                R_k(R_{k-1}(\ldots R_1([A|B]))\ldots)
+            \end{equation*}
+            has the same solution as \([A|B]\), but
+            \begin{equation*}
+                R_{k+1}(R_k(R_{k-1}(\ldots R_1([A|B]))\ldots)
+            \end{equation*}
+            has the same solution as
+            \begin{equation*}
+                R_k(R_{k-1}(\ldots R_1([A|B]))\ldots).
+            \end{equation*}
+            Thus, 
+            \begin{equation*}
+                R_{k+1}(R_k(R_{k-1}(\ldots R_1([A|B]))\ldots)
+            \end{equation*}
+            has the same solution set as \([A|B]\).
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Uniqueness of Reduced Row Echelon Form}{uniquenessredrow}
+        
+            Every matrix is row equivalent to a unique matrix in reduced row echelon form. Two matrices are row equivalent if and only if they have the same reduced row echelon form.
+            
+        \end{theorem}
+        \begin{definition}{\Stop\,\,Rank}{rank}
+        
+            Given \(A\in\mathcal{M}_{mn}\), \(\rank{A}\) is the number of nonzero rows in the unique matrix that is row equivalent to \(A\) and is in reduced row echelon form.
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Rank 1}{rank1}
+        
+            Consider
+            \begin{equation*}
+                A=\begin{bmatrix}
+                3 & 1 & 0 & 1 \\
+                0 & -2 & 12 & -5 \\
+                2 & -3 & 22 & -14
+                \end{bmatrix}.
+            \end{equation*}
+            By row reduction, we have the matrix
+            \begin{equation*}
+                \begin{bmatrix}
+                1 & 0 & 2 & -1 \\
+                0 & 1 & -6 & 4 \\
+                0 & 0 & 0 & 0
+                \end{bmatrix},
+            \end{equation*}
+            and see that \(\rank A=2\).
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem. 
+        \begin{theorem}{\Stop\,\,Number of Solutions to Homogeneous Systems}{numsolshomosys}
+        
+            If \(A\in\mathcal{M}_{mn}\),
+            \begin{enumerate}
+                \item If \(\rank A< n\), \(AX=0\) has an infinite solution set.
+                \item If \(\rank A= n\), \(AX=0\) has only the trivial solution.
+            \end{enumerate}
+        
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We will now define linear combinations of vectors.
+        \begin{definition}{\Stop\,\,Linear Combinations}{lincomb}
+    
+            Let \(\vec{v}_1,\vec{v}_2,\ldots,\vec{v}_k\in\mathbb{R}^n\). The vector \(\vec{v}\) is a linear combination of \(\vec{v}_1,\vec{v}_2,\ldots,\vec{v}_k\) if and only if there are scalars \(c_1,c_2,\ldots,c_k\) such that 
+            \begin{equation*}
+                \vec{v}=c_1\vec{v}_1+\cdots+c_k\vec{v}_k.
+            \end{equation*}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        In general, \(\{c\vec{v}:c\in\mathbb{R}\}\) is a line unless \(\vec{v}=\vec{0}\). Also, \(\{c_1\vec{v}_1+c_2\vec{v}_2:c_1,c_2\in\mathbb{R}\}\) is usually a plane, but could be either a point or a line. This pattern is an introduction to the concept of linear dependence, which will be elaborated on later in the text.
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is a Vector a Linear Combination of Others? 1}{veclincombothers1}
+        
+            Let \(\vec{v}=[1,0]\), \(\vec{v}_1=[\pi,1]\), and \(\vec{v}_2=[2,1]\). Is \(\vec{v}\) a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\)?
+            \\
+            \\
+            Notice that \(\vec{v}_1-\vec{v}_2=[\pi-2,0]\). Then,
+            \begin{equation*}
+                \frac{1}{\pi-2}[\pi-2,0]=[1,0]=\vec{v}.
+            \end{equation*}
+            We then have that
+            \begin{equation*}
+                \vec{v}=\frac{1}{\pi-2}[\pi,1]-\frac{1}{\pi-2}[2,1].
+            \end{equation*}
+            Therefore, \(\vec{v}\) is a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\).
+        \end{example}
+        \vphantom
+        \\
+        \\
+        The above solution used a bit of trickery. Instead, given \(\vec{v}_1,\ldots,\vec{v}_k\), we form the equation
+        \begin{equation*}
+            \begin{bmatrix}
+                \vec{v}_1,\ldots,\vec{v}_k
+            \end{bmatrix}
+            \begin{bmatrix}
+                c_1 \\ \vdots \\ c_k
+            \end{bmatrix}
+            =\begin{bmatrix} \vec{v} \end{bmatrix}
+        \end{equation*}
+        and solve for the necessary constants.
+        \pagebreak
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is a Vector a Linear Combination of Others? 2}{veclincombothers2}
+        
+            Let \(\vec{v}=[1,0,0]\), \(\vec{v}_1=[-4,2,0]\), and \(\vec{v}_2=[2,1,1]\). Is \(\vec{v}\) a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\)?
+            \\
+            \\
+            Consider the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    -4 & 2 & | & 1 \\
+                    2 & 1 & | & 0 \\
+                    0 & 1 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We first perform the row operation \(-\frac{1}{4}\langle1\rangle\to\langle1\rangle\) to obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -\frac{1}{2} & | & -\frac{1}{4} \\
+                    2 & 1 & | & 0 \\
+                    0 & 1 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Then, we have \(2\langle1\rangle-\langle2\rangle\to\langle2\rangle\), producing
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -\frac{1}{2} & | & -\frac{1}{4} \\
+                    0 & -2 & | & -\frac{1}{2} \\
+                    0 & 1 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Next, we will carry out \(-\frac{1}{2}\langle2\rangle\to\langle2\rangle\) to yield
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -\frac{1}{2} & | & -\frac{1}{4} \\
+                    0 & 1 & | & \frac{1}{4} \\
+                    0 & 1 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We will then compute \(\langle2\rangle-\langle3\rangle\to\langle3\rangle\); we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -\frac{1}{2} & | & -\frac{1}{4} \\
+                    0 & 1 & | & \frac{1}{4} \\
+                    0 & 0 & | & \frac{1}{4}
+                \end{bmatrix}.
+            \end{equation*}
+            There is no solution, so \(\vec{v}\) is not a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\).
+            
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is a Vector a Linear Combination of Others? 3}{veclincombothers3}
+        
+            Let \(\vec{v}=[14,-21,7]\), \(\vec{v}_1=[2,-3,1]\), and \(\vec{v}_2=[-4,6,2]\). Is \(\vec{v}\) a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\)?
+            \\
+            \\
+            Consider the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & -4 & | & 14 \\
+                    -3 & 6 & | & -21 \\
+                    1 & 2 & | & 7
+                \end{bmatrix}.
+            \end{equation*}
+            We first perform the row operation \(\frac{1}{2}\langle1\rangle\to\langle1\rangle\) to obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    -3 & 6 & | & -21 \\
+                    1 & 2 & | & 7
+                \end{bmatrix}.
+            \end{equation*}
+            Then, we have \(3\langle1\rangle+\langle2\rangle\to\langle2\rangle\), producing
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    0 & 0 & | & 0 \\
+                    1 & 2 & | & 7
+                \end{bmatrix}.
+            \end{equation*}
+            Next, we will carry out \(\langle2\rangle\leftrightarrow\langle3\rangle\) to yield
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    1 & 2 & | & 7 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We will then compute \(\langle1\rangle+\langle2\rangle\to\langle2\rangle\); we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    2 & 0 & | & 14 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Then, we will execute \(2\langle1\rangle-\langle2\rangle\to\langle2\rangle\), and we obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    0 & -4 & | & 0 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We then have, by \(-\frac{1}{4}\langle2\rangle\to\langle2\rangle\),
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    0 & 1 & | & 0 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Finally, we have the operation \(\langle1\rangle+2\langle2\rangle\to\langle1\rangle\), which produces
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & | & 7 \\
+                    0 & 1 & | & 0 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Here, we see that \(\vec{v}=7\vec{v}_1\). We note that it would have been simple to conclude this based on the problem statement, but the method shown is the systematic algorithm for answering such questions.
+            
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is a Vector a Linear Combination of Others? 4}{veclincombothers4}
+        
+            Let \(\vec{v}=[14,-21,7]\), \(\vec{v}_1=[2,-3,1]\), and \(\vec{v}_2=[-4,6,-2]\). Is \(\vec{v}\) a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\)?
+            \\
+            \\
+            Consider the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & -4 & | & 14 \\
+                    -3 & 6 & | & -21 \\
+                    1 & -2 & | & 7
+                \end{bmatrix}.
+            \end{equation*}
+            By row reduction, we finally obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -2 & | & 7 \\
+                    0 & 0 & | & 0 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Here, the solution set is \(\{(2c+7,c):c\in\mathbb{R}\}\). There are thus infinitely many ways to express \(\vec{v}\) as a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\).
+            
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Row Space}{rowspace}
+        
+            Suppose \(A\in\mathcal{M}_{mn}\). The row space of \(A\) is the subset of \(\mathbb{R}^n\) consisting of the linear combinations of the rows of \(A\).
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\,Row Space 1}{rsp1}
+        
+            Consider
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & 2 \\
+                    5 & 10
+                \end{bmatrix}.
+            \end{equation*} 
+            The row space of \(A\) is 
+            \begin{equation*}
+                 \{c_1[1,2]+c_2[5,10]:c_1,c_2\in\mathbb{R}\}.
+            \end{equation*}
+            In this case, the row space of \(A\) is a line. Generally, though, with two vectors, the row space will be a plane.
+        \end{example}
+        \begin{example}{\Difficulty\,\,Row Space 2}{rsp2}
+        
+            Consider
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & 3 \\
+                    5 & 10
+                \end{bmatrix}.
+            \end{equation*} 
+            The row space of \(A\) is 
+            \begin{equation*}
+                 \{c_1[1,3]+c_2[5,10]:c_1,c_2\in\mathbb{R}\}.
+            \end{equation*}
+            In this case, the row space of \(A\) is a plane.
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        To determine if a vector is in the row space of a matrix \(A\), we consider the system \([A^T|X]\). One may ask: why? Well, considering \(A\) instead of \(A^T\) would provide the wrong system of equations to solve. All we are doing when determining if a vector is in the row space of \(A\) is asking if the vector can be written as a linear combination of the rows of \(A\). Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Are Vectors in the Row Space?}{vecrowspace}
+            Consider
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & 2 \\
+                    5 & 10
+                \end{bmatrix}
+            \end{equation*} 
+            and recall that the row space of \(A\) is 
+            \begin{equation*}
+                 \{c_1[1,2]+c_2[5,10]:c_1,c_2\in\mathbb{R}\}.
+            \end{equation*}
+            Is \([3,6]\) in the row space of \(A\)? Is \([1,0]\) in the row space of \(A\)? We consider
+            \begin{equation*}
+            \begin{bmatrix}
+                1 & 2 \\
+                5 & 10
+            \end{bmatrix}^T\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}.
+        \end{equation*}
+        For \([3,6]\), we have
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & 5 & | & 3 \\
+                2 & 10 & | & 6
+            \end{bmatrix},
+        \end{equation*}
+        which reduces to
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & 5 & | & 3 \\
+                0 & 0 & | & 0
+            \end{bmatrix}.
+        \end{equation*}
+        The system has (infinitely many) solutions, so \([3,6]\) is in the row space of \(A\). For \([1,0]\), we have
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & 5 & | & 1 \\
+                2 & 10 & | & 0
+            \end{bmatrix},
+        \end{equation*}
+        which reduces to
+        \begin{equation*}
+            \begin{bmatrix}
+                1 & 5 & | & 1 \\
+                0 & 0 & | & -2
+            \end{bmatrix}.
+        \end{equation*}
+        The system has no solution, so \([1,0]\) is not in the row space of \(A\).
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Transitivity of Linear Combinations}{translincomb}
+        
+            Suppose that \(\vec{x}\) is a linear combination of \(\vec{q}_1,\ldots,\vec{q}_k\), and suppose also that each of \(\vec{q}_1,\ldots,\vec{q}_k\) is itself a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\). Then, \(\vec{x}\) is a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\).
+            \begin{proof}
+                Because \(\vec{x}\) is a linear combination of \(\vec{q}_1,\ldots,\vec{q}_k\), 
+                \begin{equation*}
+                    \vec{x}=c_1\vec{q}_1+\cdots+c_k\vec{q}_k
+                \end{equation*}
+                for \(c_1,\ldots,c_k\in\mathbb{R}\). Then, since each of \(\vec{q}_1,\ldots,\vec{q}_k\) can be written as a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\), there exist scalars \(d_{11},\ldots,d_{kl}\) such that
+                \begin{align*}
+                    \vec{q}_1&=d_{11}\vec{r}_1+d_{12}\vec{r}_2+\cdots+d_{1l}\vec{r}_l \\
+                    \vec{q}_2&=d_{21}\vec{r}_1+d_{22}\vec{r}_2+\cdots+d_{2l}\vec{r}_l \\
+                    &\vdots \\
+                    \vec{q}_k&=d_{k1}\vec{r}_1+d_{k2}\vec{r}_2+\cdots+d_{kl}\vec{r}_l
+                \end{align*}
+                Then,
+                \begin{align*}
+                    \vec{x}&=c_1(d_{11}\vec{r}_1+d_{12}\vec{r}_2+\cdots+d_{1l}\vec{r}_l) \\
+                    &\quad+c_2(d_{21}\vec{r}_1+d_{22}\vec{r}_2+\cdots+d_{2l}\vec{r}_l) \\
+                    &\quad\,\,\,\vdots \\
+                    &\quad+c_k(d_{k1}\vec{r}_1+d_{k2}\vec{r}_2+\cdots+d_{kl}\vec{r}_l) \\
+                    &=(c_1d_{11}+c_2d_{21}+\cdots+c_kd_{k1})\vec{r}_1 \\
+                    &\quad+(c_1d_{12}+c_2d_{22}+\cdots+c_kd_{k2})\vec{r}_2 \\
+                    &\quad\,\,\,\vdots \\\
+                    &\quad+(c_1d_{1l}+c_2d_{2l}+\cdots+c_kd_{kl})\vec{r}_l.
+                \end{align*}
+                We have just written \(\vec{x}\) as a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\).
+            \end{proof}
+            Note that this theorem may be rephrased as follows: If \(\vec{x}\) is in the row space of a matrix \(Q\) and each row of \(Q\) is in the row space of a matrix \(R\), \(\vec{x}\) is in the row space of \(R\).
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Row Equivalence Implies Equal Row Space}{rowequivequalrowspc}
+            
+            Suppose \(A\) and \(B\) are row equivalent. Then, the row space of \(A\) is equal to the row space of \(B\).
+        
+        \end{theorem}
+
+\pagebreak
+
+\section{Lecture 11: September 16, 2022}
+
+    \subsection{Linear Maps}
+    
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Linear Maps}{linmaps}
+        
+            Given \(A\in\mathcal{M}_{mn}\), we define
+            \begin{align*}
+                T_A&:\mathbb{R}^n\to\mathbb{R}^m \\
+                &:\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}\mapsto A\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}.
+            \end{align*}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Some Special Maps in \(\mathbb{R}^2\)}{specialmapsr2}
+            
+            Consider the following maps, and name them.
+            \begin{enumerate}
+                \item If \(A=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}\), \(T_A:\mathbb{R}^2\to\mathbb{R}^2\) is the zero map.
+                \item If \(A=\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\), \(T_A:\mathbb{R}^2\to\mathbb{R}^2\) is the identity map.
+                \item If \(A=\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}\), \(T_A:\mathbb{R}^2\to\mathbb{R}^2\) is the projection onto the \(x\) axis.
+                \item If \(A=\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}\), \(T_A:\mathbb{R}^2\to\mathbb{R}^2\) is the projection onto the \(y\) axis.
+            \end{enumerate}
+            
+        \end{example}
+        
+
+
+\begin{comment}   
+    \begin{example}
+        
+        Suppose we perform row reduction on a system as obtain
+        \begin{equation*}
+            \begin{bmatrix}
+            1 & -3 & 0 & -32 & 16 & 0 & | & -55 \\
+            0 & 0 & 1 & -5 & 2 & 0 & | & 5 \\
+            0 & 0 & 0 & 0 & 0 & 1 & | & 2 \\
+            0 & 0 & 0 & 0 & 0 & 0 & | & 0 \\
+            \end{bmatrix}.
+        \end{equation*}
+        What is the solution set?
+        \\
+        \\
+        We notice that \(x_1\), \(x_3\), and \(x_6\) are determined, leaving \(x_2\), \(x_4\), and \(x_5\) to be free variables. Let \(x_2=c_1\), \(x_4=c_2\), and \(x_5=c_3\). The solution set is \(\{3c_1+32c_2-16c_3-55,c_1,5c_2-2c_3+5,c_2,c_3,2:c_1,c_2,c_3\in\mathbb{R}\}\)
+        
+    \end{example}
+    
+\end{comment}
