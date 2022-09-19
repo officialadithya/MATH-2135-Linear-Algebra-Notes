@@ -986,4 +986,41 @@
 
 \section{Lecture 12: September 19, 2022}
 
-    \subsection{Invertibility}
+    \subsection{Inverses of Matrices}
+
+        Consider the following definitions and theorems.
+        \begin{definition}{\Stop\,\,Multiplicative Inverse of a Matrix}{inverse}
+
+            Let \(A\in\mathcal{M}_{nn}\). Then, \(B\in\mathcal{M}_{nn}\) is a multipliative inverse of \(A\) if and only if 
+            \begin{equation*}
+                AB=BA=I_n.
+            \end{equation*}
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Inverse Commutativity}{invcommute}
+            
+            Let \(A,B\in\mathcal{M}_{nn}\). If either \(AB\) or \(BA\) equals \(I_n\), the other product also equals \(I_n\), and \(A\) and \(B\) are inverses of each other.
+            
+        \end{theorem}
+        \begin{definition}{\Stop\,\,Singularity}{singularity}
+
+            A matrix is \texttt{singular} if and only if it is square and does not have an inverse. A matrix is \textit{nonsingular} if and only if it is square and has an inverse.
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Uniqueness of the Inverse}{uniquenessinv}
+
+            If \(B\) and \(C\) are both inverses of \(A\in\mathcal{M}_{nn}\), \(B=C\).
+            \begin{proof}
+                    \(B=BI_n=B(AC)=(BA)C=I_nC=C\).
+             \end{proof}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We denote the unique inverse of \(A\) as \(A^{-1}\). We can use the inverse to define negative integral powers of a nonsingular matrix \(A\). Consider the following definition.
+        \begin{definition}{\Stop\,\,Negative Integral Powers of a Nonsingular Matrices}{nonsingmat}
+
+            Let \(A\) be a nonsingular matrix. Then, the negative integral powers of \(A\) are given as follows: \(A^{-1}\) is the unique inverse of \(A\). For \(k\geq2\), \(A^{-k}=(A^{-1})^k\).
+            
+        \end{definition}
