@@ -1003,7 +1003,7 @@
         Consider the following examples.
         \begin{example}{\Difficulty\,\Difficulty\,\,The Inverse of the Identity}{inviden}
 
-            Let \(A=0_n\). Find the inverse of \(A\).
+            Let \(A=I_n\). Find the inverse of \(A\).
             \begin{proof}
                 Since \(I_nI_n=I_nI_n=I_n\), \(I_n\) is the inverse of \(A\).
             \end{proof}
@@ -1049,9 +1049,65 @@
             Let \(A\) and \(B\) be nonsingular \(n\times n\) matrices. Then,
             \begin{enumerate}
                 \item \(A^{-1}\) is nonsingular, and \((A^{-1})^{-1}=A\).
+                \begin{proof}
+                    We have that \(A^{-1}A=AA^{-1}=I_n\) since \(A^{-1}\) is the inverse of \(A\), hence \(A^{-1}\) is nonsingular and \((A^{-1})^{-1}=A\).
+                \end{proof}
                 \item \(A^k\) is nonsingular, and \((A^k)^{-1}=(A^{-1})^k=A^{-k}\), for \(k\in\mathbb{Z}\).
                 \item \(AB\) is nonsingular, and \((AB)^{-1}=B^{-1}A^{-1}\).
                 \item \(A^T\) is nonsingular, and \((A^T)^{-1}=(A^{-1})^T\).
+                \begin{proof}
+                    We have that \(AA^{-1}=I_n\). Then, we have \((AA^{-1})^T=I_n^T=I_n\) and \((AA^{-1})^T=(A^{-1})^TA^T=I_n\). Hence, \(A^T\) is nonsingular and \((A^T)^{-1}=(A^{-1})^T\).
+                \end{proof}
             \end{enumerate}
             
         \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,\(2\times 2\) Inverse}{2by2inv}
+
+            Suppose \(A=\begin{bmatrix} a & b \\ c & d \end{bmatrix}\). Then, \(A\) is nonsingular if and only if \(ad-bc\neq0\). In this case,
+            \begin{equation*}
+                A=\frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
+            \end{equation*}
+            \begin{proof}
+                Suppose \(ad-bc\neq0\). We consider
+                \begin{equation*}
+                    \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}\begin{bmatrix} a & b \\ c & d \end{bmatrix}=\begin{bmatrix}
+                        1 & 0 \\ 
+                        0 & 1
+                    \end{bmatrix}.
+                \end{equation*}
+                Thus, \(A^{-1}\) exists and the formula holds. Now, suppose that \(ad-bc=0\). We wish to show that \(A\) is singular. Consider
+                \begin{equation*}
+                    \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}\begin{bmatrix} a & b \\ c & d \end{bmatrix}=\begin{bmatrix} ad-bc & 0 \\ 0 & ad-bc \end{bmatrix}=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+                \end{equation*}
+                Suppose \(A\) has an inverse. Then,
+                \begin{equation*}
+                    \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}\left(AA^{-1}\right)=\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}.
+                \end{equation*}
+                But,
+                \begin{equation*}
+                    \left(\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}A\right)A^{-1}=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}A^{-1}=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+                \end{equation*}
+                This implies \(a=b=c=d=0\), meaning \(A=0_2\). From Example \ref{exa:invzero}, we know that the matrix \(0_n\) is singular.
+            \end{proof}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We have provided a lot of theory about the inverse of a matrix, but given \(A\in\mathcal{M}_{nn}\), how do we determine if \(A\) is invertible. That is, how do we determine if \(A\) is nonsingular. If it is, how do we find \(A^{-1}\)? Consider the matrix equation
+        \begin{equation*}
+            A\begin{bmatrix}
+                x_{11} & \cdots & x_{1n} \\
+                \vdots & \ddots & \vdots \\
+                x_{n1} & \cdots & x_{nn}
+            \end{bmatrix}=
+            \begin{bmatrix}
+                1 & \cdots & 0 \\
+                \vdots & \ddots & \vdots \\
+                0 & \cdots & 1
+            \end{bmatrix}.
+        \end{equation*}
