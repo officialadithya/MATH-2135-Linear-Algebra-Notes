@@ -1144,6 +1144,7 @@
             \item Row reduce \([A|I_n]\) to \([C|D]\) until we have reduced row echelon form.
             \item If \(C=I_n\), \(A^{-1}\) exists and \(A^{-1}=D\). Otherwise, \(A^{-1}\) does not exist.
         \end{enumerate}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -1151,6 +1152,55 @@
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a \(2\times 2\) Inverse}{findinv22}
             
             Consider the matrix 
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & 1 \\
+                    1 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            First we form
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & 1 & | & 1 & 0 \\
+                    1 & 1 & | & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            We perform the row operation \(\langle 2\rangle\leftrightarrow\langle1\rangle\), yielding
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 1 & | & 0 & 1 \\
+                    2 & 1 & | & 1 & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Then, we execute \(2\langle1\rangle-\langle2\rangle\to\langle2\rangle\), which yields
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 1 & | & 0 & 1 \\
+                    0 & 1 & | & -1 & 2
+                \end{bmatrix}.
+            \end{equation*}
+            We then compute \(\langle2\rangle-\langle1\rangle\to\langle 1\rangle\), producing
+            \begin{equation*}
+                \begin{bmatrix}
+                    -1 & 0 & | & -1 & 1 \\
+                    0 & 1 & | & -1 & 2
+                \end{bmatrix}.
+            \end{equation*}
+            Finally, we simply perform \(-\langle1\rangle\to\langle1\rangle\), which obtains
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & | & 1 & -1 \\
+                    0 & 1 & | & -1 & 2
+                \end{bmatrix}.
+            \end{equation*}
+            Therefore, 
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -1 \\
+                    -1 & 2
+                \end{bmatrix}
+            \end{equation*}
+            is the inverse of 
             \begin{equation*}
                 \begin{bmatrix}
                     2 & 1 \\
