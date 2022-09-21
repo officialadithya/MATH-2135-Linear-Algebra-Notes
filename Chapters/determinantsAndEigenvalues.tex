@@ -1,0 +1,64 @@
+\section{Lecture 13: September 21, 2022}
+
+    \subsection{Defining the Determinant}
+
+        Consider the following theorems and definitions.
+        \begin{theorem}{\Stop\,\,The Determinant Determines the Area in \(\mathbb{R}^2\)}{areadet}
+
+            Consider \(\vec{x}=[x_1,x_2]\) and \(\vec{y}=[y_1,y_2]\). If we form
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    x_1 & x_2 \\
+                    y_1 & y_2 
+                \end{bmatrix},
+            \end{equation*}
+            \begin{equation*}
+                |\det A| = ||\vec{x}\times\vec{y}||.
+            \end{equation*}
+            That is, \(|\det A|\) provides the area of the parallelogram determined by \(\vec{x}\) and \(\vec{y}\).
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Determinant Determines the Volume in \(\mathbb{R}^3\)}{voldet}
+
+            Consider \(\vec{x}=[x_1,x_2,x_3]\), \(\vec{y}=[y_1,y_2,y_3]\), and \(\vec{z}=[z_1,z_2,z_3]\).
+            If we form
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    x_1 & x_2 & x_3 \\
+                    y_1 & y_2 & y_3 \\
+                    z_1 & z_2 & z_3
+                \end{bmatrix},
+            \end{equation*}
+            \begin{equation*}
+                |\det A| = \vec{x}\cdot(\vec{y}\times\vec{z}).
+            \end{equation*}
+            That is, \(|\det A|\) provides the volume of the parallelepiped determined by \(\vec{x}\), \(\vec{y}\), and \(\vec{z}\).
+            
+        \end{theorem}
+        \begin{definition}{\Stop\,\,The \((i,j)\) Submatrix}{submatrix}
+
+            Suppose \(A\in\mathcal{M}_{nn}\). The \((i,j)\) submatrix of \(A\) is the \((n-1)\times(n-1)\) matrix obtained by removing the \(i\)th row and the \(j\)th column. We denote this by \(A_{(i,j)}\) 
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,The \((i,j)\) Minor}{minor}
+
+            Suppose \(A\in\mathcal{M}_{nn}\). The \((i,j)\) minor of \(A\) is the determinant of the \((i,j)\) submatrix of \(A\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,The \((i,j)\) Cofactor}{cofactor}
+
+            Suppose \(A\in\mathcal{M}_{nn}\). The \((i,j)\) cofactor of \(A\) is
+            \begin{equation*}
+                A_{ij}=(-1)^{i+j}\det (A_{(i,j)}).
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Determinant}{det}
+            Suppose \(A\in\mathcal{M}_{nn}\). Then,
+            \begin{enumerate}
+                \item If \(n=1\), and \(A=\begin{bmatrix} a_{11} \end{bmatrix}\), \(\det A = a_{11}\).
+                \item If \(n=2\), and \(A=\begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}\), \(\det A = a_{11}a_{22}-a_{12}a_{21}\).
+                \item If \(n>2\), and \(A=\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \cdots & a_{nn} \end{bmatrix}\), \(\det A = (a_{11}A_{11}+\cdots+a_{1n}A_{1n})+\cdots+(a_{n1}A_{n1}+\cdots+a_{nn}A_{nn})\).
+            \end{enumerate}
+        \end{definition}
+        

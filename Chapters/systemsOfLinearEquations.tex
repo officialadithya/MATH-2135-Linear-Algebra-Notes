@@ -1114,10 +1114,14 @@
                 This implies \(a=b=c=d=0\), meaning \(A=0_2\). From Example \ref{exa:invzero}, we know that the matrix \(0_n\) is singular.
             \end{proof}
         \end{theorem}
-        \vphantom
-        \\
-        \\
-        We have provided a lot of theory about the inverse of a matrix, but given \(A\in\mathcal{M}_{nn}\), how do we determine if \(A\) is invertible. That is, how do we determine if \(A\) is nonsingular. If it is, how do we find \(A^{-1}\)? Consider the matrix equation
+        
+\pagebreak
+
+\section{Lecture 13: September 21, 2022}
+
+    \subsection{Finding Matrix Inverses}
+
+        We have provided a lot of theory about the inverse of a matrix, but given \(A\in\mathcal{M}_{nn}\), how do we determine if \(A\) is invertible. That is, how do we determine if \(A\) is nonsingular? If it is, how do we find \(A^{-1}\)? Consider the matrix equation
         \begin{equation*}
             A\begin{bmatrix}
                 x_{11} & \cdots & x_{1n} \\
@@ -1128,5 +1132,73 @@
                 1 & \cdots & 0 \\
                 \vdots & \ddots & \vdots \\
                 0 & \cdots & 1
-            \end{bmatrix}.
+            \end{bmatrix}=I_n.
         \end{equation*}
+        Our goal is to solve for the elements \(x_{ij}\). We thus have \(n\) linear systems to solve. That is,
+        \begin{equation*}
+            A\begin{bmatrix} x_{11} \\ \vdots \\ x_{n1} \end{bmatrix} = \begin{bmatrix} 1 \\ \vdots \\ 0 \end{bmatrix}\quad,\ldots,\quad A\begin{bmatrix} x_{1n} \\ \vdots \\ x_{nn} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 1 \end{bmatrix}.
+        \end{equation*}
+        To solve equations of the sort, consider the following steps.
+        \begin{enumerate}
+            \item Form \([A|I_n]\).
+            \item Row reduce \([A|I_n]\) to \([C|D]\) until we have reduced row echelon form.
+            \item If \(C=I_n\), \(A^{-1}\) exists and \(A^{-1}=D\). Otherwise, \(A^{-1}\) does not exist.
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a \(2\times 2\) Inverse}{findinv22}
+            
+            Consider the matrix 
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & 1 \\
+                    1 & 1
+                \end{bmatrix}.
+            \end{equation*}
+
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a \(3\times 3\) Inverse}{findinv33}
+            
+            Consider the matrix 
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & -6 & 5 \\
+                    -4 & 12 & -9 \\
+                    2 & -9 & 8
+                \end{bmatrix}.
+            \end{equation*}
+            First, we form
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & -6 & 5 & | & 1 & 0 & 0 \\
+                    -4 & 12 & -9 & | & 0 & 1 & 0 \\
+                    2 & -9 & 8 & | & 0 & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            After row reduction, we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & | & \frac{5}{2} & \frac{1}{2} & -1 \\
+                    0 & 1 & 0 & | & \frac{7}{3} & 1 & -\frac{1}{3} \\
+                    0 & 0 & 1 & | & 2 & 1 & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Thus, 
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & -6 & 5 \\
+                    -4 & 12 & -9 \\
+                    2 & -9 & 8
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \frac{5}{2} & \frac{1}{2} & -1 \\
+                    \frac{7}{3} & 1 & -\frac{1}{3} \\
+                    2 & 1 & 0
+                \end{bmatrix}=I_3.
+            \end{equation*}
+
+            
+        \end{example}
