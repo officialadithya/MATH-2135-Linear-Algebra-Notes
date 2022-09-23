@@ -61,4 +61,126 @@
                 \item If \(n>2\), and \(A=\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \cdots & a_{nn} \end{bmatrix}\), \(\det A = (a_{11}A_{11}+\cdots+a_{1n}A_{1n})+\cdots+(a_{n1}A_{n1}+\cdots+a_{nn}A_{nn})\).
             \end{enumerate}
         \end{definition}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        For fun, consider the following Python 3 implementation of computing the determinant of any \(n\times n\) matrix.
+        \lstinputlisting[language=Python]{Graphics/matrixdet.py}
         
+        \pagebreak
+
+\section{Lecture 14: September 23, 2022}
+
+    \subsection{Determinants of Upper Triangular Matrices}
+
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,The Determinant of an Upper Triangular Matrix}{uppertriangulardet}
+
+            If \(A\in\mathcal{M}_{nn}\) is upper triangular, 
+            \begin{equation*}
+                \det A = a_{11} a_{22} \cdots a_{nn}.
+            \end{equation*}
+            Recall that \(A\) is upper triangular if and only if all elements below the main diagonal are zero.
+            \begin{proof}
+                We proceed by induction on \(n\). For \(n=1\), \(A=\begin{bmatrix} a_{11} \end{bmatrix}\), so \(\det A = a_{11}\). Suppose for all \(k\in\mathbb{N}\), and some upper triangular \(A\in\mathcal{M}_{kk}\),
+                \begin{equation*}
+                    a_{11} a_{22} \cdots a_{kk}.
+                \end{equation*}
+                Consider 
+                \begin{equation*}
+                    B=\begin{bmatrix}
+                        b_{11} & \cdots & b_{1(k+1)} \\
+                        \vdots & \ddots & \vdots \\
+                        0 & \cdots & b_{(k+1)(k+1)}
+                    \end{bmatrix}.
+                \end{equation*}
+                Then, we compute \(\det B\) using the last row as our ``first row.''
+                \begin{align*}
+                    \det B &= (-1)^{1+1}b_{11}\det\begin{bmatrix} b_{22} & b_{23} & \cdots & a_{2(k+1)} \\ 0 & b_{33} & \cdots & b_{3(k+1)} \\ \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & b_{(k+1)(k+1)} \end{bmatrix} \\
+                    &= b_{11}\underbrace{b_{22}\cdots b_{(k+1)(k+1)}}_{\text{By the inductive hypothesis.}}.
+                    %\begin{comment}\det B&= 0+\cdots+0+a_{(k+1)(k+1)}(-1)^{(k+1)+(k+1)}\det B_{(k+1),(k+!)} \\ &=a_{(k+1)(k+1)}(-1)^{2(k+1)}\det A.\end{comment}
+                \end{align*}
+                This is precisely the stipulation of the theorem when \(n=k+1\).
+            \end{proof}
+
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Determinants and Row Operations}{detrowops}
+
+            Suppose \(A\in\mathcal{M}_{nn}\) and let \(R\) be a row operation. Then,
+            \begin{enumerate}
+                \item If \(R\) is \(c\langle i\rangle\to\langle i \rangle\) for some \(c\in\mathbb{R}\), 
+                \begin{equation*}
+                    \det R(A) = c\det A.
+                \end{equation*}
+                Note that if \(c=0\), \(R\) is not a valid row operation.
+                \item If \(R\) is \(c\langle i\rangle+\langle j \rangle\to\langle j \rangle\) for some \(c\in\mathbb{R}\),
+                \begin{equation*}
+                    \det R(A) = \det A.
+                \end{equation*}
+                Note that if \(c=0\), \(R\) is not a valid row operation.
+                \item If \(R\) is \(\langle i \rangle\leftrightarrow\langle j \rangle\),
+                \begin{equation*}
+                    \det R(A) = -\det A.
+                \end{equation*}
+            \end{enumerate}
+            \vphantom
+            \\
+            \\
+            Note that if \(\det A\neq 0\) and \(R\) is a row operation, \(\det R(A)\neq 0\).
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Properties of Determinants}{detprop}
+
+            Suppose \(A,B\in\mathcal{M}_{nn}\). Then,
+            \begin{enumerate}
+                \item \(\det (AB) = \det A\det B\).
+                \item \(\det (A^T) = \det A\).
+                \item \(\underbrace{\det (A^{-1}) = \frac{1}{\det A}}_{\text{Suppose that \(A\) is nonsingular.}}\).
+            \end{enumerate}
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Inverses and Determinants}{invdet}
+            
+            Suppose that \(A\in\mathcal{M}_{nn}\). Then, \(A\) is nonsingular if and only if \(\det A \neq 0\).
+            \begin{proof}
+                If \(A\) is nonsingular, we can row reduce \(A\) to produce \(I_n\). Since \(\det I_n\neq 0\), by Theorem \ref{thm:detrowops}, \(\det A\neq 0\). If \(\det A\neq 0\), we form the system \([A|B]\) and reduce it to \([C|D]\). We know that \(C\) either is the identity matrix or has at least one zero row. Because \(\det A\neq 0\), we realize that \(C=I_n\). Because we were able to row reduce \(A\) to \(I_n\), \(A\) is nonsingular.
+            \end{proof}
+            
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We can use Theorem \ref{thm:detrowops} in conjunction with row operations to compute the determinant of a matrix easily. We simply use row operations to create an upper triangular matrix, while keeping track of how the determinant changes. We then apply Theorem \ref{thm:uppertriangulardet}. Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Computing a Determinant by Row Reduction}{compdetrowred}
+            
+            Compute \(\det\begin{bmatrix} 1 & 1 & 1 \\ 2 & 3 & -2 \\ 4 & 9 & 4 \end{bmatrix}\).
+            \\
+            \\
+            Let 
+            \begin{equation*}
+                A_0=\begin{bmatrix} 1 & 1 & 1 \\ 2 & 3 & -2 \\ 4 & 9 & 4 \end{bmatrix}.
+            \end{equation*}
+            Consider the following table.
+            \begin{center}
+                \begin{tabular}{||c|c|c||}
+                    \hline
+                    \hline
+                    Row Operation & Resultant Matrix & Effect on the Determinant \\
+                    \hline
+                    \(2\langle1\rangle-\langle2\rangle\to\langle2\rangle\) & \(A_1=\begin{bmatrix} 1 & 1 & 1 \\ 0 & -1 & 4 \\ 4 & 9 & 4 \end{bmatrix}\) & \(\det A_1=\det A_0\) \\
+                    \hline
+                    \(4\langle1\rangle-\langle3\rangle\to\langle3\rangle\) & \(A_2=\begin{bmatrix} 1 & 1 & 1 \\ 0 & -1 & 4 \\ 0 & -5 & 0 \end{bmatrix}\) & \(\det A_2=\det A_1\) \\
+                    \hline
+                    \(5\langle2\rangle-\langle3\rangle\to\langle3\rangle\) & \(A_3=\begin{bmatrix} 1 & 1 & 1 \\ 0 & -1 & -4 \\ 0 & 0 & 20 \end{bmatrix}\) & \(\det A_3=\det A_2\) \\
+                    \hline
+                \end{tabular}
+                \DOTHISLATER
+            \end{center}
+            \vphantom
+            \\
+            \\
+            Thus, \(\det A_0=-20\).
+
+        \end{example}
