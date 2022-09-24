@@ -1,0 +1,449 @@
+\section{Introduction to Proofs}
+    
+    Before we delve into techniques to write proofs, let us first define what a proof is. 
+    \begin{definition}{\Stop\,\,Proofs}{proofs}
+    
+        Mathematical proofs are logical arguments to show that stated premises guarantee that a mathematical statement must be true.
+    
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    There are multiple techniques to write proofs, but here, we will explore the Proof by Induction, the Direct Proof, the Proof by Contrapositive, the Proof by Contradiction, and the Proof by Cases.
+    
+\section{Proof by Induction}
+
+    We will use quantifiers to state induction.
+    \\
+    \\
+    Let \(P(n)\) be a statement with \(n\in\mathbb{N}\). Consider the following Rule of Inference.
+    \begin{center}
+        \begin{tabular}{c}
+            \hline
+            \(P(0)\) \\
+            \(P(0) \implies P(1)\) \\
+            \(P(1) \implies P(2)\) \\
+            \(\vdots\) \\
+            \(P(n) \implies P(n+1)\) \\
+            \hline
+            \(\thus \forall n\in\mathbb{N}, P(n)\). \\
+            \hline
+        \end{tabular}.
+    \end{center}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    This may be further collapsed into
+    \begin{center}
+        \begin{tabular}{c}
+            \hline
+            \(P(0)\) \\
+            \(\forall k\in\mathbb{N}, P(k)\implies P(k+1)\) \\
+            \hline
+            \(\thus \forall n\in\mathbb{N}, P(n)\). \\
+            \hline
+        \end{tabular}.
+    \end{center}
+    \vphantom
+    \\
+    \\
+    Generally, in Proofs by Induction, we follow the following steps.
+    \begin{itemize}
+        \item Start with an iterative propostition that depends on some \(n\in\mathbb{N}\), or \(P(n)\).
+        \item Prove that the proposition is true for some base case \(n=n_0\). That is, show that the proposition is true for the smallest fixed number that the proposition makes sense for.
+        \item Prove the inductive step. Suppose that the proposition holds true for \(n=k\), and then prove that the proposition holds for \(n=k+1\). Essentially, suppose \(P(k)\) is true, and prove that \(P(k+1)\) is true.
+        \item Then, the proposition is proved \(\forall n\in\mathbb{N}\), where \(n \geq n_0\).
+    \end{itemize}
+    \vphantom
+    \\
+    \\
+    Consider the following examples and exercises.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Gauss' Formula}{gaussformula}
+    
+        Prove that the sum of consecutive integers starting at \(1\) can be found by Gauss' formula. That is,
+        \begin{equation*}
+            1+2+3\cdots+n=\frac{n(n+1)}{2}.
+        \end{equation*}
+        \begin{proof}
+            Consider the base case \(n=1\). Then the left hand side is \(1\), and the right hand side is
+            \begin{equation*}
+                \frac{1(1+1)}{2}=1.
+            \end{equation*}
+            Therefore, the left hand side is equal to the right hand side, proving the case base.
+            \\
+            \\
+            We suppose that the relationship is true for \(n=k\) where \(k\in\mathbb{N}\). That is, we suppose that
+            \begin{equation*}
+                1+2+3+\cdots+k=\frac{k(k+1)}{2}.
+            \end{equation*}
+            If we add \(k+1\) to both sides, we obtain
+            \begin{align*}
+                1+2+3+\cdots+k+k+1&=\frac{k(k+1)}{2}+k+1 \\
+                &=\frac{k(k+1)+2k+2}{2} \\
+                &=\frac{k^2+3k+2}{2} \\
+                &=\frac{(k+2)(k+1)}{2} \\
+                &=\frac{(k+1)((k+1)+1)}{2}.
+            \end{align*}
+            This result is the proposition where \(n=k+1\). Therefore, the inductive step is true. Therefore, Gauss' formula is true for all \(n\in\mathbb{N}\) where \(n \geq 1\).
+        \end{proof}
+    
+    \end{example}
+    \pagebreak
+    \begin{example}{\Difficulty\,\Difficulty\,\,Sum of Consequtive Squares}{sumconseqsqs}
+    
+        Prove that for all \(n\in\mathbb{N}, n \geq 1\),
+        \begin{equation*}
+            1^2+2^2+3^2\cdots+n^2=\frac{n(n+1)(2n+1)}{6}.
+        \end{equation*}
+        \begin{proof}
+            Consider the base case \(n=1\). Then the left hand side is \(1\), and the right hand side is
+            \begin{equation*}
+                \frac{1(1+1)(2+1)}{6}=1.
+            \end{equation*}
+            Therefore, the left hand side is equal to the right hand side, proving the base case.
+            \\
+            \\
+            We suppose that the relationship is true for \(n=k\) where \(k\in\mathbb{N}\). That is, we suppose that
+            \begin{equation*}
+                1^2+2^2+3^2\cdots+k^2=\frac{k(k+1)(2k+1)}{6}.
+            \end{equation*}
+            If we add \(k+1\) to both sides, we obtain
+            \begin{align*}
+                1^2+2^2+3^2\cdots+k^2+(k+1)^2&=\frac{k(k+1)(2k+1)}{6}+(k+1)^2 \\
+                &=\frac{k(k+1)(2k+1)}{6}+k^2+2k+1 \\
+                &=\frac{k(k+1)(2k+1)+6k^2+12k+6}{6} \\
+                &=\frac{2k^3+9k^2+13k+6}{6} \\
+                &=\frac{(k+1)(k+2)(2k+3)}{6} \\
+                &=\frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}.
+            \end{align*}
+            This result is the proposition where \(n=k+1\). Therefore, the inductive step is true. Therefore, the above formula is true for all \(n\in\mathbb{N}\) where \(n \geq 1\).
+        \end{proof}
+    
+    \end{example}
+    \pagebreak
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,The Power Rule for Derivatives}{powerrule}
+    
+        Prove that for all \(n\in\mathbb{N}, n \geq 0\),
+        \begin{equation*}
+            \frac{\dd}{\dd x}x^n=nx^{n-1}.
+        \end{equation*}
+        \begin{proof}
+            Consider the base case \(n=0\). Then the left hand side is \(0\), as the derivative of any constant is zero, and the right hand side is
+            \begin{equation*}
+                0x^{0-1}=0.
+            \end{equation*}
+            Therefore, the left hand side is equal to the right hand side, proving the base case.
+            \\
+            \\
+            We suppose that the relationship is true for \(n=k\) where \(k\in\mathbb{N}\). That is, we suppose that
+            \begin{equation*}
+                \frac{\dd}{\dd x}x^k=kx^{k-1}.
+            \end{equation*}
+            Consider \(\frac{\dd}{\dd x}[x^{k+1}]\), or \(\frac{\dd}{\dd x}[xx^{k}]\). Then we have
+            \begin{align*}
+                \frac{\dd}{\dd x}[x^{k+1}]&=\frac{\dd}{\dd x}[xx^k] \\
+                &=x^k+x(kx^{k-1}) \\
+                &=x^k+kx^k \\
+                &=(k+1)x^k.
+            \end{align*}
+            This result is the proposition where \(n=k+1\). Therefore, the inductive step is true. Therefore, the power rule for derivatives is true for all \(n\in\mathbb{N}\) where \(n \geq 0\).
+        \end{proof}
+    
+    \end{exercise}
+    \pagebreak
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,\(n\)th Derivative}{nthderiv}
+    
+        Prove that the \(n\)th Derivative of \(f(x)=\frac{1}{x}\) is
+        \begin{equation*}
+            f^{(n)}(x)=\frac{(-1)^nn!}{x^{n+1}}.
+        \end{equation*}
+        \begin{proof}
+            Consider the base case \(n=0\). The zeroth derivative of \(f(x)\) is \(f(x)\) itself. Using the formula, we have
+            \begin{align*}
+                f^{(0)}(x)&=\frac{(-1)^00!}{x^{0+1}} \\
+                &=\frac{1}{x} \\
+                &=f(x).
+            \end{align*}
+            Therefore, the base case is true. We suppose that the relationship is true for \(n=k\) where \(k\in\mathbb{N}\). That is, we suppose that
+            \begin{equation*}
+                f^{(k)}(x)=\frac{(-1)^kk!}{x^{k+1}}.
+            \end{equation*}
+            To find the \((k+1)\)th derivative, we differentiate \(f^{(k)}\), producing
+            \begin{align*}
+                f^{(k+1)}(x)&=\frac{\dd}{\dd x}\frac{(-1)^kk!}{x^{k+1}} \\
+                &=\frac{(-1)^kk!}{x^{k+1+1}}(-(k+1)) \\
+                &=\frac{(-1)^{(k+1)}(k+1)!}{x^{(k+1)+1}}.
+            \end{align*}
+            This result is the proposition where \(n=k+1\). Therefore, the inductive step is true. Therefore, the proposition is proved for all \(n\in\mathbb{N}\) where \(n\geq0\).
+        \end{proof}
+    
+    \end{exercise}
+    \pagebreak
+    \begin{exercise}{\Difficulty\,\Difficulty\,\Difficulty\,\,Reduction}{reduction}
+    
+        Prove that for all \(n\in\mathbb{N}, n \geq 0\),
+        \begin{equation*}
+            \int x^ne^{-x}\dd x = -e^{-x}\left(x^n+nx^{n-1}+n(n-1)x^{n-2}+n(n-1)(n-2)x^{n-3}+\cdots + n! \right)+C.
+        \end{equation*}
+        \begin{proof}
+            Consider the base case \(n=0\). Then, the left hand side is equal to
+            \begin{equation*}
+                \int e^{-x} \dd x=-e^{-x}+C.
+            \end{equation*}
+            The right hand side is equal to \(-e^{-x}+C\). Therefore, the left hand side is equal to the right hand side, proving the base case.
+            \\
+            \\
+            We assume that the relationship is true for \(n=k\). That is, we assume that
+            \begin{equation*}
+                \int x^ke^{-x}\dd x = -e^{-x}(x^k+kx^{k-1}+k(k-1)x^{k-2}+k(k-1)(k-2)x^{k-3}+\cdots + k!)+C.
+            \end{equation*}
+            Let
+            \begin{equation*}
+                u=e^{-x}(x^k+kx^{k-1}+k(k-1)x^{k-2}+k(k-1)(k-2)x^{k-3}+\cdots + k!).
+            \end{equation*}
+            Then,
+            \begin{align*}
+                \int x^{k+1}e^{-x}\dd x&=-x^{k+1}e^{-x}-\int -e^{-x}x^k(k+1) \dd x \\
+                &=-x^{k+1}e^{-x}-(k+1)\int -x^ke^{-x} \dd x \\
+                &=-x^{k+1}e^{-x}+(k+1)\int x^ke^{-x} \dd x \\
+                &=-x^{k+1}e^{-x}-e^{-x}(k+1)\frac{u}{e^{-x}}+C \\
+                &=-e^{-x}\left(x^{k+1}+\frac{u(k+1)}{e^{-x}}\right)+C \\
+                &=-e^{-x}\left(x^{k+1}+(k+1)x^k+k(k+1)x^{k-1}+\cdots+(k+1)!\right)+C.
+            \end{align*}
+                This result is the proposition where \(n=k+1\). Therefore, the inductive step is true. Therefore, the above formula is true for all \(n\in\mathbb{N}\) where \(n \geq 0\).
+        \end{proof}
+    \end{exercise}
+    \pagebreak
+    \begin{exercise}{\Difficulty\,\Difficulty\,\Difficulty\,\,The Shoelace Lemma}{shoelace}
+    
+        The following is a statement of the Shoelace Lemma.
+        \begin{quote}
+            Consider a simple polygon with vertices \((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\), oriented clockwise. Let \((x_{n+1}, y_{n+1})=(x_1, y_1)\). The area of the polygon is given by
+            \begin{equation*}
+                A_n=\frac{1}{2}\left[\sum_{i=1}^n x_iy_{i+1}-x_{i+1}y_i \right].
+            \end{equation*}
+        \end{quote}
+        Prove the above proposition.
+        \begin{proof}
+            Consider a polygon with three vertices: \((x_1, y_1)\), \((x_2, y_2)\), and \((x_3, y_3)\). The area, given by the Shoelace Lemma, is
+            \begin{equation*}
+                A_3=\frac{1}{2}\left[\sum_{i=1}^3 x_iy_{i+1}-x_{i+1}y_i \right]=\frac{1}{2}\left[x_1y_2-x_2y_1+x_2y_3-x_3y_2+x_3y_1-y_3x_1\right].
+            \end{equation*}
+            Then, if we define two vectors \((\vec{v},\vec{w})\in\mathbb{R}^3\) such that
+            \begin{equation*}
+                \vec{v}=(x_2-x_1, y_2-y_1, 0),\quad\vec{w}=(x_3-x_1, y_3-y_1, 0),
+            \end{equation*}
+            we may see that the area of the parallelogram formed by the two vectors is given by
+            \begin{equation*}
+                A_{||GRAM}=||\vec{v} \times \vec{w}||
+            \end{equation*}
+            Either of the two triangles formed by the parallelogram's diagonals correspond to our polygon. The area is then given by
+            \begin{align*}
+                A_3&=\frac{1}{2}||\vec{v} \times \vec{w}|| \\
+                &=\frac{1}{2}\left|\left|(0, 0, x_1y_2-x_2y_1+x_2y_3-x_3y_2+x_3y_1-y_3x_1)\right|\right| \\
+                &=\frac{1}{2}\left[x_1y_2-x_2y_1+x_2y_3-x_3y_2+x_3y_1-y_3x_1\right].
+            \end{align*}
+            Therefore, we have proved the Shoelace Lemma in the case of a polygon with three vertices. By induction, we suppose that for a polygon with \(k\) vertices \((x_1, y_1), (x_2, y_2), \ldots, (x_k, y_k)\), the area is
+            \begin{equation*}
+                A_k=\frac{1}{2}\left[\sum_{i=1}^k x_iy_{i+1}-x_{i+1}y_i \right].
+            \end{equation*}
+            The area of a polygon with vertices \((x_1, y_1), (x_2, y_2), \ldots, (x_{k+1}, y_{k+1})\) is given by the sum of the area of the polygon with vertices \((x_1, y_1), (x_2, y_2), \ldots, (x_k, y_k)\) and the area of the polygon with vertices \((x_1, y_1)\), \((x_k, y_k)\), and \((x_{k+1}, y_{k+1})\). That is,
+            \begin{align*}
+                A_{k+1}&=\frac{1}{2}\left[\sum_{i=1}^k x_iy_{i+1}-x_{i+1}y_i \right]+\frac{1}{2}\left[x_1y_k-x_ky_1+x_ky_{k+1}-x_{k+1}y_k+x_{k+1}y_1-y_{k+1}x_1\right] \\
+                &=\frac{1}{2}\left[\sum_{i=1}^{k+1} x_iy_{i+1}-x_{i+1}y_i \right].
+            \end{align*}
+            The above result is the consequence of the Shoelace Lemma in the case of a polygon with \(k+1\) vertices. Therefore, the Shoelace Lemma is proved.
+        \end{proof}
+    \end{exercise}
+    \begin{exercise}{\Difficulty\,\Difficulty\,\Difficulty\,\,Fibonacci}{fibonacci}
+    
+        Let \(f_n\) represent the sequence of Fibonacci numbers, which is defined recursively as
+        \begin{equation*}
+            f_0=1,\,f_1=1,\,f_n=f_{n-1}+f_{n-2}.
+        \end{equation*}
+        Prove that
+        \begin{equation*}
+            \sum_{i=0}^n(f_i)^2=f_nf_{n+1}.
+        \end{equation*}
+        \begin{proof}
+            Consider the base case \(n=0\). Then the left hand side is equal to \(1\), and the right hand side is
+            \begin{equation*}
+                (1)f_1=1.
+            \end{equation*}
+            Therefore, the left hand side is equal to the right hand side, proving the first base case. Then, consider the base case \(n=1\). The left hand side is equal to \(2\), and the right hand side is \(1\cdot f_2\) where \(f_2=f_1+f_0=2\). Therefore the right hand side is \(2\) and is equal to the left hand side proving the second base case.
+            \\
+            \\
+            We suppose that the relationship is true for \(n=k\) where \(k\in\mathbb{N}\). That is, we suppose that
+            \begin{equation*}
+                \sum_{i=0}^k(f_i)^2=f_kf_{k+1}.
+            \end{equation*}
+            If we add \((f_{k+1})^2\) to both sides, we have
+            \begin{align*}
+                (f_{k+1})^2+\sum_{i=0}^k(f_i)^2&=f_kf_{k+1}+(f_{k+1})^2 \\
+                &=f_{k+1}(f_k+f_{k+1}) \\
+                &=f_{k+1}f_{k+2}.
+            \end{align*}
+            This result is the proposition where \(n=k+1\). Therefore, the inductive step is true. Therefore, the above formula is true for all \(n\in\mathbb{N}\) where \(n \geq 0\).
+        \end{proof}
+    \end{exercise}
+    
+\pagebreak    
+\section{Direct Proofs}
+
+    Direct Proofs are the simplest style of proofs, and are especially useful when proving implications. Consider the following examples.
+    
+    \begin{example}{\Difficulty\,\Difficulty\,\,Direct Proof 1}{dirproof1}
+    
+    Prove that for all integers \(n\), if \(n\) is even, then \(n^2\) is even.
+    
+    \begin{proof}
+        Let \(n\in\mathbb{Z}\) and suppose that \(n\) is even. Let \(m\in\mathbb{Z}\). Thus, \(n=2m\). Then, \(n^2=(2m)^2=4m^2=2(2m^2)\). Because \(2m^2\in\mathbb{Z}\), \(n^2\) is even.
+    \end{proof}
+    
+    \end{example}
+    \begin{example}{\Difficulty\,\Difficulty\,\,Direct Proof 2}{dirproof2}
+    
+    Prove that for all integers \(a\), \(b\), and \(c\), if \(a|b\) and \(b|c\), then \(a|c\).
+    
+    \begin{proof}
+        Let \((a,b,c,p,q,r)\in\mathbb{Z}\) and suppose that \(a|b\) and\(b|c\). Because \(a|b\), \(b=pa\). Because \(b|c\), \(c=qb=pqa\). Because \(c\) is an integer multiple of \(a\), \(a|c\).
+    \end{proof}
+    
+    \end{example}
+    \vphantom
+    \\
+    \\
+    Consider the following exercises.
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,Direct Proof 1}{dirproof1}
+    
+    Prove that for any two odd integers, their sum is even.
+    
+    \begin{proof}
+        Let \((m,n)\in\mathbb{Z}:m\bmod2\neq0:n\bmod2\neq0\) and let \((p,q)\in\mathbb{Z}\). Because \(m\) and \(n\) are odd, \(m=2p+1\) and \(n=2q+1\). Therefore,
+        \begin{align*}
+            m+n&=(2p+1)+(2q+1) \\
+            &=2p+2q+2 \\
+            &=2(p+q+1).
+        \end{align*}
+        Because \((p+q+1)\in\mathbb{Z}\), \(m+n\) is even.
+    \end{proof}
+    
+    \end{exercise}
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,Direct Proof 2}{dirproof2}
+    
+    Prove that for all integers \(n\), if \(n\) is odd, then \(n^2\) is odd.
+    
+    \begin{proof}
+        Let \(n\in\mathbb{Z}:n\bmod2\neq0\) and let \(p\in\mathbb{Z}\). Because \(n\) is odd, \(n=2p+1\). Therefore,
+        \begin{align*}
+            n^2&=(2p+1)^2 \\
+            &=4p^2+4p+1 \\
+            &=2(2p^2+2p)+1.
+        \end{align*}
+        Because \((2p^2+2p)\in\mathbb{Z}\), \(n^2\) is odd.
+    \end{proof}
+    
+    \end{exercise}
+
+\section{Proof by Contrapositive}
+
+    Recall that for two statements \(P\) and \(Q\), \((P\implies Q)\iff(\neg Q\implies \neg P)\). In a Proof by Contrapositive, we produce a direct proof of the contrapositive of the implication. This is equivalent to proving the implication, because the implication is logically equivalent to the contrapositive. Consider the following examples.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Proof by Contrapositive 1}{proofcontrap1}
+    
+    Prove that for all integers \(n\), if \(n^2\) is even, then \(n\) is even.
+    
+    \begin{proof}
+        Let \(n\in\mathbb{Z}:n\bmod2\neq0\). By Exercise \ref{exe:dirproof2}, \(n^2\) is odd.
+    \end{proof}
+    
+    \end{example}
+    \begin{example}{\Difficulty\,\Difficulty\,\,Proof by Contrapositive 2}{proofcontrap2}
+    
+    Prove that for all integers \(a\) and \(b\), if \(a+b\) is odd, then \(a\) is odd or \(b\) is odd.
+    
+    \begin{proof}
+        Let \((a, b,p,q)\in\mathbb{Z}\). Suppose that \(a\) is even and \(b\) is even. Then, \(a=2p\) and \(b=2q\). We see that
+        \begin{align*}
+            a+b&=2p+2q \\
+            &=2(p+q).
+        \end{align*}
+        Because \((p+q)\in\mathbb{Z}\), \(a+b\) is even.
+    \end{proof}
+    
+    \end{example}
+    \vphantom
+    \\
+    \\
+    Consider the following exercises.
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,Proof by Contrapositive 1}{proofcontrap1}
+    
+    Prove that for real numbers \(a\) and \(b\), if \(ab\) is irrational, then \(a\) or \(b\) must be an irrational number.
+    
+    \begin{proof}
+        Let \((p,q,r,s)\in\mathbb{Z}\). Suppose that \((a,b)\in\mathbb{Q}\). Therefore, \(a=\frac{p}{q}\) and \(b=\frac{r}{s}\). We see that
+        \begin{equation*}
+            ab=\frac{pr}{qs}\in\mathbb{Q}
+        \end{equation*}
+        Therefore \(ab\) is rational.
+    \end{proof}
+    
+    \end{exercise}
+    \pagebreak
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,Proof by Contrapositive 2}{proofcontrap2}
+    
+    Prove that for integers \(a\) and \(b\), if \(ab\) is even, then \(a\) or \(b\) must be even.
+    
+    \begin{proof}
+        Let \((a,b,p,q)\in\mathbb{Z}\). Suppose that \(a=2p+1\) and \(b=2q+1\). We see that
+        \begin{align*}
+            ab&=(2p+1)(2q+1) \\
+            &=4pq+2p+2q+1 \\
+            &=2(2pq+p+q)+1
+        \end{align*}
+        Because \((2pq+p+q)\in\mathbb{Z}\), \(ab\) is odd.
+    \end{proof}
+    
+    \end{exercise}
+    \begin{exercise}{\Difficulty\,\Difficulty\,\,Proof by Contrapositive 3}{proofcontrap3}
+    
+    Prove that for any integer \(a\), if \(a^2\) is not divisible by \(4\), then \(a\) is odd.
+    
+    \begin{proof}
+        Let \(a,p\in\mathbb{Z}\). Suppose that \(a\) is even, and \(a=2p\). Then, \(a^2=4p^2\), and \(4|4p^2\), so \(4|a^2\).
+    \end{proof}
+    
+    \end{exercise}
+    
+\section{Proof by Contradiction}
+
+    Sometimes, a statement, \(P\) cannot be rephrased as an implication. In these cases, it may be useful to prove that \(P\implies Q\), and also prove that \(P\implies \neg Q\). Then, we conclude \(\neg P\). One may scrutinize Exercise \ref{exe:detrule2} for further explanation. Consider the following example.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Proof by Contradiction 1}{proofcontrad1}
+    
+        Prove that \(\sqrt{2}\) is irrational.
+        
+        \begin{proof}
+            Suppose that \(\sqrt{2}\) is rational. Then,
+            \begin{equation*}
+                \sqrt{2}=\frac{p}{q}
+            \end{equation*}
+            where \((p,q)\in\mathbb{Z}\) and \(\frac{p}{q}\) is in lowest terms. By squaring both sides of the equation, we have
+            \begin{equation*}
+                2=\frac{p^2}{q^2}.
+            \end{equation*}
+            This means that
+            \begin{equation*}
+                2q^2=p^2,
+            \end{equation*}
+            and as \(q^2\in\mathbb{Z}\), \(p^2\) is even, which means that by Example \ref{exa:proofcontrap1}, \(p\) is even. We see that \(p=2k\) for some \(k\in\mathbb{Z}\). Then, we have
+            \begin{equation*}
+                2q^2=(2k)^2=4k^2
+            \end{equation*}
+            meaning that
+            \begin{equation*}
+                q^2=2k^2.
+            \end{equation*}
+            Therefore, \(q\) is even. If \(p\) and \(q\) are both even, \(\frac{p}{q}\) is not in lowest terms. Therefore, \(\sqrt{2}\) is irrational.
+        \end{proof}
+    
+    \end{example}
