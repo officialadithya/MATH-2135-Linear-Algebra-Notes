@@ -200,18 +200,7 @@
         \vphantom
         \\
         \\
-        Consider the following theorems.
-        \begin{theorem}{\Stop\,\,Properties of Determinants}{detprop}
-
-            Suppose \(A,B\in\mathcal{M}_{nn}\). Then,
-            \begin{enumerate}
-                \item \(\det (AB) = \det A\det B\).
-                \item \(\det (A^T) = \det A\).
-                \item \(\underbrace{\det (A^{-1}) = \frac{1}{\det A}}_{\text{Suppose that \(A\) is nonsingular.}}\).
-            \end{enumerate}
-            
-        \end{theorem}
-        \pagebreak
+        Consider the following theorem.
         \begin{theorem}{\Stop\,\,Inverses and Determinants}{invdet}
             
             Suppose that \(A\in\mathcal{M}_{nn}\). Then, \(A\) is nonsingular if and only if \(\det A \neq 0\).
@@ -229,7 +218,7 @@
                 \hline
                 \(A\in\mathcal{M}_{nn}\) is Nonsingular & \(A\in\mathcal{M}_{nn}\) is Singular \\
                 \hline
-                \(\rank A = n\) & \(\rank A \neq n\) \\
+                \(\rank A = n\) & \(\rank A < n\) \\
                 \(\det A \neq 0\) & \(\det A = 0\) \\
                 \(A\) is row equivalent to \(I_n\). & \(A\) is not row equivalent to \(I_n\). \\
                 \(AX=0\) has only the trivial solution for \(X\). & \(AX=0\) has a nontrivial solution for \(X\). \\
@@ -237,3 +226,64 @@
                 \hline
             \end{tabular}
         \end{center}
+
+\pagebreak
+
+\section{Lecture 15: September 26, 2022}
+
+    \subsection{Determinant Properties}
+
+        \begin{theorem}{\Stop\,\,Properties of Determinants}{detprop}
+
+            Suppose \(A,B\in\mathcal{M}_{nn}\). Then,
+            \begin{enumerate}
+                \item \(\det (AB) = \det A\det B\).
+                \begin{proof}
+                    If \(A\) or \(B\) is singular, \(\det A\det B=0\). For now, let \(B\) be singular. We don't make any assumptions about \(A\), for now. Sine \(B\) is singular, there exists some \(X\neq0\) such that \(BX=0\). We consider \((AB)X=A(BX)=A(0)=0\). Thus, \(X\) is a nontrivial solution to the homogeneous equation associated with \(AB\). Thus \(AB\) is singular and \(\det (AB) = 0 = \det A\det B\). Now, suppose that \(A\) is singular and \(B\) is nonsingular. There exists a nontrivial solution for \(Y\) in the system \(AY=0\). Since \(B\) is nonsingular, \(B^{-1}\) exists. We define \(X=B^{-1}Y\) where \(X\neq0\). Then \(ABX=AB(B^{-1}Y)=AY=0\). Thus, \(ABX\) and \(X\neq 0\) implies that \(AB\) is singular, so \(\det (AB)=0\). Now, we consider the case where \(A\) and \(B\) are both nonsingular. There exists row operations \(R_1,\ldots,R_k\) such that \(A=R_1(\ldots(R_k(I_n)\ldots))\) and 
+                    \begin{align*}
+                        \det (AB)&=\det(R_1(\ldots(R_k(I_n)\ldots))B) \\
+                        &=c_1\cdots c_k\det (I_nB) \\
+                        &=c_1\cdots c_k\det B \\
+                        &=c_1\cdots c_k \det I_n\det B \\
+                        &=\det(R_1(\ldots(R_k(I_n)\ldots)))\det B \\
+                        &=\det A\det B,
+                    \end{align*}
+                    hence proving the proposition.
+                \end{proof}
+                \item \(\det (A^T) = \det A\).
+                \item \(\underbrace{\det (A^{-1}) = \frac{1}{\det A}}_{\text{Suppose that \(A\) is nonsingular.}}\).
+                \begin{proof}
+                    We know that \(A\) is nonsingular. We have \(\det I_n=\det(AA^{-1})=\det A\det (A^{-1})=1\). By simple algebra, \(\det (A^{-1})=\frac{1}{\det A}\).
+                \end{proof}
+            \end{enumerate}
+            
+        \end{theorem}
+
+    \pagebreak
+
+    \subsection{Eigenvectors, Eigenvalues, and Diagonalization}
+
+        Consider the following definition.
+
+        \begin{definition}{\Stop\,\,Similarity}{sim}
+
+            Suppose \(A,B\in\mathcal{M}_{nn}\). Then, \(A\) and \(B\) are similar if and only if there exists nonsingular \(P\) such that
+            \begin{equation*}
+                A=PBP^{-1}.
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Diagonalizability}{diagonalizability}
+
+            The matrix \(A\in\mathcal{M}_{nn}\) is diagonalizable if \(A\) is similar to a diagonal matrix.
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Eigenvalues and Eigenvectors}{eigenvaluesandvectors}
+
+            For \(A\in\mathcal{M}_{nn}\), \(\lambda\in\mathbb{R}\) is an eigenvalue of \(A\) if and only if there exists \(X\neq0\) such that
+            \begin{equation*}
+                AX=\lambda X.
+            \end{equation*}
+            If \(\lambda\) is an eigenvalue of \(A\), \(X\) is an eigenvector of \(A\) with eigenvalue \(\lambda\).
+
+        \end{definition}
