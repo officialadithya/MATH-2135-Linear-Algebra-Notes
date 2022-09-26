@@ -263,7 +263,7 @@
 
     \subsection{Eigenvectors, Eigenvalues, and Diagonalization}
 
-        Consider the following definition.
+        Consider the following definitions and theorems.
 
         \begin{definition}{\Stop\,\,Similarity}{sim}
 
@@ -287,3 +287,23 @@
             If \(\lambda\) is an eigenvalue of \(A\), \(X\) is an eigenvector of \(A\) with eigenvalue \(\lambda\).
 
         \end{definition}
+        \begin{theorem}{\Stop\,\,Finding Eigenvectors and Eigenvalues}{findeigenvs}
+    
+            Consider a matrix \(A\in\mathcal{M}_{nn}\). By definition, \(X\) is an eigenvector of \(A\) with eigenvalue \(\lambda\in\mathbb{R}\) when
+            \begin{equation*}
+                AX=\lambda X=\lambda IX.
+            \end{equation*}
+            That is, when
+            \begin{equation*}
+                (A-\lambda I)X=0.
+            \end{equation*}
+            The above equation has a nonzero solution for \(X\) if and only if 
+            \begin{equation*}
+                \det(A-\lambda I)=0.
+            \end{equation*}
+            Therefore, the scalar \(\lambda\) is an eigenvalue of \(A\) if and only if \(\lambda\) satisfies the above equation.
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Note that, for now, we will only consider real eigenvalues; however, complex eigenvalues are incredibly useful and have numerous applications.
