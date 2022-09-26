@@ -213,10 +213,10 @@
                 \item If \(R_1,\ldots,R_n\) are row operations, \(R_n(
                 \ldots(R_2(R_1(AB)))\ldots)=(R_n(\ldots(R_2(R_1(A)))\ldots))B\).
             \end{enumerate}
-            \begin{proof}
-                For \((1)\), see Assignment 2, Question 2 for the relationship between matrix multiplication and row operations. For \((2)\), use induction on \(k\).
-            \end{proof}
-            \DOTHISLATER
+            \vphantom
+            \\
+            \\
+            Note that this result follows from the associativity of matrix multiplication, as any row operation can be represented by a multiplication of two matrices.
         \end{theorem}
         
     \pagebreak
@@ -517,53 +517,8 @@
         Consider the following formalization of our last discoveries.
         \begin{theorem}{\Stop\,\,Row Equivalence Implies System Equivalence}{rowsyseq}
         
-            If \([A|B]\) is equivalent to \([C|D]\), \([A|B]\) is equivalent to \([C|D]\). We assume that 
-            \begin{equation*}
-                R_n(R_{n-1}(\ldots R_1([A|B]))\ldots)
-            \end{equation*}
-            We will use induction on \(n\). The base case is \(R_1([A|B])=[C|D]\). There are three cases,
-            \begin{enumerate}
-                \item \(R_1\) is \(c\langle i\rangle\to\langle i\rangle\).
-                    We have that \(R_1\) is \(c\langle i \rangle \to \langle i \rangle\) for \(c\neq0\). The system has the form
-                    \begin{align*}
-                        a_{11}x_1+\cdots+a_{1n}x_n&=b_1 \\
-                        &\vdots \\
-                        a_{i1}x_1+\cdots+a_{in}x_n&=b_i \\
-                        &\vdots \\
-                        a_{m1}x_1+\cdots+a_{mn}x_n&=b_m.
-                    \end{align*}
-                    After \(c\langle i \rangle \to \langle i \rangle\), the system is
-                    \begin{align*}
-                        a_{11}x_1+\cdots+a_{1n}x_n&=b_1 \\
-                        &\vdots \\
-                        ca_{i1}x_1+\cdots+ca_{in}x_n&=cb_i \\
-                        &\vdots \\
-                        a_{m1}x_1+\cdots+a_{mn}x_n&=b_m.
-                    \end{align*}
-                    We see that the solution sets are the same. The first and third rows are the same, so the solution sets will be the same. For the second row, simply factor by \(c\) and divide.
-                \item \(R_1\) is \(\langle c\rangle\langle j \rangle+\langle i\rangle\to \langle i\rangle\).
-                \item \(R_1\) is \(\langle i \rangle \leftrightarrow \langle j\rangle\).
-            \end{enumerate}
-            \vphantom
-            \\
-            \\
-            The proposition for \(n=k\) is,
-            \begin{equation*}
-                R_k(R_{k-1}(\ldots R_1([A|B]))\ldots)
-            \end{equation*}
-            has the same solution as \([A|B]\), but
-            \begin{equation*}
-                R_{k+1}(R_k(R_{k-1}(\ldots R_1([A|B]))\ldots)
-            \end{equation*}
-            has the same solution as
-            \begin{equation*}
-                R_k(R_{k-1}(\ldots R_1([A|B]))\ldots).
-            \end{equation*}
-            Thus, 
-            \begin{equation*}
-                R_{k+1}(R_k(R_{k-1}(\ldots R_1([A|B]))\ldots)
-            \end{equation*}
-            has the same solution set as \([A|B]\).
+            If \([A|B]\) is row equivalent to \([C|D]\), \([A|B]\) is equivalent to \([C|D]\).
+
         \end{theorem}
         \begin{theorem}{\Stop\,\,Uniqueness of Reduced Row Echelon Form}{uniquenessredrow}
         
@@ -612,6 +567,7 @@
             \end{enumerate}
         
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -628,7 +584,6 @@
         \\
         \\
         In general, \(\{c\vec{v}:c\in\mathbb{R}\}\) is a line unless \(\vec{v}=\vec{0}\). Also, \(\{c_1\vec{v}_1+c_2\vec{v}_2:c_1,c_2\in\mathbb{R}\}\) is usually a plane, but could be either a point or a line. This pattern is an introduction to the concept of linear dependence, which will be elaborated on later in the text.
-        \pagebreak
         \vphantom
         \\
         \\
@@ -1119,7 +1074,7 @@
 
 \section{Lecture 13: September 21, 2022}
 
-    \subsection{Finding Matrix Inverses}
+    \subsection{Finding Inverses of Matrices}
 
         We have provided a lot of theory about the inverse of a matrix, but given \(A\in\mathcal{M}_{nn}\), how do we determine if \(A\) is invertible. That is, how do we determine if \(A\) is nonsingular? If it is, how do we find \(A^{-1}\)? Consider the matrix equation
         \begin{equation*}
