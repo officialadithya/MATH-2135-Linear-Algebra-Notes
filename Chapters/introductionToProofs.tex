@@ -522,7 +522,7 @@
     \\
     \\
     Consider the following example.
-    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Pascal Proof 1}{pascpf1}
+    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Pascal Proof}{pascpf}
     
         Prove the binomial identity
         \begin{equation*}
@@ -532,4 +532,28 @@
             Consider a set \(S\) with cardinality \(n\). We note that \(|\mathcal{P}(S)|=2^n\), which is precisely the right hand side of the statement. We wish to show that the left hand side also produces the cardinality of \(\mathcal{P}(S)\). The term \(\binom{n}{0}\) corresponds to the fact that \(\emptyset\in\mathcal{P}(S)\), and the term \(\binom{n}{n}\) corresponds to the fact that \(S\in\mathcal{P}(S)\). The quantities \(\binom{n}{0}\) and \(\binom{n}{n}\) together provide \(2\) sets in \(\mathcal{P}(S)\). The terms \(\binom{n}{1},\binom{n}{2},\ldots,\binom{n}{n-1}\) correspond to the sets of cardinality \(1,2,\ldots,n-1\) in \(\mathcal{P}(S)\). In \(\mathcal{P}(S)\) there are \(\binom{n}{1}=\frac{n!}{1!(n-1)!}=n\) sets of cardinality \(1\), \(\binom{n}{2}=\frac{n!}{2!(n-2)!}=\frac{n(n-1)}{2!}\) sets of cardinality \(2\), \(\binom{n}{3}=\frac{n!}{3!(n-3)!}=\frac{n(n-1)(n-2)}{3!}\) sets of cardinality \(3\), etc. until we get to \(\binom{n}{n-1}=\frac{n!}{(n-1)!(n-n+1)!}=n!\) sets of cardinality \(n-1\). It is now clear that the left hand side also proves the cardinality of \(\mathcal{P}(S)\). The left hand side sums the number of sets with cardinality \(0,1,\ldots,n\) in \(\mathcal{P}(S)\). In contrast, the right hand side is the result of allowing each element of the set to ``choose'' to be in an \(n\)-length subset of \(S\).
         \end{proof}
     
+    \end{example}
+    \pagebreak
+    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Team Captain}{captain}
+        
+        Prove the binomial identity
+        \begin{equation*}
+            \binom{n}{1}+2\binom{n}{2}+3\binom{n}{3}+\cdots+n\binom{n}{n}=n2^{n-1}.
+        \end{equation*}
+        \begin{proof}
+            If \(k\) escape room enthusiasts out of a group of \(n\) people wanted to go to an escape room, and out of those \(k\) enthusiasts, one needed to be the team captain, how many ways are there to accomplish this? To select the escape room enthusiasts, we have \(\binom{n}{k}\). From the group of \(k\) escape room enthusiasts, there are always \(\binom{k}{1}=k\) ways to select the team captain. We multiply the two outcomes to yield \(k\binom{n}{k}\). Also, since there may be anywhere from \(1\) to \(n\) enthusiasts, inclusive, we sum the outcomes in the following manner:
+            \begin{equation*}
+                \sum_{k=1}^n k\binom{n}{k}=\binom{n}{1}+2\binom{n}{2}+3\binom{n}{3}+\cdots+n\binom{n}{n}.
+            \end{equation*}
+            Alternatively, we may select one person from the group of \(n\) people that also want to go to an escape room to be the team captain; this gives \(n\) outcomes. Then, each remaining person from the group of \(n-1\) has the choice of going to the escape room or not; there are \(2^{n-1}\) ways to select the escape room enthusiasts from the group of \(n-1\). We multiply the outcomes to yield 
+            \begin{equation*}
+                n2^{n-1}.
+            \end{equation*}
+            We now see that since the solution involving binomial coefficients and the solution involving powers of two were the answer to the same question, the equality
+            \begin{equation*}
+                \binom{n}{1}+2\binom{n}{2}+3\binom{n}{3}+\cdots+n\binom{n}{n}=n2^{n-1}.
+            \end{equation*}
+            is hence proved.
+        \end{proof}
+        
     \end{example}
