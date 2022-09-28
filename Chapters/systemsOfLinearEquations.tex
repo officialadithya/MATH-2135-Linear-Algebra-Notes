@@ -1207,3 +1207,23 @@
 
             
         \end{example}
+        \vphantom
+        \\
+        \\
+        Finally, we present an important theorem of the uniqueness of solutions to \(AX=B\).
+        \begin{theorem}{\Stop\,\,Uniqueness of Solutions to Linear Systems}{uniquenessofsol}
+
+            Let \(A\in\mathcal{M}_{nn}\) and \(AX=B\) be a linear system. If \(A\) is nonsingular, the system has a unique solution. If \(A\) is singular, the system either has no solution or infinitely many solutions. That is, \(AX=B\) has a unique solution if and only if \(A\) is nonsingular.
+            \begin{proof}
+                Consider the case where \(A\) is nonsingular; by definition, \(A^{-1}\) exists. Consider \(X=A^{-1}B\) as a prospective solution. To verify it, we have
+                \begin{equation*}
+                    A(A^{-1}B)=(AA^{-1})B=I_nB=B.
+                \end{equation*}
+                Thus, \(X=A^{-1}B\) is a valid solution. Now, for uniqueness, suppose that \(X=Y\) is a solution. That is, suppose \(AY=B\). We multiply both sides by \(A^{-1}\), on the left, to obtain
+                \begin{equation*}
+                    A^{-1}(AY)=A^{-1}B \implies (A^{-1}A)Y=A^{-1}B \implies I_nY=A^{-1}B \implies Y=A^{-1}B,
+                \end{equation*}
+                showing that \(X=A^{-1}B\) is a unique solution. Now, if \(A\) is singular, \(\rank A<n\), meaning we will have no solution or infinitely many solutions. This is because we will either have a row of all zeroes with a nonzero entry after the augmentation bar yielding an empty solution set, or if the system has at least one solution, there will be at least one free variable, guaranteeing infinitely many solutions.
+            \end{proof}
+
+        \end{theorem}
