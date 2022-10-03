@@ -274,17 +274,17 @@
 
         \begin{definition}{\Stop\,\,Similarity}{sim}
 
-            Suppose \(A,B\in\mathcal{M}_{nn}\). Then, \(A\) and \(B\) are similar if and only if there exists nonsingular \(P\) such that
+            Suppose \(A,B\in\mathcal{M}_{nn}\). The matrix \(B\) is similar to a matrix \(A\) if and only if there exists some nonsingular matrix \(P\) such that
             \begin{equation*}
-                A=PBP^{-1}.
+                B=P^{-1}AP.
             \end{equation*}
-            
+
         \end{definition}
         \begin{definition}{\Stop\,\,Diagonalizability}{diagonalizability}
 
-            The matrix \(A\in\mathcal{M}_{nn}\) is diagonalizable if and only if \(A\) is similar to a diagonal matrix. That is, if \(D\) is a diagonal matrix, \(A\) is diagonalizable if and only if
+            The matrix \(A\in\mathcal{M}_{nn}\) is diagonalizable if and only if a diagonal matrix \(D\) is similar \(A\). That is, \(A\) is diagonalizable if and only if, for nonsingular matrix \(P\),
             \begin{equation*}
-                A=PDP^{-1}.
+                D=P^{-1}AP.
             \end{equation*}
             
         \end{definition}
@@ -302,7 +302,7 @@
 
 \section{Lecture 16: September 28, 2022}
 
-    \subsection{The Process of Diagonalization}
+    \subsection{The Process of Diagonalization: Part I}
 
         Consider the following definition.
         \begin{definition}{\Stop\,\,Eigenspace}{eigenspace}
@@ -330,7 +330,7 @@
             \end{equation*}
             The above equation has a nontrivial solution for \(X\) if and only if \((A-\lambda I_n)\) is singular, that is, when
             \begin{equation*}
-                \det(A-\lambda I_n)=\vec{0}.
+                \det(A-\lambda I_n)=0.
             \end{equation*}
             Therefore, the scalar \(\lambda\) is an eigenvalue of \(A\) if and only if \(\lambda\) satisfies the above equation.
         \end{theorem}
@@ -415,6 +415,13 @@
             &=\begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix} \\
             &=D.
         \end{align*}
+
+\pagebreak
+
+\section{Lecture 17: September 30, 2022}
+
+    \subsection{The Process of Diagonalization: Part II}
+
         We summarize the process of diagonalization in a more general sense.
         \begin{theorem}{\Stop\,\,Diagonalization}{diagonalization}
             Let \(A\in\mathcal{M}_{nn}\), consider the following steps.
@@ -426,3 +433,69 @@
                 \item Verify that \(D=P^{-1}AP\) is a diagonal matrix where each entry \(d_{ii}\) is the eigenvalue for the fundamental eigenvector forming the \(i\)th column of \(P\).
             \end{enumerate}
         \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Diagonalizing a Matrix 1}{diagmat1}
+
+            Construct the diagonal matrix \(D\), given
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    -4 & 8 & -12 \\
+                    6 & -6 & 12 \\
+                    6 & -8 & 14
+                \end{bmatrix}.
+            \end{equation*}
+            We construct the equation
+            \begin{align*}
+                0&=\det \begin{bmatrix}
+                    -4-\lambda & 8 & -12 \\
+                    6 & -6-\lambda & 12 \\
+                    6 & -8 & 14-\lambda
+                \end{bmatrix}. \\
+                &=(-4-\lambda)((-6-\lambda)(14-\lambda)+96)-8(6(14-\lambda)-72)-12(-48-6(-6-\lambda)) \\
+                &=-x(x-2)^2.
+            \end{align*}
+            Thus, the eigenvalues are \(\lambda_1=0\) and \(\lambda_2=2\). For \(\lambda_1\), we have the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    -4 & 8 & -12 & | & 0 \\
+                    6 & -6 & 12 & | & 0 \\
+                    6 & -8 & 14 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            By row reduction, we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 1 & | & 0 \\
+                    0 & 1 & -1 & | & 0 \\
+                    0 & 0 & 0 & | & 0.
+                \end{bmatrix}.
+            \end{equation*}
+            Now, \(E_{\lambda_1}=\left\{\begin{bmatrix} -c \\ c \\ c \end{bmatrix}:c\in\mathbb{R}\right\}\). For \(\lambda_2\), we have 
+            \begin{equation*}
+                \begin{bmatrix}
+                    -6 & 8 & -12 & | & 0 \\
+                    6 & -8 & 12 & | & 0 \\
+                    6 & -8 & 12 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            which can be reduced to
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -\frac{4}{3} & 2 & | & 0 \\
+                    0 & 0 & 0 & | & 0 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            After removing fractions, we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    3 & -4 & 6 & | & 0 \\
+                    0 & 0 & 0 & | & 0 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+        \end{example}
