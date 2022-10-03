@@ -212,11 +212,13 @@
         \vphantom
         \\
         \\
-        Consider the following table summarizing various results about singularity, determinants, rank, existence and uniqueness of linear systems, and row equivalence. Statements in each column are equivalent.
+        Consider the following table summarizing various results. Statements in each column are equivalent.
         \begin{center}
-            \begin{tabular}{c|c}
+            \begin{tabular}{||c|c||}
+                \hline
                 \hline
                 \(A\in\mathcal{M}_{nn}\) is Nonsingular & \(A\in\mathcal{M}_{nn}\) is Singular \\
+                \hline
                 \hline
                 \(\rank A = n\) & \(\rank A < n\) \\
                 \(\det A \neq 0\) & \(\det A = 0\) \\
@@ -423,7 +425,7 @@
     \subsection{The Process of Diagonalization: Part II}
 
         We summarize the process of diagonalization in a more general sense.
-        \begin{theorem}{\Stop\,\,Diagonalization}{diagonalization}
+        \begin{theorem}{\Stop\,\,The Process of Diagonalization}{diagonalization}
             Let \(A\in\mathcal{M}_{nn}\), consider the following steps.
             \begin{enumerate}
                 \item Find the solutions of \(\det(A-\lambda I_n)=0\). The solutions \(\lambda_1,\ldots,\lambda_k\) are the eigenvalues of \(A\).
@@ -499,3 +501,99 @@
                 \end{bmatrix}.
             \end{equation*}
         \end{example}
+
+\pagebreak
+
+\section{Lecture 18: October 3, 2022}
+
+    \subsection{The Process of Diagonalization: Part III}
+
+        We start with a question; what can go wrong in the diagonalization process? We will trace each step of Theorem \ref{thm:diagonalization}. 
+        \begin{center}
+            \begin{tabular}{||c|c||}
+                \hline
+                \hline
+                What Could go Wrong? & Example \\
+                \hline
+                \hline
+                There exist complex roots to \(\det(A-\lambda I_n)=0\). & \(A=\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}\) \\
+                \hline
+                There are less than \(n\) fundamental eigenvectors. & \(A=\begin{bmatrix} 7 & 1 \\ 0 & 7 \end{bmatrix}\) \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \vphantom
+        \\
+        \\
+        We remark that if there exist complex roots, we can resolve it by considering complex eigenvalues in the diagonalization process; however, we cannot resolve the issue of having less than \(n\) fundamental eigenvectors. Naturally, the question of what constitutes a fundamental eigenvector is brought up. Consider the following definitions and theorems.
+        \begin{definition}{\Stop\,\,Linear Independence}{linindep}
+            
+            Suppose \(\vec{v}_1,\ldots,\vec{v}_k\) are vectors in \(\mathbb{R}^n\). The set \(\{\vec{v}_1,\ldots,\vec{v}_k\}\) is linearly independent if and only if all scalars \(c_1,\ldots,c_k\) that form
+            \begin{equation*}
+                c_1\vec{v}_1+\cdots+c_k\vec{v}_k=\vec{0}
+            \end{equation*}
+            are zero.
+
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Diagonalizability}{diagonalizability}
+
+            The matrix \(A\in\mathcal{M}_{nn}\) is diagonalizable if and only if there exists a set \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) such that
+            \begin{enumerate}
+                \item Each \(\vec{v}_i\) is an eigenvector of \(A\).
+                \item The set \(S\) is linearly independent.
+            \end{enumerate}
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        The statement ``There are less than \(n\) fundamental eigenvectors'' means that the set \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) is not linearly independent, or equivalently, linearly dependent. To conclude if we will have a sufficient number of fundamental eigenvectors, we solve the linear homogeneous system
+        \begin{equation*}
+            \begin{bmatrix}
+                \vec{v}_1 & \cdots & \vec{v}_n | \vec{0}
+            \end{bmatrix}
+        \end{equation*}
+        for \(c_1,\ldots,c_n\). Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Diagonalizability and Rank}{diagandrank}
+            
+            Suppose \(A\in\mathcal{M}_{nn}\) with \(\det(A-\lambda I_n)=(x-\lambda_1)^{n_1}\cdots(x-\lambda_\ell)^{n_\ell}\) for 
+            \(\lambda_1,\ldots,\lambda_\ell\in\mathbb{R}\). Then, there exists P=\(\begin{bmatrix} \vec{v}_1 & \cdots & \vec{v}_n \end{bmatrix}\) where \(P\) is nonsingular and each \(\vec{v}_i\) is an eigenvector if and only if, for each \(\lambda_i\),
+            \begin{equation*}
+                \rank(A-\lambda_iI_n)=n-n_i.
+            \end{equation*}
+            
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is \(A\) Diagonalizable?}{isitdiag}
+            
+            Suppose \(A\in\mathcal{M}_{nn}\) and \(\det(A-\lambda I_n)=(x-\lambda_1)(x-\lambda_2)\cdots(x-\lambda_n)\), where \(\lambda_1,\ldots,\lambda_n\in\mathbb{R}\) and \(\lambda_1<\lambda_2\cdots<\lambda_n\). Is \(A\) diagonalizable?
+            \\
+            \\
+            THe matrix \(A\) is diagonalizable and
+            \begin{equation*}
+                D=\begin{bmatrix} 
+                    \lambda_1 & \cdots & 0 \\
+                    \vdots & \ddots & \vdots \\
+                    0 & \cdots & \lambda_n
+                \end{bmatrix}.
+            \end{equation*}
+            The matrix is diagonalizable if all roots \(\lambda_1,\ldots,\lambda_n\) are distinct.
+
+        \end{example}
+        \vphantom 
+        \\
+        \\
+        Consider \(\vec{v}=[a_1,\ldots,a_n]\). We then form
+        \begin{equation*}
+            A=\begin{bmatrix}
+                a_1 & a_2 & \cdots & a_n \\
+                a_1 & a_2 & \cdots & a_n \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_1 & a_2 & \cdots & a_n
+            \end{bmatrix}.
+        \end{equation*}
+        We seek to find the eigenvalues. Because \(A\) is singular, \(0\) is an eigenvalue. We also see that \(a_1+\cdots+a_n\) is an eigenvalue with eigenvector \([1,\cdots,1]\).
