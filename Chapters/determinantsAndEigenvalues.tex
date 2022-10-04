@@ -506,7 +506,7 @@
 
             Given
             \begin{equation*}
-                \begin{bmatrix}
+                A=\begin{bmatrix}
                     0 & -6 & 0 \\
                     3 & 9 & 0 \\
                     0 & 0 & 6
@@ -704,7 +704,7 @@
             Suppose \(A\in\mathcal{M}_{nn}\) and \(\det(A-\lambda I_n)=(x-\lambda_1)(x-\lambda_2)\cdots(x-\lambda_n)\), where \(\lambda_1,\ldots,\lambda_n\in\mathbb{R}\) and \(\lambda_1<\lambda_2\cdots<\lambda_n\). Is \(A\) diagonalizable?
             \\
             \\
-            THe matrix \(A\) is diagonalizable and
+            The matrix \(A\) is diagonalizable and
             \begin{equation*}
                 D=\begin{bmatrix} 
                     \lambda_1 & \cdots & 0 \\
@@ -713,6 +713,43 @@
                 \end{bmatrix}.
             \end{equation*}
             The matrix is diagonalizable if all roots \(\lambda_1,\ldots,\lambda_n\) are distinct.
+
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,A Non-Diagonalizable Matrix}{nondiagmat}
+
+            Given
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    7 & 1 & -1 \\
+                    -11 & -3 & 2 \\
+                    18 & 2 & -4
+                \end{bmatrix},
+            \end{equation*}
+            construct the diagonal matrix \(D\) and form the nonsingular matrix \(P\) such that
+            \begin{equation*}
+                D=P^{-1}AP.
+            \end{equation*}
+            We will skip over the determinant calculation and will, instead, assert that the characteristic polynomial is \((\lambda+2)^2(\lambda-4)\), meaning the eigenvalues are \(\lambda_1=-2\) and \(\lambda_2=4\). The first eigenvalue, \(\lambda_1\), gives the linear system
+            \begin{equation*}
+                \begin{bmatrix}
+                    9 & 1 & -1 & | & 0 \\
+                    -11 & -1 & 2 & | & 0 \\
+                    18 & 2 & -2 & | & 0
+                \end{bmatrix}
+            \end{equation*}
+            which reduces to
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & -\frac{1}{2} & | & 0 \\
+                    0 & 1 & \frac{7}{2} & | & 0 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            giving us the eigenspace \(E_{-2}=\left\{c\begin{bmatrix} 1 \\ -7 \\ 2 \end{bmatrix}:c\in\mathbb{R}\right\}\). Notice that for \(\lambda_1\),
+            \begin{equation*}
+                \rank(A-\lambda_1I_3)=2\neq3-2=1.
+            \end{equation*}
+            Therefore, \(A\) cannot be diagonalized; we need not find the eigenspace of \(\lambda_2\), but for the sake of a curious student, we have \(E_4=\left\{c\begin{bmatrix} 1 \\ -1 \\ 2 \end{bmatrix}:c\in\mathbb{R}\right\}\).
 
         \end{example}
         \vphantom 
