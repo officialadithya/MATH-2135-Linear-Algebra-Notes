@@ -752,9 +752,36 @@
             Therefore, \(A\) cannot be diagonalized; we need not find the eigenspace of \(\lambda_2\), but for the sake of a curious student, we have \(E_4=\left\{c\begin{bmatrix} 1 \\ -1 \\ 2 \end{bmatrix}:c\in\mathbb{R}\right\}\).
 
         \end{example}
-        \vphantom 
-        \\
-        \\
+    
+    \subsection{Using Diagonalization to Raise Matrices to Powers}
+
+        One useful application of the diagonalization process is raising matrices to powers. Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Raising Matrices to Powers}{raisematpow}
+
+            Given a diagonalizable matrix \(A\),
+            \begin{equation*}
+                A^k=PD^kP^{-1}.
+            \end{equation*}
+            \begin{proof}
+                We proceed by induction. For \(k=2\),
+                \begin{equation*}
+                    A^2=AA=(PDP^{-1})(PDP^{-1})=PD(P^{-1}P)DP^{-1}=PDI_nDP^{-1}=PD^2P^{-1}.
+                \end{equation*}
+                Suppose that for all \(m\in\mathbb{N}\), \(A^m=PD^mP^{-1}\). Then,
+                \begin{equation*}
+                    A^{m+1}=A^mA=PD^mP^{-1}(PDP^{-1})=PD^m(P^{-1}P)DP^{-1}=PD^mI_nDP^{-1}=PD^{m+1}P^{-1},
+                \end{equation*}
+                proving the theorem.
+            \end{proof}
+            
+        \end{theorem} 
+
+\pagebreak
+
+\section{Lecture 19: October 5, 2022}
+
+    \subsection{}
+
         Consider \(\vec{v}=[a_1,\ldots,a_n]\). We then form
         \begin{equation*}
             A=\begin{bmatrix}
