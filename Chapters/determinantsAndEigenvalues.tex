@@ -440,7 +440,137 @@
         \\
         \\
         Consider the following examples.
-        \begin{example}{\Difficulty\,\Difficulty\,\,Diagonalizing a Matrix 1}{diagmat1}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Diagonalization 1}{diag1}
+
+            Given
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    9 & 5 \\ 
+                    -25 & 21
+                \end{bmatrix},
+            \end{equation*}
+            construct the diagonal matrix \(D\) and form the nonsingular matrix \(P\) such that
+            \begin{equation*}
+                D=P^{-1}AP.
+            \end{equation*}
+            To find the eigenvalues, we have
+            \begin{align*}
+                0&=\det\begin{bmatrix}
+                    9-\lambda & 5 \\
+                    -25 & -21-\lambda
+                \end{bmatrix} \\
+                &=(9-\lambda)(-21-\lambda)+125 \\
+                &=(\lambda+16)(\lambda-4).
+            \end{align*}
+            Therefore, our eigenvalues are \(\lambda_1=-16\) and \(\lambda_2=4\). To find the associated eigenvectors, for \(\lambda_1\), we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    25 & 5 & | & 0 \\
+                    -25 & -5 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            which, by \(\langle1\rangle\to\langle2\rangle\to\langle2\rangle\), becomes
+            \begin{equation*}
+                \begin{bmatrix}
+                    25 & 5 & | & 0 \\
+                    0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We have the eigenspace \(E_{-16}=\left\{c\begin{bmatrix} -1 \\ 5 \end{bmatrix}:c\in\mathbb{R}\right\}\). For \(\lambda_2\), we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    5 & 5 & | & 0 \\
+                    -25 & -25 & | & 0
+                \end{bmatrix}
+            \end{equation*} 
+            which can be row reduced to
+            \begin{equation*}
+                \begin{bmatrix}
+                    -25 & -25 & | & 0 \\
+                    0 & 0 & | & 0 \\
+                \end{bmatrix}.
+            \end{equation*} 
+            This produces the eigenspace \(E_4=\left\{c\begin{bmatrix} -1 \\ 1 \end{bmatrix}:c\in\mathbb{R}\right\}\). We form 
+            \begin{equation*}
+                D=\begin{bmatrix} -16 & 0 \\ 0 & 4 \end{bmatrix},\quad P=\begin{bmatrix} -1 & -1 \\ 5 & 1 \end{bmatrix},\quad P^{-1}=\begin{bmatrix} \frac{1}{4} & \frac{1}{4} \\ -\frac{5}{4} & -\frac{1}{4} \end{bmatrix}.
+            \end{equation*}
+            To check our work, we have
+            \begin{align*}
+                P^{-1}AP&=\begin{bmatrix} -1 & -1 \\ 5 & 1 \end{bmatrix},\quad P^{-1}=\begin{bmatrix} \frac{1}{4} & \frac{1}{4} \\ -\frac{5}{4} & -\frac{1}{4} \end{bmatrix} \begin{bmatrix} 9 & 5 \\ -25 & 21 \end{bmatrix} \begin{bmatrix} -1 & -1 \\ 5 & 1 \end{bmatrix} \\
+                &=\begin{bmatrix} -16 & 0 \\ 0 & 4 \end{bmatrix} \\
+                &=D,
+            \end{align*}
+            thus verifying our answer.
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Diagonalization 2}{diag2}
+
+            Given
+            \begin{equation*}
+                \begin{bmatrix}
+                    0 & -6 & 0 \\
+                    3 & 9 & 0 \\
+                    0 & 0 & 6
+                \end{bmatrix},
+            \end{equation*}
+            construct the diagonal matrix \(D\) and form the nonsingular matrix \(P\) such that
+            \begin{equation*}
+                D=P^{-1}AP.
+            \end{equation*}
+            To find the eigenvalues, we have
+            \begin{align*}
+                0&=\det\begin{bmatrix}
+                    -\lambda & -6 & 0 \\
+                    3 & 9-\lambda & 0 \\
+                    0 & 0 & 6-\lambda
+                \end{bmatrix} \\
+                &=-\lambda((9-\lambda)(6-\lambda))+6(3(6-\lambda)) \\
+                &=-(\lambda-3)(\lambda-6)^2.
+            \end{align*}
+            Therefore, our eigenvalues are \(\lambda_1=3\) and \(\lambda_2=6\). For \(\lambda_1\), we have the linear system
+            \begin{equation*}
+                \begin{bmatrix}
+                    -3 & -6 & 0 & | & 0 \\
+                    0 & 0 & 0 & | & 0 \\
+                    0 & 0 & 3 & | & 0 \\
+                \end{bmatrix}
+            \end{equation*}
+            which can be row reduced to
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & 0 & | & 0 \\
+                    0 & 0 & 1 & | & 0 \\
+                    0 & 0 & 0 & | & 0 
+                \end{bmatrix}.
+            \end{equation*}
+            This gives us \(E_3=\left\{c\begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix}:c\in\mathbb{R}\right\}\). For \(\lambda_2\), we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    -6 & -6 & 0 & | & 0 \\
+                    3 & 3 & 0 & | & 0 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            which can be row reduced to
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 1 & 0 & | & 0 \\
+                    0 & 0 & 0 & | & 0 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            giving
+            \begin{align*}
+                E_6&=\left\{\begin{bmatrix} -c_1 \\ c_1 \\ c_2 \end{bmatrix}:c_1,c_2\in\mathbb{R}\right\} \\ 
+                &=\left\{c_1\begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix}+c_2\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}:c_1,c_2\in\mathbb{R}\right\}
+            \end{align*}   
+            We can then form
+            \begin{equation*}
+                D=\begin{bmatrix} 3 & 0 & 0 \\ 0 & 6 & 0 \\ 0 & 0 & 6 \end{bmatrix},\quad P=\begin{bmatrix} -2 & -1 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix},\quad P^{-1}=\begin{bmatrix} -1 & -1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 1 \end{bmatrix}.
+            \end{equation*}    
+        \end{example}
+
+        \begin{comment}
+            \begin{example}{\Difficulty\,\Difficulty\,\,Diagonalizing a Matrix 1}{diagmat1}
 
             Construct the diagonal matrix \(D\), given
             \begin{equation*}
@@ -501,6 +631,7 @@
                 \end{bmatrix}.
             \end{equation*}
         \end{example}
+    \end{comment}
 
 \pagebreak
 
