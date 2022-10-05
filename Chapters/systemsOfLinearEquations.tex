@@ -33,7 +33,8 @@
         \begin{equation*}
             A\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}=\begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix},
         \end{equation*}
-        where \(A\) is the matrix with entries \(a_{ij}\). Consider the following theorem.
+        where \(A\) is the matrix with entries \(a_{ij}\). We will use the convention that \(X=[x_1,\ldots,x_n]^T\) and \(B=[b_1,
+        \ldots,b_m]^T\). Consider the following theorem.
         \begin{theorem}{\Stop\,\,Characterizing Solutions of Linear Systems}{charsollinsys}
             
             A system of linear equations can either have
@@ -156,7 +157,7 @@
                 \begin{bmatrix} 
                 1 & \frac{1}{3} & \frac{7}{3} & \frac{2}{3} & | & \frac{13}{3} \\
                 0 & 1 & -2 & \frac{1}{2} & | & 4 \\
-                0 & 0 & 0 & 1 & | & 59 \\
+                0 & 0 & 0 & 1 & | & -2 \\
                 0 & 0 & 0 & 0 & | & 0
                 \end{bmatrix}.
             \end{equation*}
@@ -587,11 +588,7 @@
         \vphantom
         \\
         \\
-        In general, \(\{c\vec{v}:c\in\mathbb{R}\}\) is a line unless \(\vec{v}=\vec{0}\). Also, \(\{c_1\vec{v}_1+c_2\vec{v}_2:c_1,c_2\in\mathbb{R}\}\) is usually a plane, but could be either a point or a line. This pattern is an introduction to the concept of linear dependence, which will be elaborated on later in the text.
-        \vphantom
-        \\
-        \\
-        Consider the following example.
+        In general, \(\{c\vec{v}:c\in\mathbb{R}\}\) is a line unless \(\vec{v}=\vec{0}\). Also, \(\{c_1\vec{v}_1+c_2\vec{v}_2:c_1,c_2\in\mathbb{R}\}\) is usually a plane, but could be either a point or a line. This pattern is an introduction to the concept of linear independence, which will be elaborated on later in the text. Consider the following example.
         \begin{example}{\Difficulty\,\Difficulty\,\,Is a Vector a Linear Combination of Others? 1}{veclincombothers1}
         
             Let \(\vec{v}=[1,0]\), \(\vec{v}_1=[\pi,1]\), and \(\vec{v}_2=[2,1]\). Is \(\vec{v}\) a linear combination of \(\vec{v}_1\) and \(\vec{v}_2\)?
@@ -994,6 +991,7 @@
              \end{proof}
             
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -1166,6 +1164,7 @@
                     1 & 1
                 \end{bmatrix}.
             \end{equation*}
+            Note that here, we did not apply the formula in Theorem \ref{thm:2by2inv}, but instead, the general algorithm.
 
         \end{example}
         \pagebreak
@@ -1214,7 +1213,7 @@
         \vphantom
         \\
         \\
-        Finally, we present an important theorem of the uniqueness of solutions to \(AX=B\).
+        Finally, we present an important theorem about the existence and uniqueness of solutions to \(AX=B\).
         \begin{theorem}{\Stop\,\,Uniqueness of Solutions to Linear Systems}{uniquenessofsol}
 
             Let \(A\in\mathcal{M}_{nn}\) and \(AX=B\) be a linear system. If \(A\) is nonsingular, the system has a unique solution. If \(A\) is singular, the system either has no solution or infinitely many solutions. That is, \(AX=B\) has a unique solution if and only if \(A\) is nonsingular.
