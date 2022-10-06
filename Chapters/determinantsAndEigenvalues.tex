@@ -780,7 +780,8 @@
 
 \section{Lecture 19: October 5, 2022}
 
-    \subsection{}
+    \begin{comment}
+        \subsection{}
 
         Consider \(\vec{v}=[a_1,\ldots,a_n]\). We then form
         \begin{equation*}
@@ -792,3 +793,144 @@
             \end{bmatrix}.
         \end{equation*}
         We seek to find the eigenvalues. Because \(A\) is singular, \(0\) is an eigenvalue. We also see that \(a_1+\cdots+a_n\) is an eigenvalue with eigenvector \([1,\cdots,1]\).
+
+    \end{comment}
+
+    \subsection{Complex Numbers}
+
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,The Complex Numbers}{compnum}
+
+            The set of complex numbers, \(\mathbb{C}\), is given by
+            \begin{equation*}
+                \mathbb{C}=\{a+bi:a,b\in\mathbb{R},i^2=-1\}.
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Set \(\mathbb{C}^n\)}{compvcspace}
+
+            We define \(\mathbb{C}^n\) as
+            \begin{equation*}
+                \mathbb{C}^n=\{[z_1,\ldots,z_n]:z_i=\mathbb{C}\}.
+            \end{equation*}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        As a set, \(\mathbb{C}\) can be visualized as \(\mathbb{R}^2\). Consider the following definitions and properties.
+        \begin{definition}{\Stop\,\,Definitions of Operations With Complex Numbers}{depcompops}
+            
+            Let \(a,b,c,d\in\mathbb{R}\). Then, the following operations are defined as follows.
+            \begin{enumerate}
+                \item \((a+bi)+(c+di):=(a+c)+(b+d)i\).
+                \item \(\Re (a+bi):=a,\quad \Im (a+bi):=b\).
+                \item \(z=a+bi\in\mathbb{C}\implies||z||:=\sqrt{a^2+b^2}\).
+                \item \((a+bi)(c+di):=ac+adi+bci+bdi^2=(ac-bd)+(ad+bc)i\).
+                \item \(z=a+bi\in\mathbb{C}\implies\bar{z}:=a-bi\).
+            \end{enumerate}
+
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Properties of Complex Numbers}{propcomp}
+            
+            Let \(a,b,c,d\in\mathbb{R}\). Then,
+            \begin{enumerate}
+                \item \(z\bar{z}=(a+bi)(a-bi)=a^2+b^2=||z||^2\).
+                \item \(z\in\mathbb{C}\backslash \{0\}\implies\frac{1}{z}=\frac{a}{a^2+b^2}-\left(\frac{b}{a^2+b^2}\right)\in\mathbb{C}\)
+            \end{enumerate}
+
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Fundamental Theorem of Algebra}{fundthmalg}
+            
+            If \(p(z)=a_nz^n+\cdots+a_0z^0\) is an \(n\)th degree polynomial with coefficients \(a_0,\ldots,a_n\in\mathbb{C}\), \(p(z)\) has \(n\) complex roots. Note that some roots may be repeated.
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We now consider vectors in \(\mathbb{C}^n\) and define their operations.
+        \begin{definition}{\Stop\,\,Vector Addition in \(\mathbb{C}^n\)}{compvcadd}
+
+            Let \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{C}^n\) and \(\vec{w}=[w_1,\ldots,w_n]\in\mathbb{C}^n\). Then,
+            \begin{equation*}
+                \vec{v}+\vec{w}=[v_1+w_1,\ldots,v_n+w_n].
+            \end{equation*}
+
+        \end{definition}
+        \begin{definition}{\Stop\,\,Scalar Multiplication in \(\mathbb{C}^n\)}{compscalmult}
+
+            Let \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{C}^n\) and \(c\in\mathbb{C}\). Then,
+            \begin{equation*}
+                c\vec{v}=[cv_1,\ldots,cv_n].
+            \end{equation*}
+
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Dot Product in \(\mathbb{C}^n\)}{compdotprod}
+
+            Let \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{C}^n\) and \(\vec{w}=[w_1,\ldots,w_n]\in\mathbb{C}^n\). Then,
+            \begin{equation*}
+                \vec{v}\cdot\vec{w}=v_1\bar{w_1}+\cdots+v_n\bar{w_n}.
+            \end{equation*}
+
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Magnitude in \(\mathbb{C}^n\)}{compmagn}
+
+            Let \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{C}^n\). Then,
+            \begin{equation*}
+                ||\vec{v}||=\sqrt{\vec{v}\cdot\vec{v}}.
+            \end{equation*}
+
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Definition \ref{def:compdotprod} provides a good question: do we consider complex conjugates when performing matrix multiplication with matrices of the sort \(\mathcal{M}_{mn}^\mathbb{C}\)? We do not.
+        \begin{definition}{\Stop\,\,The Adjoint}{adjoint}
+
+            Given \(A\in\mathcal{M}_{mn}^\mathbb{C}\), 
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    z_{11} & \cdots & z_{1n} \\
+                    \vdots & \ddots & \vdots \\
+                    z_{m1} & \cdots & z_{mn}
+                \end{bmatrix}
+                \implies 
+                A^*=\begin{bmatrix}
+                    \bar{z_{11}} & \cdots & \bar{z_{m1}} \\
+                    \vdots & \ddots & \vdots \\
+                    \bar{z_{1n}} & \cdots & \bar{z_{mn}}
+                \end{bmatrix}
+            \end{equation*}
+
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        We will now provide a theorem motivating the transpose operation and apply it to our definition of the adjoint.
+        \begin{theorem}{\Stop\,\,The Transpose and The Dot Product}{transposedot}
+            If \(\vec{v},\vec{w}\in\mathbb{R}^n\), and \(A\in\mathcal{M}_{nn}^\mathbb{R}\), 
+            \begin{equation*}
+                (A\vec{v})\cdot\vec{w}=\vec{v}\cdot(A^T\vec{w})
+            \end{equation*}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Adjoint and The Dot Product}{transposedot}
+            If \(\vec{v},\vec{w}\in\mathbb{C}^n\), and \(A\in\mathcal{M}_{nn}^\mathbb{C}\), 
+            \begin{equation*}
+                (A\vec{v})\cdot\vec{w}=\vec{v}\cdot(A^*\vec{w})
+            \end{equation*}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        The analog of symmetric and skew-symmetric matrices is the notion of hermitian and skew-hermitian matrices. Consider the following definition.
+        \begin{definition}{\Stop\,\,Hermitian and Skew-Hermitian Matrices}{hermitskewhermit}
+
+            Given \(A\in\mathcal{M}_{nn}^\mathbb{C}\), 
+            \begin{enumerate}
+                \item If \(A=A^*\), \(A\) is a hermitian matrix.
+                \item If  \(A=-A^*\), \(A\) is a skew-hermitian matrix.
+                \item If \(AA^*=A^*A\), \(A\) is a normal matrix.
+            \end{enumerate}
+            
+        \end{definition}
