@@ -1,0 +1,45 @@
+\section{Lecture 20: October 7, 2022}
+
+    \subsection{The Process of Abstraction}
+
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Vector Spaces}{vecspc}
+
+            Let \(\mathbb{F}\) be a field of scalars. For now, \(\mathbb{F}=\mathbb{R}\vee\mathbb{C}\). A vector space \(V\) over \(\mathbb{F}\) is a set with two operations: 
+            \begin{enumerate}
+                \item Vector Addition: \(V\times V\to V, (\vec{v},\vec{w})\mapsto \vec{v}+\vec{w}\).
+                \item Scalar Multiplication: \(\mathbb{F}\times V\to V, (c,\vec{v})\mapsto c\vec{v}\).
+            \end{enumerate}
+            \vphantom
+            \\
+            \\
+            The following must hold for each \(\vec{u},\vec{v},\vec{w}\in V\) and \(c_1,c_2\in\mathbb{F}\).
+            \begin{enumerate}
+                \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\)
+                \item \(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\).
+                \item \(\exists \vec{0}\in V, \forall \vec{v}\in\mathbb{V}, \vec{0}+\vec{v}=\vec{v}\)
+                \item \(\forall \vec{v}\in V, \exists! (-\vec{v})\in V, \vec{v}+(-\vec{v})=\vec{0}\).
+                \item \(c_1(\vec{u}+\vec{v})=c_1\vec{u}+c_1\vec{v}\).
+                \item \((c_1+c_2)\vec{u}=c_1\vec{u}+c_2\vec{u}\).
+                \item \((c_1c_2)\vec{u}=c_1(c_2\vec{u})\).
+                \item \(1\vec{u}=\vec{u}\).
+            \end{enumerate}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        We remark that \(0\vec{v}=\vec{0}\) is \textit{not} an axiom of a vector space; we must \textit{prove} that it holds. Now, we will justify our use of abstraction.
+        \begin{enumerate}
+            \item The set \(\mathbb{R}^n\) is a vector space.
+            \item The set \(\mathbb{C}^n\) is a vector space.
+            \item The set \(\{\vec{0}\}\), with \(\vec{0}+\vec{0}+\vec{0}\) and \(c\vec{0}=\vec{0}\), is a vector space.
+            \item The set \(\mathcal{M}_{mn}\) is a vector space.
+            \item Let \(S\) be a non-empty set and \(F(S)=\{f:S\to\mathbb{R}\}\) with \((f+g)(s)=f(s)+g(s)\) and \((cf)(s)=cf(s)\). The set \(F(S)\) is a vector space.
+            \item The set \(\{a_nx^n+\cdots+a_0x^0:a_0,\ldots a_n\in\mathbb{R}\}\) is a vector space.
+            \item The set \(\{a_nx^n+\cdots+a_0x^0:a_0,\ldots a_n\in\mathbb{R}, \text{degree is less than or equal to \(n\)}\}\) is a vector space.
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        We note that all the above examples need \textit{proof}.
