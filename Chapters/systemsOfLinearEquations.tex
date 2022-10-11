@@ -872,31 +872,31 @@
         Consider the following theorems.
         \begin{theorem}{\Stop\,\,Transitivity of Linear Combinations}{translincomb}
         
-            Suppose that \(\vec{x}\) is a linear combination of \(\vec{q}_1,\ldots,\vec{q}_k\), and suppose also that each of \(\vec{q}_1,\ldots,\vec{q}_k\) is itself a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\). Then, \(\vec{x}\) is a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\).
+            Suppose that \(\vec{x}\) is a linear combination of \(\vec{q}_1,\ldots,\vec{q}_k\), and suppose also that each of \(\vec{q}_1,\ldots,\vec{q}_k\) is itself a linear combination of \(\vec{r}_1,\ldots,\vec{r}_\ell\). Then, \(\vec{x}\) is a linear combination of \(\vec{r}_1,\ldots,\vec{r}_\ell\).
             \begin{proof}
                 Because \(\vec{x}\) is a linear combination of \(\vec{q}_1,\ldots,\vec{q}_k\), 
                 \begin{equation*}
                     \vec{x}=c_1\vec{q}_1+\cdots+c_k\vec{q}_k
                 \end{equation*}
-                for \(c_1,\ldots,c_k\in\mathbb{R}\). Then, since each of \(\vec{q}_1,\ldots,\vec{q}_k\) can be written as a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\), there exist scalars \(d_{11},\ldots,d_{kl}\) such that
+                for \(c_1,\ldots,c_k\in\mathbb{R}\). Then, since each of \(\vec{q}_1,\ldots,\vec{q}_k\) can be written as a linear combination of \(\vec{r}_1,\ldots,\vec{r}_\ell\), there exist scalars \(d_{11},\ldots,d_{k\ell}\) such that
                 \begin{align*}
-                    \vec{q}_1&=d_{11}\vec{r}_1+d_{12}\vec{r}_2+\cdots+d_{1l}\vec{r}_l \\
-                    \vec{q}_2&=d_{21}\vec{r}_1+d_{22}\vec{r}_2+\cdots+d_{2l}\vec{r}_l \\
+                    \vec{q}_1&=d_{11}\vec{r}_1+d_{12}\vec{r}_2+\cdots+d_{1\ell}\vec{r}_\ell \\
+                    \vec{q}_2&=d_{21}\vec{r}_1+d_{22}\vec{r}_2+\cdots+d_{2\ell}\vec{r}_\ell \\
                     &\vdots \\
-                    \vec{q}_k&=d_{k1}\vec{r}_1+d_{k2}\vec{r}_2+\cdots+d_{kl}\vec{r}_l
+                    \vec{q}_k&=d_{k1}\vec{r}_1+d_{k2}\vec{r}_2+\cdots+d_{k\ell}\vec{r}_\ell
                 \end{align*}
                 Then,
                 \begin{align*}
-                    \vec{x}&=c_1(d_{11}\vec{r}_1+d_{12}\vec{r}_2+\cdots+d_{1l}\vec{r}_l) \\
-                    &\quad+c_2(d_{21}\vec{r}_1+d_{22}\vec{r}_2+\cdots+d_{2l}\vec{r}_l) \\
+                    \vec{x}&=c_1(d_{11}\vec{r}_1+d_{12}\vec{r}_2+\cdots+d_{1\ell}\vec{r}_\ell) \\
+                    &\quad+c_2(d_{21}\vec{r}_1+d_{22}\vec{r}_2+\cdots+d_{2\ell}\vec{r}_\ell) \\
                     &\quad\,\,\,\vdots \\
-                    &\quad+c_k(d_{k1}\vec{r}_1+d_{k2}\vec{r}_2+\cdots+d_{kl}\vec{r}_l) \\
+                    &\quad+c_k(d_{k1}\vec{r}_1+d_{k2}\vec{r}_2+\cdots+d_{k\ell}\vec{r}_\ell) \\
                     &=(c_1d_{11}+c_2d_{21}+\cdots+c_kd_{k1})\vec{r}_1 \\
                     &\quad+(c_1d_{12}+c_2d_{22}+\cdots+c_kd_{k2})\vec{r}_2 \\
                     &\quad\,\,\,\vdots \\\
-                    &\quad+(c_1d_{1l}+c_2d_{2l}+\cdots+c_kd_{kl})\vec{r}_l.
+                    &\quad+(c_1d_{1\ell}+c_2d_{1\ell}+\cdots+c_kd_{k\ell})\vec{r}_\ell.
                 \end{align*}
-                We have just written \(\vec{x}\) as a linear combination of \(\vec{r}_1,\ldots,\vec{r}_l\).
+                We have just written \(\vec{x}\) as a linear combination of \(\vec{r}_1,\ldots,\vec{r}_\ell\).
             \end{proof}
             Note that this theorem may be rephrased as follows: If \(\vec{x}\) is in the row space of a matrix \(Q\) and each row of \(Q\) is in the row space of a matrix \(R\), \(\vec{x}\) is in the row space of \(R\).
         \end{theorem}
