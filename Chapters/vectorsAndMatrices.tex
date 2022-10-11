@@ -1000,11 +1000,12 @@
         \\
         Consider the following definition.
         \begin{definition}{\Stop\,\,Raising a Matrix to a Power}{matpow}
-            Consider an \(n\times n\) matrix \(A\). Then,
+
+            Let \(A\in\mathcal{M}_{nn}\). Then
+            Consider an \(n\times n\) matrix \(A\). Then, \(A^0=I_n\), \(A^1=A\), and for \(k\geq 2\),
             \begin{equation*}
-                A^k=\underbrace{A\cdot A\cdot A\cdot\cdots\cdot A}_{k \text{ times}}
+                A^k=(A^{k-1})A.
             \end{equation*}
-            and \(A^k=I\).
         \end{definition}
         
         
