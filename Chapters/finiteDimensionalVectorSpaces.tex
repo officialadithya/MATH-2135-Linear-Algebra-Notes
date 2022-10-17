@@ -54,91 +54,106 @@
 
     \subsection{Derived Properties of Vector Spaces}
 
-        Consider the following theorem.
-        \begin{theorem}{\Stop\,\,Derived Properties of Vector Spaces}{derpropvcspc}
-            
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Derived Property of Vector Space 1}{derpropvcspc1}
+
             Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
-            \begin{enumerate}
-                \item \(c\vec{0}=\vec{0}\).
-                \begin{proof}
-                    We note that by axiom \(3\) of Definition \ref{def:vcspc},
-                    \begin{equation*}
-                        c\vec{0}=c\vec{0}+\vec{0}.
-                    \end{equation*}
-                    By axiom \(4\),
-                    \begin{equation*}
-                        c\vec{0}=c\vec{0}+c\vec{0}+(-c\vec{0}).
-                    \end{equation*}
-                    Then, by axiom \(5\),
-                    \begin{equation*}
-                        c\vec{0}=(\vec{0}+\vec{0})+(-c\vec{0}).
-                    \end{equation*}
-                    By axiom \(3\), we have
-                    \begin{equation*}
-                        c\vec{0}+(-c\vec{0}).
-                    \end{equation*}
-                    Then, by axiom \(4\), we have
-                    \begin{equation*}
-                        c\vec{0}=\vec{0},
-                    \end{equation*}
-                    and we have proved the proposition.
-                \end{proof}
-                \item \(0\vec{v}=\vec{0}\).
-                \begin{proof}
-                    Consider, by axiom \(3\),
-                    \begin{equation*}
-                        0\vec{v}=0\vec{v}+\vec{0}.
-                    \end{equation*}
-                    Then, by axiom \(4\), we have
-                    \begin{equation*}
-                        0\vec{v}=0\vec{v}+0\vec{v}+(-0\vec{v}).
-                    \end{equation*}
-                    By axiom \(6\),
-                    \begin{equation*}
-                        0\vec{v}=(0+0)\vec{v}+(-0\vec{v})=0\vec{v}+(-0\vec{v}).
-                    \end{equation*}
-                    Finally, by axiom \(4\), 
-                    \begin{equation*}
-                        0\vec{v}=\vec{0}
-                    \end{equation*}
-                    and we have proved the proposition.
-                \end{proof}
-                \pagebreak
-                \item \((-1)\vec{v}=-\vec{v}\).
-                \begin{proof}
-                    Consider, by axiom \(8\),
-                    \begin{equation*}
-                        \vec{v}+(-1)\vec{v}=1\vec{v}+(-1)\vec{v}.
-                    \end{equation*}
-                    Then, by axiom \(6\),
-                    \begin{equation*}
-                        \vec{v}+(-1)\vec{v}=(1+(-1))\vec{v}=0\vec{v}.
-                    \end{equation*}
-                    By the above proof, 
-                    \begin{equation*}
-                        \vec{v}+(-1)\vec{v}=\vec{0},
-                    \end{equation*}
-                    which implies \((-1)\vec{v}=-\vec{v}\), the additive inverse of \(\vec{v}\).
-                \end{proof}
-                \item \(c\vec{v}=\vec{0}\iff c=0\vee \vec{v}=\vec{0}\).
-                \begin{proof}
-                    The statement \(c=0\vee\vec{v}=\vec{0}\implies c\vec{v}=\vec{0}\) is governed by the first two derived results. Then, to show that \(c\vec{v}=\vec{0}\implies c=0\vee\vec{v}=\vec{0}\), we suppose that \(c\neq0\) and wish to show that \(\vec{v}=\vec{0}\). We have
-                    \begin{equation*}
-                        c\vec{v}=\vec{0}
-                    \end{equation*}
-                    with \(c\neq0\). Then,
-                    \begin{equation*}
-                        \left(\frac{1}{c}\right)(c\vec{v})=\frac{1}{c}\vec{0}=\vec{0},
-                    \end{equation*}
-                    by the second result. But, by axiom \(7\), 
-                    \begin{equation*}
-                        \frac{1}{c}(c\vec{v})=\left(\frac{1}{c}c\vec{v}\right)=\vec{v},
-                    \end{equation*}
-                    which implies \(\vec{v}=\vec{0}\).
-                \end{proof}
+            \begin{equation*}
+                c\vec{0}=\vec{0}.
+            \end{equation*}
+            \begin{proof}
+                We note that by axiom \(3\) of Definition \ref{def:vcspc},
+                \begin{equation*}
+                    c\vec{0}=c\vec{0}+\vec{0}.
+                \end{equation*}
+                By axiom \(4\),
+                \begin{equation*}
+                    c\vec{0}=c\vec{0}+c\vec{0}+(-c\vec{0}).
+                \end{equation*}
+                Then, by axiom \(5\),
+                \begin{equation*}
+                    c\vec{0}=(\vec{0}+\vec{0})+(-c\vec{0}).
+                \end{equation*}
+                By axiom \(3\), we have
+                \begin{equation*}
+                    c\vec{0}+(-c\vec{0}).
+                \end{equation*}
+                Then, by axiom \(4\), we have
+                \begin{equation*}
+                    c\vec{0}=\vec{0},
+                \end{equation*}
+                and we have proved the proposition.
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Derived Property of Vector Space 2}{derpropvcspc2}
 
-            \end{enumerate}
+            Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
+            \begin{equation*}
+                0\vec{v}=\vec{0}.
+            \end{equation*}
+            \begin{proof}
+                Consider, by axiom \(3\),
+                \begin{equation*}
+                    0\vec{v}=0\vec{v}+\vec{0}.
+                \end{equation*}
+                Then, by axiom \(4\), we have
+                \begin{equation*}
+                    0\vec{v}=0\vec{v}+0\vec{v}+(-0\vec{v}).
+                \end{equation*}
+                By axiom \(6\),
+                \begin{equation*}
+                    0\vec{v}=(0+0)\vec{v}+(-0\vec{v})=0\vec{v}+(-0\vec{v}).
+                \end{equation*}
+                Finally, by axiom \(4\), 
+                \begin{equation*}
+                    0\vec{v}=\vec{0}
+                \end{equation*}
+                and we have proved the proposition.
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Derived Property of Vector Space 3}{derpropvcspc3}
 
+            Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
+            \begin{equation*}
+                (-1)\vec{v}=-\vec{v}.
+            \end{equation*}
+            \begin{proof}
+                Consider, by axiom \(8\),
+                \begin{equation*}
+                    \vec{v}+(-1)\vec{v}=1\vec{v}+(-1)\vec{v}.
+                \end{equation*}
+                Then, by axiom \(6\),
+                \begin{equation*}
+                    \vec{v}+(-1)\vec{v}=(1+(-1))\vec{v}=0\vec{v}.
+                \end{equation*}
+                By Theorem \ref{thm:derpropvcspc2},
+                \begin{equation*}
+                    \vec{v}+(-1)\vec{v}=\vec{0},
+                \end{equation*}
+                which implies \((-1)\vec{v}=-\vec{v}\), the additive inverse of \(\vec{v}\).
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Derived Property of Vector Space 4}{derpropvcspc4}
+
+            Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
+            \begin{equation*}
+                c\vec{v}=\vec{0}\iff c=0\vee \vec{v}=\vec{0}
+            \end{equation*}
+            \begin{proof}
+                The statement \(c=0\vee\vec{v}=\vec{0}\implies c\vec{v}=\vec{0}\) is governed by the first two derived results. Then, to show that \(c\vec{v}=\vec{0}\implies c=0\vee\vec{v}=\vec{0}\), we suppose that \(c\neq0\) and wish to show that \(\vec{v}=\vec{0}\). We have
+                \begin{equation*}
+                    c\vec{v}=\vec{0}
+                \end{equation*}
+                with \(c\neq0\). Then,
+                \begin{equation*}
+                    \left(\frac{1}{c}\right)(c\vec{v})=\frac{1}{c}\vec{0}=\vec{0},
+                \end{equation*}
+                by Theorem \ref{thm:derpropvcspc1}. But, by axiom \(7\), 
+                \begin{equation*}
+                    \frac{1}{c}(c\vec{v})=\left(\frac{1}{c}c\vec{v}\right)=\vec{v},
+                \end{equation*}
+                which implies \(\vec{v}=\vec{0}\).
+            \end{proof}
         \end{theorem}
 
 \pagebreak
@@ -153,3 +168,149 @@
             Suppose \(V\) is a vector space and the set \(W\subseteq V\). Then, \(W\) is a subspace of \(V\) if and only if \(W\) is a vector space with the same operations as \(V\).
             
         \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Showing a Vector Space is a Subspace}{showsubspc}
+
+            Suppose \(V\) is a vector space and the set \(W\) is a subset of \(V\). Then, \(W\) is a subspace of \(V\) if and only if
+            \begin{enumerate}
+                \item \(W\neq\emptyset\).
+                \item \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\).
+                \item \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\).
+            \end{enumerate}
+            \begin{proof}
+                We know that \(W\neq\emptyset\), because \(\vec{0}\in W\). Next, \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\) by the closure property of addition of a vector space \(W\). Then, \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\) by the closure property of scalar multiplication of a vector space \(W\). Now, we must show that all vector space axioms hold for \(W\). The closure properties are given by conditions \(2\) and \(3\). For vector space axiom \(1\), we take \(\vec{w}_1,\vec{w}_2\in W\). Then,
+                \begin{align*}
+                    \vec{w}_1+_W\vec{w}_2&=\vec{w}_1+_V\vec{w}_2 \\
+                    &=\vec{w}_2+_V\vec{w}_1 \\
+                    &=\vec{w}_2+_W\vec{w}_1.
+                \end{align*}
+                For vector space axiom \(3\), we take \(\vec{w}\in W\) and by the closure property of scalar multiplication, \((-1)\vec{w}\in W\). By the closure property of vector addition \(\vec{w}+(-1)\vec{w}=\vec{0}\), meaning \(\vec{0}\in W\). Moreover, for any \(\vec{w}\in W\), \(\vec{w}+\vec{0}=\vec{0}+\vec{w}=\vec{w}\). For vector space axiom \(4\), \(-1\vec{w}\) is the additive inverse of \(\vec{w}\), and by the closure property, \((-1)\vec{w}\in W\). We must show the rest.
+                \DOTHISLATER
+            \end{proof}
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{Is it a Subspace? 1}{issub1}
+
+            Let \(V=\mathbb{R}^2\) and let 
+            \begin{equation*}
+                W=\{[x,0]:x\in\mathbb{R}\}\subseteq \mathbb{R}^2.
+            \end{equation*}
+            Is \(W\) a subspace of \(V\)?.
+            \\
+            \\
+            We see that \(W\neq\emptyset\), as \([0,0]\in W\). Then, if \([x_1,0],[x_2,0]\in W\),
+            \begin{equation*}
+                [x_1,0]+[x_2,0]=[x_1+x_2,0]\in W.
+            \end{equation*}
+            Then, if \(c\in\mathbb{R}\) and \([x,0]\in W\),
+            \begin{equation*}
+                c[x,0]=[cx,0].
+            \end{equation*}
+            Because \(W\neq\emptyset\) is closed under vector addition and scalar multiplication, \(W\) is a subspace of \(V\).
+
+        \end{example}
+        \begin{example}{Is it a Subspace? 2}{issub2}
+
+            Let \(V=\mathcal{M}_{nn}\).
+            \begin{equation*}
+                W=\mathcal{D}_n\subseteq\mathcal{U}_n\subseteq\mathcal{M}_{nn},
+            \end{equation*}
+            where \(\mathcal{D}_n\) is the set of all \(n\times n\) diagonal matrices and \(\mathcal{U}_n\) is the set of all \(n\times n\) upper triangular matrices. Is \(W\) a subspace of \(V\)?.
+            \\
+            \\
+            We see that \(W\neq\emptyset\), since \(\begin{bmatrix} 0 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & 0 \end{bmatrix}\in W\). Then,
+            for \(A,B\in\mathcal{D}_n\), 
+            \begin{align*}
+                (A+B)_{ij}&=A_{ij}+B_{ij} \\
+                &=\begin{cases}
+                    A_{ii}+B_{ii} & i=j \\
+                    0 & i \neq j
+                \end{cases} \\
+                &\in\mathcal{D}_n.
+            \end{align*}
+            Then, for some \(c\in\mathbb{R}\),
+            \begin{align*}
+                (cA)_{ij}&=cA_{ij} \\
+                &=\begin{cases}
+                    cA_{ii} & i=j \\
+                    0 & i \neq j
+                \end{cases} \\
+                &\in\mathcal{D}_n.
+            \end{align*}
+            Therefore, \(\mathcal{D}_n\) is a subspace of \(\mathcal{M}_{nn}\).
+        \end{example}
+        \begin{example}{Is it a Subspace? 3}{issub3}
+
+            Let \(V=\mathcal{M}_{nn}\).
+            \begin{equation*}
+                W=\mathcal{U}_n\subseteq\mathcal{M}_{nn},
+            \end{equation*}
+            where \(\mathcal{U}_n\) is the set of all \(n\times n\) upper triangular matrices. Is \(W\) a subspace of \(V\)?.
+            \\
+            \\
+            We see that \(W\neq\emptyset\), since \(\begin{bmatrix} 0 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & 0 \end{bmatrix}\in W\). Then,
+            for \(A,B\in\mathcal{U}_n\), 
+            \begin{align*}
+                (A+B)_{ij}&=A_{ij}+B_{ij} \\
+                &=\begin{cases}
+                    A_{ij}+B_{ij} & i\leq j \\
+                    0 & i > j
+                \end{cases} \\
+                &\in\mathcal{U}_n.
+            \end{align*}
+            Then, for some \(c\in\mathbb{R}\),
+            \begin{align*}
+                (cA)_{ij}&=cA_{ij} \\
+                &=\begin{cases}
+                    cA_{ij} & i\leq j \\
+                    0 & i > j
+                \end{cases} \\
+                &\in\mathcal{U}_n.
+            \end{align*}
+            Therefore, \(\mathcal{U}_n\) is a subspace of \(\mathcal{M}_{nn}\).
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        To show that \(W\) is not a subspace of \(V\),
+        \begin{enumerate}
+            \item If \(\vec{0}\nin S\), \(S\) is not a subspace.
+            \item Find \(\vec{v}_1,\vec{v}_2\in S\) such that \(\vec{v}_1+\vec{v}_2\nin S\).
+            \item Find \(\vec{v}\in S\) such that \((-1)\vec{v}\nin S\).
+            \item Find \(\vec{v}\in S\) and \(c\in\mathbb{F}\) such that \(c\vec{v}\nin S\).
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        We now revisit the notion of linear combinations.
+        \begin{theorem}{\Stop\,\,Linear Combinations Remain in a Subspace}{lincombsubspc}
+
+            Let \(W\) be a subspace of a vector space \(V\), and let \(\vec{v}_1,\ldots,\vec{v}_n\in W\). For scalars \(c_1,\ldots,c_n\), we have
+            \begin{equation*}
+                c_1\vec{v}_1+\cdots+c_n\vec{v}_n\in W.
+            \end{equation*}
+            \begin{proof}
+                We proceed by induction. For the proposition when \(n=1\), consider the scalar \(c_1\in\mathbb{F}\) and the vector \(\vec{v}_1\in W\). By the closure property of scalar multiplication, \(c_1\vec{v}_1\in W\). For the proposition when \(n=2\), consider scalars \(c_1,c_2\in\mathbb{F}\) and vectors \(\vec{v}_1,\vec{v}_2\in W\). Then, by the closure property of scalar multiplication, \(c_1\vec{v}_1,c_2\vec{v}_2\in W\). Then, since \(c_1\vec{v}_1,c_2\vec{v}_2\in W\), \(c_1\vec{v}_1+c_2\vec{v}_2\in W\) by the closure property of vector addition. Suppose the theorem holds for all \(n=k\). That is, for scalars \(c_1,\ldots,c_n\) and vectors \(\vec{v}_1,\ldots,\vec{v}_k\), we have
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_k\vec{v}_k\in W.
+                \end{equation*}
+                Then, for scalar \(c_{k+1}\in\mathbb{F}\) and vector \(\vec{v}_{k+1}\in W\), \(c_{k+1}\vec{v}_{k+1}\in W\) by the closure property of scalar multiplication, and by the closure property of vector addition,
+                since \( c_1\vec{v}_1+\cdots+c_k\vec{v}_k\in W\), 
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_k\vec{v}_k+c_{k+1}\vec{v}_{k+1}\in W,
+                \end{equation*}
+                proving the proposition.
+            \end{proof}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations.
