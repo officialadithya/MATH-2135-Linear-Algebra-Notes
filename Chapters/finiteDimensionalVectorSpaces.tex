@@ -54,7 +54,7 @@
 
     \subsection{Derived Properties of Vector Spaces}
 
-        Consider the following theorems.
+        Consider the following theorems. The axioms referenced refer to Definition \ref{def:vcspc}.
         \begin{theorem}{\Stop\,\,Derived Property of Vector Space 1}{derpropvcspc1}
 
             Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
@@ -62,27 +62,16 @@
                 c\vec{0}=\vec{0}.
             \end{equation*}
             \begin{proof}
-                We note that by axiom \(3\) of Definition \ref{def:vcspc},
-                \begin{equation*}
-                    c\vec{0}=c\vec{0}+\vec{0}.
-                \end{equation*}
-                By axiom \(4\),
-                \begin{equation*}
-                    c\vec{0}=c\vec{0}+c\vec{0}+(-c\vec{0}).
-                \end{equation*}
-                Then, by axiom \(5\),
-                \begin{equation*}
-                    c\vec{0}=(\vec{0}+\vec{0})+(-c\vec{0}).
-                \end{equation*}
-                By axiom \(3\), we have
-                \begin{equation*}
-                    c\vec{0}+(-c\vec{0}).
-                \end{equation*}
-                Then, by axiom \(4\), we have
-                \begin{equation*}
-                    c\vec{0}=\vec{0},
-                \end{equation*}
-                and we have proved the proposition.
+                We have that
+                \begin{align*}
+                    c\vec{0}&=c\vec{0}+\vec{0} &\text{ by axiom \(3\),} \\
+                    &=c\vec{0}+(c\vec{0}+(-(c\vec{0}))) &\text{ by axiom \(4\),} \\
+                    &=(c\vec{0}+c\vec{0})+(-(c\vec{0})) &\text{ by axiom \(2\),} \\
+                    &=c(\vec{0}+\vec{0})+(-(c\vec{0})) &\text{ by axiom \(5\),} \\
+                    &=c\vec{0}+(-(c\vec{0})) &\text{ by axiom \(3\),} \\
+                    &=\vec{0} &\text{ by axiom \(4\),} 
+                \end{align*}
+                as desired.
             \end{proof}
         \end{theorem}
         \begin{theorem}{\Stop\,\,Derived Property of Vector Space 2}{derpropvcspc2}
@@ -92,23 +81,16 @@
                 0\vec{v}=\vec{0}.
             \end{equation*}
             \begin{proof}
-                Consider, by axiom \(3\),
-                \begin{equation*}
-                    0\vec{v}=0\vec{v}+\vec{0}.
-                \end{equation*}
-                Then, by axiom \(4\), we have
-                \begin{equation*}
-                    0\vec{v}=0\vec{v}+0\vec{v}+(-0\vec{v}).
-                \end{equation*}
-                By axiom \(6\),
-                \begin{equation*}
-                    0\vec{v}=(0+0)\vec{v}+(-0\vec{v})=0\vec{v}+(-0\vec{v}).
-                \end{equation*}
-                Finally, by axiom \(4\), 
-                \begin{equation*}
-                    0\vec{v}=\vec{0}
-                \end{equation*}
-                and we have proved the proposition.
+                We have that
+                \begin{align*}
+                    0\vec{v}&=0\vec{v}+\vec{0} &\text{ by axiom \(3\),} \\
+                    &=0\vec{v}+(0\vec{v}+(-(0\vec{v}))) &\text{ by axiom \(4\),} \\
+                    &=(0\vec{v}+0\vec{v})+(-(0\vec{v})) &\text{ by axiom \(2\),} \\
+                    &=(0+0)\vec{v}+(-(0\vec{v})) &\text{ by axiom \(6\),} \\
+                    &=0\vec{v}+(-(0\vec{v})) \\
+                    &=\vec{0} &\text{ by axiom \(4\),}
+                \end{align*}
+                as desired.
             \end{proof}
         \end{theorem}
         \begin{theorem}{\Stop\,\,Derived Property of Vector Space 3}{derpropvcspc3}
@@ -118,18 +100,13 @@
                 (-1)\vec{v}=-\vec{v}.
             \end{equation*}
             \begin{proof}
-                Consider, by axiom \(8\),
-                \begin{equation*}
-                    \vec{v}+(-1)\vec{v}=1\vec{v}+(-1)\vec{v}.
-                \end{equation*}
-                Then, by axiom \(6\),
-                \begin{equation*}
-                    \vec{v}+(-1)\vec{v}=(1+(-1))\vec{v}=0\vec{v}.
-                \end{equation*}
-                By Theorem \ref{thm:derpropvcspc2},
-                \begin{equation*}
-                    \vec{v}+(-1)\vec{v}=\vec{0},
-                \end{equation*}
+                We have that
+                \begin{align*}
+                    \vec{v}+(-1)\vec{v}&=1\vec{v}+(-1)\vec{v} &\text{ by axiom \(8\),} \\
+                    &=(1+(-1))\vec{v} &\text{ by axiom \(6\),} \\
+                    &=0\vec{v} \\
+                    &=\vec{0} &\text{ by Theorem \ref{thm:derpropvcspc2},}
+                \end{align*}
                 which implies \((-1)\vec{v}=-\vec{v}\), the additive inverse of \(\vec{v}\).
             \end{proof}
         \end{theorem}
