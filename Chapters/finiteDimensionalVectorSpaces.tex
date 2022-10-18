@@ -196,7 +196,7 @@
         \\
         \\
         Consider the following examples.
-        \begin{example}{Is it a Subspace? 1}{issub1}
+        \begin{example}{\Difficulty\,\,Is it a Subspace? 1}{issub1}
 
             Let \(V=\mathbb{R}^2\) and let 
             \begin{equation*}
@@ -216,7 +216,7 @@
             Because \(W\neq\emptyset\) is closed under vector addition and scalar multiplication, \(W\) is a subspace of \(V\).
 
         \end{example}
-        \begin{example}{Is it a Subspace? 2}{issub2}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Subspace? 2}{issub2}
 
             Let \(V=\mathcal{M}_{nn}\).
             \begin{equation*}
@@ -246,7 +246,7 @@
             \end{align*}
             Therefore, \(\mathcal{D}_n\) is a subspace of \(\mathcal{M}_{nn}\).
         \end{example}
-        \begin{example}{Is it a Subspace? 3}{issub3}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Subspace? 3}{issub3}
 
             Let \(V=\mathcal{M}_{nn}\).
             \begin{equation*}
@@ -290,6 +290,26 @@
         \vphantom
         \\
         \\
+        Consider the following examples of subsets of \(\mathbb{R}^n\) that are not subspaces.
+        \begin{enumerate}
+            \item The set of \(n\) dimensional vectors whose first coordinate is nonnegative.
+            \item The set of unit \(n\) dimensional vectors.
+            \item The set of \(n\) dimensional vectors with a zero in at least one coordinate, where \(n\geq 2\).
+            \item The set of \(n\) dimensional vectors having all integer coordinates.
+            \item The set of all \(n\) dimensional vectors whose first two coordinates add up to \(3\).
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        Consider the following examples of subsets of \(\mathcal{M}_{nn}\) that are not subspaces.
+        \begin{enumerate}
+            \item The set of nonsingular \(n\times n\) matrices.
+            \item The set of singular \(n\times n\) matrices.
+            \item The set of \(n\times n\) matrices in reduced row echelon form.
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
         We now revisit the notion of linear combinations.
         \begin{theorem}{\Stop\,\,Linear Combinations Remain in a Subspace}{lincombsubspc}
 
@@ -313,4 +333,99 @@
         \vphantom
         \\
         \\
-        Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations.
+        Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations. Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Eigenspaces are Subspaces}{eigsubspc}
+
+            Let \(A\in\mathcal{M}_{nn}\) and let \(\lambda\) be an eigenvalue of \(A\) with eigenspace \(E_\lambda\). Then, \(E_\lambda\) is a subspace of \(\mathbb{R}^n\).
+            \begin{proof}
+                By definition,
+                \begin{equation*}
+                    E_\lambda=\{X:AX=\lambda X\}.
+                \end{equation*}
+                We see that \(E_\lambda\neq\emptyset\), as \(\vec{0}\in E_\lambda\). Let \(\vec{x}_1,\vec{x}_2\in E_\lambda\). We must show that \(\vec{x}_1+\vec{x}_2\in E_\lambda\). That is, we wish to show that
+                \begin{equation*}
+                    A(\vec{x}_1+\vec{x}_2)=\lambda(\vec{x}_1+\vec{x}_2).
+                \end{equation*}
+                We realize that
+                \begin{align*}
+                    A(\vec{x}_1+\vec{x}_2)&=A\vec{x}_1+A\vec{x}_2 \\
+                    &=\lambda\vec{x}_1+\lambda\vec{x}_2 \\
+                    &=\lambda(\vec{x}_1+\vec{x}_2),
+                \end{align*}
+                as desired. Then, we must show that for some scalar \(c\), \(c\vec{x}_1\in E_\lambda\). We wish to show that 
+                \begin{equation*}
+                    A(c\vec{x}_1)=\lambda c\vec{x}_1.    
+                \end{equation*}
+                We see that
+                \begin{align*}
+                    A(c\vec{x}_1)&=cA\vec{x}_1 \\
+                    &=c\lambda\vec{x}_1 \\
+                    &=\lambda c\vec{x}_1,
+                \end{align*}
+                as desired. Because we have showed that the closure properties hold for \(E_\lambda\), \(E_\lambda\) is a subspace of \(\mathbb{R}^n\).
+            \end{proof}
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        As we did in Theorem \ref{thm:lincombsubspc}, we will one again revisit the notion of linear combinations. Consider the following definitions.
+        \begin{definition}{\Stop\,\,Finite Linear Combinations}{finitelincomb}
+
+            Let \(S\) be a nonempty, and possibly infinite, subset of a vector space \(V\). Then, a vector \(\vec{v}\in V\) is a finite linear combination of the vectors in \(S\) if and only if there exists some finite subset \(S'=\{\vec{v}_1,\ldots\vec{v}_n\}\) of \(S\) such that
+            \begin{equation*}
+                \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+            \end{equation*}
+            for scalars \(c_1,\ldots,c_n\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Span}{span}
+
+            Let \(S\) be a nonempty subset of a vector space \(V\), Then, \(\Span(S)\), the span of \(S\) in \(V\), is the set of all possible finite linear combinations of the vectors in \(S\).
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\,Find Span 1}{findspan1}
+            
+            Let \(S=\{[0,1,0],[0,0,1]\}\subseteq \mathbb{R}^3\). Find \(\Span(S)\).
+            \\
+            \\
+            We realize that
+            \begin{align*}
+                \Span(S)&=\{c_1[0,1,0]+c_2[0,0,1]:c_1,c_2\in\mathbb{R}\} \\
+                &=\{[0,c_1,c_2]:c_1,c_2\in\mathbb{R}\}.
+            \end{align*}
+
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Span 2}{findspan2}
+            
+            Let \(S=\left\{\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix},\begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix},\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}\right\}\subseteq \mathcal{M}_{22}\). Find \(\Span(S)\).
+            \\
+            \\
+            We realize that
+            \begin{align*}
+                \Span(S)&=\left\{c_1\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}+c_2\begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}+c_3\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}:c_1,c_2,c_3\in\mathbb{R}\right\} \\
+                &=\left\{\begin{bmatrix} c_1 & 0 \\ c_2 & c_3 \end{bmatrix}:c_1,c_2,c_3\in\mathbb{R}\right\}.
+            \end{align*}
+
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Sometimes, for some \(S\subseteq V\), \(\Span(S)=V\). Here, we say that \(S\) spans \(V\), or equivalently, \(V\) is spanned by \(S\). Consider the following example.
+        \begin{example}{\Difficulty\,\,Find Span 3}{findspan3}
+            
+            Let \(S=\{[1,0,0],[0,1,0],[0,0,1]\}\subseteq \mathbb{R}^3\). Find \(\Span(S)\).
+            \\
+            \\
+            We realize that
+            \begin{align*}
+                \Span(S)&=\{c_1[1,0,0]+c_2[0,1,0]+c_3[0,0,1]:c_1,c_2,c_3\in\mathbb{R}\} \\
+                &=\{[c_1,c_2,c_3]:c_1,c_2,c_3\in\mathbb{R}\} \\
+                &=\mathbb{R}^3.
+            \end{align*}
+
+        \end{example}
