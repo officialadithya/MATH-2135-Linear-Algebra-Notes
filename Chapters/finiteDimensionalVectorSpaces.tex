@@ -254,7 +254,6 @@
             \end{align*}
             Therefore, \(\mathcal{U}_n\) is a subspace of \(\mathcal{M}_{nn}\).
         \end{example}
-        \pagebreak
         \vphantom
         \\
         \\
@@ -276,6 +275,7 @@
             \item The set of \(n\) dimensional vectors having all integer coordinates.
             \item The set of all \(n\) dimensional vectors whose first two coordinates add up to \(3\).
         \end{enumerate}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -288,30 +288,7 @@
         \vphantom
         \\
         \\
-        We now revisit the notion of linear combinations.
-        \begin{theorem}{\Stop\,\,Linear Combinations Remain in a Subspace}{lincombsubspc}
-
-            Let \(W\) be a subspace of a vector space \(V\), and let \(\vec{v}_1,\ldots,\vec{v}_n\in W\). For scalars \(c_1,\ldots,c_n\), we have
-            \begin{equation*}
-                c_1\vec{v}_1+\cdots+c_n\vec{v}_n\in W.
-            \end{equation*}
-            \begin{proof}
-                We proceed by induction. For the proposition when \(n=1\), consider the scalar \(c_1\in\mathbb{F}\) and the vector \(\vec{v}_1\in W\). By the closure property of scalar multiplication, \(c_1\vec{v}_1\in W\). For the proposition when \(n=2\), consider scalars \(c_1,c_2\in\mathbb{F}\) and vectors \(\vec{v}_1,\vec{v}_2\in W\). Then, by the closure property of scalar multiplication, \(c_1\vec{v}_1,c_2\vec{v}_2\in W\). Then, since \(c_1\vec{v}_1,c_2\vec{v}_2\in W\), \(c_1\vec{v}_1+c_2\vec{v}_2\in W\) by the closure property of vector addition. Suppose the theorem holds for all \(n\leq k\). That is, for scalars \(c_1,\ldots,c_k\) and vectors \(\vec{v}_1,\ldots,\vec{v}_k\), we have
-                \begin{equation*}
-                    c_1\vec{v}_1+\cdots+c_k\vec{v}_k\in W.
-                \end{equation*}
-                Then, for scalar \(c_{k+1}\in\mathbb{F}\) and vector \(\vec{v}_{k+1}\in W\), \(c_{k+1}\vec{v}_{k+1}\in W\) by the closure property of scalar multiplication, and by the closure property of vector addition,
-                since \( c_1\vec{v}_1+\cdots+c_k\vec{v}_k\in W\), 
-                \begin{equation*}
-                    c_1\vec{v}_1+\cdots+c_k\vec{v}_k+c_{k+1}\vec{v}_{k+1}\in W,
-                \end{equation*}
-                proving the proposition.
-            \end{proof}
-        \end{theorem}
-        \vphantom
-        \\
-        \\
-        Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations. Consider the following theorem.
+        Consider the following theorem.
         \begin{theorem}{\Stop\,\,Eigenspaces are Subspaces}{eigsubspc}
 
             Let \(A\in\mathcal{M}_{nn}\) and let \(\lambda\) be an eigenvalue of \(A\) with eigenspace \(E_\lambda\). Then, \(E_\lambda\) is a subspace of \(\mathbb{R}^n\).
@@ -346,9 +323,11 @@
         \end{theorem}
         \pagebreak
 
+\section{Lecture 23, October 19, 2022}
+
     \subsection{Span}
         
-        As we did in Theorem \ref{thm:lincombsubspc}, we will one again revisit the notion of linear combinations. Consider the following definitions.
+        We will now revisit the notion of linear combinations. Consider the following definitions.
         \begin{definition}{\Stop\,\,Finite Linear Combinations}{finitelincomb}
 
             Let \(S\) be a nonempty, and possibly infinite, subset of a vector space \(V\). Then, a vector \(\vec{v}\in V\) is a finite linear combination of the vectors in \(S\) if and only if there exists some finite subset \(S'=\{\vec{v}_1,\ldots\vec{v}_n\}\) of \(S\) such that
@@ -358,11 +337,35 @@
             for scalars \(c_1,\ldots,c_n\).
             
         \end{definition}
+        \begin{theorem}{\Stop\,\,Linear Combinations Remain in a Subspace}{lincombsubspc}
+
+            Let \(W\) be a subspace of a vector space \(V\), and let \(\vec{v}_1,\ldots,\vec{v}_n\in W\). For scalars \(c_1,\ldots,c_n\), we have
+            \begin{equation*}
+                c_1\vec{v}_1+\cdots+c_n\vec{v}_n\in W.
+            \end{equation*}
+            \begin{proof}
+                We proceed by induction. For the proposition when \(n=1\), consider the scalar \(c_1\in\mathbb{F}\) and the vector \(\vec{v}_1\in W\). By the closure property of scalar multiplication, \(c_1\vec{v}_1\in W\). Suppose the theorem holds for all \(n=k\). That is, for scalars \(c_1,\ldots,c_k\) and vectors \(\vec{v}_1,\ldots,\vec{v}_k\), we have
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_k\vec{v}_k\in W.
+                \end{equation*}
+                Then, for scalar \(c_{k+1}\in\mathbb{F}\) and vector \(\vec{v}_{k+1}\in W\), \(c_{k+1}\vec{v}_{k+1}\in W\) by the closure property of scalar multiplication, and by the closure property of vector addition,
+                since \( c_1\vec{v}_1+\cdots+c_k\vec{v}_k\in W\), 
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_k\vec{v}_k+c_{k+1}\vec{v}_{k+1}\in W,
+                \end{equation*}
+                as desired.
+            \end{proof}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations. We now, introduce the notion of ``span.''
         \begin{definition}{\Stop\,\,Span}{span}
 
-            Let \(S\) be a nonempty subset of a vector space \(V\), Then, \(\Span(S)\), the span of \(S\) in \(V\), is the set of all possible finite linear combinations of the vectors in \(S\).
+            Let \(S\) be a subset of a vector space \(V\), Then, \(\Span(S)\), the span of \(S\) in \(V\), is the set of all possible finite linear combinations of the vectors in \(S\). If \(S=\emptyset\), \(\Span(S)=\{\vec{0}\}\).
             
         \end{definition}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -395,7 +398,7 @@
         \\
         \\
         Sometimes, for some \(S\subseteq V\), \(\Span(S)=V\). Here, we say that \(S\) spans \(V\), or equivalently, \(V\) is spanned by \(S\). Consider the following example.
-        \begin{example}{\Difficulty\,\,Find Span 3}{findspan3}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Span 3}{findspan3}
             
             Let \(S=\{[1,0,0],[0,1,0],[0,0,1]\}\subseteq \mathbb{R}^3\). Find \(\Span(S)\).
             \\
@@ -404,8 +407,24 @@
             \begin{align*}
                 \Span(S)&=\{c_1[1,0,0]+c_2[0,1,0]+c_3[0,0,1]:c_1,c_2,c_3\in\mathbb{R}\} \\
                 &=\{[c_1,c_2,c_3]:c_1,c_2,c_3\in\mathbb{R}\} \\
-                &=\mathbb{R}^3.
+                &=\mathbb{R}^3,
             \end{align*}
+            meaning that \(S\) spans \(\mathbb{R}^3\).
+
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Span 4}{findspan4}
+            
+            Let \(S=\{1,x^2,x^4,\ldots\}\subseteq V\), where \(V\) is the set of all polynomials. Find \(\Span(S)\).
+            \\
+            \\
+            We realize that
+            \begin{align*}
+                T=\Span(S)=\left\{p(x):p(x)=\sum_{i=0}^n c_ix^i, c_i=0\text{ if }i\text{ is odd},n\in\mathbb{N}\right\}.
+            \end{align*}
+            \begin{proof}
+                We must show that \(\Span(S)\subseteq T\) and \(T\subseteq S\).
+            \end{proof}
 
         \end{example}
         \vphantom
@@ -417,9 +436,42 @@
             Let \(S\) be a nonempty subset of a vector space \(V\). Then,
             \begin{enumerate}
                 \item \(S\subseteq \Span(S)\).
+                \begin{proof}
+                    Suppose that \(\vec{v}\in S\). Then, \(1\vec{v}=\vec{v}\in\Span(S)\).
+                \end{proof}
                 \item \(\Span(S)\) is a subspace of \(V\).
+                \begin{proof}
+                    We know that \(\Span(S)\neq\emptyset\), by definition. Suppose that \(\vec{w}_1,\vec{w}_2\in \Span(S)\). We know that 
+                    \begin{equation*}
+                        \vec{w}_1=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+                    \end{equation*} 
+                    for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). We also know that
+                    \begin{equation*}
+                        \vec{v}_2=d_1\vec{u}_1+\cdots+d_k\vec{u}_k.
+                    \end{equation*}
+                    for some \(d_1,\ldots,d_k\in\mathbb{F}\) and \(\vec{u}_1,\ldots,\vec{u}_k\in S\). Then,
+                    \begin{align*}
+                        \vec{w}_1+\vec{w}_2=(c_1\vec{v}_1+\cdots+c_k\vec{v}_k)+(d_1\vec{u}_1+\cdots+d_k\vec{u}_k).
+                    \end{align*}
+                    The sum is a linear combination of the elements in \(S\), therefore, \(\vec{w}_1+\vec{w}_2\in\Span(S)\), meaning \(\Span(S)\) is closed under vector addition. Now, we take \(c\in\mathbb{F}\) and \(\vec{v}\in\Span(S)\) and wish to show that \(c\vec{v}\in\Span(S)\). We know that
+                    \begin{equation*}
+                        \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+                    \end{equation*}
+                    for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). Then,
+                    \begin{equation*}
+                        c\vec{v}=c(c_1\vec{v}_1)+\cdots+c(c_n\vec{v}_n),
+                    \end{equation*}
+                    which is a linear combination of the elements in \(S\), meaning that it is in \(\Span(S)\).
+                \end{proof}
                 \item If \(W\) is a subspace of \(V\) with \(S\subseteq W\), then, \(\Span(S)\subseteq W\).
-                \item \(\Span(S)\) is the smallest subspace of \(V\) containing \(S\).
+                \begin{proof}
+                    We let \(\vec{v}\in\Span(S)\) and wish to show that \(\vec{v}\in W\). We know that
+                    \begin{equation*}
+                        \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+                    \end{equation*}
+                    for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). Since \(S\subseteq W\), and \(\vec{v}\) is a linear combination of elements of \(S\), \(\vec{v}\) is a linear combination of elements of \(W\). It follows that \(\vec{v}\in W\), by Theorem \ref{thm:lincombsubspc}.
+                \end{proof}
+                \item \(\Span(S)\) is the smallest subspace of \(V\) containing \(S\). 
             \end{enumerate}
 
         \end{theorem}
@@ -435,5 +487,29 @@
                     S_1\subseteq S_2\subseteq\Span(S_2)\subseteq V.
                 \end{equation*}
                 Then, because \(\Span(S_2)\) is a subspace of \(V\) with \(S_1\subseteq\Span(S_2)\), we have \(\Span(S_1)\subseteq\Span(S_2)\), as desired.
+            \end{proof}
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Now, we turn to the question of how we can determine which vectors lie in \(\Span(S)\) given
+        \begin{equation*}
+            S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n.
+        \end{equation*}
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Is a Vector in the Span?}{vcspan}
+            
+            Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n\) as its columns. Then, \(B\in\Span(S)\) if and only if the linear system \([A|B]\) has at least one solution.
+            \begin{proof}
+                If \(B\in\Span(S)\), there exist scalars \(c_1,\ldots,c_k\) such that
+                \begin{equation*}
+                    B=c_1\vec{v}_1+\cdots+c_k\vec{v}_k.
+                \end{equation*}
+                If we let
+                \begin{equation*}
+                    X=\begin{bmatrix} c_1 \\ \vdots \\ c_k \end{bmatrix},
+                \end{equation*}
+                to show existence of the scalars, we just need to show that \([A|B]\) has at least one solution \(X\).
             \end{proof}
         \end{theorem}
