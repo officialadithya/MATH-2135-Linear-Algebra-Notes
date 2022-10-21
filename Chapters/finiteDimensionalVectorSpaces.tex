@@ -361,7 +361,8 @@
         Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations. We now, introduce the notion of ``span.''
         \begin{definition}{\Stop\,\,Span}{span}
 
-            Let \(S\) be a subset of a vector space \(V\), Then, \(\Span(S)\), the span of \(S\) in \(V\), is the set of all possible finite linear combinations of the vectors in \(S\). If \(S=\emptyset\), \(\Span(S)=\{\vec{0}\}\).
+            Let \(S\) be an infinite subset of a vector space \(V\), Then, \(\Span(S)\), the span of \(S\) in \(V\), is the set of all possible finite linear combinations of the vectors in \(S\). If \(S=\emptyset\), \(\Span(S)=\{\vec{0}\}\). Similarly, \(S\) is linearly dependent if and only if there exists some finite subset of 
+            \(S\) such that \(S\) is linearly dependent.
             
         \end{definition}
         \pagebreak
@@ -566,7 +567,7 @@
         \\
         \\
         Consider the following theorems, providing methods of showing linear independence of subsets of \(\mathbb{R}^n\). Similar algorithms exist for general vector spaces, but we will postpone the justification of them.
-        \begin{theorem}{\Stop\,\,Showing Linear Independence}{showlinindep}
+        \begin{theorem}{\Stop\,\,Showing Linear Independence 1}{showlinindep1}
 
            Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq \mathbb{R}^n\) as its columns. Then, \(S\) is linearly independent if and only if \(\det A\neq0\).
            \begin{proof}
@@ -585,4 +586,40 @@
                 meaning \(c_1=\cdots=c_n=0\), which is the definition of linear independence.
            \end{proof}
             
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Showing Linear Independence 2}{showlinindep2}
+            
+            Suppose \(S\) is a finite set of vectors having at least two elements. Then, \(S\) is linearly independent if and only if no vector in \(S\) can be expressed as a linear combination of the other vectors in \(S\). Equivalently, \(S\) is linearly dependent if and only if some vector in \(S\) can be expressed as a linear combination of the other vectors in \(S\).
+            \begin{proof}
+                Suppose \(S\) is linearly dependent. That is, we have \(c_1,\ldots,c_n\in\mathbb{F}\) such that
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_{i-1}\vec{v}_{i-1}+c_i\vec{v}_i+c_{i+1}\vec{v}_{i+1}+\cdots+c_n\vec{v}_n=\vec{0}
+                \end{equation*}
+                with \(c_i\neq0\) for some \(i\). Then,
+                \begin{equation*}
+                    \vec{v}_i=\left(-\frac{c_1}{c_i}\right)\vec{v}_1+\cdots+\left(-\frac{c_{i-1}}{c_i}\right)\vec{v}_{i-1}+\left(-\frac{c_{i+1}}{c_i}\right)\vec{v}_{i+1}+\cdots+\left(-\frac{c_n}{c_i}\right)\vec{v}_n.
+                \end{equation*}
+                We have constructed a vector in \(S\) as a linear combination of the other vectors of \(S\). Now, we will assume that there is a vector \(\vec{v}_i\in S\) that is a linear combination of the other vectors in \(S\). Without loss of generality, suppose \(\vec{v}_i=\vec{v}_1\), meaning \(i=1\). Then, there exist \(c_2,\ldots,c_n\in\mathbb{F}\) such that
+                \begin{equation*}
+                    \vec{v}_1=c_2\vec{v}_2+\cdots+c_n\vec{v}_n.
+                \end{equation*}
+                Letting \(a_1=-1\), we have
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}.
+                \end{equation*}
+                We constructed \(c_1\neq0\), meaning \(S\) is linearly dependent.
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Showing Linear Independence 3}{showlinindep3}
+            
+            Suppose \(S\subseteq V\) where \(V\) is a vector space. Then, \(S\) is linearly independent if and only if
+            \begin{equation*}
+                \forall\vec{v}\in S,\vec{v}\nin\Span(S-\{\vec{v}\}).
+            \end{equation*}
+            Similarly, \(S\) is linearly dependent if and only if
+            \begin{equation*}
+                \exists\vec{v}\in S,\vec{v}\in\Span(S-\{\vec{v}\}).
+            \end{equation*}
+
         \end{theorem}
