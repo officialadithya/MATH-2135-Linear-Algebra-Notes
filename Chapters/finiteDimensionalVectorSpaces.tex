@@ -165,8 +165,7 @@
                     &=\vec{w}_2+_V\vec{w}_1 \\
                     &=\vec{w}_2+_W\vec{w}_1.
                 \end{align*}
-                For vector space axiom \(3\), we take \(\vec{w}\in W\) and by the closure property of scalar multiplication, \((-1)\vec{w}\in W\). By the closure property of vector addition \(\vec{w}+(-1)\vec{w}=\vec{0}\), meaning \(\vec{0}\in W\). Moreover, for any \(\vec{w}\in W\), \(\vec{w}+\vec{0}=\vec{0}+\vec{w}=\vec{w}\). For vector space axiom \(4\), \(-1\vec{w}\) is the additive inverse of \(\vec{w}\), and by the closure property, \((-1)\vec{w}\in W\). We must show the rest.
-                \DOTHISLATER
+                For vector space axiom \(3\), we take \(\vec{w}\in W\) and by the closure property of scalar multiplication, \((-1)\vec{w}\in W\). By the closure property of vector addition \(\vec{w}+(-1)\vec{w}=\vec{0}\), meaning \(\vec{0}\in W\). Moreover, for any \(\vec{w}\in W\), \(\vec{w}+\vec{0}=\vec{0}+\vec{w}=\vec{w}\). For vector space axiom \(4\), \(-1\vec{w}\) is the additive inverse of \(\vec{w}\), and by the closure property, \((-1)\vec{w}\in W\). We must show the rest, and leave this as an exercise to the reader.
             \end{proof}
         \end{theorem}
         \pagebreak
@@ -427,6 +426,7 @@
             \end{proof}
 
         \end{example}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -489,7 +489,6 @@
                 Then, because \(\Span(S_2)\) is a subspace of \(V\) with \(S_1\subseteq\Span(S_2)\), we have \(\Span(S_1)\subseteq\Span(S_2)\), as desired.
             \end{proof}
         \end{theorem}
-        \pagebreak
         \vphantom
         \\
         \\
@@ -498,18 +497,92 @@
             S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n.
         \end{equation*}
         Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Span and Row Space}{spanrowspc}
+
+            Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n\) as its rows. Then, the span of \(S\) is the row space of \(A\).
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Computing Span as a Row Space}{compspanrowspc}
+
+            Let \(\vec{v}_1=[3,6,0]\), \(\vec{v}_2=[0,-1,1]\), and \(S=\{\vec{v}_1,\vec{v}_2\}\). Find \(\Span(S)\). 
+            \\
+            \\
+            We have the matrix
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    3 & 6 & 0 \\
+                    0 & -1 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            The row space of \(A\), or equivalently, the span of \(S\) is
+            \begin{equation*}
+                \Span(S)=\{c_1[1,0,2]+c_2[0,1,-1]:c_1,c_2\in\mathbb{R}\}.
+            \end{equation*}
+            
+        \end{example}
         \begin{theorem}{\Stop\,\,Is a Vector in the Span?}{vcspan}
             
-            Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n\) as its columns. Then, \(B\in\Span(S)\) if and only if the linear system \([A|B]\) has at least one solution.
-            \begin{proof}
-                If \(B\in\Span(S)\), there exist scalars \(c_1,\ldots,c_k\) such that
+            Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n\) as its rows. Then, \(B\in\Span(S)\) if and only if the linear system \([A^T|B]\) has at least one solution.
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        A similar algorithm is available for general vector spaces; but we will postpone the justification of it.
+        
+
+\pagebreak
+
+\section{Lecture 24: October 21, 2022}
+
+    \subsection{Linear Independence}
+
+        We have mentioned the notion of linear independence and linear dependence before, but now, we will make these definitions more precise.
+        \begin{definition}{\Stop\,\,Linear Independence and Dependence}{linindepdep}
+            
+            Suppose \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\subseteq V\). Then,
+            \begin{enumerate}
+                \item \(S\) is linearly dependent if and only if there exist scalars \(c_1,\ldots,c_n\in\mathbb{F}\) not all zero, such that
                 \begin{equation*}
-                    B=c_1\vec{v}_1+\cdots+c_k\vec{v}_k.
+                    c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}.
                 \end{equation*}
-                If we let
+                \item \(S\) is linearly independent if \(S\) is not linearly dependent. That is,
                 \begin{equation*}
-                    X=\begin{bmatrix} c_1 \\ \vdots \\ c_k \end{bmatrix},
+                    c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0} \iff c_1=\cdots=c_n=0.
                 \end{equation*}
-                to show existence of the scalars, we just need to show that \([A|B]\) has at least one solution \(X\).
-            \end{proof}
+            \end{enumerate}
+
+        \end{definition}
+        \begin{definition}{\Stop\,\,Generalization Linear Independence and Dependence to Infinite Sets}{genlinindepdep}
+            
+            Suppose \(S\subseteq V\) where \(V\) is a vector space. We say \(S\) is linearly independent if and only if each finite subset of \(S\) is linearly idependent.
+
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following theorems, providing methods of showing linear independence of subsets of \(\mathbb{R}^n\). Similar algorithms exist for general vector spaces, but we will postpone the justification of them.
+        \begin{theorem}{\Stop\,\,Showing Linear Independence}{showlinindep}
+
+           Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq \mathbb{R}^n\) as its columns. Then, \(S\) is linearly independent if and only if \(\det A\neq0\).
+           \begin{proof}
+                If \(\det A\neq0\), \(A\) is nonsingular and only has the trivial solution for the linear system \([AX=\vec{0}]\). That is, the only solution for the linear system is \(A\vec{0}=\vec{0}\). This means that
+                \begin{equation*}
+                    X
+                    =
+                    \begin{bmatrix}
+                        c_1 \\ \vdots \\ c_n 
+                    \end{bmatrix} 
+                    =
+                    \begin{bmatrix}
+                        0\\ \vdots \\ 0
+                    \end{bmatrix},
+                \end{equation*}
+                meaning \(c_1=\cdots=c_n=0\), which is the definition of linear independence.
+           \end{proof}
+            
         \end{theorem}
