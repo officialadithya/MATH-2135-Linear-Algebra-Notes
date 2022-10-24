@@ -87,7 +87,7 @@
                     &=0\vec{v}+(0\vec{v}+(-(0\vec{v}))) &\text{ by axiom \(4\),} \\
                     &=(0\vec{v}+0\vec{v})+(-(0\vec{v})) &\text{ by axiom \(2\),} \\
                     &=(0+0)\vec{v}+(-(0\vec{v})) &\text{ by axiom \(6\),} \\
-                    &=0\vec{v}+(-(0\vec{v})) \\
+                    &=0\vec{v}+(-(0\vec{v})) &\text{ by properties of \(\mathbb{R}\),} \\
                     &=\vec{0} &\text{ by axiom \(4\),}
                 \end{align*}
                 as desired.
@@ -105,7 +105,7 @@
                 \begin{align*}
                     \vec{v}+(-1)\vec{v}&=1\vec{v}+(-1)\vec{v} &\text{ by axiom \(8\),} \\
                     &=(1+(-1))\vec{v} &\text{ by axiom \(6\),} \\
-                    &=0\vec{v} \\
+                    &=0\vec{v} &\text{ by properties of \(\mathbb{R}\),} \\
                     &=\vec{0} &\text{ by Theorem \ref{thm:derpropvcspc2},}
                 \end{align*}
                 which implies \((-1)\vec{v}=-\vec{v}\), the additive inverse of \(\vec{v}\).
@@ -571,7 +571,7 @@
 
            Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq \mathbb{R}^n\) as its columns. Then, \(S\) is linearly independent if and only if \(\det A\neq0\).
            \begin{proof}
-                If \(\det A\neq0\), \(A\) is nonsingular and only has the trivial solution for the linear system \([AX=\vec{0}]\). That is, the only solution for the linear system is \(A\vec{0}=\vec{0}\). This means that
+                If \(\det A\neq0\), \(A\) is nonsingular and only has the trivial solution for the linear system \(AX=\vec{0}\). That is, the only solution for the linear system is \(A\vec{0}=\vec{0}\). This means that
                 \begin{equation*}
                     X
                     =
@@ -621,5 +621,43 @@
             \begin{equation*}
                 \exists\vec{v}\in S,\vec{v}\in\Span(S-\{\vec{v}\}).
             \end{equation*}
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We will now consider the linear dependence of sets with one or two elements.
+        \begin{theorem}{\Stop\,\,Linear Dependence of Sets With One or Two Elements}{onetwosetsdep}
+
+            Let \(S=\{\vec{v}\}\), and we have that if \(c\vec{v}=\vec{0}\) for some \(c\neq0\), \(S\) is linearly dependent. If \(S\) is linearly dependent, we know that \(\vec{v}=\vec{0}\) by Theorem \ref{thm:derpropvcspc4}. If \(\vec{v}=\vec{0}\), then \(1\vec{v}=\vec{0}\) and \(S\) is linearly dependent. Therefore \(S\) is linearly dependent if and only if \(\vec{v}=\vec{0}\). Now, suppose that \(S=\{\vec{v}_1,\vec{v}_2\}\). If \(\vec{v}_1=\vec{0}\), \(S\) is linearly dependent because
+            \begin{equation*}
+                1\vec{v}_1+0\vec{v}_2=\vec{0}.
+            \end{equation*}
+            Then, if \(\vec{v}_2=\vec{0}\), \(S\) is linearly dependent because
+            \begin{equation*}
+                0\vec{v}_1+1\vec{v}_2=\vec{0}.
+            \end{equation*}
+            If both \(\vec{v}_1\) and \(\vec{v}_2\) are nonzero, and there exist \(c_1,c_2\in\mathbb{F}\), not both zero, such that
+            \begin{equation*}
+                c_1\vec{v}_1+c_2\vec{v}_2=\vec{0}.
+            \end{equation*}
+            If \(c_1\neq0\), \(\vec{v}_1=-\frac{c_2}{c_1}\vec{v}_2\). That is, \(\vec{v}_1\) is a scalar multiple of \(\vec{v}_2\). If \(c_2\neq0\), \(\vec{v}_1=-\frac{c_1}{c_2}\vec{v}_2\). That is, \(\vec{v}_1\) is a scalar multiple of \(\vec{v}_2\). That means, a set of two nonzero vectors is linearly dependent if and only if the vectors are scalar multiples of each other.
+        
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Now, we will consider the linear dependence of a finite subset of a vector space \(V\) that contains the zero vector.
+        \begin{theorem}{\Stop\,\,Linear Dependence of Finite Subsets of a Vector Space Containing \(\vec{0}\)}{finitesubsetcontain0}
+            
+            Any finite subset of a vector space that contains the zero vector \(\vec{0}\) is linearly dependent.
+            \begin{proof}
+                Recall that if \(S\) is a set with \(|S|=1\) or \(|S|=2\), \(S\) is linearly dependent. Now, let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\), a finite subset of a vector space \(V\) and \(\vec{0}\in S\). If \(\vec{v}_k=\vec{0}\), we have
+                \begin{equation*}
+                    0\vec{v}_1+\cdots+1\vec{v}_k+\cdots+0\vec{v}_n,
+                \end{equation*}
+                meaning that \(S\) is linearly dependent.
+            \end{proof}
 
         \end{theorem}
