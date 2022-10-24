@@ -558,7 +558,7 @@
             \end{enumerate}
 
         \end{definition}
-        \begin{definition}{\Stop\,\,Generalization Linear Independence and Dependence to Infinite Sets}{genlinindepdep}
+        \begin{definition}{\Stop\,\,Generalizing Linear Independence and Dependence to Infinite Sets}{genlinindepdep}
             
             Suppose \(S\subseteq V\) where \(V\) is a vector space. We say \(S\) is linearly independent if and only if each finite subset of \(S\) is linearly idependent.
 
@@ -569,7 +569,7 @@
         Consider the following theorems, providing methods of showing linear independence of subsets of \(\mathbb{R}^n\). Similar algorithms exist for general vector spaces, but we will postpone the justification of them.
         \begin{theorem}{\Stop\,\,Showing Linear Independence 1}{showlinindep1}
 
-           Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq \mathbb{R}^n\) as its columns. Then, \(S\) is linearly independent if and only if \(\det A\neq0\).
+           Let \(A\in\mathcal{M}_{nn}\). The columns of \(A\) are linearly independent if and only if \(\det A \neq 0\).
            \begin{proof}
                 If \(\det A\neq0\), \(A\) is nonsingular and only has the trivial solution for the linear system \(AX=\vec{0}\). That is, the only solution for the linear system is \(A\vec{0}=\vec{0}\). This means that
                 \begin{equation*}
@@ -661,3 +661,196 @@
             \end{proof}
 
         \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider another characterization of linear independence.
+        \begin{theorem}{\Stop\,\,Linear Independence of Nonempty Sets}{linindepnonemptsets}
+        
+            A nonempty set \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent if and only if both the following conditions hold:
+            \begin{enumerate}
+                \item \(\vec{v}_1\neq\vec{0}\)
+                \item \(\forall k,2\leq k \leq n, \vec{v}_k\nin\Span(\{\vec{v}_1,\ldots,\vec{v}_{k-1}\})\).
+            \end{enumerate}
+        
+        \end{theorem}
+
+\pagebreak
+
+    \section{Lecture 25: October 24, 2022}
+
+        \subsection{Determining Linear Dependence in \(\mathbb{R}^n\)}
+
+            We now consider a method to test for linear independence using row reduction in \(\mathbb{R}^n\), and present a related result on linear dependence in \(\mathbb{R}^n\).
+            \begin{theorem}{\Stop\,\,A Test for Linear Independence in \(\mathbb{R}^n\)}{lindeprn}
+                
+                Let \(S\) be a finite nonempty set of vectors in \(\mathbb{R}^n\). To determine whether \(S\) is linearly independent, perform the following steps:
+                \begin{enumerate}
+                    \item Create the matrix \(A\) whose columns are the vectors in \(S\).
+                    \item Solve the system \([A|\vec{0}]\) by row reduction.
+                \end{enumerate}
+                Then, \(S\) is linearly independent if the system has only the trivial solution, and linearly dependent otherwise.
+            \end{theorem}
+            \begin{theorem}{\Stop\,\,A Test for Linear Dependence in \(\mathbb{R}^n\)}{indlindep}
+
+                Suppose \(S\subseteq\mathbb{R}^n\) and \(S\) contains distinct elements \(\vec{v}_1,\ldots,\vec{v}_k\) where \(k>n\). Then, \(S\) is linearly dependent.
+                
+            \end{theorem}
+
+        \subsection{Bases}
+
+            We now define the basis of a vector space.
+            \begin{definition}{\Stop\,\,Basis}{basis}
+
+                Suppose \(V\) is a vector space. Then, \(B\subseteq V\) is a basis of \(V\) if and only if
+                \begin{enumerate}
+                    \item \(\Span(B)=V\).
+                    \item \(B\) is linearly independent.
+                \end{enumerate}
+
+            \end{definition}
+            \pagebreak
+            \vphantom
+            \\
+            \\
+            Consider the following examples.
+            \begin{example}{\Difficulty\,\Difficulty\,\,The Standard Basis of \(\mathbb{R}^3\)}{stanbasisr3}
+
+                Verify that \(B=\{[1,0,0],[0,1,0],[0,0,1]\}\) is a basis of \(\mathbb{R}^3\).
+                \\
+                \\
+                Let \(A\) be the matrix with the elements of \(B\) as its columns. We form the linear system \([A|\vec{0}]\), or
+                \begin{equation*}
+                    \begin{bmatrix}
+                        1 & 0 & 0 & | & 0 \\
+                        0 & 1 & 0 & | & 0 \\
+                        0 & 0 & 1 & | & 0
+                    \end{bmatrix}
+                \end{equation*}
+                and realize that it is already in reduced row echelon form. The system has only the trivial solution, and so \(B\) is linearly independent. Now, we consider the span of \(B\), or the row space of \(A^T\). We have
+                \begin{equation*}
+                    \Span(B)=\{[c_1,c_2,c_3]:c_1,c_2,c_3\in\mathbb{R}^3\}=\mathbb{R}^3.
+                \end{equation*}
+                Thus, \(B\) is a basis for \(\mathbb{R}^3\).
+                
+            \end{example}
+            \begin{example}{\Difficulty\,\Difficulty\,\,Another Basis of \(\mathbb{R}^3\)}{otherbasisr3}
+
+                Verify that \(B=\{[2,2,2],[5,0,0],[0,-3,1]\}\) is a basis of \(\mathbb{R}^3\).
+                \\
+                \\
+                Let \(A\) be the matrix with the elements of \(B\) as its columns. We form the linear system \([A|\vec{0}]\), or
+                \begin{equation*}
+                    \begin{bmatrix}
+                        2 & 5 & 0 & | & 0 \\
+                        2 & 0 & -3 & | & 0 \\
+                        2 & 0 & 1 & | & 0
+                    \end{bmatrix}.
+                \end{equation*}
+                By row reduction, we obtain
+                \begin{equation*}
+                    \begin{bmatrix}
+                        1 & 0 & 0 & | & 0 \\
+                        0 & 1 & 0 & | & 0 \\
+                        0 & 0 & 1 & | & 0
+                    \end{bmatrix}
+                \end{equation*}
+                The system has only the trivial solution, and so \(B\) is linearly independent. Now, we consider the span of \(B\), or the row space of \(A^T\). We don't need to compute the row reduction in this case as \(A\) is square. If \(A\) can be row reduced to \(I_n\), \(\det A=\det A^T \neq 0\), meaning that \(A^T\) can be row reduced to \(I_n\). This means
+                \begin{equation*}
+                    \Span(B)=\{[c_1,c_2,c_3]:c_1,c_2,c_3\in\mathbb{R}^n\}.
+                \end{equation*}
+                Thus, \(B\) is a basis for \(\mathbb{R}^3\).
+            \end{example}
+            \pagebreak
+            \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,A Basis of \(\mathcal{M}_{22}\)}{basism22}
+
+                Verify that 
+                \begin{equation*}
+                    B=\left\{
+                    \begin{bmatrix}
+                        1 & 0 \\
+                        0 & 0
+                    \end{bmatrix},
+                    \begin{bmatrix}
+                        0 & 1 \\
+                        0 & 0
+                    \end{bmatrix},
+                    \begin{bmatrix}
+                        0 & 0 \\
+                        1 & 0
+                    \end{bmatrix},
+                    \begin{bmatrix}
+                        0 & 0 \\
+                        0 & 1
+                    \end{bmatrix}
+                    \right\}
+                \end{equation*}
+                is a basis of \(\mathbb{R}^3\).
+                \\
+                \\
+                We start by computing \(\Span(B)\), to produce
+                \begin{align*}
+                    \Span(B)&=\left\{c_1\begin{bmatrix}
+                        1 & 0 \\
+                        0 & 0
+                    \end{bmatrix}+c_2\begin{bmatrix}
+                        0 & 1 \\
+                        0 & 0
+                    \end{bmatrix}+c_3\begin{bmatrix}
+                        0 & 0 \\
+                        1 & 0
+                    \end{bmatrix}+c_4\begin{bmatrix}
+                        0 & 0 \\
+                        0 & 1
+                    \end{bmatrix}:c_1,c_2,c_3,c_4\in\mathbb{R}\right\} \\
+                    &=\left\{\begin{bmatrix}
+                        c_1 & c_2 \\
+                        c_3 & c_4
+                    \end{bmatrix}:c_1,c_2,c_3,c_4\in\mathbb{R}\right\} \\
+                    &=\mathcal{M}_{22}.
+                \end{align*}
+                Then, to verify linear independence, we see that if 
+                \begin{equation*}
+                    c_1\begin{bmatrix}
+                        1 & 0 \\
+                        0 & 0
+                    \end{bmatrix}+c_2\begin{bmatrix}
+                        0 & 1 \\
+                        0 & 0
+                    \end{bmatrix}+c_3\begin{bmatrix}
+                        0 & 0 \\
+                        1 & 0
+                    \end{bmatrix}+c_4\begin{bmatrix}
+                        0 & 0 \\
+                        0 & 1
+                    \end{bmatrix}=
+                    \begin{bmatrix}
+                        c_1 & c_2 \\
+                        c_3 & c_4
+                    \end{bmatrix}=
+                    \begin{bmatrix}
+                        0 & 0 \\
+                        0 & 0
+                    \end{bmatrix},
+                \end{equation*}
+                \(c_1=c_2=c_3=c_4=0\), meaning \(B\) is linearly independent. Thus, \(B\) is a basis for \(\mathcal{M}_{22}\).
+
+            \end{example}
+            \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,A Basis of \(\mathcal{P}_n\)}{basispn}
+
+                Verify that \(B=\{x^0,\ldots,x^n\}\) is a basis of \(\mathcal{P}_n\).
+                \\
+                \\
+                We start by computing \(\Span(B)\), to produce
+                \begin{align*}
+                    \Span(B)&=\{c_0x_0+\cdots+c_nx^n:c_0,\ldots,c_n\in\mathbb{R}^n\} \\
+                    &=\mathcal{P}_n.
+                \end{align*}
+                Then, to verify linear independence, we see that if
+                \begin{equation*}
+                    c_0x_0+\cdots+c_nx^n=0,
+                \end{equation*}
+                \(c_0=\cdots=c_n=0\), meaning \(B\) is linearly independent. Thus, \(B\) is a basis for \(\mathcal{P}_n\).
+            \end{example}
+            
