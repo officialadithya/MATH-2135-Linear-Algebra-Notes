@@ -671,7 +671,7 @@
         
             A nonempty set \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent if and only if both the following conditions hold:
             \begin{enumerate}
-                \item \(\vec{v}_1\neq\vec{0}\)
+                \item \(\vec{v}_1\neq\vec{0}\).
                 \item \(\forall k,2\leq k \leq n, \vec{v}_k\nin\Span(\{\vec{v}_1,\ldots,\vec{v}_{k-1}\})\).
             \end{enumerate}
         
@@ -768,7 +768,7 @@
 
         \pagebreak
 
-        \subsection{Bases}
+        \subsection{Bases: Part I}
 
             We now define the basis of a vector space.
             \begin{definition}{\Stop\,\,Basis}{basis}
@@ -930,3 +930,136 @@
                 We note that \(\Span(B)=\vec{0}\), by Definition \ref{def:span}. Then, we recall that \(B\) is linearly independent, by Definition \ref{def:linindepdep}. Thus, \(B\) is a basis for \(\{\vec{0}\}\).
             
             \end{example}
+
+\pagebreak
+
+\section{Lecture 26: October 26, 2022}
+
+    \subsection{Bases: Part II}
+
+        Consider the following nonexample of a basis.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Not a Basis of \(\mathcal{P}_2\)}{notabasis}
+
+            Verify that \(B=\{1,x^2\}\) is not a basis for \(\mathcal{P}_2\).
+            \\
+            \\
+           We see that \(x\in\mathcal{P}_2\) but \(x\nin\Span(B)\), so \(B\) is not a basis for \(\mathcal{P}_2\).
+            \begin{proof}
+                Suppose \(x\in\Span(B)\). Then,
+                \begin{equation*}
+                    x=c_1(1)+c_2(x^2)
+                \end{equation*}
+                for some \(c_1,c_2\in\mathbb{R}\). If \(x=0\), we have
+                \begin{equation*}
+                    0=a+b(0)^2\implies a=0.
+                \end{equation*} 
+                Therefore, we have \(x=bx^2\). After we take the derivative of both sides, we get
+                \begin{equation*}
+                    1=2bx,
+                \end{equation*}
+                and when \(x=0\), that implies \(1=0\), and we arrive at a contradiction. Hence, \(x\nin\Span(B)\).
+            \end{proof}
+            
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,A Useful Lemma Regarding Bases}{basisc}
+
+            Let \(S\) be a finite subset of a vector space \(V\) and \(\Span(S)=V\). If \(B\) is a basis of \(V\), we have that
+            \begin{enumerate}
+                \item \(B\) is finite.
+                \item \(|B|\leq|S|\).
+            \end{enumerate}
+            \begin{proof}
+                We will prove this in a very specific case where \(|S|=2\). This is not a general proof.
+                \\
+                \\
+                Suppose we have three distinct vectors \(\vec{w}_1,\vec{w}_2,\vec{w}_3\in V\). We will show that \(\{\vec{w}_1,\vec{w}_2,\vec{w}_3\}\) is linearly dependent. We denote \(S=\{\vec{v}_1,\vec{v}_2\}\). Since \(\Span(S)=V\),
+                \begin{equation*}
+                    \vec{w}_1=a_{11}\vec{v}_1+a_{12}\vec{v}_2,
+                \end{equation*}
+                \begin{equation*}
+                    \vec{w}_2=a_{21}\vec{v}_1+a_{22}\vec{v}_2,
+                \end{equation*}
+                and
+                \begin{equation*}
+                    \vec{w}_3=a_{31}\vec{v}_1+a_{32}\vec{v}_2
+                \end{equation*}
+                for some \(a_{ij}=0\). We consider
+                \begin{equation*}
+                    A=\begin{bmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} & a_{22} \\
+                        a_{31} & a_{32}
+                    \end{bmatrix}
+                \end{equation*}
+                We turn to the homogeneous equation associated with \(A^T\). By row reduction, there must be a free variable in the solution, and there will be infinitely many solutions. Thus, we have more than just the trivial solution for
+                \begin{equation*}
+                    a_{11}a+a_{21}b+a_{31}c=0
+                \end{equation*}
+                and
+                \begin{equation*}
+                    a_{12}a+a_{22}b+a_{32}c=0.
+                \end{equation*}
+                Consider 
+                \begin{align*}
+                    a\vec{w}_1+b\vec{w}_2+c\vec{w}_3&=a(a_{11}\vec{v}_1+a_{12}\vec{v}_2)+b(a_{21}\vec{v}_1+a_{22}\vec{v}_2)+c(a_{31}\vec{v}_1+a_{32}\vec{v}_2) \\
+                    &=\vec{0}
+                \end{align*}
+                Hence, \(\{\vec{w}_1,\vec{w}_2,\vec{w}_3\}\) is linearly dependent for any distinct \(\vec{w}_1,\vec{w}_2,\vec{w}_3\). If \(B\) is a basis, it is linearly independent, so it can contain at most two elements.
+            \end{proof}
+            
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Bases Have Equivalent Cardinality}{basisequivcard}
+
+            Suppose \(V\) is a vector space and \(B_1\) is a basis for \(V\) with finitely many elements. If \(B_2\) is a basis for \(V\) with finitely many elements,
+            \begin{equation*}
+                |B_1|=|B_2|.
+            \end{equation*}
+            \begin{proof}
+                Since \(\Span(B_1)=V\) and \(B_1\) is finite, \(|B_2|\leq|B_1|\). Since \(\Span(B_2)=V\) and \(B_2\) is finite, \(|B_1|\leq|B_2|\). Thus, \(|B_1|=|B_2|\).
+            \end{proof}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Now, we come to the definition of the dimension of a vector space.
+        \begin{definition}{\Stop\,\,Dimension}{dimension}
+
+            If \(V\) is a vector space with a finite basis \(B\),
+            \begin{equation*}
+                \dim V = |B|.
+            \end{equation*}
+            If \(V=\{\vec{0}\}\), \(\dim V=0\). Otherwise, \(\dim V\) is infinite.
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension}{spandim}
+            
+            Suppose \(V\) is a vector space. Then,
+            \begin{enumerate}
+                \item If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(\dim V\leq|S|\).
+                \begin{proof}
+                    See Theorem \ref{thm:basiscard} and Definition \ref{def:dimension}.
+                \end{proof}
+                \item If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(S\) is a basis if and only if \(\dim V = |S|\).
+                \begin{proof}
+                    Suppose \(S\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
+                    \begin{equation*}
+                        \Span(\{\vec{v}_1,\ldots,\vec{v}_{i-1},\vec{v}_{i+1},\vec{v}_n\})=V.
+                    \end{equation*}
+                    This contradicts \(\dim V = n\). 
+                \end{proof}
+                \item If \(T\subseteq V\) is linearly independent, then, \(|T|\leq\dim V\).
+                \item If \(T\subseteq V\) is linearly independent and finite, \(T\) is a basis for \(V\) if and only if \(\dim V = |T|\).
+            \end{enumerate}
+
+        \end{theorem}
