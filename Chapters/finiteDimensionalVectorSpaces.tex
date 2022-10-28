@@ -966,50 +966,14 @@
         \\
         \\
         Consider the following theorems.
-        \begin{theorem}{\Stop\,\,A Useful Lemma Regarding Bases}{basisc}
+        \begin{theorem}{\Stop\,\,A Useful Lemma Regarding Bases}{basislemma}
 
-            Let \(S\) be a finite subset of a vector space \(V\) and \(\Span(S)=V\). If \(B\) is a basis of \(V\), we have that
-            \begin{enumerate}
-                \item \(B\) is finite.
-                \item \(|B|\leq|S|\).
-            \end{enumerate}
+            Let \(S\) and \(T\) be subsets of a vector space \(V\) such that \(\Span(S)=V\) where \(S\) is finite and \(T\) is linearly independent. Then, \(T\) is finite and \(|T|\leq|S|\).
             \begin{proof}
-                We will prove this in a very specific case where \(|S|=2\). This is not a general proof.
+                In the case where \(S=\emptyset\), \(V=\{\vec{0}\}\). Then, \(T\) is empty because \(\{\vec{0}\}\) is linearly dependent. Thus, \(|T|=|S|=0\).
                 \\
                 \\
-                Suppose we have three distinct vectors \(\vec{w}_1,\vec{w}_2,\vec{w}_3\in V\). We will show that \(\{\vec{w}_1,\vec{w}_2,\vec{w}_3\}\) is linearly dependent. We denote \(S=\{\vec{v}_1,\vec{v}_2\}\). Since \(\Span(S)=V\),
-                \begin{equation*}
-                    \vec{w}_1=a_{11}\vec{v}_1+a_{12}\vec{v}_2,
-                \end{equation*}
-                \begin{equation*}
-                    \vec{w}_2=a_{21}\vec{v}_1+a_{22}\vec{v}_2,
-                \end{equation*}
-                and
-                \begin{equation*}
-                    \vec{w}_3=a_{31}\vec{v}_1+a_{32}\vec{v}_2
-                \end{equation*}
-                for some \(a_{ij}=0\). We consider
-                \begin{equation*}
-                    A=\begin{bmatrix}
-                        a_{11} & a_{12} \\
-                        a_{21} & a_{22} \\
-                        a_{31} & a_{32}
-                    \end{bmatrix}
-                \end{equation*}
-                We turn to the homogeneous equation associated with \(A^T\). By row reduction, there must be a free variable in the solution, and there will be infinitely many solutions. Thus, we have more than just the trivial solution for
-                \begin{equation*}
-                    a_{11}a+a_{21}b+a_{31}c=0
-                \end{equation*}
-                and
-                \begin{equation*}
-                    a_{12}a+a_{22}b+a_{32}c=0.
-                \end{equation*}
-                Consider 
-                \begin{align*}
-                    a\vec{w}_1+b\vec{w}_2+c\vec{w}_3&=a(a_{11}\vec{v}_1+a_{12}\vec{v}_2)+b(a_{21}\vec{v}_1+a_{22}\vec{v}_2)+c(a_{31}\vec{v}_1+a_{32}\vec{v}_2) \\
-                    &=\vec{0}
-                \end{align*}
-                Hence, \(\{\vec{w}_1,\vec{w}_2,\vec{w}_3\}\) is linearly dependent for any distinct \(\vec{w}_1,\vec{w}_2,\vec{w}_3\). If \(B\) is a basis, it is linearly independent, so it can contain at most two elements.
+                Now, let \(n\geq 1\) and \(n=|S|\).
             \end{proof}
             
         \end{theorem}
