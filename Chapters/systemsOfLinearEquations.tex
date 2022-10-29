@@ -1230,3 +1230,55 @@
             \end{proof}
 
         \end{theorem}
+
+\pagebreak
+
+\section{Additional Topics: The \(LU\) Factorization}
+
+    \subsection{Presented by Olver and Shakiban's \textit{Applied Linear Algebra}}
+
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Elementary Matrices}{elemmat}
+
+            The elementary matrix associated with a row operation on a matrix with \(m\) rows is the \(m\times m\) matrix obtained by applying the row operation to \(I_m\).
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding an Elementary Matrix}{findelemmat}
+            
+            Consider the row operation \(-2\langle1\rangle+\langle2\rangle\to\langle2\rangle\) applied to a matrix with \(3\) rows. Find the elementary matrix, denoted \(E_1\).
+            \\
+            \\
+            We take 
+            \begin{equation*}
+                I_3=\begin{bmatrix}
+                    1 & 0 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 1
+                \end{bmatrix}
+            \end{equation*}
+            and perform the row operation to obtain
+            \begin{equation*}
+                E_1=\begin{bmatrix}
+                    1 & 0 & 0 \\
+                    -2 & 1 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix}.
+            \end{equation*}
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Elementary Matrices are Equivalent to Row Operations}{elemmatrowops}
+
+            Suppose \(A\in\mathcal{M}_{mn}\) and \(E_1,\ldots,E_k\) are elementary matrices corresponding to row operations \(R_1,\ldots,R_k\). The multiplication
+            \begin{equation*}
+                E_k(E_{k-1}(\ldots(E_2(E_1))))A
+            \end{equation*}
+            produces the same matrix that applying the row operations, in order.
+            
+        \end{theorem}
