@@ -1007,48 +1007,58 @@
         \\
         \\
         Consider the following theorem.
-        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension}{spandim}
+        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 1}{spandim1}
             
-            Suppose \(V\) is a vector space. Then,
-            \begin{enumerate}
-                \item If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(\dim V\leq|S|\).
-                \begin{proof}
-                    See Theorem \ref{thm:basislemma} and Definition \ref{def:dimension}.
-                \end{proof}
-                \item If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(S\) is a basis if and only if \(\dim V = |S|\).
-                \begin{proof}
-                    Suppose \(S\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
-                    \begin{equation*}
-                        \Span(\{\vec{v}_1,\ldots,\vec{v}_{i-1},\vec{v}_{i+1},\vec{v}_n\})=V.
-                    \end{equation*}
-                    This contradicts \(\dim V = n\). 
-                \end{proof}
-                \item If \(T\subseteq V\) is linearly independent, then, \(|T|\leq\dim V\).
-                \begin{proof}
-                    
-                \end{proof}
-                \item If \(T\subseteq V\) is linearly independent and finite, \(T\) is a basis for \(V\) if and only if \(\dim V = |T|\).
-                \begin{proof}
-                    Suppose \(T\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |T|\). If \(\dim V = |T|\), Let \(n=|T|=\dim V\) so \(T=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(T\) is linearly independent, we need only show that \(\Span(T)=V\). Suppose not, then, there exists some \(\vec{v}\in V\) where \(\vec{v}\nin \Span(T)\). Consider the set \(T\cup\{\vec{v}\}\). We see that
-                    \begin{equation*}
-                        |T\cup\{\vec{v}\}|=|T|+1=\dim V+1
-                    \end{equation*}
-                    since \(\vec{v}\nin\Span(T)\), and because \(T\subseteq\Span(T)\), \(\vec{v}\nin T\). We also see that \(T\cup\{\vec{v}\}\) is linearly independent by considering
-                    \begin{equation*}
-                        \vec{0}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n+c_{n+1}\vec{v}
-                    \end{equation*}
-                    for \(c_1,\ldots,c_{n+1}\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_k\in T\). We have that \(c_{n+1}=0\) since, otherwise, 
-                    \begin{equation*}
-                        \vec{v}=-\frac{1}{c_{n+1}}(c_1\vec{v}_1+\cdots+c_n\vec{v}_n).
-                    \end{equation*}
-                    Since we've written \(\vec{v}\) as a linear combination of the elements of \(T\), \(\vec{v}\nin\Span(T)\), which is contradictory. Since \(c_{n+1}=0\), we have
-                    \begin{equation*}
-                        \vec{0}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
-                    \end{equation*}
-                    since \(T\) is linearly independent and \(\vec{v}_1,\ldots,\vec{v}_n\in T\), we have \(c_1=\cdots=c_n=c_{n+1}=0\). By the previous part, we have \(|T\cup\{\vec{v}\}|\leq\dim V\). However, the left hand side is \(\dim V+1\), which is contradictory. Thus, \(\Span(T)=V\), so \(T\) is a basis for \(V\).
-                \end{proof}
-            \end{enumerate}
+            Suppose \(V\) is a vector space. If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(\dim V\leq|S|\).
+            \begin{proof}
+                See Theorem \ref{thm:basislemma} and Definition \ref{def:dimension}.
+            \end{proof}
 
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 2}{spandim2}
+            
+            Suppose \(V\) is a vector space. If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(S\) is a basis if and only if \(\dim V = |S|\).
+            \begin{proof}
+                Suppose \(S\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
+                \begin{equation*}
+                    \Span(\{\vec{v}_1,\ldots,\vec{v}_{i-1},\vec{v}_{i+1},\vec{v}_n\})=V.
+                \end{equation*}
+                This contradicts \(\dim V = n\). 
+            \end{proof}
+
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 3}{spandim3}
+            
+            Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent, then, \(|T|\leq\dim V\).
+            \begin{proof}
+                Let \(S\) be a basis of \(V\). Thus, \(\Span(S)=V\) and \(\dim V=|S|\). By Theorem \ref{thm:basislemma}, if \(T\) is linearly independent, \(|T|\leq|S|\), so \(|T|\leq\dim V\).
+            \end{proof}
+        
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 4}{spandim4}
+            
+            Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent and finite, \(T\) is a basis for \(V\) if and only if \(\dim V = |T|\).
+            \begin{proof}
+                Suppose \(T\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |T|\). If \(\dim V = |T|\), Let \(n=|T|=\dim V\) so \(T=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(T\) is linearly independent, we need only show that \(\Span(T)=V\). Suppose not, then, there exists some \(\vec{v}\in V\) where \(\vec{v}\nin \Span(T)\). Consider the set \(T\cup\{\vec{v}\}\). We see that
+                \begin{equation*}
+                    |T\cup\{\vec{v}\}|=|T|+1=\dim V+1
+                \end{equation*}
+                since \(\vec{v}\nin\Span(T)\), and because \(T\subseteq\Span(T)\), \(\vec{v}\nin T\). We also see that \(T\cup\{\vec{v}\}\) is linearly independent by considering
+                \begin{equation*}
+                    \vec{0}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n+c_{n+1}\vec{v}
+                \end{equation*}
+                for \(c_1,\ldots,c_{n+1}\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_k\in T\). We have that \(c_{n+1}=0\) since, otherwise, 
+                \begin{equation*}
+                    \vec{v}=-\frac{1}{c_{n+1}}(c_1\vec{v}_1+\cdots+c_n\vec{v}_n).
+                \end{equation*}
+                Since we've written \(\vec{v}\) as a linear combination of the elements of \(T\), \(\vec{v}\in\Span(T)\), which is contradictory. We also have
+                \begin{equation*}
+                    \vec{0}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+                \end{equation*}
+                since \(T\) is linearly independent and \(\vec{v}_1,\ldots,\vec{v}_n\in T\). Thus, \(c_1=\cdots=c_n=c_{n+1}=0\). By the previous part, we have \(|T\cup\{\vec{v}\}|\leq\dim V\). However, the left hand side is \(\dim V+1\), which is contradictory. Thus, \(\Span(T)=V\), so \(T\) is a basis for \(V\).
+            \end{proof}
+        
         \end{theorem}
 
 \pagebreak
