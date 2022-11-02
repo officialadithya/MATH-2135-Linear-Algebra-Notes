@@ -1103,9 +1103,9 @@
             \end{proof}
             
         \end{theorem}
-        \begin{theorem}{\Stop\,\,Diagonalizability, Revisited}{diagrev}
+        \begin{theorem}{\Stop\,\,Diagonalizability, Revisited: Part I}{diagrev1}
 
-            Suppose \(A\in\mathcal{M}_{nn}\). Then, \(A\) is diagonalizable if and only if there exists a basis of \(\mathbb{F}^n\) that consists of eigenvectors of \(A\).
+            Suppose \(A\in\mathcal{M}_{nn}\). Then, \(A\) is diagonalizable if and only if there exists a basis of \(\mathbb{R}^n\) that consists of eigenvectors of \(A\).
             
         \end{theorem}
         \pagebreak
@@ -1353,7 +1353,7 @@
 
 \section{Lecture 28: October 31, 2022}
 
-    \subsection{Coordinatization}
+    \subsection{Coordinatization: Part I}
 
         Consider the following definition.
         \begin{definition}{\Stop\,\,Ordered Bases}{orderedbases}
@@ -1456,5 +1456,146 @@
                 \item \([c_1\vec{w}_1]_B=c_1[\vec{w}_1]_B\).
                 \item \([c_1\vec{w}_1+\cdots+c_k\vec{w}_k]_B=c_1[\vec{w}_1]_B+\cdots+c_k[\vec{w}_k]_B\).
             \end{enumerate}
+            
+        \end{theorem}
+
+\section{Lecture 29: November 2, 2022}
+
+    \subsection{Coordinatization: Part II}
+        
+        We now posit a question: Given two ordered bases \(B_1\) and \(B_2\), how are \([\vec{v}]_{B_1}\) and \([\vec{v}]_{B_2}\) related? Consider the following definition and theorem.
+        \begin{definition}{\Stop\,\,Transition Matrices}{transitionmatrix}
+
+            Suppose that \(V\) is a nontrivial vector space with \(\dim V=n\). Let \(B_1\) and \(B_2\) be ordered bases of \(V\). Let \(P\) be the \(n\times n\) matrix whose \(i\)th column, for \(1\leq i\leq n\), equals \([\vec{b}_{1i}]_{B_2}\), where \(\vec{b}_{1i}\) is the \(i\)th basis vector in \(B_1\). Then, \(P\) is called the transition matrix from \(B_1\) to \(B_2\).
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Finding a Transition Matrix}{transitionmatrix}
+
+            Given \(B_1=(\vec{v}_1,\ldots,\vec{v}_n)\) and \(B_2=(\vec{w}_1,\ldots,\vec{w}_n)\). To go from \(B_1\) to \(B_2\), we form
+            \begin{equation*}
+                \begin{bmatrix}
+                    \vec{w}_1 & \cdots & \vec{w}_n & | & \vec{v}_1 & \cdots & \vec{v}_n
+                \end{bmatrix}
+            \end{equation*}
+            and row reduce to get \([I_n|P]\). The matrix \(P\) is the transition matrix from the coordinatization with respect to \(B_1\) to the coordinatization with respect to \(B_2\). Then,
+            \begin{equation*}
+                P[\vec{v}]_{B_1}=[\vec{v}]_{B_2}.
+            \end{equation*}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Transition Matrix}{transitionmatrix}
+
+            Let
+            \begin{equation*}
+                B_1=([1,1,0,1],[1,0,0,1],[0,1,0,1],[1,1,1,0]),\quad B_2=([1,0,0,0],[1,1,0,0],[1,1,0,1],[1,1,1,1]).
+            \end{equation*}
+            Find the associated transition matrix \(P\).
+            \\
+            \\
+            We form
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 1 & 1 & 1 & | & 1 & 1 & 0 & 1 \\
+                    0 & 1 & 1 & 1 & | & 1 & 0 & 1 & 1 \\
+                    0 & 0 & 0 & 1 & | & 0 & 0 & 0 & 1 \\
+                    0 & 0 & 1 & 1 & | & 1 & 1 & 1 & 0
+                \end{bmatrix}
+            \end{equation*}
+            and row reduce to get
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & 0 & | & 0 & 1 & -1 & 0 \\
+                    0 & 1 & 0 & 0 & | & 0 & -1 & 0 & 1 \\
+                    0 & 0 & 1 & 0 & | & 1 & 1 & 1 & -1 \\
+                    0 & 0 & 0 & 1 & | & 0 & 0 & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            Thus, 
+            \begin{equation*}
+                P=\begin{bmatrix}
+                    0 & 1 & -1 & 0 \\
+                    0 & -1 & 0 & 1 \\
+                    1 & 1 & 1 & -1 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Checking a Transition Matrix}{check}
+
+            Check that the \(P\) found in Example \ref{exa:transitionmatrix} yields the correct result for 
+            \begin{equation*}
+                \vec{v}_1=[1,1,0,1].
+            \end{equation*}
+            We see that \([\vec{v}_1]_{B_1}=[1,0,0,0]\). Then, we have
+            \begin{align*}
+                P[\vec{v}_1]_{B_1}&=\begin{bmatrix}
+                    0 & 1 & -1 & 0 \\
+                    0 & -1 & 0 & 1 \\
+                    1 & 1 & 1 & -1 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}\begin{bmatrix}
+                    1 \\ 0 \\ 0 \\ 0
+                \end{bmatrix} \\
+                &=\begin{bmatrix}
+                    0 \\ 0 \\ 1 \\ 0
+                \end{bmatrix} \\
+                &=[\vec{v}_1]_C,
+            \end{align*}
+            as desired.
+            
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Properties of Transition Matrices}{proptransmat}
+
+            Suppose \(B_1\), \(B_2\), and \(B_3\) are ordered bases of \(\mathbb{R}^n\). Then,
+            \begin{enumerate}
+                \item The transition matrix from \(B_1\) to \(B_2\) is unique and nonsingular.
+                \item If \(P\) is the transition matrix from \(B_1\) to \(B_2\) and \(Q\) is the transition matrix from \(B_2\) to \(B_3\), \(QP\) is the transition matrix from \(B_1\) to \(B_3\).
+                \begin{proof}
+                    We consider 
+                    \begin{align*}
+                        QP([\vec{v}_{B_1}])&=Q(P[\vec{v}]_{B_1}) \\
+                        &=Q[\vec{v}]_{B_2} \\
+                        &=[\vec{v}]_{B_3}.
+                    \end{align*}
+                    Then, uniqueness implies we have the correct transition matrix \(QP\).
+                \end{proof}
+                \item If \(P\) is the transition matrix from \(B_1\) to \(B_2\), \(P^{-1}\) is the transition matrix from \(B_2\) to \(B_1\).
+                \begin{proof}
+                    Uniqueness implies that the transition matrix from \(B_1\) to \(B_1\) is \(I_n\). By existence, we have \(P\), the transition matrix from \(B_1\) to \(B_2\) and \(Q\), the transition matrix from \(B_2\) to \(B_1\). We know that
+                    \begin{equation*}
+                        QP=I_n,
+                    \end{equation*}
+                    which only occurs if \(Q=P^{-1}\).
+                \end{proof}
+            \end{enumerate}
+            
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We now revisit diagonalization, yet again.
+        \begin{theorem}{\Stop\,\,Diagonalizability, Revisited: Part II}{diagrev2}
+
+            Suppose \(A\in\mathcal{M}_{nn}\) and we have found nonsingular \(P\) with
+            \begin{equation*}
+                D=P^{-1}AP.
+            \end{equation*}
+            To find \(P\), we have
+            \begin{equation*}
+                P=\begin{bmatrix}
+                    \vec{v}_1 & \cdots & \vec{v}_n
+                \end{bmatrix}.
+            \end{equation*}
+            By Theorem \ref{thm:diagrev1}, \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) is an ordered basis of \(\mathbb{R}^n\). Then, \(P\) is the transition matrix from \(B\) to the standard basis.
             
         \end{theorem}
