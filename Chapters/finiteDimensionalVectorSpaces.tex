@@ -570,23 +570,15 @@
         Consider the following theorems, providing methods of showing linear independence of subsets of \(\mathbb{R}^n\). Similar algorithms exist for general vector spaces, but we will postpone the justification of them.
         \begin{theorem}{\Stop\,\,Showing Linear Independence 1}{showlinindep1}
 
-           Let \(A\in\mathcal{M}_{nn}\). If \(\det A \neq 0\), the columns of \(A\) are linearly independent.
-           \begin{proof}
-                If \(\det A\neq0\), \(A\) is nonsingular and only has the trivial solution for the linear system \(AX=\vec{0}\). That is, the only solution for the linear system is \(A\vec{0}=\vec{0}\). This means that
+            Let \(A\in\mathcal{M}_{nn}\). If \(\det A \neq 0\), the columns of \(A\) are linearly independent. If \(\det A = 0\), the columns of \(A\) are linearly dependent.
+            \begin{proof}
+                If \(\det A\neq 0\), \(A\) is nonsingular and has only the trivial solution for \([A|\vec{0}]\). This linear system is precisely
                 \begin{equation*}
-                    X
-                    =
-                    \begin{bmatrix}
-                        c_1 \\ \vdots \\ c_n 
-                    \end{bmatrix} 
-                    =
-                    \begin{bmatrix}
-                        0\\ \vdots \\ 0
-                    \end{bmatrix},
+                    c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}
                 \end{equation*}
-                meaning \(c_1=\cdots=c_n=0\), which is the definition of linear independence.
-           \end{proof}
-            
+                for \(c_1,\ldots,c_n\in\mathbb{R}\). Since the system has only the trivial solution, \(X=[c_1,\ldots,c_n]^T=[0,\ldots,0]^T\) and \(c_1=\cdots=c_n=0\), which by definition, means that the set \(\{\vec{v}_1,\ldots,\vec{v}_n\}\), or equivalently the columns of \(A\), are linearly independent. If \(\det A =0\), \(A\) is singular and has infinitely many nontrivial solutions for \([A|\vec{0}]\). Thus, \(c_1,\cdots,c_n\) will not all be zero, meaning that the columns of \(A\) are linearly dependent.
+            \end{proof}
+
         \end{theorem}
         \pagebreak
         \begin{theorem}{\Stop\,\,Showing Linear Independence 2}{showlinindep2}
@@ -938,7 +930,7 @@
                 \\
                 Consider the set
                 \begin{equation*}
-                    B-\left\{\begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix},\begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix},\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}\right\}
+                    B=\left\{\begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix},\begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix},\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}\right\}.
                 \end{equation*}
                 To see that \(\Span(B)=\mathcal{D}_3\), consider
                 \begin{equation*}
