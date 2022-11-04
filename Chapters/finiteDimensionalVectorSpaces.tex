@@ -1047,7 +1047,7 @@
 
         \end{theorem}
         \pagebreak
-        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 3}{spandim3}
+        \begin{theorem}{\Stop\,\,General Statements About Linear Independence and Dimension 1}{lindim1}
             
             Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent, then, \(|T|\leq\dim V\).
             \begin{proof}
@@ -1055,7 +1055,7 @@
             \end{proof}
         
         \end{theorem}
-        \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 4}{spandim4}
+        \begin{theorem}{\Stop\,\,General Statements About Linear Independence and Dimension 2}{lindim2}
             
             Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent and finite, \(T\) is a basis for \(V\) if and only if \(\dim V = |T|\).
             \begin{proof}
@@ -1089,7 +1089,7 @@
         Consider the following theorems.
         \begin{theorem}{\Stop\,\,Dimensions of Subspaces}{dimsubspc}
 
-            If \(W\) is a subspace of \(V\),
+            If \(W\) is a subspace of a vector space \(V\),
             \begin{equation*}
                 \dim W\leq \dim V.
             \end{equation*}
@@ -1106,7 +1106,10 @@
         \begin{theorem}{\Stop\,\,Diagonalizability, Revisited: Part I}{diagrev1}
 
             Suppose \(A\in\mathcal{M}_{nn}\). Then, \(A\) is diagonalizable if and only if there exists a basis of \(\mathbb{R}^n\) that consists of eigenvectors of \(A\).
-            
+            \begin{proof}
+                Recall that by Theorem \ref{thm:diagonalizability}, \(A\in\mathcal{M}_{nn}\) is diagonalizable if and only if there exists a set of \(n\) linearly indpendent eigenvectors \(\vec{v}_1,\ldots,\vec{v}_n\). Let \(V=\mathbb{R}^n\) and \(W=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Then, \(\dim V=n\). We also see that \(W\subseteq V\) is linearly independent and finite with \(|W|=\dim V\). By Theorem \ref{thm:lindim2}, \(W\) is a basis for \(V\). Our proof is reversible, as all implications are bidirectional.
+            \end{proof}
+
         \end{theorem}
         \pagebreak
         \vphantom
@@ -1217,15 +1220,15 @@
         \end{example}
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 4}{basis4}
 
-            Let \(S=\{[1,2,0,1],[3,1,5,-7]\}\). We consider 
+            Let \(T=\{[1,2,0,1],[3,1,5,-7]\}\). We consider 
             \begin{equation*}
-                \hat{S}=\{[1,2,0,1],[3,1,5,-7],[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
+                S=\{[1,2,0,1],[3,1,5,-7],[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
             \end{equation*}
-            Note that \(\hat{S}\) is the union of the standard basis of \(\mathbb{R}^4\) and \(S\). Since
+            Note that \(S\) is the union of the standard basis of \(\mathbb{R}^4\) and \(T\). Since
             \begin{equation*}
                 \{[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
             \end{equation*}
-            is a basis of \(\mathbb{R}^4\), \(\Span(\hat(S))=\mathbb{R}^4\). Now, we form
+            is a basis of \(\mathbb{R}^4\), \(\Span(S)=\mathbb{R}^4\). Now, we form
             \begin{equation*}
                 A=\begin{bmatrix}
                     1 & 3 & 1 & 0 & 0 & 0 \\
@@ -1246,6 +1249,40 @@
             Hence, our basis for \(\mathbb{R}^4\) is
             \begin{equation*}
                 B=\{[1,2,0,1],[3,1,5,-7],[1,0,0,0],[0,1,0,0]\}.
+            \end{equation*}
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 5}{basis5}
+
+            Let \(T=\{[2,0,4,-12],[0,-1,-3,9]\}\). We consider 
+            \begin{equation*}
+                S=\{[2,0,4,-12],[0,-1,-3,9],[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
+            \end{equation*}
+            Note that \(S\) is the union of the standard basis of \(\mathbb{R}^4\) and \(T\). Since
+            \begin{equation*}
+                \{[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
+            \end{equation*}
+            is a basis of \(\mathbb{R}^4\), \(\Span(T)=\mathbb{R}^4\). Now, we form
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    2 & 0 & 1 & 0 & 0 & 0 \\
+                    0 & -1 & 0 & 1 & 0 & 0 \\
+                    4 & -3 & 0 & 0 & 1 & 0 \\
+                    -12 & 9 & 0 & 0 & 0 & 1
+                \end{bmatrix}
+            \end{equation*}
+            and row reduce to
+            \begin{equation*}
+                C=\begin{bmatrix}
+                    1 & 0 & 0 & -\frac{3}{4} & 0 & -\frac{1}{12} \\
+                    0 & 1 & 0 & -1 & 0 & 0 \\
+                    0 & 0 & 1 & \frac{3}{2} & 0 & \frac{1}{6} \\
+                    0 & 0 & 0 & 0 & 1 & \frac{1}{3}
+                \end{bmatrix}.
+            \end{equation*}
+            Hence, our basis for \(\mathbb{R}^4\) is
+            \begin{equation*}
+                B=\{[2,0,4,-12],[0,-1,-3,9],[1,0,0,0],[0,0,1,0]\}.
             \end{equation*}
         \end{example}
         \pagebreak

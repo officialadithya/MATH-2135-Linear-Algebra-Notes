@@ -1,0 +1,377 @@
+\section{An Introduction to the Terminology of Functions}
+
+    Consider the following definitions.
+    \begin{definition}{\Stop\,\,Functions, Domains, and Codomains}{functions}
+
+        A function \(F\), from a domain \(A\) to a codomain \(B\), that is, \(F:A\to B\) is a map from the elements of a set \(A\) to a set \(B\) such that for all \(a\in A\), there exists a unique \(b\in B\) such that \(a\) is mapped to \(b\) by \(F\).
+
+    \end{definition}
+    \begin{definition}{\Stop\,\,Images and Pre-Images}{imagespreimage}
+
+        Let \(F:A\to B\) be a function. For \(a\in A\), the image of \(a\) is written as \(F(a)\) and is the unique element of \(B\) to which \(a\) is mapped to by \(F\). For \(b\in B\), the pre-images of \(b\) are the elements of \(A\) that map to \(b\) by \(F\).
+
+    \end{definition}
+    \begin{definition}{\Stop\,\,Range}{range}
+
+        Let \(F:A\to B\) be a function. The image of the domain, \(X\), is the range of \(F\).
+        
+    \end{definition}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    Consider the following example.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Function?}{functanal}
+        
+        Define \(R:\mathbb{N}\to\mathbb{N}\) where for \(a,b\in\mathbb{N}\), \(a\sim_Rb\iff b=a^2\). Determine if \(R\) is a function. State the domain, codomain, and range of \(R\).
+        \\
+        \\
+        Consider the following diagram.
+        \begin{center}
+            \begin{tikzpicture}[
+                >=stealth,
+                bullet/.style={
+                  fill=black,
+                  circle,
+                  minimum width=1pt,
+                  inner sep=1pt
+                },
+                projection/.style={
+                  ->,
+                  thick,
+                  shorten <=2pt,
+                  shorten >=2pt
+                },
+                every fit/.style={
+                  ellipse,
+                  draw,
+                  inner sep=0pt
+                },
+                scale=0.8
+                ]
+                \node[bullet,label=above:\(\mathbb{N}\)] (A) at (0,-1) {};
+                \node[bullet,label=above:\(\mathbb{N}\)] (B) at (4,-1) {};
+                \node[bullet,label=below:\(\vdots\)] (aEND) at (0,-5) {};
+                \node[bullet,label=below:\(\vdots\)] (bEND) at (4,-5) {};
+                \foreach \y/\l in {1/0,2/1,3/2,4/3,5/4}
+                  \node[bullet,label=left:$\l$] (a\y) at (0,-1*\y) {};
+            
+                \foreach \y/\l in {1/0,2/1,3/4,4/9,5/16}
+                  \node[bullet,label=right:$\l$] (b\y) at (4,-1*\y) {};
+            
+                \node[draw,fit=(a1) (a2) (a3) (a4) (a5) (aEND), minimum width=2cm] {} ;
+                \node[draw,fit=(b1) (b2) (b3) (b4) (b5) (bEND), minimum width=2cm] {} ;
+            
+                \draw[projection] (a1) -- (b1);
+                \draw[projection] (a2) -- (b2);
+                \draw[projection] (a3) -- (b3);
+                \draw[projection] (a4) -- (b4);
+                \draw[projection] (a5) -- (b5);
+            \end{tikzpicture}
+        \end{center}
+        \vphantom
+        \\
+        \\
+        We recognize that \(R\) is a function, as each output only has one input. Notice that if \(R\) were a relation on \(\mathbb{Z}\), this would not be true. Furthermore, the domain and codomain of \(R\) is \(\mathbb{N}\). The range of \(R\) is the set of all perfect squares.
+    \end{example}
+
+\pagebreak
+
+\section{Injections, Surjections, and Bijections}
+
+    Consider the following definitions.
+    \begin{definition}{\Stop\,\,Injective Functions}{injectivefunctions}
+        
+        Given a function \(F:A\to B\), \(F\) is injective, or one-to-one, if and only if
+        \begin{equation*}
+            \forall a_1,a_2\in A,a_1\neq a_2\implies F(a_1)\neq F(a_2).
+        \end{equation*}
+        That is, \(F\) is injective if and only if
+        \begin{equation*}
+            \forall a_1,a_2\in A, F(a_1)=F(a_2)\implies a_1=a_2.
+        \end{equation*}
+        
+    \end{definition}
+    \begin{definition}{\Stop\,\,Surjective Functions}{surjectivefunctions}
+    
+        Given a function \(F:A\to B\), \(F\) is surjective, or onto, if and only if
+        \begin{equation*}
+            \range F = B.
+        \end{equation*}
+        That is, \(F\) is surjective if and only if
+        \begin{equation*}
+            \forall b\in B, \exists a\in A,F(a)=b.
+        \end{equation*}
+        
+    \end{definition}
+    \begin{definition}{\Stop\,\,Bijective Functions}{bijectivefunctions}
+    
+        Given a function \(F:A\to B\), \(F\) is bijective, if and only if \(F\) is both injective and surjective. That is, \(F\) is bijective if and only if
+        \begin{equation*}
+            (\forall a_1,a_2\in A, F(a_1)=F(a_2)\implies a_1=a_2) \wedge (\forall b\in B, \exists a\in A,F(a)=b).
+        \end{equation*}
+        
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Consider the following examples.
+    \begin{example}{\Difficulty\,\Difficulty\,\,The Arctangent: Part I}{arctan1}
+        
+        Consider \(F:\mathbb{R}^2\to\mathbb{R}^2\) given by \(F(x)=\arctan x\). Determine if \(F\) is injective, surjective, or bijective.
+        \begin{itemize}
+            \item Injective: \(F\) is injective.
+            \begin{itemize}
+                \item Suppose \(\arctan(a_1)=\arctan(a_2)\). If we take the tangent of both sides, we see that \(a_1=a_2\).
+                \item Alternatively, if \(a_1\neq a_2\), we observe that \(\arctan(a_1)\neq\arctan(a_2)\) because \(\arctan x\) is monotonically increasing.
+            \end{itemize}
+            \item Surjective: \(F\) is not surjective.
+            \begin{itemize}
+                \item We see that \(\range F=\left\{x:-\frac{\pi}{2}<x<\frac{\pi}{2}\right\}\).
+            \end{itemize}
+            \item Bijective: \(F\) is not bijective.
+        \end{itemize}
+    \end{example}
+    \begin{example}{\Difficulty\,\Difficulty\,\,The Arctangent: Part II}{arctan2}
+        
+        Consider \(F:\mathbb{R}^2\to\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\) given by \(F(x)=\arctan x\). Determine if \(F\) is injective, surjective, or bijective.
+        \begin{itemize}
+            \item Injective: \(F\) is injective.
+            \item Surjective: \(F\) is surjective.
+            \item Bijective: \(F\) is bijective.
+        \end{itemize}
+    
+    \end{example}
+    \vphantom
+    \\
+    \\
+    We note that to make a function injective, we can often restrict the domain. Similarly, to make a function surjective, we can modify the codomain.
+    
+\pagebreak
+
+\section{Composition and Inverses}
+
+    Consider the following definitions and theorems.
+    \begin{definition}{\Stop\,\,Compositions}{comp}
+
+        For functions \(F:A\to B\) and \(G:B\to C\), the composition of \(F\) and \(G\) is \(G\circ F:A\to C\), which is given by
+        \begin{equation*}
+            (G\circ F)(a)=G(F(a)).
+        \end{equation*}
+        
+    \end{definition}
+    \begin{theorem}{\Stop\,\,Compositions, Injectivity, and Surjectivity}{compinjsur}
+
+        Let \(F:A\to B\) and \(G:B\to C\) be functions. Then,
+        \begin{enumerate}
+            \item If both \(F\) and \(G\) are injective, \(G\circ F:A\to C\) is injective.
+            \begin{proof}
+                Suppose both \(F\) and \(G\) are injective. Now, suppose 
+                \begin{equation*}
+                    (G\circ F)(a_1)=G(F(a_1))=(G\circ F)(a_2)=G(F(a_2))
+                \end{equation*}
+                 for \(a_1,a_2\in A\). We wish to show that \(a_1=a_2\). We see that \(F(a_1)=F(a_2)\) since \(G\) is injective. Then, since \(F\) is injective, \(a_1=a_2\).
+            \end{proof}
+            \item If both \(F\) and \(G\) are surjective, \(G\circ F:A\to C\) is surjective.
+            \begin{proof}
+                Suppose both \(F\) and \(G\) are surjective. Consider some arbitrary \(c\in C\). We wish to find some \(a\in A\) such that \((G\circ F)(a)=G(F(a))=c\). Since \(G\) is surjective, there exists some \(b\in B\) such that \(G(b)=c\). Since \(F\) is surjective, there exists some \(a\in A\) such that \(F(a)=b\). Thus, \(G(F(a))=G(b)=c\).
+            \end{proof}
+        \end{enumerate}
+        
+    \end{theorem}
+    \begin{definition}{\Stop\,\,Inverse Functions}{invfunc}
+
+        The functions \(F:A\to B\) and \(G:B\to A\) are inverses of each other if and only if, for all \(a\in A\) and \(b\in B\),
+        \begin{equation*}
+            (G\circ F)(a)=a
+        \end{equation*}
+        and
+        \begin{equation*}
+            (F\circ G)(b)=b.
+        \end{equation*}
+        
+    \end{definition}
+    \pagebreak
+    \begin{theorem}{\Stop\,\,Existence of Inverse Functions}{existinv}
+        
+        The function \(F:A\to B\) has an inverse \(G:B\to A\) if and only if \(F\) is bijective.
+        \begin{proof}
+            Suppose \(F:A\to B\) has an inverse \(G:B\to A\). Suppose \(F(a_1)=F(a_2)\) for \(a_1,a_2\in A\). Since \(F(a_1)=F(a_2)\), \(G(F(a_1))=G(F(a_2))\), but since \(G\) is an inverse of \(F\),
+            \begin{equation*}
+                G(F(a_1))=a_1=G(F(a_2))=a_2.
+            \end{equation*}
+            Thus, \(F\) is injective. Consider some arbitrary \(b\in B\). Then, we have \(G(b)=a\) since \(G\) will map all \(b\in B\) to some \(a\in A\). Since \(F\) and \(G\) are inverses, we have \(F(a)=F(G(b))=b\), so \(F\) is surjective. We have, at this point, shown that \(F\) is bijective. Now, suppose \(F\) is bijective. Consider some arbitrary \(b\in B\). Then, since \(F\) is surjective, there exists some \(a\in A\) such that \(F(a)=b\). Since \(F\) is surjective, \(a\) is unique. Now, consider the map \(G:Y\to X\) which maps each \(b\in B\) to its unique pre-image \(a\in A\) under \(F\). Then, \((F\circ G)(b)=F(G(b))=F(a)=b\). We also have \((G\circ F)(a)\) to be the unique pre-image of \(F(a)\) under \(F\). We have that \(a\) is the unique pre-image, so \((G\circ F)(a)=a\), so \(F\) and \(G\) are inverses. 
+        \end{proof}
+
+    \end{theorem}
+    \begin{theorem}{\Stop\,\,Uniqueness of Inverse Functions}{uniqueinv}
+        
+        If \(F:A\to B\) has an inverse \(G:B\to A\), \(G\) is the only inverse of \(X\).
+        \begin{proof}
+            Suppose \(G_1:B\to A\) and \(G_2:B\to A\) are both inverses of \(F\). We wish to show that for all \(b\in B\), \(G_1(b)=G_2(b)\). We have \((G_2\circ F)(a)=a\) for all \(a\in A\), since \(F\) and \(G_2\) are inverses. Similarly, we have \((F\circ G_1)(b)=b\). We know \(G_1(b)\in A\), so
+            \begin{equation*}
+                G_1(b)=(G_2\circ F)(G_1(b))=G_2(F(G_1(b)))=G_2((F\circ G_1)(b))=G_2(b),
+            \end{equation*}
+            as desired.
+        \end{proof}
+
+    \end{theorem}
+
+\pagebreak
+
+\section{The Pigeonhole Principle}
+
+    Consider the following theorem.
+    \begin{theorem}{\Stop\,\,The Pigeonhole Principle}{pigeonhole}
+
+        Let \(F:A\to B\) be a function with finite sets \(A\) and \(B\). If \(|A|>|B|\), \(F\) is not injective.
+        
+    \end{theorem}
+    \vphantom
+    \\
+    \\
+    The above result gets its name from the conceptual problem of a function that maps pigeons to holes. If there are more pigeons than holes, there exists a hole with more than one pigeon. To visualize this, consider the following diagrams.
+    \begin{center}
+        \begin{tikzpicture}[
+            >=stealth,
+            bullet/.style={
+                fill=black,
+                circle,
+                minimum width=1pt,
+                inner sep=1pt
+            },
+            projection/.style={
+                ->,
+                thick,
+                shorten <=2pt,
+                shorten >=2pt
+            },
+            every fit/.style={
+                ellipse,
+                draw,
+                inner sep=0pt
+            },
+            scale=0.7
+            ]
+            \node[bullet,label=above:\(A\)] (A) at (0,-1) {};
+            \node[bullet,label=above:\(B\)] (B) at (4,-1) {};
+            \foreach \y/\l in {1/,2/,3/,4/,5/}
+                \node[bullet,label=left:$\l$] (a\y) at (0,-1*\y) {};
+        
+            \foreach \y/\l in {1/,2/,3/,4/}
+                \node[bullet,label=right:$\l$] (b\y) at (4,-1*\y) {};
+                \node[] (b5) at (4,-1*5) {};
+        
+            \node[draw,fit=(a1) (a2) (a3) (a4) (a5), minimum width=1.5cm] {} ;
+            \node[draw,fit=(b1) (b2) (b3) (b4) (b5), minimum width=1.5cm] {} ;
+        
+            \draw[projection] (a1) -- (b1);
+            \draw[projection] (a2) -- (b2);
+            \draw[projection] (a3) -- (b3);
+            \draw[projection] (a4) -- (b4);
+            \draw[projection] (a5) -- (b4);
+            
+            \node[bullet,label=above:\(A\)] (A) at (8,-1) {};
+            \node[bullet,label=above:\(B\)] (B) at (12,-1) {};
+            \foreach \y/\l in {1/,2/,3/,4/}
+                \node[bullet,label=left:$\l$] (c\y) at (8,-1*\y) {};
+                \node[] (c5) at (8,-1*5) {};
+        
+            \foreach \y/\l in {1/,2/,3/,4/,5/}
+                \node[bullet,label=right:$\l$] (d\y) at (12,-1*\y) {};
+        
+            \node[draw,fit=(c1) (c2) (c3) (c4) (c5), minimum width=1.5cm] {} ;
+            \node[draw,fit=(d1) (d2) (d3) (d4) (d5), minimum width=1.5cm] {} ;
+        
+            \draw[projection] (c1) -- (d1);
+            \draw[projection] (c2) -- (d2);
+            \draw[projection] (c3) -- (d3);
+            \draw[projection] (c4) -- (d4);
+            
+        \end{tikzpicture}
+    \end{center}
+    \vphantom
+    \\
+    \\
+    While the Pigeonhole Principle may seem trivial, it may be used to construct various proofs. There are three parts to every Pigeonhole argument.
+    \begin{enumerate}
+        \item Define \(A\), the set of pigeons.
+        \item Define \(B\), the set of pigeonholes, such that \(|A|>|B|\).
+        \item Define \(F:A\to B\), the method of assigning pigeons to pigeonholes.
+    \end{enumerate}
+    \vphantom
+    \\
+    \\
+    We may then conclude that
+    \begin{equation*}
+        \exists a_1,a_2\in A,a_1\neq a_2\wedge F(a_1)=F(a_2).
+    \end{equation*}
+    \pagebreak
+    Consider the following examples.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Hairs}{hairs}
+        
+        Prove that two people from the state of Colorado have the same number of hairs on their head.
+        \begin{proof}
+            The state of Colorado, at the time of writing, has roughly \(5.8\times10^6\) people, and it is safe to assume that the number of human hairs is less than \(5\times10^5\). Let \(A\) be the set of people in Colorado, with \(|A|=5.8\times10^6\) and let \(B\) be the set of all integers from \(0\) to \(5\times10^5\), inclusive, noninclusive. We note that \(|B|=5\times10^5\). Let the function \(F:A\to B\) be the function that maps a given person to the number of hairs on their head. We see that \(F\) is non-injective, therefore, at least two people from the state of Colorado must have the same number of hairs on their head.
+        \end{proof}
+    
+    \end{example}
+    \begin{example}{\Difficulty\,\Difficulty\,\,Sphere}{sphere}
+    
+        Prove that given \(5\) points on the surface of a sphere, there exists a hemisphere containing at least four of them. Any point on the boundary between the hemispheres is simultaneously in both hemispheres.
+        \begin{proof}
+            Pick two points, and cut the sphere in half such that the two points lie on the cut. Let \(A\) be the set of the three remaining points, and let \(B\) be the set of the two pieces of the sphere--the hemispheres. Let \(F:A\to B\) map the points to their corresponding hemisphere. As \(|A|=3\) and \(|B|=2\), we see that \(F\) is non-injective, meaning that at least two remaining points will fall on the same hemisphere. These two points add to the two points that lie on the cut, giving four points in the hemisphere.
+        \end{proof}
+    
+    \end{example}
+    \pagebreak
+    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,1978 Putnam}{1978putnam}
+        
+        Prove that any \(20\) distinct integers chosen from the set \(S=\{1,4,7,10,\ldots,100\}\) will contain a pair that sums to \(104\).
+        \\
+        \\
+        Before delving into the proof itself, we will proceed with some informal experimentation. Consider the following pairs \(S\) that sum to \(104\).
+        \begin{align*}
+            104&=\underbrace{4}_{1+1(3)}+100 \\
+            &=\underbrace{7}_{1+2(3)}+97 \\
+            &=\underbrace{10}_{1+3(3)}+94 \\
+            &=\underbrace{13}_{1+4(3)}+91 \\
+            &\qquad\qquad\vdots \\
+            &=\underbrace{49}_{1+16(3)}+55.
+        \end{align*}
+        Note that there are \(16\) pairs of numbers that add to \(104\). Also, \(1\) and \(52\) are not able to be used in a pair that sums to \(104\). Therefore, any choice of \(20\) distinct integers from \(S\) will contain at least \(18\) distinct integers selected from \(S-\{1,52\}\). We are now ready to begin our proof.
+        \begin{proof}
+            Let \(A\) be \(18\) distinct integers chosen from \(S-\{1,52\}\). Let \(B\) be the set of pairs of integers that sum to \(104\). That is,
+            \begin{align*}
+                B&=\{\{4,100\},\{7,97\},\{10,94\},\ldots,\{49,55\}\} \\
+                &=\{\{1+3n, 103-3n\}:n\in\{1,2,3,\ldots,16\}\}.
+            \end{align*}
+            Note that \(|A|=18\) and \(|B|=16\). Let \(F:A\to B\) be given by 
+            \begin{equation*}
+                F(a)=\{a,104-a\}.
+            \end{equation*}
+            for \(a\in A\). The function \(F\) is non-injective by the Pigeonhole Principle, so there are two distinct elements of \(A\) that are mapped to the same element of \(B\). These two elements are the pair that will sum to \(104\).
+        \end{proof}
+    
+    \end{example}
+    \vphantom
+    \\
+    \\
+    The Extended Pigeonhole Principle is, well, an extended form of the Pigeonhole Principle. Consider the following statement.
+    \begin{theorem}{\Stop\,\,THe Extended Pigeonhole Principle}{extpigeonhole}
+    
+        If \(n\) ``pigeons'' land into \(k\) ``pigeonholes,'' there exists at least one pigeonhole with at least \(\floor{\frac{n-1}{k}}=\ceil{\frac{n}{k}}\) pigeons.
+    
+    \end{theorem}
+    \vphantom
+    \\
+    \\
+    We may use Theorem \ref{thm:extpigeonhole} to better quantify the ``population'' of the holes. Consider the following exercise.
+    \begin{exercise}{\Difficulty\,\Difficulty\,\Difficulty\,\,Equilateral Triangle}{equtri}
+    
+        Prove that given \(9\) points in an equilateral triangle with unit sides, there exist \(3\) that define a triangle of area less than or equal to \(\frac{\sqrt{3}}{8}\).
+        \begin{proof}
+            Let \(A\) be the set of the nine points in the triangle. Let \(B\) be the set of four equilateral triangles given by the first iteration of Sierpinski's Triangle. Let \(F:A\to B\) map each point to the triangle that contains the point. There must exist a triangle containing \(\ceil{\frac{9}{4}}=3\) points. The four equilateral triangles have area \(\frac{\sqrt{3}}{4\cdot2}\), and the triangle formed by the three points is therefore less than or equal to \(\frac{\sqrt{3}}{4\cdot2}\).
+        \end{proof}
+    
+    \end{exercise}
