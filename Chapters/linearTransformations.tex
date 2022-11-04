@@ -1,5 +1,26 @@
 \section{Lecture 30: November 4, 2022}
 
-    \subsection{Functions}
+    \subsection{An Introduction to Linear Transformations}
 
-        Before proceeding into linear transformations, for a review of functions and associated terminology, consult Appendix \ref{appendix:b}.
+        Before proceeding into linear transformations, for a review of functions and associated terminology, consult Appendix \ref{appendix:b}. Consider the following definition.
+        \begin{definition}{\Stop\,\,Linear Transformations}{lineartransformation}
+
+            Let \(V\) and \(W\) be vector spaces. Let \(F:V\to W\) be a function. Then, \(F\) is a linear transformation if and only if both the following conditions hold:
+            \begin{enumerate}
+                \item \(\forall \vec{v}_1,\vec{v}_2\in V, F(\vec{v}_1)+F(\vec{v}_2)=F(\vec{v}_1)+F(\vec{v}_2)\).
+                \item \(\forall c\in\mathbb{F},\forall\vec{v}\in V, F(c\vec{v})=cF(\vec{v})\).
+            \end{enumerate}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        We remark that a linear transformation ``preserves'' the operations that give structure to the vector spaces involved: vector addition and scalar multiplication. Consider the following examples.
+        \begin{example}{\Stop\,\,Is it a Linear Transformation? 1}{lintrans1}
+
+            Let \(F:\mathcal{M}_{mn}\to \mathcal{M}_{nm}\) where \(F(A)=A^T\). Is \(F\) a linear transformation?
+            \\
+            \\
+            
+            
+        \end{example}
