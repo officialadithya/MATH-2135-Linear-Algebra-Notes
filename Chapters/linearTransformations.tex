@@ -15,12 +15,60 @@
         \vphantom
         \\
         \\
-        We remark that a linear transformation ``preserves'' the operations that give structure to the vector spaces involved: vector addition and scalar multiplication. Consider the following examples.
-        \begin{example}{\Stop\,\,Is it a Linear Transformation? 1}{lintrans1}
+        We remark that a linear transformation ``preserves'' the operations that give structure to the vector spaces involved: vector addition and scalar multiplication.
+        \pagebreak
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 1}{lintrans1}
 
             Let \(F:\mathcal{M}_{mn}\to \mathcal{M}_{nm}\) where \(F(A)=A^T\). Is \(F\) a linear transformation?
             \\
             \\
+            For matrices \(A_1,A_2\in\mathcal{M}_{mn}\) and scalar \(c\in\mathbb{R}\), we have
+            \begin{align*}
+                F(A_1+A_2)&=(A_1+A_2)^T \\
+                &=A_1^T+A_2^T \\
+                &=F(A_1)+F(A_2)
+            \end{align*}
+            and
+            \begin{align*}
+                F(cA_1)&=(cA_1)^T \\
+                &=cA_1^T \\
+                &=cF(A_1).
+            \end{align*}
+            Thus, \(F\) is a linear transformation.
             
-            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 2}{lintrans2}
+
+            Let \(F:\mathcal{P}_{n}\to\mathcal{P}_{n-1}\) where \(F(\vec{p})=\vec{p}'\), the derivative of \(\vec{p}\). Is \(F\) a linear transformation?
+            \\
+            \\
+            For \(\vec{p}_1,\vec{p}_2\in P\), we know, from Calculus, that the derivative of a sum is the sum of the derivatives, so
+            \begin{align*}
+                F(\vec{p}_1+\vec{p_2})&=(\vec{p}_1+\vec{p}_2)' \\
+                &=\vec{p}_1'+\vec{p}_2' \\
+                &=F(\vec{p}_1)+F(\vec{p}_2).
+            \end{align*}
+            For \(c\in\mathbb{R}\), the constant multiple rule, from Calculus, tells us that
+            \begin{align*}
+                F(c\vec{p}_1)&=(c\vec{p}_1)' \\
+                &=c\vec{p_1}' \\
+                &=cF(\vec{p_1}).
+            \end{align*}
+            Thus, \(F\) is a linear transformation.
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 3}{lintrans3}
+
+            Let \(V\) be a vector space with \(\dim V=n\). Let \(B\) be an ordered basis for \(B\). Then, every \(\vec{v}\in V\) has coordinatization \([\vec{v}]_B\) with respect to \(B\). Consider the function \(F:V\to\mathbb{R}^n\) given by 
+            \begin{equation*}
+                F(\vec{v})=[\vec{v}]_B.
+            \end{equation*}
+            Is \(F\) a linear transformation?
+            \\
+            \\
+            By Theorem \ref{thm:propcoords}, \(F\) is a linear transformation.
+
         \end{example}
