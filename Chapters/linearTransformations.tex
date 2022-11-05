@@ -42,10 +42,10 @@
         \end{example}
         \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 2}{lintrans2}
 
-            Let \(F:\mathcal{P}_{n}\to\mathcal{P}_{n-1}\) where \(F(\vec{p})=\vec{p}'\), the derivative of \(\vec{p}\). Is \(F\) a linear transformation?
+            Let \(F:\mathcal{P}_n\to\mathcal{P}_{n-1}\) where \(F(\vec{p})=\vec{p}'\), the derivative of \(\vec{p}\). Is \(F\) a linear transformation?
             \\
             \\
-            For \(\vec{p}_1,\vec{p}_2\in P\), we know, from Calculus, that the derivative of a sum is the sum of the derivatives, so
+            For \(\vec{p}_1,\vec{p}_2\in \mathcal{P}_n\), we know, from Calculus, that the derivative of a sum is the sum of the derivatives, so
             \begin{align*}
                 F(\vec{p}_1+\vec{p_2})&=(\vec{p}_1+\vec{p}_2)' \\
                 &=\vec{p}_1'+\vec{p}_2' \\
@@ -62,6 +62,31 @@
         \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 3}{lintrans3}
 
+            Let \(F:\mathcal{P}_{n}\to W\) where \(W=\Span\left\{\frac{1}{s},\ldots,\frac{1}{s^{n+1}}\right\}\) and
+            \begin{align*}
+                F(\vec{p})&=\laplace{\vec{p}(t)}(s) \\
+                &=\int_0^\infty e^{-st}\vec{p}(t)\dd t.
+            \end{align*}
+            Is \(F\) a linear transformation?
+            \\
+            \\
+            For \(\vec{p}_1(t),\vec{p}_2(t)\in\mathcal{P}_n\), we have
+            \begin{align*}
+                F(\vec{p}_1(t)+\vec{p}_2(t))&=\int_0^\infty e^{-st}(\vec{p}_1(t)+\vec{p}_2(t))\dd t \\
+                &=\int_0^\infty e^{-st}\vec{p}_1(t)+e^{-st}\vec{p}_2(t)\dd t \\
+                &=\int_0^\infty e^{-st}\vec{p}_1(t)\dd t+\int_0^\infty e^{-st}\vec{p}_2(t)\dd t \\
+                &=F(\vec{p}_1(t))+F(\vec{p}_2(t)).
+            \end{align*}
+            For \(c\in\mathbb{R}\), we have 
+            \begin{align*}
+                F(c\vec{p}_1(t))&=\int_0^\infty ce^{-st}\vec{p}_1(t)\dd t \\
+                &=c\int_0^\infty e^{-st}\vec{p}_1(t)\dd t \\
+                &=cF(\vec{p}_1(t)).
+            \end{align*}
+            Thus, \(F\) is a linear transformation.
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 4}{lintrans4}
+
             Let \(V\) be a vector space with \(\dim V=n\). Let \(B\) be an ordered basis for \(B\). Then, every \(\vec{v}\in V\) has coordinatization \([\vec{v}]_B\) with respect to \(B\). Consider the function \(F:V\to\mathbb{R}^n\) given by 
             \begin{equation*}
                 F(\vec{v})=[\vec{v}]_B.
@@ -72,15 +97,6 @@
             By Theorem \ref{thm:propcoords}, \(F\) is a linear transformation.
 
         \end{example}
-        \vphantom
-        \\
-        \\
-        We remark that not every function between vector spaces is a linear transformation. To show that some function between vector spaces is not a linear transformation, we must show a counterexample of the conditions in Theorem \ref{def:lineartransformation}. Consider the following definition.
-        \begin{definition}{\Stop\,\,Linear Operators}{linearoperator}
-
-            Let \(V\) be a vector space. A linear operator on \(V\) is a linear transformation whose domain and codomain are both \(V\).
-            
-        \end{definition}
         \pagebreak
         \vphantom
         \\
@@ -92,22 +108,11 @@
             \begin{enumerate}
                 \item \(L(\vec{0}_V)=L(\vec{0}_W)\).
                 \begin{proof}
-                    Consider
-                    \begin{align*}
-                        L(\vec{0}_V)&=L(0\vec{0}_V) \\
-                        &=0L(\vec{0}_V) \\
-                        &=\vec{0}_W,
-                    \end{align*}
-                    as desired.
+                    Consider \(L(\vec{0}_V)=L(0\vec{0}_V)=0L(\vec{0}_V)=\vec{0}_W\), as desired.
                 \end{proof}
                 \item \(L(-\vec{v})=-L(\vec{v})\).
                 \begin{proof}
-                    Consider
-                    \begin{align*}
-                        L(-\vec{v})&=L(-1\vec{v}) \\
-                        &=-L(\vec{v}),
-                    \end{align*}
-                    as desired.
+                    Consider \(L(-\vec{v})=L(-1\vec{v})=-L(\vec{v})\), as desired.
                 \end{proof}
                 \item \(L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n)=c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n)\) for \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in V\) with \(n\geq2\).
                 \begin{proof}
@@ -130,3 +135,41 @@
             \end{enumerate}
             
         \end{theorem}
+        \vphantom
+        \\
+        \\
+        We remark that not every function between vector spaces is a linear transformation. To show that some function between vector spaces is not a linear transformation, we must show a counterexample of the conditions in Definition \ref{def:lineartransformation}.
+        \pagebreak
+        \\
+        \\
+        We now turn to compositions of linear transformations.
+        \begin{theorem}{\Stop\,\,Compositions of Linear Transformations}{compositionslintrans}
+
+            Let \(V_1\), \(V_2\), and \(V_3\) be vector spaces and \(L_1:V_1\to V_2\) and \(L_2:V_2\to V_3\) be linear transformations. Then, \((L_2\circ L_1):V_1\to V_3\) with \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))\) is a linear transformation.
+            \begin{proof}
+                For \(\vec{v}_1,\vec{v}_2\in V_1\), we have
+                \begin{align*}
+                    (L_2\circ L_1)(\vec{v}_1+\vec{v}_2)&=L_2(L_1(\vec{v}_1+\vec{v}_2)) \\
+                    &=L_2(L_1(\vec{v}_1)+L_1(\vec{v}_2)) \\
+                    &=L_2(L_1(\vec{v}_1))+L_2(L_1(\vec{v}_2)) \\
+                    &=(L_2\circ L_1)(\vec{v}_1)+(L_2\circ L_1)(\vec{v}_2).
+                \end{align*}
+                Then, for \(c\in\mathbb{F}\), we have
+                \begin{align*}
+                    (L_2\circ L_1)(c\vec{v}_1)&=L_2(L_1(c\vec{v}_1)) \\
+                    &=L_2(cL_1(\vec{v}_1)) \\
+                    &=cL_2(L_1(\vec{v}_1)) \\
+                    &=c(L_2\circ L_1)(\vec{v}_1),
+                \end{align*}
+                as desired.
+            \end{proof}            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We now define a special case of linear transformations: linear operators.
+        \begin{definition}{\Stop\,\,Linear Operators}{linearoperator}
+
+            Let \(V\) be a vector space. A linear operator on \(V\) is a linear transformation whose domain and codomain are both \(V\).
+            
+        \end{definition}
