@@ -354,6 +354,15 @@
         \end{proof}
     
     \end{example}
+    \pagebreak
+    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Subset Sum}{subsetssum}
+
+        Let \(S\) be a set of \(10\) positive \(2\)-digit numbers. Prove that there exist two disjoint subsets of \(S\) that have the same sum. 
+        \begin{proof}
+            A set with \(n\) elements has \(2^n\) subsets. Therefore, \(S\) has \(1024\) subsets. The upper bound for the sum of a subset of \(S\) would be the sum of the largest subset of \(S\) when \(S=\{90,91,92,93,94,95,96,97,98,99\}\). This sum is \(945\). Therefore, the sum of a subset of \(S\) will be in the interval \([0,945]\). Let \(A\) be the power set of \(S\) and let \(B\) be the set of all integers in the closed interval \([0,945]\). Let \(F:A\to B\) be the function that maps a subset to its sum. As \(|A|>|B|\), at least two subsets must have the same sum. If these two subsets are not disjoint, we just remove the elements in the intersection from both subsets. The sum of the subsets will still be equal.
+        \end{proof}
+
+    \end{example}
     \vphantom
     \\
     \\
@@ -366,12 +375,20 @@
     \vphantom
     \\
     \\
-    We may use Theorem \ref{thm:extpigeonhole} to better quantify the ``population'' of the holes. Consider the following exercise.
-    \begin{exercise}{\Difficulty\,\Difficulty\,\Difficulty\,\,Equilateral Triangle}{equtri}
+    We may use Theorem \ref{thm:extpigeonhole} to better quantify the ``population'' of the holes. Consider the following example.
+    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Equilateral Triangle}{equtri}
     
         Prove that given \(9\) points in an equilateral triangle with unit sides, there exist \(3\) that define a triangle of area less than or equal to \(\frac{\sqrt{3}}{8}\).
         \begin{proof}
             Let \(A\) be the set of the nine points in the triangle. Let \(B\) be the set of four equilateral triangles given by the first iteration of Sierpinski's Triangle. Let \(F:A\to B\) map each point to the triangle that contains the point. There must exist a triangle containing \(\ceil{\frac{9}{4}}=3\) points. The four equilateral triangles have area \(\frac{\sqrt{3}}{4\cdot2}\), and the triangle formed by the three points is therefore less than or equal to \(\frac{\sqrt{3}}{4\cdot2}\).
         \end{proof}
     
-    \end{exercise}
+    \end{example}
+    \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Square}{square}
+    
+        Prove that among any nine points placed in a unit square, there exist three that form a triangle of area less than or equal to \(\frac{1}{8}\).
+        \begin{proof}
+            Let \(A\) be the set of all nine points in the unit square. Let \(B\) be the set of four squares of equivalent area given by the corners of the unit square. This can informally be thought of as ``folding'' the square in half twice. Each of these smaller squares has area \(\frac{1}{4}\). Let \(F:A\to B\) mach each point in the unit square to the smaller square that contains the point. THere must exist three points that make up a triangle in one of the small squares because \(\ceil{\frac{9}{4}}=3\). The largest triangle that can be enclosed in one of the smaller squares has area \(\frac{1}{8}\), so the three points mentioned earlier must form a triangle with area \(A\leq\frac{1}{8}\).
+        \end{proof}
+    
+    \end{example}
