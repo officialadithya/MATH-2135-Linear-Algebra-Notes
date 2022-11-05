@@ -72,3 +72,61 @@
             By Theorem \ref{thm:propcoords}, \(F\) is a linear transformation.
 
         \end{example}
+        \vphantom
+        \\
+        \\
+        We remark that not every function between vector spaces is a linear transformation. To show that some function between vector spaces is not a linear transformation, we must show a counterexample of the conditions in Theorem \ref{def:lineartransformation}. Consider the following definition.
+        \begin{definition}{\Stop\,\,Linear Operators}{linearoperator}
+
+            Let \(V\) be a vector space. A linear operator on \(V\) is a linear transformation whose domain and codomain are both \(V\).
+            
+        \end{definition}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We now state some properties of linear transformations.
+        \begin{theorem}{\Stop\,\,Properties of Linear Transformations}{proplintrans}
+
+            Let \(V\) and \(W\) be vector spaces, and let \(L:V\to W\) be a linear transformation. Let \(\vec{0}_V\) be the zero vector in \(V\) and \(\vec{0}_W\) be the zero vector in \(W\). Then,
+            \begin{enumerate}
+                \item \(L(\vec{0}_V)=L(\vec{0}_W)\).
+                \begin{proof}
+                    Consider
+                    \begin{align*}
+                        L(\vec{0}_V)&=L(0\vec{0}_V) \\
+                        &=0L(\vec{0}_V) \\
+                        &=\vec{0}_W,
+                    \end{align*}
+                    as desired.
+                \end{proof}
+                \item \(L(-\vec{v})=-L(\vec{v})\).
+                \begin{proof}
+                    Consider
+                    \begin{align*}
+                        L(-\vec{v})&=L(-1\vec{v}) \\
+                        &=-L(\vec{v}),
+                    \end{align*}
+                    as desired.
+                \end{proof}
+                \item \(L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n)=c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n)\) for \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in V\) with \(n\geq2\).
+                \begin{proof}
+                    We proceed by induction. For the base case when \(n=2\), we have
+                    \begin{align*}
+                        L(c_1\vec{v}_1+c_2\vec{v}_2)&=L(c_1\vec{v}_1)+L(c_2\vec{v}_2) \\
+                        &=c_1L(\vec{v}_1)+c_2L(\vec{v}_2).
+                    \end{align*}
+                    Then, suppose that for all \(n=k\), 
+                    \begin{equation*}
+                        L(c_1\vec{v}_1+\cdots+c_k\vec{v}_k)=c_1L(\vec{v}_1)+\cdots+c_kL(\vec{v}_k).
+                    \end{equation*}
+                    Then, we have
+                    \begin{align*}
+                        L(c_1\vec{v}_1+\cdots+c_k\vec{v}_k+c_{k+1}v_{k+1})&=c_1L(\vec{v}_1)+\cdots+c_kL(\vec{v}_k)+L(c_{k+1}\vec{v}_{k+1}) \\
+                        &=c_1L(\vec{v}_1)+\cdots+c_kL(\vec{v}_k)+c_{k+1}L(\vec{v}_{k+1}),
+                    \end{align*}
+                    as desired.
+                \end{proof}
+            \end{enumerate}
+            
+        \end{theorem}
