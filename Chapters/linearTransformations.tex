@@ -197,7 +197,7 @@
         \pagebreak
 \section{Lecture 31: November 7, 2022}
 
-    \subsection{The Matrix of a Linear Transformation}
+    \subsection{Linear Transformations and Bases}
 
         We begin with an important theorem.
         \begin{theorem}{\Stop\,\,Linear Transformations and Bases}{lineartransformationsbases}
@@ -242,5 +242,153 @@
                 Thus, \(L\) and \(R\) are the same transformation.
             \end{proof}
             
+            
+        \end{theorem}
+
+\pagebreak
+
+\section{Lecture 32: November 9, 2022}
+
+    \subsection{The Matrix of a Linear Transformations}
+
+        Consider the following theorem. 
+        \begin{theorem}{\Stop\,\,Matrices and Linear Transformations}{matlintrans}
+            
+            Let \(V\) and \(W\) be vector spaces. Let \(B_V=(\vec{v}_1,\ldots,\vec{v}_n)\) be an ordered basis for \(V\) and let \(B_W=(\vec{w}_1,\ldots,\vec{w}_n)\) be an ordered basis for \(W\). Then, given \(L:V\to W\), there exists a unique matrix \(A_{BC}\in\mathcal{M}_{nn}\) such that
+            \begin{equation*}
+                A_{B_VB_W}[\vec{v}]_{B_V}=[L(\vec{v})]_{B_W}.
+            \end{equation*}
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation}{findmat}
+            
+            Consider
+            \begin{equation*}
+                L:\mathbb{R}^2\to\mathbb{R}^2, \begin{bmatrix} x \\ y \end{bmatrix} \mapsto \begin{bmatrix} x+y \\ x \end{bmatrix}.
+            \end{equation*}
+            Find the linear transformation for \(L\).
+            \\
+            \\
+            Consider
+            \begin{align*}
+                A_{\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 1 \\ 0 \end{bmatrix}\right),\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix},\begin{bmatrix} 0 \\ 1 \end{bmatrix}\right)}&=\begin{bmatrix} L\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) & L\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix}\right) \end{bmatrix} \\
+                &=\begin{bmatrix}
+                    1 & 1 \\
+                    1 & 0
+                \end{bmatrix}.
+            \end{align*}
+            Notice
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 1 \\
+                    1 & 0
+                \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}=\begin{bmatrix} x+y \\ x \end{bmatrix}.
+            \end{equation*}
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Matrices for Linear Transformation, Considering Different Bases}{matricesconsdiffbases}
+            Let \(V\) and \(W\) be vector spaces with \(B\) and \(D\) be bases for \(V\) and \(C\) and \(E\) be bases for \(W\). We suppose \(\dim V = n\) and \(\dim W = m\) and \(L:V\to W\) is a linear transformation. Then,
+            \begin{equation*}
+                QA_{BC}P^{-1}=A_{DE}
+            \end{equation*}
+            where \(P\) is the transition matrix from \(B\) to \(D\) and \(Q\) is the transition matrix from \(C\) to \(E\).
+            \begin{proof}
+                Recall that
+                \begin{enumerate}
+                    \item \(P[\vec{v}]_B=[\vec{v}]_D\).
+                    \item \(P^{-1}[\vec{v}]_D=[\vec{v}]_B\).
+                    \item \(Q[\vec{v}]_C=[\vec{v}]_E\).
+                    \item \(A_{BC}[\vec{v}]_B=[L(\vec{v})]_C\).
+                    \item \(A_{DE}[\vec{v}]_D=[L(\vec{v})]_E\).
+                \end{enumerate}
+                \vphantom
+                \\
+                \\
+                We now consider
+                \begin{align*}
+                    (QA_{BC}P^{-1})[\vec{v}]_D&=(QA_{BC})(P^{-1}[\vec{v}]_D) \\
+                    &=(QA_{BC})[\vec{v}]_B \\
+                    &=Q(A_{BC}[\vec{v}]_B) \\
+                    &=Q[L\vec{v}]_C \\
+                    &=[L\vec{v}]_E \\
+                    &=A_{DE},
+                \end{align*}
+                as desired.
+            \end{proof}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        As an important special case, we revisit and consider similar matrices.
+        \begin{theorem}{\Stop\,\,Similar Matrices and Linear Transformations}{simmatlintrans}
+
+            Let \(V\) and \(W\) be vector spaces with \(V=W\). Let \(B\) and \(D\) be bases for \(V\) and \(C\) and \(E\) be bases for \(W\), with \(B=C\) and \(D=E\). Then, by Theorem \ref{thm:matricesconsdiffbases}.
+            \begin{equation*}
+                PA_{BB}P^{-1}=A_{DD}.
+            \end{equation*}
+            Thus, \(A_{BB}\) is similar to \(A_{DD}\).
+            
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We now define some important concepts.
+        \begin{definition}{\Stop\,\,Kernel}{kernel}
+
+            The kernel of a linear transformation \(L:V\to W\), is given by
+            \begin{equation*}
+                \ker(L)=\{\vec{v}\in V:L(\vec{v})=\vec{0}\}
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Range}{range}
+
+            The range of a linear transformation \(L:V\to W\), is given by
+            \begin{equation*}
+                \range(L)=\{\vec{w}\in W:\exists\vec{v}\in V, L(\vec{v})=\vec{w}\}
+            \end{equation*}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{theorem}{\Stop\,\,Kernel and Range are Subspaces}{kerransubspc}
+
+            Let \(L:V\to W\) be a linear transformation. Then, \(\ker(L)\) is a subspace of \(V\) and \(\range(L)\) is a subspace of \(W\).
+            \begin{proof}
+                For \(\ker(L)\), we have \(\vec{0}_V\in\ker(L)\) since \(L(\vec{0}_V)=\vec{0}_W\). Then, for \(\vec{v}_1,\vec{v}_2\in \ker(L)\), we have
+                \begin{align*}
+                    L(\vec{v}_1+\vec{v}_2)&=L(\vec{v}_1)+L(\vec{v}_2) \\
+                    &=\vec{0}_W+\vec{0}_W \\
+                    &=\vec{0}_W,
+                \end{align*}
+                so \(\vec{v}_1+\vec{v}_2\in\ker(L)\). Then, we also have
+                \begin{align*}
+                    L(c\vec{v}_1)&=cL(\vec{v}_1) \\
+                    &=c\vec{0}_W \\
+                    &=\vec{0}_W,
+                \end{align*}
+                for some \(c\in\mathbb{F}\). Thus, \(c\vec{v}_1\in\ker(L)\), as desired. For \(\range(L)\), we have \(\vec{0}_W\in\range(L)\) since \(L(\vec{0}_V)=\vec{0}_W\). Then, if \(\vec{w}_1,\vec{w}_2\in\range(L)\), \(L(\vec{v}_1)=\vec{w}_1\) and \(L(\vec{v}_2)=\vec{w}_2\) for some \(\vec{v}_1,\vec{v}_2\in V\). Then,
+                \begin{align*}
+                    L(\vec{v}_1+\vec{v}_2)&=L(\vec{v}_1)+L(\vec{v}_2) \\
+                    &=\vec{w}_1+\vec{w}_2,
+                \end{align*}
+                meaning \(\vec{w}_1+\vec{w}_2\in \range(L)\). Then, we also have
+                \begin{align*}
+                    L(c\vec{v}_1)&=cL(\vec{v}_1) \\
+                    &=c\vec{w}
+                \end{align*}
+                for some \(c\in\mathbb{F}\). Thus, \(c\vec{w}\in\range(L)\), as desired.
+            \end{proof}
             
         \end{theorem}
