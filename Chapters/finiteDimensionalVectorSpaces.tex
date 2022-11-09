@@ -1480,6 +1480,66 @@
             \end{enumerate}
             
         \end{theorem}
+        \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Coordinatization 4}{coords4}
+
+            Let \(B\) be an ordered basis of a subspace of \(\mathbb{R}^n\) where
+            \begin{equation*}
+                B=([2,6,-4,2],[-2,-4,-8,1],[0,1,-6,-2]).
+            \end{equation*}
+            Let \(\vec{v}=[-2,-4,-8,-2]\). Find \([\vec{v}]_B\).
+            \\
+            \\
+            To find \([\vec{v}]_B\), we form
+            \begin{equation*}
+                \begin{bmatrix}
+                    2 & -2 & 0 & | & -2 \\
+                    6 & -4 & 1 & | & -4 \\
+                    -4 & -8 & -6 & | & -8 \\
+                    2 & 1 & -2 & | & -2
+                \end{bmatrix}
+            \end{equation*}
+            and row reduce to get
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & | & -\frac{3}{7} \\
+                    0 & 1 & 0 & | & \frac{4}{7} \\
+                    0 & 0 & 1 & | & \frac{6}{7} \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Thus, \([\vec{v}]_B=\left[-\frac{3}{7},\frac{4}{7},\frac{6}{7}\right]\).
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Coordinatization 5}{coords5}
+
+            Let \(B\) be an ordered basis of a subspace of \(\mathbb{R}^n\) where
+            \begin{equation*}
+                B=([1,0,16,0],[0,1,-6,0],[0,0,0,1]).
+            \end{equation*}
+            Let \(\vec{v}=[-2,-4,-8,-2]\). Find \([\vec{v}]_B\).
+            \\
+            \\
+            To find \([\vec{v}]_B\), we form
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & | & -2 \\
+                    0 & 1 & 0 & | & -4 \\
+                    16 & -6 & 0 & | & -8 \\
+                    0 & 0 & 1 & | & -2
+                \end{bmatrix}
+            \end{equation*}
+            and row reduce to get
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & | & -2 \\
+                    0 & 1 & 0 & | & -4 \\
+                    0 & 0 & 1 & | & -2 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Thus, \([\vec{v}]_B=[-2,-4,-2]\).
+        \end{example}
+
+\pagebreak
 
 \section{Lecture 29: November 2, 2022}
 

@@ -173,6 +173,7 @@
             Let \(V\) be a vector space. A linear operator on \(V\) is a linear transformation whose domain and codomain are both \(V\).
             
         \end{definition}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -182,11 +183,18 @@
             Let \(L:V\to W\) be a linear transformation. Then,
             \begin{enumerate}
                 \item If \(V'\) is a subspace of \(V\), \(L(V')=\{L(\vec{v}):\vec{v}\in V'\}\), the image of \(V'\) in \(W\), is a subspace of \(W\). That is, the range of \(L\) is a subspace of \(W\).
-                \item If \(W'\) is subspace of \(W\), then \(L^{-1}(W')=\{\vec{v}:L(\vec{v})\in W'\}\), the pre-image of \(W'\) in \(V\), is a subspace of \(V\).
+                \item If \(W'\) is subspace of \(W\), then \(L^{-1}(W')=\{\vec{v}\in V:L(\vec{v})\in W'\}\), the pre-image of \(W'\) in \(V\), is a subspace of \(V\).
+                \begin{proof}
+                    We know \(\vec{0}_W\in W'\) since \(W'\) is a subspace. Then, \(\vec{0}_V\in L^{-1}(W')\) since \(L(\vec{0}_V)=\vec{0}_W\in W'\). Next, we take \(\vec{v}_1,\vec{v}_2\in L^{-1}(W')\), hence \(L(\vec{v}_1),L(\vec{v}_2)\in W'\). Since \(W'\) is a subspace,
+                    \begin{equation*}
+                        L(\vec{v}_1)+L(\vec{v}_2)\in W.
+                    \end{equation*}
+                    Because \(L\) is linear, \(L(\vec{v}_1)+L(\vec{v}_2)=L(\vec{v}_1+\vec{v}_2)\). Thus, \(L(\vec{v}_1+\vec{v}_2)\in W'\). That is, \(\vec{v}_1+\vec{v}_2\in L^{-1}(W')\). Finally, for \(c\in\mathbb{F}\), we have \(L(c\vec{v}_1)=cL(\vec{v}_1)\). Since \(W'\) is a subspace and \(L(\vec{v}_1)\in W'\), we have that \(cL(\vec{v}_1)\in W'\). Thus, \(L(c\vec{v}_1)\in W'\) , so \(c\vec{v}_1\in L^{-1}(W')\).
+                \end{proof}
             \end{enumerate}
             
         \end{theorem}
-        
+        \pagebreak
 \section{Lecture 31: November 7, 2022}
 
     \subsection{The Matrix of a Linear Transformation}
@@ -194,9 +202,45 @@
         We begin with an important theorem.
         \begin{theorem}{\Stop\,\,Linear Transformations and Bases}{lineartransformationsbases}
 
-            Let \(B=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be basis for a vector space \(B\). Let \(W\) be a vector space with \(\vec{w}_1,\ldots,\vec{w}_n\in W\). Then, there is a unique linear transformation \(L:V\to W\) such that
+            Let \(B=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for a vector space \(V\). Let \(W\) be a vector space with \(\vec{w}_1,\ldots,\vec{w}_n\in W\). Then, there exists a unique linear transformation \(L:V\to W\) such that
             \begin{equation*}
                 L(\vec{v}_1)=\vec{w}_n,\ldots,L(\vec{v}_n)=\vec{w}_n.
             \end{equation*}
+            \begin{proof}
+                Let \(L:V\to W\) be a linear transformation with
+                \begin{equation*}
+                    (c_1\vec{v}_1+\cdots+c_n\vec{v}_n)\mapsto(c_1\vec{w}_1+\cdots+c_n\vec{w}_n)
+                \end{equation*}
+                for scalars \(c_1,\ldots,c_n\). We note that \(L\) is well-defined because \(c_1,\ldots,c_n\) are unique. We will show \(L\) is linear by considering
+                \begin{align*}
+                    L(\vec{v}+\vec{v}')&=L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n+c_1'\vec{v}_1+\cdots+c_n'\vec{v}_n) \\
+                    &=L((c_1+c_1')\vec{v}_1+\cdots+(c_n+c_n')\vec{v}_n) \\
+                    &=(c_1+c_1')\vec{w}_1+\cdots+(c_n+c_n')\vec{w}_n \\
+                    &=c_1\vec{w}_1+c_1'\vec{w}_1+\cdots+c_n\vec{w}_n+c_2'\vec{w}_n \\
+                    &=c_1\vec{w}_1+\cdots+c_n\vec{w}_n+c_1'\vec{w}_1+\cdots+c_n'\vec{w}_n \\
+                    &=L(\vec{v})+L(\vec{v}').
+                \end{align*}
+                We now consider
+                \begin{align*}
+                    L(c\vec{v})&=L(cc_1\vec{v}_1+\cdots+cc_n\vec{v}_n) \\
+                    &=cc_1\vec{w}_1+\cdots+cc_n\vec{w}_n \\
+                    &=c(c_1\vec{w}_1+\cdots+c_n\vec{w}_n) \\
+                    &=cL(\vec{v}).
+                \end{align*}
+                Now, we will show that \(L(\vec{v}_i)=\vec{w}_i\). We have that
+                \begin{align*}
+                    L(\vec{v}_i)&=L(0\vec{v}_1+\cdots+1\vec{v}_i+\cdots+0\vec{v}_n) \\
+                    &=\vec{w}_i.
+                \end{align*}
+                We have shown existence, and now, will show uniqueness. Suppose \(R:V\to W\) is a linear transformation and \(R(\vec{v}_i)=\vec{w}_i\) for \(1\leq i\leq n, i\in \mathbb{N}\). We will show that \(R\) and \(L\) equal. Let \(\vec{v}\in V\). Then,
+                \begin{align*}
+                    R(\vec{v})&=R(c_1\vec{v}_1+\cdots+c_n\vec{v}_n) \\
+                    &=c_1R(\vec{v}_1)+\cdots+c_nR(\vec{v}_n) \\
+                    &=c_1\vec{w}_1+\cdots+c_n\vec{w}_n \\
+                    &=L(\vec{v}).
+                \end{align*}
+                Thus, \(L\) and \(R\) are the same transformation.
+            \end{proof}
+            
             
         \end{theorem}
