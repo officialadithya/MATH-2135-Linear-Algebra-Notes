@@ -204,7 +204,7 @@
 
             Let \(B=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for a vector space \(V\). Let \(W\) be a vector space with \(\vec{w}_1,\ldots,\vec{w}_n\in W\). Then, there exists a unique linear transformation \(L:V\to W\) such that
             \begin{equation*}
-                L(\vec{v}_1)=\vec{w}_n,\ldots,L(\vec{v}_n)=\vec{w}_n.
+                L(\vec{v}_1)=\vec{w}_1,\ldots,L(\vec{v}_n)=\vec{w}_n.
             \end{equation*}
             \begin{proof}
                 Let \(L:V\to W\) be a linear transformation with
@@ -346,7 +346,7 @@
 
             The kernel of a linear transformation \(L:V\to W\), is given by
             \begin{equation*}
-                \ker(L)=\{\vec{v}\in V:L(\vec{v})=\vec{0}\}
+                \ker(L)=\{\vec{v}\in V:L(\vec{v})=\vec{0}\}.
             \end{equation*}
             
         \end{definition}
@@ -354,7 +354,7 @@
 
             The range of a linear transformation \(L:V\to W\), is given by
             \begin{equation*}
-                \range(L)=\{\vec{w}\in W:\exists\vec{v}\in V, L(\vec{v})=\vec{w}\}
+                \range(L)=\{\vec{w}\in W:\exists\vec{v}\in V, L(\vec{v})=\vec{w}\}.
             \end{equation*}
             
         \end{definition}
@@ -392,3 +392,123 @@
             \end{proof}
             
         \end{theorem}
+
+\pagebreak
+
+\section{Lecture 33: November 11, 2022}
+
+    \subsection{Finding the Kernel and the Range}
+
+        Consider the linear transformation
+        \begin{equation*}
+            L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
+        \end{equation*}
+        Now, we want to find \(\ker(L_A)\) and \(\range(L_A)\). Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Finding the Kernel of a Linear Transformation}{findker}
+
+            Let \(L_A\) be a linear transformation with
+            \begin{equation*}
+                L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
+            \end{equation*}
+            To find \(\ker(L)\), we need to find the solution set to \([A|\vec{0}]\), as 
+            \begin{equation*}
+                \ker(L)=\{\vec{v}\in V: A\vec{v}=\vec{0}\}.
+            \end{equation*}
+            We find a basis of \(\ker(L)\) by setting each free variable to \(1\) and the others to \(0\). Then, \(\dim(\ker(L))\) is the number of free variables in the solution set.
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We remark that, in general, \(\dim(\ker(L))\) is the number of free variables in the homogeneous solution set. Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Finding the Range of a Linear Transformation}{findrange}
+
+            Let \(L_A\) be a linear transformation with
+            \begin{equation*}
+                L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
+            \end{equation*}
+            To find \(\range(L)\), we need to row reduce \(A\). The pivot columns form a basis of the range. Then, \(\dim(\range(L))=\rank A\), the number of pivots.
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        The next theorems combine the results of Theorem \ref{thm:findker} and Theorem \ref{thm:findrange} to find \(\dim(\ker(L))+\dim(\range(L))\), culminating in Theorem \ref{thm:dimthm}.
+        \begin{theorem}{\Stop\,\,The Dimension Theorem, in \(\mathbb{R}^n\)}{dimthmrn}
+
+            Let \(L_A\) be a linear transformation with
+            \begin{equation*}
+                L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
+            \end{equation*}
+            Then,
+            \begin{enumerate}
+                \item \(\dim(\range(L))=\rank A\).
+                \item \(\dim(\ker(L))=n-\rank A\).
+                \item \(\dim(\ker(L))+\dim(\range(L))=n\).
+            \end{enumerate}
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Dimension Theorem}{dimthm}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
+            \begin{equation*}
+                \dim(\ker(L))+\dim(\range(L))=\dim V.
+            \end{equation*}
+            
+        \end{theorem}
+
+    \pagebreak
+
+    \subsection{Injections, Surjections, Bijections, and Isomorphisms}
+
+        We state two theorems about if linear transformations are injective or surjective.
+        \begin{theorem}{\Stop\,\,Determining Injectivity and Surjectivity}{detinjsurj}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
+            \begin{enumerate}
+                \item The linear transformation \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\).
+                \begin{proof}
+                    Suppose \(L\) is injective and let \(\vec{v}\in\ker(L)\). Now, \(L(\vec{v})=\vec{0}_W\). Similarly, \(L(\vec{0}_V)=\vec{0}_W\), and since \(L\) is injective, \(\vec{v}=\vec{0}_V\). Now, we suppose \(\ker(L)=\{\vec{0}_V\}\). We must show \(L\) is injective. Let \(\vec{v}_1,\vec{v}_2\in V\) with \(L(\vec{v}_1)=L(\vec{v}_2)\). We wish to show \(\vec{v}_1=\vec{v}_2\). Now, we have \(L(\vec{v}_1)-L(\vec{v}_2)=\vec{0}_W\), implying that \(L(\vec{v}_1-\vec{v}_2)=\vec{0}_W\). Thus, \(\vec{v}_1-\vec{v}_2\in\ker(L)\). Since \(\ker(L)=\{\vec{0}_V\}\), \(\vec{v}_1-\vec{v}_2=\vec{0}_V\), and so, \(\vec{v}_1=\vec{v}_2\), as desired.
+                \end{proof}
+                \item The linear transformation \(L\) is surjective if and only if \(\dim(\range(L))=\dim W\).
+                \begin{proof}
+                    By definition, \(L\) is surjective if and only if \(\range(L)=W\). Then, since \(\range(L)\) is a subspace of \(W\), \(\range(L)=W\) if and only if \(\dim(\range(L))=\dim W\) by Theorem \ref{thm:dimsubspc}.
+                \end{proof}
+            \end{enumerate}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Isomorphisms}{isomorphisms}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation; \(L\) an isomorphism from \(V\) to \(W\) if and only if \(L\) is both injective and surjective, or bijective.
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Invertible Linear Transformations}{invtrans}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then, \(L\) is an invertible linear transformation if and only if there exists some function \(M:W\to V\) such that
+            \begin{equation*}
+                (M\circ L)(\vec{v})=\vec{v}
+            \end{equation*}
+            for all \(\vec{v}\in V\) and
+            \begin{equation*}
+                (L\circ M)(\vec{w})=\vec{w}
+            \end{equation*}
+            for all \(\vec{w}\in W\).
+            
+        \end{definition}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        \begin{theorem}{\Stop\,\,Isomorphism If And Only If Invertible}{isoinv}
+            \DOTHISLATER
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        \DOTHISLATER
+        

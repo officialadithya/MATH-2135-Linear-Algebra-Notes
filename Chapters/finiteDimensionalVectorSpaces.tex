@@ -15,9 +15,9 @@
             \\
             The following axioms must hold for each \(\vec{u},\vec{v},\vec{w}\in V\) and \(c_1,c_2\in\mathbb{F}\).
             \begin{enumerate}
-                \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\)
+                \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\).
                 \item \(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\).
-                \item \(\exists \vec{0}\in V, \forall \vec{v}\in V, \vec{0}+\vec{v}=\vec{v}\)
+                \item \(\exists \vec{0}\in V, \forall \vec{v}\in V, \vec{v}+\vec{0}=\vec{v}\).
                 \item \(\forall \vec{v}\in V, \exists! (-\vec{v})\in V, \vec{v}+(-\vec{v})=\vec{0}\).
                 \item \(c_1(\vec{u}+\vec{v})=c_1\vec{u}+c_1\vec{v}\).
                 \item \((c_1+c_2)\vec{u}=c_1\vec{u}+c_2\vec{u}\).
@@ -36,7 +36,6 @@
             \item The set \(\{\vec{0}\}\), with \(\vec{0}+\vec{0}+\vec{0}\) and \(c\vec{0}=\vec{0}\), is a vector space.
             \item The set \(\mathcal{M}_{mn}\) is a vector space.
             \item Let \(S\) be a nonempty set and \(F(S)=\{f:S\to\mathbb{R}\}\) with \((f+g)(s)=f(s)+g(s)\) and \((cf)(s)=cf(s)\). The set \(F(S)\) is a vector space.
-            \item The set \(\{a_nx^n+\cdots+a_0x^0:a_0,\ldots a_n\in\mathbb{R}\}\) is a vector space.
             \item The set \(\{a_nx^n+\cdots+a_0x^0:a_0,\ldots a_n\in\mathbb{R}, \text{degree is less than or equal to \(n\)}\}\) is a vector space.
         \end{enumerate}
         \vphantom
@@ -128,7 +127,7 @@
                 \end{equation*}
                 by Theorem \ref{thm:derpropvcspc1}. But, by axiom \(7\), 
                 \begin{equation*}
-                    \frac{1}{c}(c\vec{v})=\left(\frac{1}{c}c\vec{v}\right)=\vec{v},
+                    \left(\frac{1}{c}\right)(c\vec{v})=\left(\frac{1}{c}c\vec{v}\right)=\vec{v},
                 \end{equation*}
                 which implies \(\vec{v}=\vec{0}\).
             \end{proof}
@@ -143,7 +142,7 @@
         Consider the following definition.
         \begin{definition}{\Stop\,\,Subspaces}{subspc}
 
-            Suppose \(V\) is a vector space and the set \(W\subseteq V\). Then, \(W\) is a subspace of \(V\) if and only if \(W\) is a vector space with the same operations as \(V\).
+            Suppose \(V\) is a vector space and let \(W\) be a set with \(W\subseteq V\). Then, \(W\) is a subspace of \(V\) if and only if \(W\) is a vector space with the same operations as \(V\).
             
         \end{definition}
         \vphantom
@@ -152,20 +151,14 @@
         Consider the following theorem.
         \begin{theorem}{\Stop\,\,Showing a Vector Space is a Subspace}{showsubspc}
 
-            Suppose \(V\) is a vector space and the set \(W\) is a subset of \(V\). Then, \(W\) is a subspace of \(V\) if and only if
+            Suppose \(V\) is a vector space and let \(W\) be a set with \(W\subseteq V\). Then, \(W\) is a subspace of \(V\) if and only if
             \begin{enumerate}
                 \item \(W\neq\emptyset\).
                 \item \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\).
-                \item \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\).
+                \item \(c\in\mathbb{F}, \vec{w}\in W\implies c\vec{w}\in W\).
             \end{enumerate}
             \begin{proof}
-                We know that \(W\neq\emptyset\), because \(\vec{0}\in W\). Next, \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\) by the closure property of addition of a vector space \(W\). Then, \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\) by the closure property of scalar multiplication of a vector space \(W\). Now, we must show that all vector space axioms hold for \(W\). The closure properties are given by conditions \(2\) and \(3\). For vector space axiom \(1\), we take \(\vec{w}_1,\vec{w}_2\in W\). Then,
-                \begin{align*}
-                    \vec{w}_1+_W\vec{w}_2&=\vec{w}_1+_V\vec{w}_2 \\
-                    &=\vec{w}_2+_V\vec{w}_1 \\
-                    &=\vec{w}_2+_W\vec{w}_1.
-                \end{align*}
-                For vector space axiom \(3\), we take \(\vec{w}\in W\) and by the closure property of scalar multiplication, \((-1)\vec{w}\in W\). By the closure property of vector addition \(\vec{w}+(-1)\vec{w}=\vec{0}\), meaning \(\vec{0}\in W\). Moreover, for any \(\vec{w}\in W\), \(\vec{w}+\vec{0}=\vec{0}+\vec{w}=\vec{w}\). For vector space axiom \(4\), \(-1\vec{w}\) is the additive inverse of \(\vec{w}\), and by the closure property, \((-1)\vec{w}\in W\). We must show the rest, and leave this as an exercise to the reader.
+                We know that \(W\neq\emptyset\), because \(\vec{0}\in W\). Next, \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\) by the closure property of addition of a vector space \(W\). Then, \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\) by the closure property of scalar multiplication of a vector space \(W\). Now, we must show that all vector space axioms hold in \(W\). Axioms \(1\), \(2\), \(5\), \(6\), \(7\), and \(8\) all hold true, as they relate to the operations of \(W\). Since \(W\) has the same operations as \(V\), a known vector space, these properties hold true in \(W\), a subset of \(V\), as well. We will now prove property \(3\). Since \(W\) is nonempty, we consider some \(\vec{w}\in W\). Since \(W\) is closed under scalar multiplication, \(0\vec{w}\in W\). This is the same operation as the one described in Theorem \ref{thm:derpropvcspc2}, and so \(0\vec{w}=\vec{0}\). Since \(\vec{v}+\vec{0}=\vec{v}\) for all \(\vec{v}\in V\), \(\vec{w}+\vec{0}=\vec{w}\) for all \(\vec{w}\in W\). We will now prove property \(4\). Since \(\vec{w}\in W\), \(\vec{w}\in V\). The additive inverse of \(\vec{w}\) in \(V\) is \((-1)\vec{w}\). We see that \((-1)\vec{w}\in W\), as \(W\) is closed under scalar multiplication.
             \end{proof}
         \end{theorem}
         \pagebreak
@@ -256,16 +249,6 @@
         \vphantom
         \\
         \\
-        To show that \(W\) is not a subspace of \(V\),
-        \begin{enumerate}
-            \item If \(\vec{0}\nin S\), \(S\) is not a subspace.
-            \item Find \(\vec{v}_1,\vec{v}_2\in S\) such that \(\vec{v}_1+\vec{v}_2\nin S\).
-            \item Find \(\vec{v}\in S\) such that \((-1)\vec{v}\nin S\).
-            \item Find \(\vec{v}\in S\) and \(c\in\mathbb{F}\) such that \(c\vec{v}\nin S\).
-        \end{enumerate}
-        \vphantom
-        \\
-        \\
         Consider the following examples of subsets of \(\mathbb{R}^n\) that are not subspaces.
         \begin{enumerate}
             \item The set of \(n\) dimensional vectors whose first coordinate is nonnegative.
@@ -274,7 +257,6 @@
             \item The set of \(n\) dimensional vectors having all integer coordinates.
             \item The set of all \(n\) dimensional vectors whose first two coordinates add up to \(3\).
         \end{enumerate}
-        \pagebreak
         \vphantom
         \\
         \\
@@ -284,6 +266,7 @@
             \item The set of singular \(n\times n\) matrices.
             \item The set of \(n\times n\) matrices in reduced row echelon form.
         \end{enumerate}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -361,8 +344,7 @@
         Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations. We now, introduce the notion of ``span.''
         \begin{definition}{\Stop\,\,Span}{span}
 
-            Let \(S\) be an infinite subset of a vector space \(V\), Then, \(\Span(S)\), the span of \(S\) in \(V\), is the set of all possible finite linear combinations of the vectors in \(S\). If \(S=\emptyset\), \(\Span(S)=\{\vec{0}\}\). Similarly, \(S\) is linearly dependent if and only if there exists some finite subset of 
-            \(S\) such that \(S\) is linearly dependent.
+            Let \(S\) be a nonempty subset of a vector space \(V\). Then, \(\Span(S)\) is the set of all possible finite linear combinations of the vectors in \(S\). If \(S=\emptyset\), \(\Span(S)=\{\vec{0}\}\). 
             
         \end{definition}
         \pagebreak
@@ -458,6 +440,9 @@
                     for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). Since \(S\subseteq W\), and \(\vec{v}\) is a linear combination of elements of \(S\), \(\vec{v}\) is a linear combination of elements of \(W\). It follows that \(\vec{v}\in W\), by Theorem \ref{thm:lincombsubspc}.
                 \end{proof}
                 \item \(\Span(S)\) is the smallest subspace of \(V\) containing \(S\). 
+                \begin{proof}
+                    By part \(1\) and part \(2\), \(\Span(S)\) is a subspace of \(V\) containing \(S\). Then, by part \(3\), \(\Span(S)\) is a subset of all subspaces \(W\) of \(V\), so \(\Span(S)\) is the smallest subspace of \(V\) containing \(S\).
+                \end{proof}
             \end{enumerate}
 
         \end{theorem}
@@ -482,7 +467,7 @@
         \begin{equation*}
             S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n.
         \end{equation*}
-        Consider the following theorems.
+        Consider the following theorem.
         \begin{theorem}{\Stop\,\,Span and Row Space}{spanrowspc}
 
             Let \(A\) be the matrix having \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n\) as its rows. Then, the span of \(S\) is the row space of \(A\).
@@ -540,13 +525,16 @@
                 \begin{equation*}
                     c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0} \iff c_1=\cdots=c_n=0.
                 \end{equation*}
-                If \(S=\emptyset\), \(S\) is linearly independent.
             \end{enumerate}
+            \vphantom
+            \\
+            \\
+            If \(S=\emptyset\), \(S\) is linearly independent.
 
         \end{definition}
         \begin{definition}{\Stop\,\,Generalizing Linear Independence and Dependence to Infinite Sets}{genlinindepdep}
             
-            Suppose \(S\subseteq V\) where \(V\) is a vector space. We say \(S\) is linearly independent if and only if each finite subset of \(S\) is linearly idependent.
+            Suppose an infinite set \(S\) with \(S\subseteq V\) where \(V\) is a vector space. We say \(S\) is linearly independent if and only if each finite subset of \(S\) is linearly independent.
 
         \end{definition}
         \vphantom
@@ -582,10 +570,11 @@
                 \begin{equation*}
                     \vec{v}_1=c_2\vec{v}_2+\cdots+c_n\vec{v}_n.
                 \end{equation*}
-                Letting \(a_1=-1\), we have
-                \begin{equation*}
-                    c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}.
-                \end{equation*}
+                Letting \(c_1=-1\), we have
+                \begin{align*}
+                    -\vec{v}_1+c_2\vec{v}_2+\cdots+c_n\vec{v}_n&=-(c_2\vec{v}_2+\cdots+c_n\vec{v}_n)+(c_2\vec{v}_2+\cdots+c_n\vec{v}_n) \\
+                    &=\vec{0}.
+                \end{align*}
                 We constructed \(c_1\neq0\), meaning \(S\) is linearly dependent.
             \end{proof}
         \end{theorem}
@@ -631,7 +620,7 @@
             
             Any finite subset of a vector space that contains the zero vector \(\vec{0}\) is linearly dependent.
             \begin{proof}
-                Recall that if \(S\) is a set with \(|S|=1\) or \(|S|=2\), \(S\) is linearly dependent. Now, let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\), a finite subset of a vector space \(V\) and \(\vec{0}\in S\). If \(\vec{v}_k=\vec{0}\), we have
+                Recall that if \(S\) is a set with \(|S|=1\) or \(|S|=2\), \(S\) is linearly dependent if \(\vec{0}\in S\). Now, let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\), a finite subset of a vector space \(V\) and \(\vec{0}\in S\). If \(\vec{v}_k=\vec{0}\), we have
                 \begin{equation*}
                     0\vec{v}_1+\cdots+1\vec{v}_k+\cdots+0\vec{v}_n,
                 \end{equation*}
