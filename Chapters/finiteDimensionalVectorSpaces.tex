@@ -7,8 +7,8 @@
 
             Let \(\mathbb{F}\) be a field of scalars. For now, \(\mathbb{F}=\mathbb{R}\vee\mathbb{C}\). A vector space \(V\) over \(\mathbb{F}\) is a set with two operations: 
             \begin{enumerate}
-                \item Vector Addition: \(V\times V\to V, (\vec{v},\vec{w})\mapsto \vec{v}+\vec{w}\).
-                \item Scalar Multiplication: \(\mathbb{F}\times V\to V, (c,\vec{v})\mapsto c\vec{v}\).
+                \item Vector Addition: \(+:V\times V\to V, (\vec{v},\vec{w})\mapsto \vec{v}+\vec{w}\).
+                \item Scalar Multiplication: \(\cdot:\mathbb{F}\times V\to V, (c,\vec{v})\mapsto c\vec{v}\).
             \end{enumerate}
             \vphantom
             \\
@@ -335,7 +335,7 @@
             for scalars \(c_1,\ldots,c_n\).
             
         \end{definition}
-        \begin{theorem}{\Stop\,\,Linear Combinations Remain in a Subspace}{lincombsubspc}
+        \begin{theorem}{\Stop\,\,Subspaces are Closed Under Linear Combinations}{lincombsubspc}
 
             Let \(W\) be a subspace of a vector space \(V\), and let \(\vec{v}_1,\ldots,\vec{v}_n\in W\). For scalars \(c_1,\ldots,c_n\), we have
             \begin{equation*}
@@ -357,7 +357,7 @@
         \vphantom
         \\
         \\
-        Essentially, Theorem \ref{thm:lincombsubspc} provides that subspaces are closed under linear combinations. We now, introduce the notion of ``span.''
+        We now, introduce the notion of ``span.''
         \begin{definition}{\Stop\,\,Span}{span}
 
             Let \(S\) be a nonempty subset of a vector space \(V\). Then, \(\Span(S)\) is the set of all possible finite linear combinations of the vectors in \(S\). If \(S=\emptyset\), \(\Span(S)=\{\vec{0}\}\). 
@@ -431,7 +431,7 @@
                     \end{equation*} 
                     for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). We also know that
                     \begin{equation*}
-                        \vec{v}_2=d_1\vec{u}_1+\cdots+d_k\vec{u}_k.
+                        \vec{w}_2=d_1\vec{u}_1+\cdots+d_k\vec{u}_k.
                     \end{equation*}
                     for some \(d_1,\ldots,d_k\in\mathbb{F}\) and \(\vec{u}_1,\ldots,\vec{u}_k\in S\). Then,
                     \begin{align*}
@@ -508,8 +508,8 @@
         \vphantom
         \\
         \\
-        Consider the following example.
-        \begin{example}{\Difficulty\,\Difficulty\,\,Computing Span as a Row Space}{compspanrowspc}
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Computing Span as a Row Space 1}{compspanrowspc1}
 
             Let \(\vec{v}_1=[3,6,0]\), \(\vec{v}_2=[0,-1,1]\), and \(S=\{\vec{v}_1,\vec{v}_2\}\). Find \(\Span(S)\). 
             \\
@@ -524,6 +524,25 @@
             The row space of \(A\), or equivalently, the span of \(S\) is
             \begin{equation*}
                 \Span(S)=\{c_1[1,0,2]+c_2[0,1,-1]:c_1,c_2\in\mathbb{R}\}.
+            \end{equation*}
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Computing Span as a Row Space 2}{compspanrowspc2}
+
+            Let \(\vec{v}_1=[-1,1,0]\), \(\vec{v}_2=[1,0,1]\), and \(\vec{v}_2=[1,0,-1]\). Let \(S=\{\vec{v}_1,\vec{v}_2,\vec{v}_3\}\). Find \(\Span(S)\). 
+            \\
+            \\
+            We have the matrix
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    -1 & 1 & 0 \\
+                    1 & 0 & 1 \\
+                    1 & 0 & -1
+                \end{bmatrix}.
+            \end{equation*}
+            The row space of \(A\), or equivalently, the span of \(S\) is
+            \begin{equation*}
+                \Span(S)=\{c_1[1,0,0]+c_2[0,1,0]+c_3[0,0,1]:c_1,c_2,c_3\in\mathbb{R}\}.
             \end{equation*}
             
         \end{example}
@@ -1209,11 +1228,15 @@
             \end{equation*}
             Moreover, if \(\dim V\) is finite and \(\dim W=\dim V\), then, \(W=V\).
             \begin{proof}
-                Let \(W\) be a subspace of \(V\). If \(W=\{\vec{0}\}\), \(\dim W=0\leq\dim V\). Otherwise, we have that \(\vec{w}_1\in W\) where \(\vec{w}_1\neq\vec{0}\). Then, \(\{\vec{w}_1\}\) is linearly independent. If \(\Span(\{\vec{w}_1\})\neq W\), we can find \(\vec{w}_2\in (W-\Span(\{\vec{w}_1\}))\). Then, \(\{\vec{w}_1,\vec{w}_2\}\) is linearly independent. Then, if our set still doesn't span \(W\), we keep adding \(\vec{w}_{k+1}\in (W-\Span(\{\vec{w}_1,\ldots,\vec{w}_k\}))\) to eventually get a linearly independent set
+                Suppose that \(W\) is the trivial subspace, that is, \(W=\{\vec{0}\}\). Then, \(\dim W=0\leq\dim V\). Othersie, we take some \(\vec{w}_1\in W\) where \(\vec{w}_1\neq\vec{0}\). Then, \(\{\vec{w}_1\}\) is linearly independent. If \(\Span(\{\vec{w}_1\})\neq W\), we can take some \(\vec{w}_2\in (W-\Span(\{\vec{w}_1\}))\). Then, \(\{\vec{w}_1,\vec{w}_2\}\) is linearly independent. Until our set spans \(W\), we can keep adding \(\vec{w}_{k+1}\in (W-\Span(\{\vec{w}_1,\ldots,\vec{w}_k\}))\) to eventually obtain a linearly independent spanning set
                 \begin{equation*}
                     \{\vec{w}_1,\ldots,\vec{w}_{k+1}\}\in W.
                 \end{equation*}
-                Since this set is also linearly independent in \(V\) since \(W\subseteq V\), \(\dim W=k+1\leq \dim V\). For the second part of the theorem, suppose \(\dim W=\dim V\). Consider the basis \(B=\{\vec{w}_1,\ldots,\vec{w}_{k+1}\}\) of \(W\). Suppose, for the sake of contradiction that \(W\neq V\). Then, we have \(\vec{v}\in V\) where \(\vec{v}\nin W\). Then, we know that \(B\cup\{\vec{v}\}\) is linearly independent in \(V\). But, this linearly independent set has more elements than \(\dim V\), where it should have at most \(\dim V\) elements. Thus, \(W=V\).
+                Since this set is linearly independent in \(W\), it is also linearly independent in \(V\) since \(W\subseteq V\). Then, we have \(\dim W=k+1\leq \dim V\). For the next part of the theorem, suppose \(\dim W=\dim V\). Let
+                \begin{equation*}
+                    B_W=\{\vec{w}_1,\ldots,\vec{w}_{k+1}\}
+                \end{equation*}
+                be a basis of \(W\). Suppose, for the sake of contradiction, that \(W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin W\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\). However, this union has size \(k+2\). But, \(\dim W=k+1\), and \(\dim V=k+1\) as well, which provides the necessary contradiction.
             \end{proof}
             
         \end{theorem}
