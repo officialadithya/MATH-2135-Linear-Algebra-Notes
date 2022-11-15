@@ -105,9 +105,25 @@
                     \vec{v}+(-1)\vec{v}&=1\vec{v}+(-1)\vec{v} &\text{ by axiom \(8\),} \\
                     &=(1+(-1))\vec{v} &\text{ by axiom \(6\),} \\
                     &=0\vec{v} &\text{ by properties of \(\mathbb{R}\),} \\
-                    &=\vec{0} &\text{ by Theorem \ref{thm:derpropvcspc2},}
+                    &=\vec{0} &\text{ by Theorem \ref{thm:derpropvcspc2}.}
                 \end{align*}
-                which implies \((-1)\vec{v}=-\vec{v}\), the additive inverse of \(\vec{v}\).
+                Now, let \(\vec{v}'=(-1)\vec{v}\) and let \(\vec{v}''\in V\) be another vector such that
+                \begin{equation*}
+                    \vec{v}+\vec{v}''=\vec{0}.
+                \end{equation*}
+                Then,
+                \begin{equation*}
+                    \vec{v}+\vec{v}''=\vec{v}+\vec{v}'.
+                \end{equation*}
+                We can then add \(\vec{v}'\) to both sides to obtain
+                \begin{equation*}
+                    \vec{v}'+(\vec{v}+\vec{v}'')=\vec{v}'+(\vec{v}+\vec{v}'),
+                \end{equation*}
+                which becomes
+                \begin{equation*}
+                    (\vec{v}'+\vec{v})+\vec{v}''=(\vec{v}'+\vec{v})+\vec{v}'.
+                \end{equation*}
+                Then, we have \(\vec{v}''=\vec{v}'=(-1)\vec{v}\). Thus, \((-1)\vec{v}=-\vec{v}\), as desired.
             \end{proof}
         \end{theorem}
         \begin{theorem}{\Stop\,\,Derived Property of Vector Space 4}{derpropvcspc4}
@@ -460,6 +476,22 @@
                 Then, because \(\Span(S_2)\) is a subspace of \(V\) with \(S_1\subseteq\Span(S_2)\), we have \(\Span(S_1)\subseteq\Span(S_2)\), as desired.
             \end{proof}
         \end{theorem}
+        \begin{theorem}{\Stop\,\,Span as an Intersection of Subspaces}{spanintsubspc}
+            
+            Let \(V\) be a vector space, with \(S\subseteq V\). Then, \(\Span(S)\) is the intersection of all the subspaces of \(V\) containing \(S\).
+            \begin{proof}
+                Let \(W\) be an arbitrary subspace of \(V\) with \(S\subseteq W\). We wish to show
+                \begin{equation*}
+                    \Span(S)\subseteq\bigcap W,\quad \bigcap W\subseteq\Span(S).
+                \end{equation*}
+                By the third part of Theorem \ref{thm:spanchrs}, \(\Span(S)\subseteq \bigcap W\) since \(\Span(S)\) is a subset of all subspaces \(W\). Because \(\Span(S)\), is itself, a subspace of \(V\) containing \(S\), \(\bigcap W\) must be contained in \(\Span(S)\), since if some \(\vec{v}\in \bigcap W\), \(\vec{v}\) is in all subspaces of \(V\) containing \(S\), including \(\Span(S)\). We have now shown both properties, and conclude that
+                \begin{equation*}
+                    \Span(S)=\bigcap W,
+                \end{equation*}
+                as desired.
+,            \end{proof}
+        \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -669,6 +701,72 @@
                 \hline
             \end{tabular}
         \end{center}
+        \vphantom
+        \\
+        \\
+        Consider the following proofs involving linear independence.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Proving a Property of Linear Independence 1}{proplinindep1}
+            
+            Suppose \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) is a finite subset of a vector space \(V\) and \(\vec{v}\in\Span(S)\), with \(\vec{v}\nin S\). Then, there exists some vector \(\vec{w}\in T=S\cup\{\vec{v}\}\) that can be expressed in more than one way as a linear combination of vectors in \(T\).
+            \begin{proof}
+                We take \(\vec{w}=\vec{v}\). Since \(\vec{v}\in\Span(S)\), we can write
+                \begin{equation*}
+                    \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n,
+                \end{equation*}
+                and therefore, 
+                \begin{equation*}
+                    \vec{w}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n+0\vec{v}.
+                \end{equation*}
+                for scalars \(c_1,\ldots,c_n\in\mathbb{F}\). We can also write
+                \begin{equation*}
+                    \vec{w}=1\vec{v}+0\vec{v}_1+\cdots+0\vec{v}_n.
+                \end{equation*}
+                We have now shown two distinct ways to write \(\vec{w}\) as a linear combination of the elements of \(T\). The two ways are indeed distinct, because, since \(\vec{v}\nin S\), \(\vec{v}\neq\vec{v}_1,\ldots,\vec{v}\neq\vec{v}_n\).
+            \end{proof}
+            
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Proving a Property of Linear Independence 2}{proplinindep2}
+            
+            For each \(n\in\mathbb{N}\), the set
+            \begin{equation*}
+                \{1,x,x^2,x^3,\ldots,x^n\}
+            \end{equation*}
+            is a linearly independent subset of the vector space of real valued functions.
+            \begin{proof}
+                We proceed by induction on \(n\). For the base case \(n=0\), since \(|\{1\}|=1\), the set \(\{1\}\) is linearly dependent if and only if \(1=0\), which is not the case. Thus, \(\{1\}\) is linearly independent. Now, suppose that for all \(k\in\mathbb{N}\), the set
+                \begin{equation*}
+                    \{1,x,x^2,x^3,\ldots,x^k\}
+                \end{equation*}
+                is a linearly independent subset of the vector space of real valued functions. For \(n=k+1\), we have the set 
+                \begin{equation*}
+                    \{1,x,x^2,x^3,\ldots,x^k,x^{k+1}\}
+                \end{equation*}
+                and must show that this set is linearly independent. Consider the linear combination
+                \begin{equation*}
+                    c_0+c_1x+c_2x^2+c_3x^3+\cdots+c_kx^k+c_{k+1}x^{k+1}=0.
+                \end{equation*}
+                After differentiating both sides, we have
+                \begin{equation*}
+                    c_1+2c_2x+3c_3x^2+\cdots +kc_kx^{k-1}+(k+1)c_{k+1}x^k=0.
+                \end{equation*}
+                By the inductive hypothesis, \(c_1=2c_2=3c_3=\cdots=kc_k=(k+1)c_{k+1}=0\). Since \(1,2,3,\ldots,k,k+1\) are all not zero, this implies \(c_1=\cdots=c_{k+1}=0\). if we substitute this result into
+                \begin{equation*}
+                    c_0+c_1x+c_2x^2+c_3x^3+\cdots+c_kx^k+c_{k+1}x^{k+1}=0,
+                \end{equation*}
+                we have \(c_0=0\), so \(c_0=\cdots=c_{k+1}=0\), meaning 
+                \begin{equation*}
+                   \{1,x,x^2,x^3,\ldots,x^k,x^{k+1}\}
+                \end{equation*}
+                is linearly independent, as desired. Thus, by induction, for all \(n\in\mathbb{N}\), 
+                \begin{equation*}
+                    \{1,x,x^2,x^3,\ldots,x^n\}
+                \end{equation*}
+                is a linearly independent subset of the vector space of real valued functions.
+            \end{proof}
+
+        \end{example}
+
 \pagebreak
 
     \section{Lecture 25: October 24, 2022}
@@ -978,16 +1076,17 @@
                 \end{equation*}
                 for some \(c_1,c_2\in\mathbb{R}\). If \(x=0\), we have
                 \begin{equation*}
-                    0=a+b(0)^2\implies a=0.
+                    0=c_1+c_2(0)^2\implies c_1=0.
                 \end{equation*} 
-                Therefore, we have \(x=bx^2\). After we take the derivative of both sides, we get
+                Therefore, we have \(x=c_2x^2\). After we take the derivative of both sides, we get
                 \begin{equation*}
-                    1=2bx,
+                    1=2c_2x,
                 \end{equation*}
                 and when \(x=0\), that implies \(1=0\), and we arrive at a contradiction. Hence, \(x\nin\Span(B)\).
             \end{proof}
             
         \end{example}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -995,9 +1094,24 @@
         \begin{theorem}{\Stop\,\,A Useful Lemma Regarding Bases}{basislemma}
 
             Let \(S\) and \(T\) be subsets of a vector space \(V\) such that \(\Span(S)=V\) where \(S\) is finite and \(T\) is linearly independent. Then, \(T\) is finite and \(|T|\leq|S|\).
-    
+            \begin{proof}
+                If \(S=\emptyset\), then we have that \(V=\{\vec{0}\}\). Since \(\{\vec{0}\}\) is linearly independent, \(T=\emptyset\). Suppose \(|S|=n\geq1\). Suppose, for the sake of contradition, that \(T\) is infinite or \(|T|>|S|=n\). Since every finite subset of \(T\) is linearly independent, there is a linearly independent set \(Y\subseteq T\) such that \(|Y|=n+1\). Let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) and let \(Y=\{\vec{w}_1,\ldots,\vec{w}_n,\ldots,\vec{w}_{n+1}\}\). We will show that \(Y\) is linearly dependent. Then, we have \(c_{ij}\in\mathbb{F}\) for \(1\leq i \leq n+1\) and \(1\leq j\leq n\) such that
+                \begin{equation*}
+                    \vec{w}_1=c_{11}\vec{v}_1+\cdots+c_{1n}\vec{v}_n,\quad\ldots,\quad\vec{w}_{n+1}=c_{n+1,1}\vec{v}_1+\cdots+c_{n+1,n}\vec{v}_n.
+                \end{equation*}
+                Let \(C\) be the \((n+1)\times n\) matrix whose \((i,j)\) entry is \(c_{ij}\). Then, \([C^T|\vec{0}]\) has \(n+1\) variables with only \(n\) equations, and has a nontrivial solution \(\vec{u}=[u_1,\ldots,u_{n+1}]\). Then,
+                \begin{align*}
+                    u_1\vec{w}_1+\cdots+u_{n+1}\vec{w}_{n+1}&=u_1(c_{11}\vec{v}_1+\cdots+c_{1n}\vec{v}_n)+\cdots+u_{n+1}(c_{n+1,1}\vec{v}_1+\cdots+c_{n+1,n}\vec{v}_n) \\
+                    &=(c_{11}u_1+\cdots+c_{n+1,1}u_{n+1})\vec{v}_1+\cdots+(c_{n1}u_1+\cdots+c_{n+1,n}u_{n+1})\vec{v}_n.
+                \end{align*}
+                But, the coefficient of each \(\vec{v}_i\) in the last expression is the \(i\)th entry of \(C^T\vec{u}\). Since \(C^T\vec{u}=\vec{0}\), the coefficient of each \(\vec{v}_i\) is \(0\). Then, for
+                \begin{equation*}
+                    u_1\vec{w}_1+\cdots+u_{n+1}\vec{w}_{n+1}=\vec{0},
+                \end{equation*} 
+                we have \(u_1=\cdots=u_{n+1}=0\).
+                But, since \(\vec{u}\) is a nontrivial solution, at least one \(u_i\neq0\) and \(Y\) is linearly dependent, providing a contradiction.
+            \end{proof}
         \end{theorem}
-        \pagebreak
         \begin{theorem}{\Stop\,\,Bases Have Equivalent Cardinality}{basisequivcard}
 
             Suppose \(V\) is a vector space and \(B_1\) is a basis for \(V\) with finitely many elements. If \(B_2\) is a basis for \(V\) with finitely many elements,
@@ -1005,7 +1119,7 @@
                 |B_1|=|B_2|.
             \end{equation*}
             \begin{proof}
-                Since \(\Span(B_1)=V\) and \(B_1\) is finite, \(|B_2|\leq|B_1|\). Since \(\Span(B_2)=V\) and \(B_2\) is finite, \(|B_1|\leq|B_2|\). Thus, \(|B_1|=|B_2|\).
+                Since \(\Span(B_1)=V\) and \(B_1\) is finite and linearly independent, \(|B_2|\leq|B_1|\). Since \(\Span(B_2)=V\) and \(B_2\) is finite and linearly independent, \(|B_1|\leq|B_2|\). Thus, \(|B_1|=|B_2|\).
             \end{proof}
             
         \end{theorem}
@@ -1046,7 +1160,6 @@
             \end{proof}
 
         \end{theorem}
-        \pagebreak
         \begin{theorem}{\Stop\,\,General Statements About Linear Independence and Dimension 1}{lindim1}
             
             Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent, then, \(|T|\leq\dim V\).
@@ -1055,6 +1168,7 @@
             \end{proof}
         
         \end{theorem}
+        \pagebreak
         \begin{theorem}{\Stop\,\,General Statements About Linear Independence and Dimension 2}{lindim2}
             
             Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent and finite, \(T\) is a basis for \(V\) if and only if \(\dim V = |T|\).
