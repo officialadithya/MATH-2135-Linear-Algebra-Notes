@@ -607,7 +607,14 @@
         \pagebreak
         \begin{theorem}{\Stop\,\,Showing Linear Independence 2}{showlinindep2}
             
-            Suppose \(S\) is a finite set of vectors having at least two elements. Then, \(S\) is linearly independent if and only if no vector in \(S\) can be expressed as a linear combination of the other vectors in \(S\). Equivalently, \(S\) is linearly dependent if and only if some vector in \(S\) can be expressed as a linear combination of the other vectors in \(S\).
+            Suppose \(S\subseteq V\) where \(V\) is a vector space and \(S\) is a finite set having at least two elements. Then, \(S\) is linearly independent if and only if
+            \begin{equation*}
+                \forall\vec{v}\in S,\vec{v}\nin\Span(S-\{\vec{v}\}).
+            \end{equation*}
+            Equivalently, \(S\) is linearly dependent if and only if
+            \begin{equation*}
+                \exists\vec{v}\in S,\vec{v}\in\Span(S-\{\vec{v}\}).
+            \end{equation*}
             \begin{proof}
                 Suppose \(S\) is linearly dependent. That is, we have \(c_1,\ldots,c_n\in\mathbb{F}\) such that
                 \begin{equation*}
@@ -628,18 +635,6 @@
                 \end{align*}
                 We constructed \(c_1\neq0\), meaning \(S\) is linearly dependent.
             \end{proof}
-        \end{theorem}
-        \begin{theorem}{\Stop\,\,Showing Linear Independence 3}{showlinindep3}
-            
-            Suppose \(S\subseteq V\) where \(V\) is a vector space. Then, \(S\) is linearly independent if and only if
-            \begin{equation*}
-                \forall\vec{v}\in S,\vec{v}\nin\Span(S-\{\vec{v}\}).
-            \end{equation*}
-            Similarly, \(S\) is linearly dependent if and only if
-            \begin{equation*}
-                \exists\vec{v}\in S,\vec{v}\in\Span(S-\{\vec{v}\}).
-            \end{equation*}
-
         \end{theorem}
         \pagebreak
         \vphantom
@@ -673,7 +668,7 @@
             \begin{proof}
                 Recall that if \(S\) is a set with \(|S|=1\) or \(|S|=2\), \(S\) is linearly dependent if \(\vec{0}\in S\). Now, let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\), a finite subset of a vector space \(V\) and \(\vec{0}\in S\). If \(\vec{v}_k=\vec{0}\), we have
                 \begin{equation*}
-                    0\vec{v}_1+\cdots+1\vec{v}_k+\cdots+0\vec{v}_n,
+                    0\vec{v}_1+\cdots+1\vec{v}_k+\cdots+0\vec{v}_n=\vec{0},
                 \end{equation*}
                 meaning that \(S\) is linearly dependent.
             \end{proof}
@@ -1138,7 +1133,7 @@
                 |B_1|=|B_2|.
             \end{equation*}
             \begin{proof}
-                Since \(\Span(B_1)=V\) and \(B_1\) is finite and linearly independent, \(|B_2|\leq|B_1|\). Since \(\Span(B_2)=V\) and \(B_2\) is finite and linearly independent, \(|B_1|\leq|B_2|\). Thus, \(|B_1|=|B_2|\).
+                Since \(\Span(B_1)=V\) and \(B_2\) is finite and linearly independent, \(|B_2|\leq|B_1|\). Since \(\Span(B_2)=V\) and \(B_1\) is finite and linearly independent, \(|B_1|\leq|B_2|\). Thus, \(|B_1|=|B_2|\).
             \end{proof}
             
         \end{theorem}
