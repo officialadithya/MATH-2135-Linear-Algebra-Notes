@@ -267,7 +267,23 @@
                 A_{BC}[\vec{v}]_{B}=[L(\vec{v})]_{C}.
             \end{equation*}
             For \(1\leq i\leq n\), the \(i\)th column of \(A_{BC}\) is \([L(\vec{v}_i)]_C\).
+            \begin{proof}
+                Consider \(A_{BC}\in\mathcal{M}_{mn}\) with \(i\)th column \([L(\vec{v}_i)]_C\), for \(1\leq i\leq n\). We will first show that \(A_{BC}[\vec{v}]_B=[L(\vec{v})]_C\). Suppose that \([\vec{v}]_B=[c_1,\ldots,c_n]\). Then,
+                \begin{equation*}
+                    \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n.
+                \end{equation*}
+                Then, we have
+                \begin{equation*}
+                    L(\vec{v})=c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n).
+                \end{equation*}
+                Next,
+                \begin{align*}
+                    [L(\vec{v})]_C&=[c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n)]_C \\
+                    &=c_1[L(\vec{v}_1)]_C+\cdots+c_n[L(\vec{v}_n)]_C.
+                \end{align*}
 
+            \end{proof}
+            
         \end{theorem}
         \vphantom
         \\
@@ -514,10 +530,120 @@
         \\
         \\
         \begin{theorem}{\Stop\,\,Isomorphism If And Only If Invertible}{isoinv}
-            \DOTHISLATER
+            
+            Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if \(L\) is an invertible linear transformation. If \(L\) is invertible, \(L^{-1}\) is also a linear transformation.
+            \begin{proof}
+                The first part of this theorem follows from Theorem \ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\)
+            \end{proof}
+
         \end{theorem}
         \vphantom
         \\
         \\
         \DOTHISLATER
-        
+        \pagebreak
+
+\section{Lecture 2, November 18, 2022}
+
+    \subsection{Finding Inverses of Linear Transformations}
+
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Invertibility in \(mathbb{R}^n\to\mathbb{R}^n\)}{invreals}
+
+            If \(L:\mathbb{R}^n\to\mathbb{R}^m\) is a linear transformation, \(L\) is invertible if and only if \([L(\vec{v})]_{BC}\) is nonsingular for each ordered basis \(B\) of \(\mathbb{R}^n\) and \(C\) of \(\mathbb{R}^m\). As a remark, note that if \(L\) is invertible, \([L(\vec{v})]_{BC}\) is square.
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+      %  \begin{example}{\Stop\,\,Find Inverse 1}{findinv1}
+%
+      %      Consider
+      %      \begin{equation*}
+       %         L:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto\begin{bmatrix} 3x+y \\ x+y \end{bmatrix}.
+       %     \end{equation*}
+       %     Is \(L\) invertible, if so, find its inverse.
+       %     \\
+       %     \\
+        %    Let \(B\) be an ordered basis of \(\mathbb{R}^2\) with
+       %     \begin{equation*}
+              %  B=\left(begin{bmatrix} 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix}\right).
+         %   \end{equation*}
+          %  Then,
+           % \begin{equation*}
+             %   [L(\vec{v})]_{BB}=\begin{bmatrix} 3 & 1 \\ 1 & 1 \end{bmatrix}.
+            %\end{equation*}
+            %Since this matrix is invertible, as \(\det [L(\vec{v})]_{BB} \neq 0\), the inverse is given by
+           % \begin{equation*}
+            %    L^{-1}:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto([L(\vec{v})]_{BB})^{-1}\begin{bmatrix} x \\ y \end{bmatrix}.
+           % \end{equation*}
+        %\end{example}
+        \vphantom
+        \\
+        \\
+        We will now define the notion of equivalence of vector spaces.
+        \begin{definition}{\Stop\,\,Isomorphic Vector Spaces}{isovec}
+
+            Suppose \(V\) and \(W\) are vector spaces. Then, we write \(V\cong W\) if and only if there exists some linear transformation \(T:V\to W\) that is an isomorphism.
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,\(\cong\) is an Equivalence Relation}{isoequivrel}
+
+            Suppose \(V\) and \(W\) are vector spaces. Then, \(\cong\) is an equivalence relation.
+            \begin{proof}
+                \begin{enumerate}
+                    \item We must show \(V\cong V\), and use that 
+                    \item Suppose \(V\cong W\) via \(L:V\to W\), and we must show that \(L^{-1}:W\to V\) is an isomorphism from \(W\) to \(V\).
+                    \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). Show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism.
+                \end{enumerate}
+                \DOTHISLATER
+            \end{proof}
+
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Isomorphisms Preserve Linear Independence and Span}{isopreslinspan}
+
+            Let \(V\) and \(W\) be vector spaces with \(S\subseteq V\). Let \(L:V\to W\) be an isomorphism. Then,
+            \begin{enumerate}
+                \item If \(S\) is linearly independent, \(L(S)=\{L(\vec{v}):\vec{v}\in S\}\).
+                \begin{proof}
+                    See Assignment \(5\), Question \(2\), for a similar proof.
+                    \DOTHISLATER
+                \end{proof}
+                \item If \(\Span(S)=V\), \(\Span(L(S))=W\).
+                \begin{proof}
+                    Let \(\vec{w}\in W\). Since \(L\) is surjective, there exists \(\vec{v}\in V\) such that \(L(\vec{v})=\vec{w}\). Since \(\Span(S)=V\). We can write
+                    \begin{equation*}
+                        \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+                    \end{equation*}
+                    for \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). We have that
+                    \begin{align*}
+                        \vec{w}&=L(vec{v}) \\
+                        &=L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n) \\
+                        &=c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n).
+                    \end{align*}
+                    Thus, \(\vec{w}\in\Span(L(S))\) since \(L(\vec{v}_1),\ldots,L(\vec{v}_n)\in L(S)\).
+                \end{proof}
+                \item If \(S\) is basis for \(V\), \(L(S)\) is a basis for \(W\).
+                \begin{proof}
+                    Parts \(1\) and \(2\) imply that \(L(S)\) is linearly independent and \(Span(L(S))=W\). As a remark, \(L\) maps a basis of \(V\) to a basis of \(W\). If \(B\) is a basis of \(V\) with \(|B|=n\), \(L(B)=n\).
+                \end{proof}
+            \end{enumerate}
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Isomorphism Implies Equivalent Dimension}{equivdim}
+
+            Let \(V\) and \(W\) be vector spaces. Then, \(V\cong W\) if and only if \(\dim V=\dim W\).
+            \begin{proof}
+                Let \(\dim V=n\). We wish to show \(V\cong\mathbb{R}^n\). Let \(B=(\vec{v}_1,\ldots,\vec{v}_n))\) be an ordered basis for \(V\). We will now define
+                \begin{equation*}
+                    L:V\to\mathbb{R}^n,\vec{v}\mapsto[\vec{v}]_B.
+                \end{equation*}
+                To show \(L\) is an isomorphism, we will find \(L^{-1}\). Consider 
+                \begin{equation*}
+                    R:\mathbb{R}^n\to V,[c_1,\ldots,c_n]\mapsto c_1\vec{v}_1+\cdots+c_n\vec{v}_n.
+                \end{equation*}
+                We see that \(L^{-1}=R\).
+            \end{proof}
+            
+        \end{theorem}
