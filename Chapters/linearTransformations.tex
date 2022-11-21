@@ -85,6 +85,7 @@
             \end{align*}
             Thus, \(F\) is a linear transformation.
         \end{example}
+        \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 4}{lintrans4}
 
             Let \(V\) be a vector space with \(\dim V=n\). Let \(B\) be an ordered basis for \(V\). Then, every \(\vec{v}\in V\) has coordinatization \([\vec{v}]_B\) with respect to \(B\). Consider the function \(F:V\to\mathbb{R}^n\) given by 
@@ -94,7 +95,19 @@
             Is \(F\) a linear transformation?
             \\
             \\
-            By Theorem \ref{thm:propcoords}, \(F\) is a linear transformation.
+            For \(\vec{v}_1,\vec{v}_2\in V\), we have
+            \begin{align*}
+                F(\vec{v}_1+\vec{v}_2)&=[\vec{v}_1+\vec{v}_2]_B \\
+                &=[\vec{v}_1]_B+[\vec{v}_2]_B \\
+                &=F(\vec{v}_1)+F(\vec{v}_2),
+            \end{align*}
+            by Theorem \ref{thm:propcoords}. Then, for \(c\in\mathbb{R}\), we have
+            \begin{align*}
+                F(c\vec{v}_1)&=[c\vec{v}_1]_B \\
+                &=c[\vec{v}_1]_B \\
+                &=cF(\vec{v}),
+            \end{align*}
+            also by by Theorem \ref{thm:propcoords}. Thus, \(F\) is a linear transformation.
 
         \end{example}
         \pagebreak
@@ -173,6 +186,20 @@
             Let \(V\) be a vector space. A linear operator on \(V\) is a linear transformation whose domain and codomain are both \(V\).
             
         \end{definition}
+        \vphantom
+        \\
+        \\
+        Two special linear operators are the identity linear operator and the zero linear operator. Consider the following definitions.
+        \begin{definition}{\Stop\,\,The Identity Linear Operator}{idlinop}
+
+            Let \(V\) be a vector space. Then, the function \(i:V\to V,\vec{v}\mapsto\vec{v}\) is the identity linear operator.
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Zero Linear Operator}{zerolinop}
+
+            Let \(V\) be a vector space. Then, the function \(z:V\to V,\vec{v}\mapsto\vec{0}_V\) is the zero linear operator.
+            
+        \end{definition}
         \pagebreak
         \vphantom
         \\
@@ -184,7 +211,7 @@
             \begin{enumerate}
                 \item If \(V'\) is a subspace of \(V\), \(L(V')=\{L(\vec{v}):\vec{v}\in V'\}\), the image of \(V'\) in \(W\), is a subspace of \(W\). That is, the range of \(L\) is a subspace of \(W\).
                 \begin{proof}
-                    We know \(\vec{0}_V\in V'\) since \(W'\) is a subspace. Then, \(\vec{0}_W\in L(V')\) since \(L(\vec{0}_V)=\vec{0}_W\). Next, we take \(\vec{w}_1,\vec{w}_2\in L(V')\). By definition, \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\) for some \(\vec{v}_1,\vec{v}_2\in V'\). Then,
+                    We know \(\vec{0}_V\in V'\) since \(V'\) is a subspace. Then, \(\vec{0}_W\in L(V')\) since \(L(\vec{0}_V)=\vec{0}_W\). Next, we take \(\vec{w}_1,\vec{w}_2\in L(V')\). By definition, \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\) for some \(\vec{v}_1,\vec{v}_2\in V'\). Then,
                     \begin{align*}
                         \vec{w}_1+\vec{w}_2&=L(\vec{v}_1)+L(\vec{v}_2) \\
                         &=L(\vec{v}_1+\vec{v}_2).
@@ -210,7 +237,7 @@
         We begin with an important theorem.
         \begin{theorem}{\Stop\,\,Linear Transformations and Bases}{lineartransformationsbases}
 
-            Let \(B=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for a vector space \(V\). Let \(W\) be a vector space with \(\vec{w}_1,\ldots,\vec{w}_n\in W\). Then, there exists a unique linear transformation \(L:V\to W\) such that
+            Let \(B=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for a vector space \(V\). Let \(W\) be a vector space with arbitrary \(\vec{w}_1,\ldots,\vec{w}_n\in W\). Then, there exists a unique linear transformation \(L:V\to W\) such that
             \begin{equation*}
                 L(\vec{v}_1)=\vec{w}_1,\ldots,L(\vec{v}_n)=\vec{w}_n.
             \end{equation*}
@@ -240,7 +267,7 @@
                     L(\vec{v}_i)&=L(0\vec{v}_1+\cdots+1\vec{v}_i+\cdots+0\vec{v}_n) \\
                     &=\vec{w}_i.
                 \end{align*}
-                We have shown existence, and now, will show uniqueness. Suppose \(R:V\to W\) is a linear transformation and \(R(\vec{v}_i)=\vec{w}_i\) for \(1\leq i\leq n, i\in \mathbb{N}\). We will show that \(R\) and \(L\) equal. Let \(\vec{v}\in V\). Then,
+                We have shown existence, and now, will show uniqueness. Suppose \(R:V\to W\) is a linear transformation and \(R(\vec{v}_i)=\vec{w}_i\) for \(1\leq i\leq n, i\in \mathbb{N}\). We will show that \(R\) and \(L\) are equal. Let \(\vec{v}\in V\). Then,
                 \begin{align*}
                     R(\vec{v})&=R(c_1\vec{v}_1+\cdots+c_n\vec{v}_n) \\
                     &=c_1R(\vec{v}_1)+\cdots+c_nR(\vec{v}_n) \\
@@ -257,7 +284,7 @@
 
 \section{Lecture 32: November 9, 2022}
 
-    \subsection{The Matrix of a Linear Transformations}
+    \subsection{The Matrix of a Linear Transformation}
 
         Consider the following theorem. 
         \begin{theorem}{\Stop\,\,Matrices and Linear Transformations}{matlintrans}
@@ -279,40 +306,118 @@
                 Next,
                 \begin{align*}
                     [L(\vec{v})]_C&=[c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n)]_C \\
-                    &=c_1[L(\vec{v}_1)]_C+\cdots+c_n[L(\vec{v}_n)]_C.
+                    &=c_1[L(\vec{v}_1)]_C+\cdots+c_n[L(\vec{v}_n)]_C \\
+                    &=A_{BC}\begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix} \\
+                    &=A_{BC}[\vec{v}]_B.
                 \end{align*}
-
+                Note that the third step in the above transitive chain comes from the fact that the \(i\)th column of \(A_{BC}\) is \([L(\vec{v}_i)]_C\). For uniqueness, suppose \(H\in\mathcal{M}_{nn}\) such that \(H[\vec{v}]_B=[L(\vec{v})]_C\). We can show that \(H=A_{BC}\) if we can show that the \(i\)th column of \(H\) is the \(i\)th column of \(A_{BC}\), or equivalently, \([L(\vec{v}_i)]_C\). Consider \(\vec{v}_i\in B\). We know \([\vec{v}_i]_B=\vec{e}_i\). Then, the \(i\)th column of \(H\) is \(H\vec{e}_i=H[\vec{v}_i]_B=[L(\vec{v}_i)]_C\), which is also the \(i\)th column of \(A_{BC}\).
             \end{proof}
             
         \end{theorem}
         \vphantom
         \\
         \\
-        As a remark, Theorem \ref{thm:matlintrans} shows that once we have picked ordered bases for \(V\) and \(W\), each linear transformation \(L:V\to W\) is equivalent to multiplication by a unique corresponding matrix. This matrix, \(A_{BC}\) is called the matrix of the linear transformation \(L\) with respect to the ordered bases \(B\) and \(C\). To compute \(A_{BC}\), we simply apply the linear transformation on each basis element \(\vec{v}_i\), and then express the result with respect to \(C\) to get the respective columns of \(A_{BC}\). Consider the following example.
-        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation}{findmat}
+        As a remark, Theorem \ref{thm:matlintrans} shows that once we have picked ordered bases for \(V\) and \(W\), each linear transformation \(L:V\to W\) is equivalent to multiplication by a unique corresponding matrix. This matrix, \(A_{BC}\) is called the matrix of the linear transformation \(L\) with respect to the ordered bases \(B\) and \(C\). To compute \(A_{BC}\), we simply apply the linear transformation on each basis element \(\vec{v}_i\), and then express the result with respect to \(C\) to get the respective columns of \(A_{BC}\).
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation 1}{findmat1}
             
             Consider
             \begin{equation*}
                 L:\mathbb{R}^2\to\mathbb{R}^2, \begin{bmatrix} x \\ y \end{bmatrix} \mapsto \begin{bmatrix} x+y \\ x \end{bmatrix}.
             \end{equation*}
-            Find the linear transformation for \(L\).
+            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=([1,0],[0,1])\) and \(C=([1,0],[0,1])\).
             \\
             \\
             Consider
             \begin{align*}
-                A_{\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 1 \\ 0 \end{bmatrix}\right),\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix},\begin{bmatrix} 0 \\ 1 \end{bmatrix}\right)}&=\begin{bmatrix} L\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) & L\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix}\right) \end{bmatrix} \\
+                A_{BC}&=\begin{bmatrix}
+                    L\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) & L\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix}\right)
+                \end{bmatrix} \\
                 &=\begin{bmatrix}
                     1 & 1 \\
-                    1 & 0
+                    1 & 0 \\
                 \end{bmatrix}.
             \end{align*}
-            Notice
+            Note that we did not have to explicitly coordinatize after finding the image of each element in \(B\) under \(L\) since we are using the standard basis for the codomain as well.
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation 2}{findmat2}
+            
+            Consider
+            \begin{equation*}
+                L:\mathbb{R}^2\to\mathbb{R}^2, \begin{bmatrix} x \\ y \end{bmatrix} \mapsto \begin{bmatrix} x+y \\ x \end{bmatrix}.
+            \end{equation*}
+            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=([1,0],[0,1])\) and \(C=([0,1],[1,0])\).
+            \\
+            \\
+            Consider
+            \begin{align*}
+                A_{BC}&=\begin{bmatrix}
+                    \left[L\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}\right)\right]_C & \left[L\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix}\right)\right]_C
+                \end{bmatrix} \\
+                &=\begin{bmatrix}
+                    \left[\begin{bmatrix} 1 \\ 1 \end{bmatrix}\right]_C & \left[\begin{bmatrix} 1 \\ 0 \end{bmatrix}\right]_C
+                \end{bmatrix} \\
+                &=\begin{bmatrix}
+                    1 & 0 \\
+                    1 & 1
+                \end{bmatrix}.
+            \end{align*}
+            Note that \(L\) is the same linear transformation as the one given in Example \ref{exa:findmat1}; however, we did need to explicitly coordinatize, since we had a nonstandard basis.
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation 3}{findmat3}
+            
+            Consider
+            \begin{equation*}
+                L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
+            \end{equation*}
+            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=(x^3,x^2,x,1)\) for \(\mathcal{P}_{n}\) and \(C=([1,0,0],[0,1,0],[0,0,1])\).
+            \\
+            \\
+            By the definition of \(L\), we see that \(L(x^3)=[0,0,1]\), \(L(x^2)=[0,2,0]\), \(L(x)=[1,0,0]\), and \(L(1)=[1,0,-1]\). We need not perform any explicit coordinatization since we are using the standard basis for \(\mathbb{R}^3\), so,
+            \begin{equation*}
+                A_{BC}=\begin{bmatrix}
+                    0 & 0 & 1 & 1 \\
+                    0 & 2 & 0 & 0 \\
+                    1 & 0 & 0 & -1
+                \end{bmatrix}.
+            \end{equation*}
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation 4}{findmat4}
+            
+            Consider
+            \begin{equation*}
+                L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
+            \end{equation*}
+            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=(x^3+x^2,x^2+x,x+1,1)\) for \(\mathcal{P}_{n}\) and \(C=([-2,1,-3],[1,-3,0],[3,-6,2])\).
+            \\
+            \\
+            By the definition of \(L\), we see that \(L(x^3+x^2)=[0,2,0]\), \(L(x^2+x)=[1,2,0]\), \(L(x+1)=[2,0,-1]\), and \(L(1)=[1,0,-1]\). Now, we must find \([0,2,1]_C\), \([1,2,0]_C\), \([2,0,-1]_C\), and \([1,0,-1]_C\). We consider
             \begin{equation*}
                 \begin{bmatrix}
-                    1 & 1 \\
-                    1 & 0
-                \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}=\begin{bmatrix} x+y \\ x \end{bmatrix}.
+                    -2 & 1 & 3 & | & 0 & 1 & 2 & 1 \\
+                    1 & -3 & -6 & | & 2 & 2 & 0 & 0 \\
+                    -3 & 0 & 2 & | & 1 & 0 & -1 & -1
+                \end{bmatrix}\underbrace{\to}_{\text{RREF}}\begin{bmatrix}
+                    1 & 0 & 0 & | & -1 & -10 & -15 & -9 \\
+                    0 & 1 & 0 & | & 1 & 26 & 41 & 25 \\
+                    0 & 0 & 1 & | & -1 & -15 & -23 & -14
+                \end{bmatrix}
             \end{equation*}
+            Thus,
+            \begin{equation*}
+                A_{BC}=\begin{bmatrix}
+                    -1 & -10 & -15 & -9 \\
+                    1 & 26 & 41 & 25 \\
+                    -1 & -15 & -23 & -14
+                \end{bmatrix}.
+            \end{equation*}
+            
         \end{example}
         \pagebreak
         \vphantom
@@ -320,52 +425,53 @@
         \\
         Consider the following theorem.
         \begin{theorem}{\Stop\,\,Matrices for Linear Transformation, Considering Different Bases}{matricesconsdiffbases}
-            Let \(V\) and \(W\) be vector spaces with \(B\) and \(D\) be bases for \(V\) and \(C\) and \(E\) be bases for \(W\). We suppose \(\dim V = n\) and \(\dim W = m\) and \(L:V\to W\) is a linear transformation. Then,
+            Let \(V\) and \(W\) be nontrivial vector spaces with \(B\) and \(D\) be distinct ordered bases for \(V\) and \(C\) and \(E\) be distinct ordered bases for \(W\). Suppose \(L:V\to W\) is a linear transformation with matrix \(A_{BC}\). Then,
             \begin{equation*}
-                QA_{BC}P^{-1}=A_{DE}
+                A_{DE}=QA_{BC}P^{-1}
             \end{equation*}
             where \(P\) is the transition matrix from \(B\) to \(D\) and \(Q\) is the transition matrix from \(C\) to \(E\).
             \begin{proof}
-                Recall that
-                \begin{enumerate}
-                    \item \(P[\vec{v}]_B=[\vec{v}]_D\).
-                    \item \(P^{-1}[\vec{v}]_D=[\vec{v}]_B\).
-                    \item \(Q[\vec{v}]_C=[\vec{v}]_E\).
-                    \item \(A_{BC}[\vec{v}]_B=[L(\vec{v})]_C\).
-                    \item \(A_{DE}[\vec{v}]_D=[L(\vec{v})]_E\).
-                \end{enumerate}
-                \vphantom
-                \\
-                \\
-                We now consider
+                For \(\vec{v}\in V\), consider \(A_{BC}[\vec{v}]_B=[L(\vec{v})]_C\). First, we see that \(P^{-1}[\vec{v}]_D=[\vec{v}]_B\), so we may substitute to obtain \(A_{BC}P^{-1}[\vec{v}]_D=[L(\vec{v})]_C\). If we multiply by \(Q\) on both sides, on the left, we have
                 \begin{align*}
-                    (QA_{BC}P^{-1})[\vec{v}]_D&=(QA_{BC})(P^{-1}[\vec{v}]_D) \\
-                    &=(QA_{BC})[\vec{v}]_B \\
-                    &=Q(A_{BC}[\vec{v}]_B) \\
-                    &=Q[L\vec{v}]_C \\
-                    &=[L\vec{v}]_E \\
-                    &=A_{DE},
+                    QA_{BC}P^{-1}[\vec{v}]_D&=Q[L(\vec{v})]_C \\
+                    &=[L(\vec{v})]_E.
                 \end{align*}
-                as desired.
+                Since \(A_{DE}\) is the unique matrix such that \(A_{DE}[\vec{v}]_D=[L(\vec{v})]_E\), \(A_{DE}=QA_{BC}P^{-1}\).
             \end{proof}
         \end{theorem}
         \vphantom
         \\
         \\
         As an important special case, we revisit and consider similar matrices.
-        \begin{theorem}{\Stop\,\,Similar Matrices and Linear Transformations}{simmatlintrans}
+        \begin{theorem}{\Stop\,\,Similar Matrices and Linear Operators}{simmatlinops}
 
-            Let \(V\) and \(W\) be vector spaces with \(V=W\). Let \(B\) and \(D\) be bases for \(V\) and \(C\) and \(E\) be bases for \(W\), with \(B=C\) and \(D=E\). Then, by Theorem \ref{thm:matricesconsdiffbases}.
+            Let \(V\) be a vector space with bases \(C\) and \(D\). Let \(L:V\to V\) be a linear operator, so there exists some \(A_{CC}\) and \(A_{DD}\). Let \(P\) be the transition matrix from \(D\) to \(C\). Then, by Theorem \ref{thm:matricesconsdiffbases}, 
             \begin{equation*}
-                PA_{BB}P^{-1}=A_{DD}.
+                A_{CC}=PA_{DD}P^{-1}
             \end{equation*}
-            Thus, \(A_{BB}\) is similar to \(A_{DD}\).
-            
+            and
+            \begin{equation*}
+                A_{DD}=P^{-1}A_{CC}P.
+            \end{equation*}
+            Thus, \(A_{CC}\) and \(A_{DD}\) are similar. Generally, any two matrices for the same linear operator, with respect to different bases, are similar, by Definition \ref{def:similarity}.
+             
         \end{theorem}
-        \pagebreak
         \vphantom
         \\
         \\
+        Finally, we present an important result about compositions of linear transformations and matrix multiplication.
+        \begin{theorem}{\Stop\,\,The Matrix of a Composition of Linear Transformations}{matcomplintrans}
+
+            Let \(V_1\), \(V_2\) and \(V_3\) be nontrivial finite dimensional vector spaces with ordered bases \(B\), \(C\), and \(D\), respectively. Let \(L_1:V_1\to V_2\) be a linear transformation with matrix \(A_{BC}\), and let \(L_2:V_2\to V_3\) be a linear transformation with matrix \(A_{CD}\). Then, the matrix for the composite linear transformation \(L_2\circ L_1:V_1\to V_3\), with respect to bases \(B\) and \(D\), is \(A_{CD}A_{BC}\).
+            
+        \end{theorem}
+
+\pagebreak
+
+\section{Lecture 33: November 11, 2022}
+
+    \subsection{Kernel and Range}
+
         We now define some important concepts.
         \begin{definition}{\Stop\,\,Kernel}{kernel}
 
@@ -383,10 +489,11 @@
             \end{equation*}
             
         \end{definition}
+        \pagebreak
         \vphantom
         \\
         \\
-        Consider the following definition.
+        Consider the following theorem.
         \begin{theorem}{\Stop\,\,Kernel and Range are Subspaces}{kerransubspc}
 
             Let \(L:V\to W\) be a linear transformation. Then, \(\ker(L)\) is a subspace of \(V\) and \(\range(L)\) is a subspace of \(W\).
@@ -415,47 +522,34 @@
                 \end{align*}
                 for some \(c\in\mathbb{F}\). Thus, \(c\vec{w}\in\range(L)\), as desired.
             \end{proof}
-            
+        
         \end{theorem}
-
-\pagebreak
-
-\section{Lecture 33: November 11, 2022}
-
-    \subsection{Finding the Kernel and the Range}
-
-        Consider the linear transformation
-        \begin{equation*}
-            L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
-        \end{equation*}
-        Now, we want to find \(\ker(L_A)\) and \(\range(L_A)\). Consider the following theorem.
-        \begin{theorem}{\Stop\,\,Finding the Kernel of a Linear Transformation}{findker}
-
-            Let \(L_A\) be a linear transformation with
-            \begin{equation*}
-                L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
-            \end{equation*}
-            To find \(\ker(L)\), we need to find the solution set to \([A|\vec{0}]\), as 
-            \begin{equation*}
-                \ker(L)=\{\vec{v}\in V: A\vec{v}=\vec{0}\}.
-            \end{equation*}
-            We find a basis of \(\ker(L)\) by setting each free variable to \(1\) and the others to \(0\). Then, \(\dim(\ker(L))\) is the number of free variables in the solution set.
-
-        \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
-        We remark that, in general, \(\dim(\ker(L))\) is the number of free variables in the homogeneous solution set. Consider the following theorem.
-        \begin{theorem}{\Stop\,\,Finding the Range of a Linear Transformation}{findrange}
+        Consider the linear transformation
+        \begin{equation*}
+            L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}
+        \end{equation*}
+        for \(A\in\mathcal{A}_{mn}\). Now, we want to find \(\ker(L_A)\) and \(\range(L_A)\). Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Finding the Kernel of a Linear Transformation}{findker}
 
-            Let \(L_A\) be a linear transformation with
+            Let \(A\in\mathcal{M}_{mn}\). Let \(L_A\) be a linear transformation with
             \begin{equation*}
                 L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
             \end{equation*}
-            To find \(\range(L)\), we need to row reduce \(A\). The pivot columns form a basis of the range. Then, \(\dim(\range(L))=\rank A\), the number of pivots.
+            We find a basis of \(\ker(L)\) by finding particular solutions to \([A|\vec{0}]\). We find each solution \(\vec{v}_i\) by setting the \(i\)th free variable in the system to \(1\) and the other free variables to \(0\). We end up with the set \(\{\vec{v}_1,\ldots,\vec{v}_k\}\) as a basis for \(\ker(L)\). Then, \(\ker(L)=\Span(\{\vec{v}_1,\ldots,\vec{v}_k\})\). As a remark, \(\dim(\ker(L))\) is the number of free variables in the homogeneous solution set.
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Finding the Range of a Linear Transformation}{findrange}
+
+            Let \(A\in\mathcal{M}_{mn}\). Let \(L_A\) be a linear transformation with
+            \begin{equation*}
+                L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
+            \end{equation*}
+            To find \(\range(L)\), we need to row reduce \(A\). The pivot columns form a basis of \(\range(L)\). Then, \(\dim(\range(L))=\rank A\), the number of pivots.
 
         \end{theorem}
-        \pagebreak
         \vphantom
         \\
         \\
