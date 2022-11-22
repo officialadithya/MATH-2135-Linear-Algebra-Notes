@@ -547,16 +547,92 @@
             \begin{equation*}
                 L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
             \end{equation*}
-            To find \(\range(L)\), we need to row reduce \(A\). The pivot columns form a basis of \(\range(L)\). Then, \(\dim(\range(L))=\rank A\), the number of pivots.
+            To find \(\range(L)\), we need to row reduce \(A\). The columns in \(A\) corresponding to the pivot columns after row reduction is complete form a basis of \(\range(L)\). Then, \(\dim(\range(L))=\rank A\), the number of pivots.
 
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
-        The next theorems combine the results of Theorem \ref{thm:findker} and Theorem \ref{thm:findrange} to find \(\dim(\ker(L))+\dim(\range(L))\), culminating in Theorem \ref{thm:dimthm}.
-        \begin{theorem}{\Stop\,\,The Dimension Theorem, in \(\mathbb{R}^n\)}{dimthmrn}
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Kernel}{findker}
 
-            Let \(L_A\) be a linear transformation with
+            Let \(L:\mathbb{R}^5\to\mathbb{R}^4,\vec{v}\mapsto A\vec{v}\), where
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    8 & 4 & 16 & 32 & 0 \\
+                    4 & 2 & 10 & 22 & -4 \\
+                    -2 & -1 & -5 & -11 & 7 \\
+                    6 & 3 & 15 & 33 & -7
+                \end{bmatrix}.
+            \end{equation*}
+            Find \(\ker(L)\).
+            \\
+            \\
+            To find \(\ker(L)\), we solve \([A|\vec{0}]\) by row reduction to obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & \frac{1}{2} & 0 & -2 & 0 & | & 0 \\
+                    0 & 0 & 1 & 3 & 0 & | & 0 \\
+                    0 & 0 & 0 & 0 & 1 & | & 0 \\
+                    0 & 0 & 0 & 0 & 0 & | & 0 
+                \end{bmatrix}.
+            \end{equation*}
+            We see that there are free variables in the second and fourth columns. The solution set to the system is
+            \begin{equation*}
+                \left\{\left[-\frac{1}{2}c_1+2c_2,c_1,-3c_2,c_2,0\right]:c_1,c_2\in\mathbb{R}\right\}.
+            \end{equation*}
+            If \(c_1=1\) and \(c_2=0\), we have the particular solution \(\vec{v}_1=[-\frac{1}{2},1,0,0,0]\). If \(c_1=0\) and \(c_2=1\), we have \(\vec{v}_2=[2,0,-3,1,0]\). Thus,
+            \begin{equation*}
+                \ker(L)=\left\{c_1\left[-\frac{1}{2},1,0,0,0\right]+c_2[2,0,-3,1,0]:c_1,c_2\in\mathbb{R}\right\}.
+            \end{equation*}
+            It is worth noting that the initial solution set was indeed also \(\ker(L)\), but it is nice to see \(\ker(L)\) as the span of a basis of \(\ker(L)\). We will further simplify to obtain
+            \begin{equation*}
+                \ker(L)=\left\{c_1\left[-1,2,0,0,0\right]+c_2[2,0,-3,1,0]:c_1,c_2\in\mathbb{R}\right\}.
+            \end{equation*}
+
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Range}{findran}
+
+            Let \(L:\mathbb{R}^5\to\mathbb{R}^4,\vec{v}\mapsto A\vec{v}\), where
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    8 & 4 & 16 & 32 & 0 \\
+                    4 & 2 & 10 & 22 & -4 \\
+                    -2 & -1 & -5 & -11 & 7 \\
+                    6 & 3 & 15 & 33 & -7
+                \end{bmatrix}.
+            \end{equation*}
+            Find \(\range(L)\).
+            \\
+            \\
+            To find \(\range(L)\), row reduce \(A\) to obtain
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & \frac{1}{2} & 0 & -2 & 0 \\
+                    0 & 0 & 1 & 3 & 0 \\
+                    0 & 0 & 0 & 0 & 1 \\
+                    0 & 0 & 0 & 0 & 0 
+                \end{bmatrix}.
+            \end{equation*}
+            We see that there are pivots in the first, third, and fifth columns. Thus, 
+            \begin{equation*}
+                \range(L)=\{c_1[8,4,-2,6]+c_2[16,10,-5,15]+c_3[0,-4,7,-7]:c_1,c_2,c_3\in\mathbb{R}\}.
+            \end{equation*}
+            
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        The next theorems combine the results of Theorem \ref{thm:findker} and Theorem \ref{thm:findrange} to find 
+        \begin{equation*}
+            \dim(\ker(L))+\dim(\range(L)).
+        \end{equation*}
+        \begin{theorem*}{\Stop\,\,The Dimension Theorem, in \(\mathbb{R}^n\)}
+
+            Let \(A\in\mathcal{M}_{mn}\). Let \(L_A\) be a linear transformation with
             \begin{equation*}
                 L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
             \end{equation*}
@@ -567,15 +643,19 @@
                 \item \(\dim(\ker(L))+\dim(\range(L))=n\).
             \end{enumerate}
             
-        \end{theorem}
-        \begin{theorem}{\Stop\,\,The Dimension Theorem}{dimthm}
+        \end{theorem*}
+        \begin{theorem*}{\Stop\,\,The Dimension Theorem}
 
             Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
             \begin{equation*}
                 \dim(\ker(L))+\dim(\range(L))=\dim V.
             \end{equation*}
             
-        \end{theorem}
+        \end{theorem*}
+        \vphantom
+        \\
+        \\
+        We will postpone the proofs of the above theorems to a later section; hence, we have omitted the reference numbers for the above theorems.
 
     \pagebreak
 
@@ -593,6 +673,55 @@
                 \item The linear transformation \(L\) is surjective if and only if \(\dim(\range(L))=\dim W\).
                 \begin{proof}
                     By definition, \(L\) is surjective if and only if \(\range(L)=W\). Then, since \(\range(L)\) is a subspace of \(W\), \(\range(L)=W\) if and only if \(\dim(\range(L))=\dim W\) by Theorem \ref{thm:dimsubspc}.
+                \end{proof}
+            \end{enumerate}
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Determining Injectivity and Surjectivity With Equivalent Dimensions}{detinjsurjequivdim}
+            
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces with \(\dim V=\dim W\). Let \(L:V\to W\) be a linear transformation. Then, \(L\) is injective if and only if \(L\) is surjective.
+            \begin{proof}
+                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the dimension theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition.
+            \end{proof}
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorem about linear independence and spanning, with regards to linear transformations.
+        \begin{theorem}{\Stop\,\,Injectivity Implies Linear Independence, Surjectivity Implies Spanning}{injlinindepsurjspan}
+
+            Suppose \(V\) and \(W\) are vector spaces and \(L:V\to W\) is a linear transformation. Then,
+            \begin{enumerate}
+                \item If \(L\) is injective, and \(T\) is a linearly independent subset of \(V\), \(L(T)\) is linearly independent in \(W\).
+                \begin{proof}
+                    Suppose that \(L\) is injective, and \(T\) is a linearly independent subset of \(V\). We wish to show that all finite subsets of \(L(T)\) are linearly independent. Suppose \(\{L(\vec{v}_1),\ldots,L(\vec{v}_n)\}\subseteq L(T)\) for \(\vec{v}_1,\ldots,\vec{v}_n\in T\). Suppose
+                    \begin{equation*}
+                        c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n)=\vec{0}_W,
+                    \end{equation*}
+                    which implies 
+                    \begin{equation*}
+                        L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n)=\vec{0}_W
+                    \end{equation*}
+                    for scalars \(c_1,\ldots,c_n\). Thus, \((c_1\vec{v}_1+\cdots+c_n\vec{v}_n)\in\ker(L)\). Since \(\ker(L)=\{\vec{0}_V\}\) because \(L\) is injective,
+                    \begin{equation*}
+                        c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}_V.
+                    \end{equation*}
+                    Since \(\{\vec{v}_1,\ldots,\vec{v}_n\}\subseteq T\) are linearly independent, \(c_1=\cdots=c_n=0\). Thus, \(\{L(\vec{v}_1),\ldots,L(\vec{v}_n)\}\) is linearly independent as well, meaning that \(L(T)\) is linearly independent, as desired.
+                \end{proof}
+                \item If \(L\) is surjective and \(S\) spans \(V\), \(L(S)\) spans \(V\).
+                \begin{proof}
+                    Suppose that \(L\) is surjective and \(S\) spans \(V\). We wish to show that all \(\vec{w}\in W\) can be written as a linear combination of vectors in \(L(T)\). Since \(L\) is surjective, there exists \(\vec{v}\in V\) with \(L(\vec{v})=\vec{w}\). Since \(S\) spans \(V\), we have
+                    \begin{equation*}
+                        \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
+                    \end{equation*}
+                    for \(\vec{v}_1,\ldots,\vec{v}_n\in S\) and scalars \(c_1,\ldots,c_n\). Then, 
+                    \begin{align*}
+                        \vec{w}=L(\vec{v})&=L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n) \\
+                        &=c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n).
+                    \end{align*}
+                    We have written arbitrary \(\vec{w}\in W\) as a linear combination of elements in \(L(S)\), so \(L(S)\) spans \(W\), as desired.
                 \end{proof}
             \end{enumerate}
             
@@ -619,38 +748,72 @@
             for all \(\vec{w}\in W\).
             
         \end{definition}
-        \pagebreak
-        \vphantom
-        \\
-        \\
         \begin{theorem}{\Stop\,\,Isomorphism If And Only If Invertible}{isoinv}
             
             Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if \(L\) is an invertible linear transformation. If \(L\) is invertible, \(L^{-1}\) is also a linear transformation.
             \begin{proof}
-                The first part of this theorem follows from Theorem \ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\)
+                The first part of this theorem follows from Theorem \ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\). Since \(L\) is surjective, we have \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\). We have
+                \begin{align*}
+                    L^{-1}(\vec{w}_1+\vec{w}_2)&=L^{-1}(L(\vec{v}_1)+L(\vec{v}_2)) \\
+                    &=L^{-1}(L(\vec{v}_1+\vec{v}_2)) \\
+                    &=\vec{v}_1+\vec{v}_2 \\
+                    &=L^{-1}(\vec{w}_1)+L^{-1}(\vec{w}_2).
+                \end{align*}
+                Now, for some \(c\in\mathbb{F}\), we have
+                \begin{align*}
+                    L^{-1}(c\vec{w}_1)&=L^{-1}(cL(\vec{v}_1)) \\
+                    &=cL^{-1}(L(\vec{v}_1)) \\
+                    &=c\vec{v}_1 \\
+                    &=cL^{-1}(\vec{w}_1),
+                \end{align*}
+                as desired. Note that for the last step of both transitive chains, we used the fact that \(L\) is injective.
             \end{proof}
 
         \end{theorem}
         \vphantom
         \\
         \\
-        \DOTHISLATER
-        \pagebreak
+        The following theorem allows us to determine whether a linear transformation between finite dimensional vector spaces is an isomorphism, and if so, how to find the inverse.
+        \begin{theorem}{\Stop\,\,Finding an Inverse, if it Exists}{findinv}
 
-\section{Lecture 2, November 18, 2022}
-
-    \subsection{Finding Inverses of Linear Transformations}
-
-        Consider the following theorem.
-        \begin{theorem}{\Stop\,\,Invertibility in \(mathbb{R}^n\to\mathbb{R}^n\)}{invreals}
-
-            If \(L:\mathbb{R}^n\to\mathbb{R}^m\) is a linear transformation, \(L\) is invertible if and only if \([L(\vec{v})]_{BC}\) is nonsingular for each ordered basis \(B\) of \(\mathbb{R}^n\) and \(C\) of \(\mathbb{R}^m\). As a remark, note that if \(L\) is invertible, \([L(\vec{v})]_{BC}\) is square.
+            Suppose \(V\) and \(W\) are nontrivial finite dimensional vector spaces with ordered bases \(B\) and \(C\), respectively. Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if the matrix representation \(A_{BC}\) associated to \(L\) is nonsingular. If \(L\) is indeed an isomorphism, the matrix \(A_{CB}\) for \(L^{-1}\) is \(A_{BC}^{-1}\).
             
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
-        Consider the following example.
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Inverse 1}{findinv1}
+
+            Consider
+            \begin{equation*}
+                L:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto\begin{bmatrix} 3x+y \\ x+y \end{bmatrix}.
+            \end{equation*}
+            Is \(L\) invertible? If so, find its inverse.
+            \\
+            \\
+            Let \(B\) be an ordered basis of \(\mathbb{R}^2\) with
+            \begin{equation*}
+                B=\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right).
+            \end{equation*}
+            Then,
+            \begin{equation*}
+                A_{BB}=\begin{bmatrix} 3 & 1 \\ 1 & 1 \end{bmatrix}.
+            \end{equation*}
+            Since this matrix is invertible, as \(\det A_{BB}\neq 0\), the inverse is given by
+            \begin{align*}
+                L^{-1}:\mathbb{R}^2\to\mathbb{R}^2&,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto A_{BB}^{-1}\begin{bmatrix} x \\ y \end{bmatrix} \\
+                &,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto \begin{bmatrix} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{3}{2} \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}.
+            \end{align*}
+        \end{example}
+
+        \pagebreak
+
+\section{Lecture 34, November 18, 2022}
+
+    \subsection{Isomorphic Vector Spaces}
+
       %  \begin{example}{\Stop\,\,Find Inverse 1}{findinv1}
 %
       %      Consider
@@ -662,7 +825,7 @@
        %     \\
         %    Let \(B\) be an ordered basis of \(\mathbb{R}^2\) with
        %     \begin{equation*}
-              %  B=\left(begin{bmatrix} 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix}\right).
+              % B=\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right).
          %   \end{equation*}
           %  Then,
            % \begin{equation*}
@@ -673,9 +836,6 @@
             %    L^{-1}:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto([L(\vec{v})]_{BB})^{-1}\begin{bmatrix} x \\ y \end{bmatrix}.
            % \end{equation*}
         %\end{example}
-        \vphantom
-        \\
-        \\
         We will now define the notion of equivalence of vector spaces.
         \begin{definition}{\Stop\,\,Isomorphic Vector Spaces}{isovec}
 
