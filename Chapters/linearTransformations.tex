@@ -801,7 +801,7 @@
                     \end{equation*}
                     Since \(\{\vec{v}_1,\ldots,\vec{v}_n\}\subseteq T\) are linearly independent, \(c_1=\cdots=c_n=0\). Thus, \(\{L(\vec{v}_1),\ldots,L(\vec{v}_n)\}\) is linearly independent as well, meaning that \(L(T)\) is linearly independent, as desired.
                 \end{proof}
-                \item If \(L\) is surjective and \(S\) spans \(V\), \(L(S)\) spans \(V\).
+                \item If \(L\) is surjective and \(S\) spans \(V\), \(L(S)\) spans \(W\).
                 \begin{proof}
                     Suppose that \(L\) is surjective and \(S\) spans \(V\). We wish to show that all \(\vec{w}\in W\) can be written as a linear combination of vectors in \(L(T)\). Since \(L\) is surjective, there exists \(\vec{v}\in V\) with \(L(\vec{v})=\vec{w}\). Since \(S\) spans \(V\), we have
                     \begin{equation*}
@@ -898,12 +898,96 @@
                 &,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto \begin{bmatrix} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{3}{2} \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}.
             \end{align*}
         \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Inverse 2}{findinv2}
+
+            Consider
+            \begin{equation*}
+                L:\mathbb{R}^3\to\mathbb{R}^3,\begin{bmatrix} x \\ y \\ z \end{bmatrix}\mapsto A\begin{bmatrix} x \\ y \\ z \end{bmatrix}.
+            \end{equation*}
+            where
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & 0 & 3 \\
+                    0 & 1 & 3 \\
+                    0 & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            Is \(L\) invertible? If so, find its inverse.
+            \\
+            \\
+            Since this matrix is invertible, as \(\det A_{BB}\neq 0\), the inverse is given by
+            \begin{align*}
+                L^{-1}:\mathbb{R}^2\to\mathbb{R}^2&,\begin{bmatrix} x \\ y \\ z \end{bmatrix}\mapsto A^{-1}\begin{bmatrix} x \\ y  \\ z \end{bmatrix} \\
+                &,\begin{bmatrix} x \\ y \\ z \end{bmatrix}\mapsto \begin{bmatrix} 1 & 0 & -3 \\ 0 & 1 & -3 \\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} x \\ y \\ z \end{bmatrix}.
+            \end{align*}
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We end with an important, yet unsurprising, theorem.
+        \begin{theorem}{\Stop\,\,Isomorphisms Preserve Linear Independence and Span}{isopreslinindepspan}
+            
+            Let \(V\) and \(W\) be vector spaces, and let \(L:V\to W\) be an isomorphism.
+            \begin{enumerate}
+                \item If \(T\) is a linearly independent subset of \(V\), \(L(T)\) is linearly independent in \(W\).
+                \begin{proof}
+                    Because \(L\) is an isomorphism, \(L\) is injective. Therefore, \(L(T)\) is linearly independent in \(W\) by the first part of Theorem \ref{thm:injlinindepsurjspan}.
+                \end{proof}
+                \item If \(S\) spans \(V\), \(L(S)\) spans \(W\).
+                \begin{proof}
+                    Because \(L\) is an isomorphism, \(L\) is surjective. Therefore, \(L(S)\) spans \(W\) by the second part of Theorem \ref{thm:injlinindepsurjspan}.
+                \end{proof}
+                \item If \(B\) is a basis of \(V\), \(L(B)\) is a basis for \(W\).
+                \begin{proof}
+                    If \(B\) is a basis for \(V\), \(B\) is linearly independent, so \(L(B)\) is linearly independent. We also have that \(\Span(B)=V\), so \(\Span(L(B))=W\). Since \(L(B)\) is linearly independent and spans \(W\), \(L(B)\) is a basis for \(W\).
+                \end{proof}
+            \end{enumerate}
+
+        \end{theorem}
 
         \pagebreak
 
 \section{Lecture 34, November 18, 2022}
 
     \subsection{Isomorphic Vector Spaces}
+
+        We will now define the notion of equivalence of vector spaces.
+        \begin{definition}{\Stop\,\,Isomorphic Vector Spaces}{isovec}
+
+            Suppose \(V\) and \(W\) are vector spaces. Then, \(V\) is isomorphic to \(W\), that is, \(V\cong W\), if and only if there exists some linear transformation \(L:V\to W\) that is an isomorphism.
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,\(\cong\) is an Equivalence Relation}{isoequivrel}
+
+            Suppose \(V\) and \(W\) are vector spaces. Then, \(\cong\) is an equivalence relation.
+            \begin{proof}
+                We must show that \(\cong\) is reflexive, symmetric and transitive. Consider the following.
+                \begin{enumerate}
+                    \item We wish to show \(V\cong V\). Consider the linear transformation \(i:V\to V,\vec{v}\mapsto\vec{v}\), the identity linear operator, defined by Definition \ref{def:idlinop}. We wish to show that \(i:V\to V\) is an isomorphism. We need only show that \(i\) is injective. Since \(i(\vec{0}_V)=\vec{0}_V\), \(\{\vec{0}_V\}\subseteq\ker(i)\).
+                    \item Suppose \(V\cong W\) via \(L:V\to W\), and we must show that \(L^{-1}:W\to V\) is an isomorphism from \(W\) to \(V\).
+                    \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). Show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism.
+                \end{enumerate}
+                \DOTHISLATER
+            \end{proof}
+
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Isomorphism Implies Equivalent Dimension}{equivdim}
+
+            Let \(V\) and \(W\) be vector spaces. Then, \(V\cong W\) if and only if \(\dim V=\dim W\).
+            \begin{proof}
+                Let \(\dim V=n\). We wish to show \(V\cong\mathbb{R}^n\). Let \(B=(\vec{v}_1,\ldots,\vec{v}_n))\) be an ordered basis for \(V\). We will now define
+                \begin{equation*}
+                    L:V\to\mathbb{R}^n,\vec{v}\mapsto[\vec{v}]_B.
+                \end{equation*}
+                To show \(L\) is an isomorphism, we will find \(L^{-1}\). Consider 
+                \begin{equation*}
+                    R:\mathbb{R}^n\to V,[c_1,\ldots,c_n]\mapsto c_1\vec{v}_1+\cdots+c_n\vec{v}_n.
+                \end{equation*}
+                We see that \(L^{-1}=R\).
+            \end{proof}
+            
+        \end{theorem}
 
       %  \begin{example}{\Stop\,\,Find Inverse 1}{findinv1}
 %
@@ -927,68 +1011,3 @@
             %    L^{-1}:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto([L(\vec{v})]_{BB})^{-1}\begin{bmatrix} x \\ y \end{bmatrix}.
            % \end{equation*}
         %\end{example}
-        We will now define the notion of equivalence of vector spaces.
-        \begin{definition}{\Stop\,\,Isomorphic Vector Spaces}{isovec}
-
-            Suppose \(V\) and \(W\) are vector spaces. Then, we write \(V\cong W\) if and only if there exists some linear transformation \(T:V\to W\) that is an isomorphism.
-            
-        \end{definition}
-        \begin{theorem}{\Stop\,\,\(\cong\) is an Equivalence Relation}{isoequivrel}
-
-            Suppose \(V\) and \(W\) are vector spaces. Then, \(\cong\) is an equivalence relation.
-            \begin{proof}
-                \begin{enumerate}
-                    \item We must show \(V\cong V\), and use that 
-                    \item Suppose \(V\cong W\) via \(L:V\to W\), and we must show that \(L^{-1}:W\to V\) is an isomorphism from \(W\) to \(V\).
-                    \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). Show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism.
-                \end{enumerate}
-                \DOTHISLATER
-            \end{proof}
-
-        \end{theorem}
-        \begin{theorem}{\Stop\,\,Isomorphisms Preserve Linear Independence and Span}{isopreslinspan}
-
-            Let \(V\) and \(W\) be vector spaces with \(S\subseteq V\). Let \(L:V\to W\) be an isomorphism. Then,
-            \begin{enumerate}
-                \item If \(S\) is linearly independent, \(L(S)=\{L(\vec{v}):\vec{v}\in S\}\).
-                \begin{proof}
-                    See Assignment \(5\), Question \(2\), for a similar proof.
-                    \DOTHISLATER
-                \end{proof}
-                \item If \(\Span(S)=V\), \(\Span(L(S))=W\).
-                \begin{proof}
-                    Let \(\vec{w}\in W\). Since \(L\) is surjective, there exists \(\vec{v}\in V\) such that \(L(\vec{v})=\vec{w}\). Since \(\Span(S)=V\). We can write
-                    \begin{equation*}
-                        \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
-                    \end{equation*}
-                    for \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). We have that
-                    \begin{align*}
-                        \vec{w}&=L(vec{v}) \\
-                        &=L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n) \\
-                        &=c_1L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n).
-                    \end{align*}
-                    Thus, \(\vec{w}\in\Span(L(S))\) since \(L(\vec{v}_1),\ldots,L(\vec{v}_n)\in L(S)\).
-                \end{proof}
-                \item If \(S\) is basis for \(V\), \(L(S)\) is a basis for \(W\).
-                \begin{proof}
-                    Parts \(1\) and \(2\) imply that \(L(S)\) is linearly independent and \(Span(L(S))=W\). As a remark, \(L\) maps a basis of \(V\) to a basis of \(W\). If \(B\) is a basis of \(V\) with \(|B|=n\), \(L(B)=n\).
-                \end{proof}
-            \end{enumerate}
-            
-        \end{theorem}
-        \begin{theorem}{\Stop\,\,Isomorphism Implies Equivalent Dimension}{equivdim}
-
-            Let \(V\) and \(W\) be vector spaces. Then, \(V\cong W\) if and only if \(\dim V=\dim W\).
-            \begin{proof}
-                Let \(\dim V=n\). We wish to show \(V\cong\mathbb{R}^n\). Let \(B=(\vec{v}_1,\ldots,\vec{v}_n))\) be an ordered basis for \(V\). We will now define
-                \begin{equation*}
-                    L:V\to\mathbb{R}^n,\vec{v}\mapsto[\vec{v}]_B.
-                \end{equation*}
-                To show \(L\) is an isomorphism, we will find \(L^{-1}\). Consider 
-                \begin{equation*}
-                    R:\mathbb{R}^n\to V,[c_1,\ldots,c_n]\mapsto c_1\vec{v}_1+\cdots+c_n\vec{v}_n.
-                \end{equation*}
-                We see that \(L^{-1}=R\).
-            \end{proof}
-            
-        \end{theorem}
