@@ -375,7 +375,7 @@
             \begin{equation*}
                 L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
             \end{equation*}
-            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=(x^3,x^2,x,1)\) for \(\mathcal{P}_{n}\) and \(C=([1,0,0],[0,1,0],[0,0,1])\).
+            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=(x^3,x^2,x,1)\) for \(\mathcal{P}_{3}\) and \(C=([1,0,0],[0,1,0],[0,0,1])\) for \(\mathbb{R}^3\).
             \\
             \\
             By the definition of \(L\), we see that \(L(x^3)=[0,0,1]\), \(L(x^2)=[0,2,0]\), \(L(x)=[1,0,0]\), and \(L(1)=[1,0,-1]\). We need not perform any explicit coordinatization since we are using the standard basis for \(\mathbb{R}^3\), so,
@@ -394,7 +394,7 @@
             \begin{equation*}
                 L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
             \end{equation*}
-            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=(x^3+x^2,x^2+x,x+1,1)\) for \(\mathcal{P}_{n}\) and \(C=([-2,1,-3],[1,-3,0],[3,-6,2])\).
+            Find the matrix for the linear transformation \(L\) with respect to the ordered bases \(B=(x^3+x^2,x^2+x,x+1,1)\) for \(\mathcal{P}_{3}\) and \(C=([-2,1,-3],[1,-3,0],[3,-6,2])\) for \(\mathbb{R}^3\).
             \\
             \\
             By the definition of \(L\), we see that \(L(x^3+x^2)=[0,2,0]\), \(L(x^2+x)=[1,2,0]\), \(L(x+1)=[2,0,-1]\), and \(L(1)=[1,0,-1]\). Now, we must find \([0,2,1]_C\), \([1,2,0]_C\), \([2,0,-1]_C\), and \([1,0,-1]_C\). We consider
@@ -439,10 +439,100 @@
                 Since \(A_{DE}\) is the unique matrix such that \(A_{DE}[\vec{v}]_D=[L(\vec{v})]_E\), \(A_{DE}=QA_{BC}P^{-1}\).
             \end{proof}
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
-        As an important special case, we revisit and consider similar matrices.
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation 5}{findmat5}
+            
+            Consider
+            \begin{equation*}
+                L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
+            \end{equation*}
+            As seen in Example \ref{exa:findmat3}, the matrix for \(L\) using the standard bases for \(\mathcal{P_3}\) and \(\mathbb{R}^3\) was
+            \begin{equation*}
+                A_{BC}=\begin{bmatrix}
+                    0 & 0 & 1 & 1 \\
+                    0 & 2 & 0 & 0 \\
+                    1 & 0 & 0 & -1
+                \end{bmatrix},
+            \end{equation*}
+            where, again \(B=(x^3,x^2,x,1)\) and \(C=([1,0,0],[0,1,0],[0,0,1])\). We will now check our work in Example \ref{exa:findmat4}, where we saw the matrix for \(L\), with respect to the bases \(D=(x^3+x^2,x^2+x,x+1,1)\) and \(E=([-2,1,-3],[1,3,0],[3,-6,2])\) was
+            \begin{equation*}
+                A_{DE}=\begin{bmatrix}
+                    -1 & -10 & -15 & -9 \\
+                    1 & 26 & 41 & 25 \\
+                    -1 & -15 & -23 & -14
+                \end{bmatrix}.
+            \end{equation*}
+            To calculate the transition matrix \(P^{-1}\) from \(D\) to \(B\), we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & 0 & | & 1 & 0 & 0 & 0 \\
+                    0 & 1 & 0 & 0 & | & 1 & 1 & 0 & 0 \\
+                    0 & 0 & 1 & 0 & | & 0 & 1 & 1 & 0 \\
+                    0 & 0 & 0 & 1 & | & 0 & 0 & 1 & 1
+                \end{bmatrix},
+            \end{equation*}
+            so
+            \begin{equation*}
+                P^{-1}=\begin{bmatrix}
+                    1 & 0 & 0 & 0 \\
+                    1 & 1 & 0 & 0 \\
+                    0 & 1 & 1 & 0 \\
+                    0 & 0 & 1 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            To calculate the transition matrix from \(C\) to \(E\), we have
+            \begin{equation*}
+                \begin{bmatrix}
+                    -2 & 1 & 3 & | & 1 & 0 & 0 \\
+                    1 & 3 & -6 & | & 0 & 1 & 0 \\
+                    -3 & 0 & 2 & | & 0 & 0 & 1
+                \end{bmatrix}\underbrace{\to}_\text{RREF}\begin{bmatrix}
+                    1 & 0 & 0 & | & -6 & -2 & 3 \\
+                    0 & 1 & 0 & | & 16 & 5 & -9 \\
+                    0 & 0 & 1 & | & -9 & -3 & 5
+                \end{bmatrix}.
+            \end{equation*}
+            so
+            \begin{equation*}
+                Q=\begin{bmatrix}
+                    -6 & -2 & 3 \\
+                    16 & 5 & -9 \\
+                    -9 & -3 & 5
+                \end{bmatrix}.
+            \end{equation*}
+            Then,
+            \begin{align*}
+                A_{DE}=QA_{BC}P^{-1}&=\begin{bmatrix}
+                    -6 & -2 & 3 \\
+                    16 & 5 & -9 \\
+                    -9 & -3 & 5
+                \end{bmatrix}\begin{bmatrix}
+                    0 & 0 & 1 & 1 \\
+                    0 & 2 & 0 & 0 \\
+                    1 & 0 & 0 & -1
+                \end{bmatrix}\begin{bmatrix}
+                1 & 0 & 0 & 0 \\
+                1 & 1 & 0 & 0 \\
+                0 & 1 & 1 & 0 \\
+                0 & 0 & 1 & 1
+            \end{bmatrix} \\
+            &=\begin{bmatrix}
+                -1 & -10 & -15 & -9 \\
+                1 & 26 & 41 & 25 \\
+                -1 & -15 & -23 & -14
+            \end{bmatrix},
+            \end{align*}
+            as desired.
+            
+        \end{example}
+        \vphantom
+        \\
+        \\
+        We now revisit and consider similar matrices.
         \begin{theorem}{\Stop\,\,Similar Matrices and Linear Operators}{simmatlinops}
 
             Let \(V\) be a vector space with bases \(C\) and \(D\). Let \(L:V\to V\) be a linear operator, so there exists some \(A_{CC}\) and \(A_{DD}\). Let \(P\) be the transition matrix from \(D\) to \(C\). Then, by Theorem \ref{thm:matricesconsdiffbases}, 
@@ -462,7 +552,7 @@
         Finally, we present an important result about compositions of linear transformations and matrix multiplication.
         \begin{theorem}{\Stop\,\,The Matrix of a Composition of Linear Transformations}{matcomplintrans}
 
-            Let \(V_1\), \(V_2\) and \(V_3\) be nontrivial finite dimensional vector spaces with ordered bases \(B\), \(C\), and \(D\), respectively. Let \(L_1:V_1\to V_2\) be a linear transformation with matrix \(A_{BC}\), and let \(L_2:V_2\to V_3\) be a linear transformation with matrix \(A_{CD}\). Then, the matrix for the composite linear transformation \(L_2\circ L_1:V_1\to V_3\), with respect to bases \(B\) and \(D\), is \(A_{CD}A_{BC}\).
+            Let \(V_1\), \(V_2\) and \(V_3\) be nontrivial finite dimensional vector spaces with ordered bases \(B\), \(C\), and \(D\), respectively. Let \(L_1:V_1\to V_2\) be a linear transformation with matrix \(A_{BC}\), and let \(L_2:V_2\to V_3\) be a linear transformation with matrix \(A_{CD}\). Then, the matrix, \(A_{BD}\), for the composite linear transformation \(L_2\circ L_1:V_1\to V_3\), with respect to bases \(B\) and \(D\), is \(A_{CD}A_{BC}\).
             
         \end{theorem}
 
@@ -477,7 +567,7 @@
 
             The kernel of a linear transformation \(L:V\to W\), is given by
             \begin{equation*}
-                \ker(L)=\{\vec{v}\in V:L(\vec{v})=\vec{0}\}.
+                \ker(L)=\{\vec{v}\in V:L(\vec{v})=\vec{0}_W\}.
             \end{equation*}
             
         \end{definition}
@@ -539,7 +629,7 @@
             \begin{equation*}
                 L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
             \end{equation*}
-            We find a basis of \(\ker(L)\) by finding particular solutions to \([A|\vec{0}]\). We find each solution \(\vec{v}_i\) by setting the \(i\)th free variable in the system to \(1\) and the other free variables to \(0\). We end up with the set \(\{\vec{v}_1,\ldots,\vec{v}_k\}\) as a basis for \(\ker(L)\). Then, \(\ker(L)=\Span(\{\vec{v}_1,\ldots,\vec{v}_k\})\). As a remark, \(\dim(\ker(L))\) is the number of free variables in the homogeneous solution set.
+            We find a basis of \(\ker(L)\) by finding particular solutions to \([A|\vec{0}]\). We find each particular solution \(\vec{v}_i\) by setting the \(i\)th free variable in the system to \(1\) and the other free variables to \(0\). We end up with the set \(\{\vec{v}_1,\ldots,\vec{v}_k\}\) as a basis for \(\ker(L)\). Then, \(\ker(L)=\Span(\{\vec{v}_1,\ldots,\vec{v}_k\})\). As a remark, \(\dim(\ker(L))\) is the number of free variables in the homogeneous solution set.
         \end{theorem}
         \begin{theorem}{\Stop\,\,Finding the Range of a Linear Transformation}{findrange}
 
@@ -547,7 +637,7 @@
             \begin{equation*}
                 L_A:\mathbb{R}^n\to\mathbb{R}^m, \vec{v}\mapsto A\vec{v}.
             \end{equation*}
-            To find \(\range(L)\), we need to row reduce \(A\). The columns in \(A\) corresponding to the pivot columns after row reduction is complete form a basis of \(\range(L)\). Then, \(\dim(\range(L))=\rank A\), the number of pivots.
+            To find \(\range(L)\), we need to row reduce \(A\). The columns in \(A\) corresponding to the pivot columns after row reduction is complete form a basis of \(\range(L)\). This is because the span of the columns of \(A\) is \(\range(L)\), and we must then form a basis by keeping only the pivot columns. As a remark, \(\dim(\range(L))=\rank A\), the number of pivot columns.
 
         \end{theorem}
         \pagebreak
@@ -630,7 +720,7 @@
         \begin{equation*}
             \dim(\ker(L))+\dim(\range(L)).
         \end{equation*}
-        \begin{theorem*}{\Stop\,\,The Dimension Theorem, in \(\mathbb{R}^n\)}
+        \begin{theorem}{\Stop\,\,The Dimension Theorem, in \(\mathbb{R}^n\)}{dimthmrn}
 
             Let \(A\in\mathcal{M}_{mn}\). Let \(L_A\) be a linear transformation with
             \begin{equation*}
@@ -642,8 +732,9 @@
                 \item \(\dim(\ker(L))=n-\rank A\).
                 \item \(\dim(\ker(L))+\dim(\range(L))=n\).
             \end{enumerate}
+            These results are verified by Theorems \ref{thm:findker} and \ref{thm:findrange}.
             
-        \end{theorem*}
+        \end{theorem}
         \begin{theorem*}{\Stop\,\,The Dimension Theorem}
 
             Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
@@ -655,7 +746,7 @@
         \vphantom
         \\
         \\
-        We will postpone the proofs of the above theorems to a later section; hence, we have omitted the reference numbers for the above theorems.
+        We will postpone the proof of the above theorem to a later section; hence, we have omitted the reference number.
 
     \pagebreak
 
@@ -681,7 +772,7 @@
             
             Suppose \(V\) and \(W\) are finite dimensional vector spaces with \(\dim V=\dim W\). Let \(L:V\to W\) be a linear transformation. Then, \(L\) is injective if and only if \(L\) is surjective.
             \begin{proof}
-                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the dimension theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition.
+                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the dimension theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition. Conversely, if \(L\) is surjective, \(\dim\ker(L)=0\), meaning that \(\ker(L)=\{\vec{0}_V\}\), which is equivalent to \(L\) being injective.
             \end{proof}
 
         \end{theorem}
@@ -752,7 +843,7 @@
             
             Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if \(L\) is an invertible linear transformation. If \(L\) is invertible, \(L^{-1}\) is also a linear transformation.
             \begin{proof}
-                The first part of this theorem follows from Theorem \ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\). Since \(L\) is surjective, we have \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\). We have
+                The first part of this theorem follows from Theorem \ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\). Since \(L\) is surjective, we have \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\) for \(\vec{v}_1,\vec{v}_2\in V\). We have
                 \begin{align*}
                     L^{-1}(\vec{w}_1+\vec{w}_2)&=L^{-1}(L(\vec{v}_1)+L(\vec{v}_2)) \\
                     &=L^{-1}(L(\vec{v}_1+\vec{v}_2)) \\
