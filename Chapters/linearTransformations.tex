@@ -720,7 +720,28 @@
         \begin{equation*}
             \dim(\ker(L))+\dim(\range(L)).
         \end{equation*}
-        \begin{theorem}{\Stop\,\,The Dimension Theorem, in \(\mathbb{R}^n\)}{dimthmrn}
+        But first, consider the following definitions.
+        \begin{definition}{\Stop\,\,Nullity of a Linear Transformation}{nullity}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
+            \begin{equation*}
+                \nullity(L)=\dim(\ker(L)).
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Rank of a Linear Transformation}{ranklintrans}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
+            \begin{equation*}
+                \rank(L)=\dim(\range(L)).
+            \end{equation*}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Now, consider the following theorems.
+        \begin{theorem}{\Stop\,\,The Dimension Theorem (The Rank-Nullity Theorem), in \(\mathbb{R}^n\)}{dimthmrn}
 
             Let \(A\in\mathcal{M}_{mn}\). Let \(L_A\) be a linear transformation with
             \begin{equation*}
@@ -735,7 +756,7 @@
             These results are verified by Theorems \ref{thm:findker} and \ref{thm:findrange}.
             
         \end{theorem}
-        \begin{theorem*}{\Stop\,\,The Dimension Theorem}
+        \begin{theorem*}{\Stop\,\,The Dimension Theorem (The Rank-Nullity Theorem)}
 
             Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
             \begin{equation*}
@@ -969,6 +990,58 @@
                     \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). Show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism.
                 \end{enumerate}
                 \DOTHISLATER
+            \end{proof}
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We will now restate the Dimension Theorem, or the Rank-Nullity Theorem, with an accompanying proof.
+        \begin{theorem}{\Stop\,\,The Dimension Theorem (The Rank-Nullity Theorem)}{dimensionthm}
+
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces and \(L:V\to W\) is a linear transformation. Then,
+            \begin{equation*}
+                \dim(\ker(L))+\dim(\range(L))=\dim V.
+            \end{equation*}
+            \begin{proof}
+                Let \(B_{\ker(L)}=\{\vec{u}_1,\ldots,\vec{u}_m\}\) be a basis for \(\ker(L)\). We can extend \(B_{\ker(L)}\) to form a basis for \(V\), \(B_V\), with \(B_V=\{\vec{u}_1,\ldots,\vec{u}_m,\vec{v}_1,\ldots,\vec{v}_n\}\). Note that \(\dim(\ker(L))=m\) and \(\dim V=m+n\). Then, for some \(\vec{v}\in V\), we have
+                \begin{equation*}
+                    \vec{v}=c_1\vec{u}_1+\cdots+c_m\vec{u}_m+c_{m+1}\vec{v}_1+\cdots+c_n\vec{v}_n
+                \end{equation*}
+                for \(c_1,\ldots,c_m,c_{m+1},\ldots,c_n\in\mathbb{F}\). If we apply \(L\) to both sides, we have
+                \begin{align*}
+                    L(\vec{v})&=L(c_1\vec{u}_1+\cdots+c_m\vec{u}_m+c_{m+1}\vec{v}_1+\cdots+c_n\vec{v}_n) \\
+                    &=c_1L(\vec{u}_1)+\cdots+c_mL(\vec{u}_m)+c_{m+1}L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n).
+                \end{align*}
+                Since \(B_{\ker(L)}\) is a basis of \(\ker(L)\), \(L(\vec{u}_1)=\cdots=L(\vec{u_m})=\vec{0}_W\) and we have
+                \begin{equation*}
+                    L(\vec{v})=c_{m+1}L(\vec{v}_1)+\cdots+c_nL(\vec{v}_n).
+                \end{equation*}
+                Therefore, since we have written arbitrary \(L(\vec{v})\) as a linear combination of \(L(\vec{v}_1),\ldots,L(\vec{v}_n)\), we have 
+                \begin{equation*}
+                    \range(L)=\Span(\{L(\vec{v}_1),\ldots,L(\vec{v}_n)\}).
+                \end{equation*}
+                Consider
+                \begin{align*}
+                    \vec{0}_W&=b_1L(\vec{v}_1)+\cdots+b_nL(\vec{v}_n) \\
+                    &=L(b_1\vec{v}_1+\cdots+b_n\vec{v}_n)
+                \end{align*}
+                for \(b_1,\ldots,b_n\in\mathbb{F}\). We see that \(b_1\vec{v}_1+\cdots+b_n\vec{v}_n\in\ker(L)\), so
+                \begin{equation*}
+                    b_1\vec{v}_1+\cdots+b_n\vec{v}_n=d_1\vec{u}_1+\cdots+d_m\vec{u}_m.
+                \end{equation*}
+                If we subtract the right hand side from both sides, we have
+                \begin{equation*}
+                    b_1\vec{v}_1+\cdots+b_n\vec{v}_n+(-d_1\vec{u}_1)+\cdots+(-d_m)\vec{u}_m=\vec{0}_V
+                \end{equation*}
+                Since \(B_V\) is a basis for \(V\), \(B_V\) is linearly independent, so \(b_1=\cdots=b_n=d_1=\cdots=d_m=0\). Since \(b_1=\cdots=b_n=0\), \(B_{\range(L)}:=\{L(\vec{v}_1),\ldots,L(\vec{v}_n)\}\) is linearly independent. Since \(B_{\range(L)}\) both spans \(\range(L)\) and is linearly independent, \(B_{\range(L)}\) is a basis for \(\range(L)\). We see that \(\dim(\range(L))=n\), so
+                \begin{align*}
+                    \dim V&=m+n \\
+                    &=\dim(\ker(L))+\dim(\range(L)),
+                \end{align*}
+                as desired.
+
             \end{proof}
 
         \end{theorem}
