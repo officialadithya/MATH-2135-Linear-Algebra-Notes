@@ -1125,3 +1125,41 @@
             Note that ``\(\cup\{\vec{0}_V\}\)'' is somewhat redundant, as it will always satisfy the equation. However, the zero vector is never an eigenvector.
         
         \end{definition}
+        \vphantom
+        \\
+        \\
+        Our goal is to find all the eigenvalues and eigenspaces of \(L\). Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Finding Eigenvectors and Eigenvalues}{findeigenvs}
+    
+            Let \(L\) be a linear operator on a nontrivial finite dimensional vector space \(V\). Suppose \(A\in\mathcal{M}_{nn}\) is the matrix representation of \(L\) with respect to some ordered basis of \(V\). The scalar \(\lambda\) is an eigenvalue of \(L\) if and only if \(\lambda\) satisfies
+            \begin{equation*}
+                \det(A-\lambda I_n)=0.
+            \end{equation*}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We will now define what it means for a linear operator to be diagonizable, while also providing a theorem to provide an equivalent condition.
+        \begin{definition}{\Stop\,\,Diagonalizability of a Linear Operator}{diaglintrans}
+
+            A linear operator \(L\) on a finite dimensional vector space is diagonizable if and only if the matrix representation of \(L\) with respect to some ordered basis for \(V\) is a diagonal matrix.
+            
+        \end{definition}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Diagonalizability of a Linear Operator}{diaglintrans}
+
+            Suppose \(L\) is a linear operator on an \(n\)-dimensional vector space \(V\). Then, \(L\) is diagonalizable if and only if there exists a set of \(n\) linearly independent eigenvectors for \(L\).
+            \begin{proof}
+                Suppose \(L\) is diagonalizable. Then, there exists some ordered basis \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) for \(V\) such that the matrix representation for \(L\) is a diagonal matrix \(D\). Because \(B\) is a basis, \(B\) is linearly independent. We wish to show that each \(\vec{v}_i\in B\), with \(1\leq i\leq n\), is an eigenvector corresponding to some eigenvalue for \(L\). Let \(d_{ii}\) be the \((i,i)\) element of \(D\). For each \(\vec{v}_i\), we have
+                \begin{equation*}
+                    [L(\vec{v_i})]_B=D[\vec{v_i}]_B=D\vec{e}_i=d_{ii}\vec{e}_i=d_{ii}[\vec{v_i}]_B=[d_{ii}\vec{v}_i]_B.
+                \end{equation*}
+                We have shown that \(L(\vec{v}_i)=d_{ii}\vec{v}_i\). That is, we have shown that each \(\vec{v}_i\in B\) is an eigenvector of \(L\) with eigenvalue \(d_{ii}\). Thus, \(B\) is a set of \(n\) linearly independent eigenvectors for \(L\). Conversely, suppose \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) is a set of \(n\) linearly independent eigenvectors for \(L\), corresponding to eigenvalues \(\lambda_1,\ldots,\lambda_n\). These eigenvalues need not be distinct. We also note that \(B\) is a basis for \(V\), by Theorem \ref{thm:lindim2}. We wish to show that the matrix representation for \(L\), with respect to \(B\) is diagonal. The \(i\)th column for \(A\) is given by
+                \begin{equation*}
+                    [L(\vec{w}_i)]_B=[\lambda_i\vec{w}_i]_B=\lambda_i[\vec{w}_i]_B=\lambda_i\vec{e}_i.
+                \end{equation*}
+                Thus, \(A\) is diagonal, and \(L\) is diagonalizable, as desired.
+            \end{proof}
+
+        \end{theorem}
