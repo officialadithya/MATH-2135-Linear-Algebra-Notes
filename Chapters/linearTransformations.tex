@@ -793,7 +793,7 @@
             
             Suppose \(V\) and \(W\) are finite dimensional vector spaces with \(\dim V=\dim W\). Let \(L:V\to W\) be a linear transformation. Then, \(L\) is injective if and only if \(L\) is surjective.
             \begin{proof}
-                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the dimension theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition. Conversely, if \(L\) is surjective, \(\dim\ker(L)=0\), meaning that \(\ker(L)=\{\vec{0}_V\}\), which is equivalent to \(L\) being injective.
+                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the dimension theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition. Conversely, if \(L\) is surjective, \(\dim(\ker(L))=0\), meaning that \(\ker(L)=\{\vec{0}_V\}\), which is equivalent to \(L\) being injective.
             \end{proof}
 
         \end{theorem}
@@ -1045,21 +1045,43 @@
             \end{proof}
 
         \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following important theorems.
         \begin{theorem}{\Stop\,\,Isomorphism Implies Equivalent Dimension}{equivdim}
 
-            Let \(V\) and \(W\) be vector spaces. Then, \(V\cong W\) if and only if \(\dim V=\dim W\).
+            Suppose \(V\) and \(W\) are finite dimensional vector spaces. Then, \(V\cong W\) if and only if \(\dim V=\dim W\).
             \begin{proof}
-                Let \(\dim V=n\). We wish to show \(V\cong\mathbb{R}^n\). Let \(B=(\vec{v}_1,\ldots,\vec{v}_n))\) be an ordered basis for \(V\). We will now define
+                Suppose \(V\cong W\). Then, there exists some linear transformation \(L:V\to W\) where \(L\) is an isomorphism. Therefore, we have that \(\dim(\range(L))=\dim W\). We also have \(\ker(L)=\{\vec{0}_V\}\), so \(\dim(\ker(L))=0\). Therefore, by Theorem \ref{thm:dimensionthm},
+                \begin{align*}
+                    \dim V&=\dim(\ker(L))+\dim(\range(L)) \\
+                    &=0+\dim W \\
+                    &=\dim W.
+                \end{align*}
+                Now, suppose \(\dim V=\dim W\). Let \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for \(V\) and \(B_W=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis for \(W\). Let 
                 \begin{equation*}
-                    L:V\to\mathbb{R}^n,\vec{v}\mapsto[\vec{v}]_B.
+                    L:V\to W, c_1\vec{v}_1+\cdots+c_n\vec{v}_n\mapsto c_1\vec{w}_1+\cdots+c_n\vec{w}_n
                 \end{equation*}
-                To show \(L\) is an isomorphism, we will find \(L^{-1}\). Consider 
+                for \(c_1,\ldots,c_n\in\mathbb{F}\). Consider arbitrary \(\vec{w}\in W\). We wish to find some \(\vec{v}\in V\) such that \(L(\vec{v})=\vec{w}\) to show that \(L\) is surjective. Under the supposition \(\dim V=\dim W\), \(L\) is an isomorphism if and only if \(L\) is surjective by Theorem \ref{thm:detinjsurjequivdim}. We have
                 \begin{equation*}
-                    R:\mathbb{R}^n\to V,[c_1,\ldots,c_n]\mapsto c_1\vec{v}_1+\cdots+c_n\vec{v}_n.
+                    \vec{w}=c_1\vec{w}_1+\cdots+c_n\vec{w}_n.
                 \end{equation*}
-                We see that \(L^{-1}=R\).
+                By the definition of \(L\), we know
+                \begin{equation*}
+                    L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n)=c_1\vec{w}_1+\cdots+c_n\vec{w}_n,
+                \end{equation*}
+                so \(L\) is surjective and is an isomorphism, so \(V\cong W\), as desired.
             \end{proof}
             
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,All \(n\)-Dimensional Vector Spaces are Isomorphic to \(\mathbb{R}^n\)}{allisorn}
+            
+            Suppose \(V\) is a finite dimensional vector space with \(\dim V=n\). Then, \(V\cong \mathbb{R}^n\).
+            \begin{proof}
+                We have that \(\dim V=n\), and we know that \(\dim\mathbb{R}^n=n\), so by Theorem \ref{thm:equivdim}, \(V\cong\mathbb{R}^n\).
+            \end{proof}
+
         \end{theorem}
 
       %  \begin{example}{\Stop\,\,Find Inverse 1}{findinv1}
@@ -1084,3 +1106,22 @@
             %    L^{-1}:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto([L(\vec{v})]_{BB})^{-1}\begin{bmatrix} x \\ y \end{bmatrix}.
            % \end{equation*}
         %\end{example}
+
+    \pagebreak
+    \subsection{Diagonalization of Linear Operators}
+
+        Consider the following definitions, similar to the notions discussed in Chapter \ref{chapter:deteigen}, but in the context of linear transformations.
+        \begin{definition}{\Stop\,\,Eigenvalues and Eigenvectors}{eigenvaluesandvectorslintrans}
+
+            Suppose \(V\) is a vector space. Let \(L:V\to V\) be a linear operator. A scalar \(\lambda\) is an eigenvalue of \(L\) if and only if there exists \(\vec{v}\in V\), where \(\vec{v}\neq\vec{0}_V\), such that \(L(\vec{v})=\lambda \vec{v}\). If \(\lambda\) is an eigenvalue of \(L\), \(\vec{v}\) is an eigenvector of \(L\) with eigenvalue \(\lambda\). 
+
+        \end{definition}
+        \begin{definition}{\Stop\,\,Eigenspace}{eigenspacelintrans}
+
+            Suppose \(V\) is a vector space. Let \(L:V\to V\) be a linear operator. The eigenspace of a given eigenvalue \(\lambda\) is
+            \begin{equation*}
+                E_\lambda=\{\vec{v}\in V:L(\vec{v})=\lambda \vec{v}\}\cup\{\vec{0}_V\}.
+            \end{equation*}
+            Note that ``\(\cup\{\vec{0}_V\}\)'' is somewhat redundant, as it will always satisfy the equation. However, the zero vector is never an eigenvector.
+        
+        \end{definition}
