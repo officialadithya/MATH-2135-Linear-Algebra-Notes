@@ -1163,3 +1163,72 @@
             \end{proof}
 
         \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Note that Theorem \ref{thm:diaglintrans} requires that we find ``enough'' linearly independent eigenvectors. We now provide a theorem guaranteeing the linear independence of eigenvectors in certain conditions.
+        \begin{theorem}{\Stop\,\,Eigenvectors With Distinct Eigenvalues are Linearly Independent}{eigenvecsdisteigenvalslinindep}
+
+            Suppose \(L\) is a linear operator on \(V\). Let \(\lambda_1,\ldots,\lambda_n\) be distinct eigenvalues for \(L\). If \(\vec{v}_1,\ldots,\vec{v}_n\) are eigenvectors for \(L\) corresponding to \(\lambda_1,\ldots,\lambda_n\), respectively, the set \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent.
+            \begin{proof}
+                
+                We proceed by induction on \(n\). For \(n=1\), any eigenvector \(\vec{v}_1\), for any eigenvalue, by definition is nonzero, so \(\{\vec{v}_1\}\) is linearly independent. Suppose that for all \(k\in\mathbb{N}\), the proposition holds. Now, for distinct eigenvalues \(\lambda_1,\ldots,\lambda_{k+1}\). We wish to show that \(\{\vec{v}_1,\ldots,\vec{v}_{k+1}\}\) is linearly independent. Consider
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_{k+1}\vec{v}_{k+1}=\vec{0}_V
+                \end{equation*}
+                for scalars \(c_1,\ldots,c_n\). If we apply \(L\) to both sides, we have
+                \begin{align*}
+                    L(\vec{0}_V)&=L(c_1\vec{v}_1+\cdots+c_{k+1}\vec{v}_{k+1}) \\
+                    &=c_1L(\vec{v}_1)+\cdots+c_{k+1}L(\vec{v}_{k+1})
+                \end{align*}
+                which implies
+                \begin{equation*}
+                    c_1\lambda_1\vec{v}_1+\cdots+c_{k+1}\lambda_{k+1}\vec{v}_{k+1}=\vec{0}_V.
+                \end{equation*}
+                If we multiply \(c_1\vec{v}_1+\cdots+c_{k+1}\vec{v}_{k+1}=\vec{0}_V\) by \(\lambda_{k+1}\), we have
+                \begin{equation*}
+                    c_1\lambda_{k+1}\vec{v}_1+\cdots+c_{k+1}\lambda_{k+1}\vec{v}_{k+1}=\vec{0}_V=c_1\lambda_1\vec{v}_1+\cdots+c_{k+1}\lambda_{k+1}\vec{v}_{k+1}=\vec{0}_V.
+                \end{equation*}
+                which we can rewrite as
+                \begin{equation*}
+                    c_1(\lambda_1-\lambda_{k+1})\vec{v}_1+\cdots+c_k(\lambda_k-\lambda_{k+1})\vec{v}_k=\vec{0}_V
+                \end{equation*}
+                By the inductive hypothesis,
+                \begin{equation*}
+                    c_1(\lambda_1-\lambda_{k+1})=\cdots=c_k(\lambda_k-\lambda_{k+1})=0.
+                \end{equation*}
+                Since \(\lambda_1,\ldots,\lambda_{k+1}\) are distinct, none of the differences in the above equation can be zero, so \(c_1=\cdots=c_k=0\). Thus, for
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_{k+1}\vec{v}_{k+1}=\vec{0}_V,
+                \end{equation*}
+                we have \(c_{k+1}\vec{v}_{k+1}=\vec{0}_V\). Since \(\vec{v}_{k+1}\neq\vec{0}_V\), we have \(c_{k+1}=0\), as desired.
+
+            \end{proof}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Note that Theorem \ref{thm:eigenvecsdisteigenvalslinindep} provides that if \(L\) is linear operator on an \(n\)-dimensional vector space and \(L\) has \(n\) distinct eigenvalues, \(L\) is diagonalizable. The converse is false.
+        \pagebreak
+        \\
+        \\
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Union and Intersection of Bases for Eigenspaces}{unioninterbaseseigenspc}
+
+            Suppose \(V\) is a finite dimensional vector space. Let \(L:V\to V\) be a linear operator, and let \(B_1,\ldots,B_k\) be bases for eigenspaces \(E_{\lambda_1},\ldots,E_{\lambda_k}\) for \(L\), where \(\lambda_1,\ldots,\lambda_k\) are distinct eigenvalues for \(L\). Then, \(B_i\cap B_j=\emptyset\) for \(1\leq i<j\leq k\), and \(B_1\cup \cdots\cup B_k\) is a linearly independent subset of \(V\).
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Process of Diagonalization for Linear Operators}{procdiaglinops}
+
+            Let \(V\) be an \(n\)-dimensional vector space and let \(L:V\to V\) be a linear operator. Consider the following steps.
+            \begin{enumerate}
+                \item Find a basis, \(C\), for \(V\). Then, find the matrix representation \(A\) of \(L\) with respect to \(C\).
+                \item Apply the steps of Theorem \ref{thm:diagonalization} on \(A\) to find the eigenvalues \(\lambda_1,\ldots,\lambda_k\) and a basis in \(\mathbb{R}^n\) for each eigenspace \(E_\lambda\). If \(\left|\bigcup_{i}E_{\lambda_i}\right|<n\), \(L\) is not diagonalizable. Otherwise, let \(Z=(\vec{w}_1,\ldots,\vec{w}_n)=\bigcup_i E_{\lambda_i}\) be an ordered basis for \(\mathbb{R}^n\).
+                \item Find an ordered basis \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) of \(V\) such that \([\vec{v}_i]_C=\vec{w}_i\).
+                \item Form \(D\) by finding the matrix representation for \(L\) with respect to \(B\).
+                \item If needed, form \(P=\begin{bmatrix} [\vec{v}_1]_C & \cdots & [\vec{v}_n]_C \end{bmatrix}=\begin{bmatrix} \vec{w}_1 & \cdots & \vec{w}_n \end{bmatrix}\).
+            \end{enumerate}
+
+        \end{theorem}
