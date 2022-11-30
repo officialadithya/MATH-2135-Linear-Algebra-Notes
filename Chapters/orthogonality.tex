@@ -172,4 +172,96 @@
 
 \section{Lecture 36: November 30, 2022}
 
-    \subsection{}
+    \subsection{Orthogonal Complements and Projections}
+
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Orthogonal Complements}{orthocomp}
+
+            Let \(V\) be an inner product space. Let \(S\subseteq V\). Then,
+            \begin{equation*}
+                S^{\perp}=\{\vec{v}\in V:\forall \vec{w}\in S, \iprod{\vec{v}}{\vec{w}}=0\}.
+            \end{equation*}
+
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 1}{findorthocomp1}
+
+            Let \(W=\Span([1,0,0],[0,1,0])\subseteq\mathbb{R}^3\). Find \(W^\perp\).
+            \\
+            \\
+            We see that 
+            \begin{equation*}
+                W^\perp=\Span([0,0,1]).
+            \end{equation*}
+            Geometrically, \(W\) is the \(xy\) plane and \(W^\perp\) is the \(z\) axis.
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 2}{findorthocomp2}
+
+           Let \(V\) be an inner product space. Find \(\{\vec{0_V}\}^\perp\).
+           \\
+           \\
+           We see \(\{\vec{0_V}\}^\perp=V\). Also, \(V^\perp=\{\vec{0}_V\}\).
+        
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Subsets and Subspaces}{subsub}
+
+            Let \(V\) be an inner product space. Let \(S\subseteq V\). Then,
+            \begin{enumerate}
+                \item \(S^\perp\) is a subspace of \(V\).
+                \begin{proof}
+                    Outline: Show nonempty, show closure properties.
+                \end{proof}
+                \item If \(W\) is a subspace of \(V\), \(W\cap W^\perp=\{\vec{0}_V\}\).
+                \begin{proof}
+                    Since \(W\) is a subspace of \(V\), \(\vec{0}_V\in W\). Since \(W^\perp\) is a subspace of \(V\) because \(W\subseteq V\), \(\vec{0}_V\in W^\perp\). Then, suppose \(\vec{w}\in W\cap W^\perp\). By Definition \ref{def:orthocomp}, \(\iprod{\vec{w}}{\vec{w}}=0\), so \(\vec{w}=\vec{0}_V\).
+                \end{proof}
+                \item \(S\subseteq (S^\perp)^\perp\).
+            \end{enumerate}
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Finite Dimensional Inner Product Spaces and Subspaces}{subspcs}
+            
+            Suppose \(V\) is a finite dimensional inner product space and \(W\) is a subspace of \(V\). Then,
+            \begin{enumerate}
+                \item If \(\{\vec{v}_1,\ldots,\vec{v}_k\}\) is an orthonormal basis of \(W\) and \(\{\vec{v}_1,\ldots,\vec{v}_k,\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is an orthonormal basis for \(V\), \(\{\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is an orthonormal basis for \(W^\perp\).
+                \begin{proof}
+                    Since \(\{\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is orthonormal, it is linearly independent. We wish to show that \(\vec{w}_i\in W^\perp\) for \(1\leq i \leq \ell\) and \(\Span(\{\vec{w}_1,\ldots,\vec{w}_\ell\})=W^\perp\). For the spanning property, let \(\vec{w}\in W^\perp\). Then, \(\vec{w}\in V\), so
+                    \begin{equation*}
+                        \vec{w}=c_1\vec{v}_1+\cdots+c_k\vec{v}_k+d_1\vec{w}_1+\cdots+d_\ell\vec{v}_\ell
+                    \end{equation*}
+                    for \(c_1,\ldots,c_k\in\mathbb{F}\) and \(d_1,\ldots,d_\ell\in\mathbb{F}\). We wish to show \(c_1=\cdots=c_k=0\). Since \(\vec{w}\in W^\perp\) and \(\vec{v}_i\in W\), we have that \(\iprod{\vec{w}}{\vec{v}_i}=0\) for \(1\leq i\leq k\). But, we have
+                    \begin{equation*}
+                        \iprod{\vec{w}}{\vec{v}}=\iprod{\vec{w}_1=c_1\vec{v}_1+\cdots+c_k\vec{v}_k+d_1\vec{w}_1+\cdots+d_\ell\vec{v}_\ell}{\vec{v}_i}=c_i\iprod{\vec{v}_i}{\vec{v}_i}.
+                    \end{equation*}
+                    This implies \(c_i\iprod{\vec{v}_i}{\vec{v}_i}=0\). Since \(\vec{v}_i\neq\vec{0}_V\), \(c_i=0\), so
+                    \begin{equation*}
+                        \vec{w}=d_1\vec{w}_1+\cdots+d_\ell\vec{v}_\ell,
+                    \end{equation*}
+                    so \(W=\Span(\{\vec{w}_1,\ldots,\vec{w}_\ell\})\).
+                \end{proof}
+                \item \(\dim V=\dim W+\dim W^\perp\).
+                \item \(W=(W^\perp)^\perp\).
+            \end{enumerate}
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following definitions.
+        \begin{definition}{\Stop\,\,Projections Onto a Subspace}{projectionssubspc}
+
+            Let \(V\) be an inner product space. Let \(W\) be a subspace of \(V\).
+            
+        \end{definition}
+        \DOTHISLATER
+        \DOTHISLATER
