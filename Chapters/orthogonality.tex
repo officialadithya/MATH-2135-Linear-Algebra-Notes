@@ -1,0 +1,175 @@
+\section{Lecture 35: November 28, 2022}
+
+    \subsection{Inner Product Spaces}
+    \DOTHISLATER
+
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Inner Products and Inner Product Spaces}{innerprod}
+
+            An \(\mathbb{F}\) valued inner product on a vector space \(V\) is a function 
+            \begin{equation*}
+                \langle\cdot,\cdot\rangle:V\times V\to \mathbb{F}
+            \end{equation*}
+            such that
+            \begin{enumerate}
+                \item \(\forall \vec{v}\in V,\langle \vec{v},\vec{v}\rangle\geq 0\).
+                \item \(\vec{v}=\vec{0}_V\iff \langle \vec{v},\vec{v}\rangle\).
+                \item \(\forall \vec{u},\vec{v}\in V, \langle \vec{u},\vec{v}\rangle=\bar{\langle \vec{v}, \vec{u}\rangle}\).
+                \item \(\forall \vec{u},\vec{v},\vec{w}\in V, \langle \vec{u}+\vec{v}, \vec{z}\rangle=\langle \vec{u},\vec{w}\rangle+\langle \vec{v},\vec{w}\rangle\).
+                \item \(\forall c\in\mathbb{F},\forall \vec{u},\vec{v}\in V, \langle c\vec{u},\vec{v}\rangle=c\langle \vec{u},\vec{v}\rangle\).
+            \end{enumerate}
+            \vphantom
+            \\
+            \\
+            The pair \((V,\langle\cdot,\cdot\rangle)\) is called an inner product space.
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{An Inner Product of \(\mathbb{R}^n\)}{rninnerprod}
+            
+            The pair \((\mathbb{R}^n, \langle \vec{u},\vec{v}\rangle=\vec{u}\cdot\vec{v})\) is a real inner product space.
+
+        \end{example}
+        \begin{example}{An Inner Product of \(\mathbb{C}^n\)}{cninnerprod}
+            
+            The pair \((\mathbb{C}^n, \langle \vec{u},\vec{v}\rangle=\vec{u}\cdot\vec{v})\) is a complex inner product space.
+
+        \end{example}
+        \begin{example}{An Inner Product of \(\{f:[0,1]\to\mathbb{R}\}\)}{funcinnerprod}
+
+            Let \(V=\{f:[0,1]\to\mathbb{R}\}\). The pair
+            \begin{equation*}
+                \left(V,\langle f, g\rangle=\int_0^1 f(x)g(x)\dd x\right)
+            \end{equation*}
+            is a real inner product space.
+            
+        \end{example}
+        \begin{theorem}{\Stop\,\,}{...}
+
+            Let \(V\) be an inner product space. Suppose \(\vec{u},\vec{v},\vec{w}\in V\) and \(c\in\mathbb{F}\). Then,
+            \begin{enumerate}
+                \item \(\langle\vec{0},\vec{v}\rangle=\vec{0}=\langle\vec{v},\vec{0}\rangle\).
+                \item \(\langle \vec{v},\vec{w}+\vec{z}\rangle=\langle \vec{v},\vec{u}\rangle+\langle\vec{v},\vec{z}\rangle\).
+                \item \(\langle\vec{v},c\vec{w}\rangle=\bar{c}\langle\vec{v},\vec{w}\rangle\).
+            \end{enumerate}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following definitions and theorems.
+        \begin{definition}{\Stop\,\,Norms}{norms}
+
+            The norm associated to the inner product \(\langle\cdot,\cdot\rangle\) is
+            \begin{equation*}
+                ||\cdot||:V\to[0,\infty),\vec{v}\mapsto\sqrt{\langle\vec{v},\vec{v}\rangle}.
+            \end{equation*}
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,}{...2}
+            
+            Let \(V\) be an inner product space. Suppose \(\vec{v},\vec{w}\in V\) and \(c\in\mathbb{F}\). Then,
+            \begin{enumerate}
+                \item \(||c\vec{v}||=|c|||\vec{v}||\).
+                \item \(\langle \vec{v},\vec{w}\rangle\leq ||\vec{v}||||\vec{w}||\).
+                \item \(||\vec{v}+\vec{w}||\leq||\vec{v}||+||\vec{w}||\).
+            \end{enumerate}
+
+        \end{theorem}
+        \begin{definition}{\Stop\,\,Distance}{distance}
+
+            Let \(V\) be an inner product space. The distance betwen \(\vec{v},\vec{w}\in V\) is \(||\vec{v}-\vec{w}||\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Angle}{angle}
+
+            Let \(V\) be an inner product space. Let \(\mathbb{F}=\mathbb{R}\). The angle betwen \(\vec{v},\vec{w}\neq\vec{0}_V\) is given by
+            \begin{equation*}
+                \theta =\arccos\left(\frac{\langle\vec{v},\vec{w}\rangle}{||\vec{v}||||\vec{w}||}\right)
+            \end{equation*}
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Orthogonality}{orthogonality}
+
+            Let \(V\) be an inner product space. Then, 
+            \begin{enumerate}
+                \item \(\vec{v},\vec{w}\in V\) are orthogonal if and only if \(\langle\vec{v},\vec{w}\rangle=0\).
+                \item A set \(S\subseteq V\) is orthogonal if and only if for each \(\vec{v},\vec{w}\in S\), \(\langle\vec{v},\vec{w}\rangle=0\).
+                \item A set \(S\subseteq V\) is orthonormal if and only if it is orthogonal and each \(\vec{v}\in S\) has \(||\vec{v}||=1\).
+            \end{enumerate}
+
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\,The Standard Basis of \(\mathbb{R}^n\)}{stdbasisrn}
+
+            The set \(\{\vec{e}_1,\ldots,\vec{e}_n\}\) is orthonormal when considered as a subset of \(\mathbb{R}^n\) or \(\mathbb{C}^n\).
+            
+        \end{example}
+        \begin{theorem}{\Stop\,\,Orthonormal Implies Linearly Independent}{orthlinindep}
+            
+            If \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is orthonormal, \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent.
+            \begin{proof}
+                Suppose
+                \begin{equation*}
+                    c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}_V
+                \end{equation*}
+                for some \(c\in\mathbb{F}\). We must show \(c_1=\cdots=c_n=0\). For each \(i\), \(1\leq i\leq n\), consider 
+                \begin{align*}
+                    0&=\langle c_1\vec{v}_1+\cdots+c_n\vec{v}_n,\vec{v}_i \rangle \\
+                    &=\langle c_1\vec{v}_1,\vec{v}_i\rangle+\cdots+\langle c_n\vec{v}_n,\vec{v}_i\rangle \\
+                    &=c_1\langle \vec{v}_1,\vec{v}_i\rangle+\cdots+c_n\langle \vec{v}_n,\vec{v}_i\rangle \\
+                    &=c_i\langle \vec{v}_i,\vec{v}_i\rangle
+                \end{align*}
+                We see that \(\langle\vec{v}_i,\vec{v}_i\rangle>0\), since \(\vec{v}_i\neq\vec{0}_V\), we have \(0=c_i||\vec{v}_i||^2\), implying that \(c_i=0\) for each \(i\).
+            \end{proof}
+            The converse is false.
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Given a linearly indepedent set \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\), we seek to construct a set \(S_2=\{\vec{v}_1,\ldots,\vec{v}_k\}\) such that \(S\) is orthogonal and \(\Span(S_1)=\Span(S_2)\). We present the Gram-Schmidt process.
+        \begin{theorem}{\Stop\,\,Gram-Schmidt Process}{gramschmidt}
+            
+            Let \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\) such that \(S_1\) is linearly independent.
+            \begin{enumerate}
+                \item Let \(\vec{v}_1=\vec{w}_1\)
+                \item Let \(\vec{v}_2=\vec{w}_2-\left(\frac{\langle\vec{w}_2,\vec{v}_1\rangle}{\langle(\vec{v}_1,\vec{v}_1\rangle)}\right)\vec{v}_1\)
+                \item \(\vdots\)
+                \item Let \(\vec{v}_k=\)
+            \end{enumerate}
+            \DOTHISLATER
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We can also normalize an orthogonal set into an orthonormal one by just dividing by the magnitude of each \(\vec{v}_i\).
+        \DOTHISLATER
+        \begin{definition}{\Stop\,\,Orthonormal Bases}{orthonormalbasis}
+
+            A set \(B\subseteq V\) is an orthonormal basis if and only if \(B\) is a basis of \(V\) and \(B\) is orthonormal.
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Every Inner Product Space Has an Orthonormal Basis}{innerproductspaceorthobasis}
+
+            Every inner product space has an orthonormal basis.
+            \begin{proof}
+                Suppose \(V\) is a finite dimensional inner product space. Let \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis for \(V\). Apply the Gram-Schmidt process to find orthogonal \(\{\vec{v}_1,ldots,\vec{v}_n\}\) and normalize it. This set is orthonormal and, therefore, linearly indepedent, and the spans are the same.
+                \DOTHISLATER
+            \end{proof}
+            
+        \end{theorem}
+
+        \pagebreak
+
+\section{Lecture 36: November 30, 2022}
+
+    \subsection{}
