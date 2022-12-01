@@ -1,7 +1,6 @@
 \section{Lecture 35: November 28, 2022}
 
     \subsection{Inner Product Spaces}
-    \DOTHISLATER
 
         Consider the following definition.
         \begin{definition}{\Stop\,\,Inner Products and Inner Product Spaces}{innerprod}
@@ -12,11 +11,11 @@
             \end{equation*}
             such that
             \begin{enumerate}
-                \item \(\forall \vec{v}\in V,\langle \vec{v},\vec{v}\rangle\geq 0\).
-                \item \(\vec{v}=\vec{0}_V\iff \langle \vec{v},\vec{v}\rangle\).
-                \item \(\forall \vec{u},\vec{v}\in V, \langle \vec{u},\vec{v}\rangle=\bar{\langle \vec{v}, \vec{u}\rangle}\).
-                \item \(\forall \vec{u},\vec{v},\vec{w}\in V, \langle \vec{u}+\vec{v}, \vec{z}\rangle=\langle \vec{u},\vec{w}\rangle+\langle \vec{v},\vec{w}\rangle\).
-                \item \(\forall c\in\mathbb{F},\forall \vec{u},\vec{v}\in V, \langle c\vec{u},\vec{v}\rangle=c\langle \vec{u},\vec{v}\rangle\).
+                \item \(\forall\vec{v}\in V,\iprod{\vec{v}}{\vec{v}}\geq 0\).
+                \item \(\vec{v}=\vec{0}_V\iff\iprod{\vec{v}}{\vec{v}}\).
+                \item \(\forall\vec{u},\vec{v}\in V,\iprod{\vec{u}}{\vec{v}}=\bar{\iprod{\vec{v}}{\vec{u}}}\).
+                \item \(\forall\vec{u},\vec{v},\vec{w}\in V,\iprod{\vec{u}+\vec{v}}{\vec{w}}=\iprod{\vec{u}}{\vec{w}}+\iprod{\vec{v}}{\vec{w}}\).
+                \item \(\forall c\in\mathbb{F},\forall\vec{u},\vec{v}\in V,\iprod{c\vec{u}}{\vec{v}}=c\iprod{\vec{u}}{\vec{v}}\).
             \end{enumerate}
             \vphantom
             \\
@@ -24,43 +23,67 @@
             The pair \((V,\langle\cdot,\cdot\rangle)\) is called an inner product space.
             
         \end{definition}
+        \pagebreak
         \vphantom
         \\
         \\
-        Consider the following examples.
-        \begin{example}{An Inner Product of \(\mathbb{R}^n\)}{rninnerprod}
-            
-            The pair \((\mathbb{R}^n, \langle \vec{u},\vec{v}\rangle=\vec{u}\cdot\vec{v})\) is a real inner product space.
-
-        \end{example}
-        \begin{example}{An Inner Product of \(\mathbb{C}^n\)}{cninnerprod}
-            
-            The pair \((\mathbb{C}^n, \langle \vec{u},\vec{v}\rangle=\vec{u}\cdot\vec{v})\) is a complex inner product space.
-
-        \end{example}
-        \begin{example}{An Inner Product of \(\{f:[0,1]\to\mathbb{R}\}\)}{funcinnerprod}
-
-            Let \(V=\{f:[0,1]\to\mathbb{R}\}\). The pair
+        Consider the following inner product spaces.
+        \begin{enumerate}
+            \item The pair \((\mathbb{R}^n, \iprod{\vec{u}}{\vec{v}}=\vec{u}\cdot\vec{v}=u_1v_1+\cdots+u_nv_n)\) is a real inner product space.
+            \item The pair \((\mathbb{C}^n, \iprod{\vec{u}}{\vec{v}}=\vec{u}\cdot\vec{v}=u_1\bar{v_1}+\cdots+u_n\bar{v_n})\) is a complex inner product space.
+            \item The pair 
+                \begin{equation*}
+                    \left(V,\iprod{\vec{f}}{\vec{g}}=\int_0^1 f(x)g(x)\dd x\right)
+                \end{equation*}
+                is an real inner product space, for 
+                \begin{equation*}
+                    V=\left\{f:[0,1]\to\mathbb{R}:\forall c, \lim_{x\to c}=f(c)\right\}.
+                \end{equation*}
+            \item The pair
             \begin{equation*}
-                \left(V,\langle f, g\rangle=\int_0^1 f(x)g(x)\dd x\right)
+                \left(\mathcal{P},\iprod{\vec{p}}{\vec{q}}=\int_0^\infty p(x)q(x)e^{-x}\dd x\right)
             \end{equation*}
             is a real inner product space.
-            
-        \end{example}
-        \begin{theorem}{\Stop\,\,}{...}
+        \end{enumerate}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorems and definitions.
+        \begin{theorem}{\Stop\,\,Properties of Inner Products}{innerprodprops}
 
             Let \(V\) be an inner product space. Suppose \(\vec{u},\vec{v},\vec{w}\in V\) and \(c\in\mathbb{F}\). Then,
             \begin{enumerate}
-                \item \(\langle\vec{0},\vec{v}\rangle=\vec{0}=\langle\vec{v},\vec{0}\rangle\).
-                \item \(\langle \vec{v},\vec{w}+\vec{z}\rangle=\langle \vec{v},\vec{u}\rangle+\langle\vec{v},\vec{z}\rangle\).
-                \item \(\langle\vec{v},c\vec{w}\rangle=\bar{c}\langle\vec{v},\vec{w}\rangle\).
+                \item \(F:V\to \mathbb{F},\vec{v}\mapsto\iprod{\vec{v}}{\vec{u}}\) is a linear transformation.
+                \begin{proof}
+                    Consider \(\vec{v}_1,\vec{v}_2\in V\). Then,
+                    \begin{align*}
+                        F(\vec{v}_1+\vec{v}_2)&=\iprod{\vec{v}_1+\vec{v}_2}{\vec{u}} \\
+                        &=\iprod{\vec{v}_1}{u}+\iprod{\vec{v}_2}{\vec{u}} \\
+                        &=F(\vec{v}_1)+F(\vec{v}_2).
+                    \end{align*}
+                    For \(c\in\mathbb{F}\), we have
+                    \begin{align*}
+                        F(c\vec{v}_1)&=\iprod{c\vec{v}_1}{\vec{u}} \\
+                        &=c\iprod{\vec{v}_1}{\vec{u}},
+                    \end{align*}
+                    as desired.
+                \end{proof}
+                \item \(\iprod{\vec{0}_V}{\vec{v}}=\vec{0}_V=\iprod{\vec{v}}{\vec{0}_V}\).
+                \begin{proof}
+                    The first equality is derived by the first part since, for all linear transformations \(L\), \(\vec{0}_V\in\ker(L)\). The second equality is derived from conjugate symmetry.
+                \end{proof}
+                \item \(\iprod{\vec{u}}{\vec{v}+\vec{w}}=\iprod{\vec{u}}{\vec{v}}+\iprod{\vec{u}}{\vec{w}}\).
+                \begin{proof}
+                    Consider \(\iprod{\vec{u}}{\vec{v}+\vec{w}}=\bar{\iprod{\vec{v}+\vec{w}}{\vec{u}}}=\bar{\iprod{\vec{v}}{\vec{u}}}+\bar{\iprod{\vec{w}}{\vec{u}}}=\iprod{\vec{u}}{\vec{v}}+\iprod{\vec{u}}{\vec{w}}\).
+                \end{proof}
+                \item \(\iprod{\vec{u}}{c\vec{v}}=\bar{c}\iprod{\vec{u}}{\vec{v}}\).
+                \begin{proof}
+                    Consider \(\iprod{\vec{u}}{c\vec{v}}=\bar{\iprod{c\vec{v}}{\vec{u}}}=\bar{c}\bar{\iprod{\vec{v}}{\vec{w}}}=\bar{c}\iprod{\vec{u}}{\vec{v}}\).
+                \end{proof}
             \end{enumerate}
             
         \end{theorem}
-        \vphantom
-        \\
-        \\
-        Consider the following definitions and theorems.
         \begin{definition}{\Stop\,\,Norms}{norms}
 
             The norm associated to the inner product \(\langle\cdot,\cdot\rangle\) is
@@ -69,6 +92,7 @@
             \end{equation*}
             
         \end{definition}
+        \pagebreak
         \begin{theorem}{\Stop\,\,}{...2}
             
             Let \(V\) be an inner product space. Suppose \(\vec{v},\vec{w}\in V\) and \(c\in\mathbb{F}\). Then,
