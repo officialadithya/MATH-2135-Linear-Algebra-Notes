@@ -12,7 +12,7 @@
             such that
             \begin{enumerate}
                 \item \(\forall\vec{v}\in V,\iprod{\vec{v}}{\vec{v}}\geq 0\).
-                \item \(\vec{v}=\vec{0}_V\iff\iprod{\vec{v}}{\vec{v}}\).
+                \item \(\vec{v}=\vec{0}_V\iff\iprod{\vec{v}}{\vec{v}}=0\).
                 \item \(\forall\vec{u},\vec{v}\in V,\iprod{\vec{u}}{\vec{v}}=\bar{\iprod{\vec{v}}{\vec{u}}}\).
                 \item \(\forall\vec{u},\vec{v},\vec{w}\in V,\iprod{\vec{u}+\vec{v}}{\vec{w}}=\iprod{\vec{u}}{\vec{w}}+\iprod{\vec{v}}{\vec{w}}\).
                 \item \(\forall c\in\mathbb{F},\forall\vec{u},\vec{v}\in V,\iprod{c\vec{u}}{\vec{v}}=c\iprod{\vec{u}}{\vec{v}}\).
@@ -41,7 +41,7 @@
                 \end{equation*}
             \item The pair
             \begin{equation*}
-                \left(\mathcal{P},\iprod{\vec{p}}{\vec{q}}=\int_0^\infty p(x)q(x)e^{-x}\dd x\right)
+                \left(\mathcal{P}_n,\iprod{\vec{p}}{\vec{q}}=\int_{-1}^1 p(x)\bar{q(x)}\dd x\right)
             \end{equation*}
             is a real inner product space.
         \end{enumerate}
@@ -88,21 +88,82 @@
 
             The norm associated to the inner product \(\langle\cdot,\cdot\rangle\) is
             \begin{equation*}
-                ||\cdot||:V\to[0,\infty),\vec{v}\mapsto\sqrt{\langle\vec{v},\vec{v}\rangle}.
+                ||\cdot||:V\to[0,\infty),\vec{v}\mapsto\sqrt{\iprod{\vec{v}}{\vec{v}}}.
             \end{equation*}
             
         \end{definition}
         \pagebreak
-        \begin{theorem}{\Stop\,\,}{...2}
-            
-            Let \(V\) be an inner product space. Suppose \(\vec{v},\vec{w}\in V\) and \(c\in\mathbb{F}\). Then,
+        \begin{theorem}{\Stop\,\,Properties of Norms}{propnorm}
+
+            Suppose \(V\) is an inner product space and \(\vec{v}\in V\). Then,
             \begin{enumerate}
-                \item \(||c\vec{v}||=|c|||\vec{v}||\).
-                \item \(\langle \vec{v},\vec{w}\rangle\leq ||\vec{v}||||\vec{w}||\).
-                \item \(||\vec{v}+\vec{w}||\leq||\vec{v}||+||\vec{w}||\).
+                \item \(||\vec{v}||=0\iff\vec{v}=\vec{0}_V\).
+                \begin{proof}
+                    If \(\vec{v}=\vec{0}_V\), \(\iprod{\vec{v}}{\vec{v}}=\sqrt{\iprod{\vec{v}}{\vec{v}}}=||\vec{v}||=0\). If \(||\vec{v}||=0\), \(\sqrt{\iprod{\vec{v}}{\vec{v}}}=\iprod{\vec{v}}{\vec{v}}=0\), meaning that \(\vec{v}=\vec{0}_V\).
+                \end{proof}
+                \item \(\forall c\in\mathbb{F},||c\vec{v}||=|c|||\vec{v}||\).
+                \begin{proof}
+                    Consider
+                    \begin{align*}
+                        ||c\vec{v}||&=\sqrt{\iprod{c\vec{v}}{c\vec{v}}} \\
+                        &=\sqrt{c\bar{c}\iprod{\vec{v}}{\vec{v}}} \\
+                        &=\sqrt{|c|^2\iprod{\vec{v}}{\vec{v}}} \\
+                        &=|c|\sqrt{\iprod{\vec{v}}{\vec{v}}} \\
+                        &=|c|||\vec{v}||,
+                    \end{align*}
+                    as desired.
+                \end{proof}
             \end{enumerate}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We will now present some generalized proofs of theorems we covered special cases of in Chapter \ref{chapter:vecmat}. 
+        \begin{theorem}{\Stop\,\,The Cauchy-Schwarz Inequality}{cauchyschwarzgen}
+            Let \(V\) be an inner product space with \(\vec{v},\vec{w}\in V\). Then,
+            \begin{equation*}
+                \left|\iprod{\vec{v}}{\vec{w}}\right|\leq||\vec{v}||||\vec{w}||.
+            \end{equation*}
+            \begin{proof}
+                If \(\vec{w}=\vec{0}_V\), the statement is trivial since both sides are zero. We have that for all \(t\in\mathbb{F}\),
+                \begin{align*}
+                    0&\leq||\vec{v}-t\vec{w}||^2 \\
+                    &=\iprod{\vec{v}-t\vec{w}}{\vec{v}-t\vec{w}} \\
+                    &=\iprod{\vec{v}}{\vec{v}-t\vec{w}}-t\iprod{\vec{w}}{\vec{v}-t\vec{w}} \\
+                    &=||\vec{v}||^2-t\iprod{\vec{w}}{\vec{v}}-\bar{t}\iprod{\vec{v}}{\vec{w}}+|t|^2||\vec{w}||^2.
+                \end{align*}
+                The quadratic has a minimum at \(t=\frac{\iprod{\vec{v}}{\vec{w}}}{||\vec{w}||^2}=\frac{\bar{\iprod{\vec{w}}{\vec{v}}}}{||\vec{w}||^2}\) and the inequality should hold. The inequality for this \(t\) is
+                \begin{equation*}
+                    0\leq||\vec{v}||^2-\frac{\iprod{\vec{v}}{\vec{w}}^2}{||\vec{w}||^2}.
+                \end{equation*}
+                Thus, \(\left|\iprod{\vec{v}}{\vec{w}}\right|^2\leq||\vec{v}||||\vec{w}||^2\implies\left|\iprod{\vec{v}}{\vec{w}}\right|\leq||\vec{v}||||\vec{w}||\).
+            \end{proof}
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,The Triangle Inequality}{triineqgen}
+
+            Let \(V\) be an inner product space with \(\vec{v},\vec{w}\in V\). Then,
+            \begin{equation*}
+                ||\vec{v}+\vec{w}||\leq||\vec{v}||+||\vec{w}||.
+            \end{equation*}
+            \begin{proof}
+                We have
+                \begin{align*}
+                    ||\vec{v}+\vec{w}||^2&=\iprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}} \\
+                    &=\iprod{\vec{v}}{\vec{v}}+\iprod{\vec{v}}{\vec{w}}+\iprod{\vec{w}}{\vec{v}}+\iprod{\vec{w}}{\vec{w}} \\
+                    &\leq\iprod{\vec{v}}{\vec{v}}+\iprod{\vec{w}}{\vec{w}}+2\left|\iprod{\vec{v}}{\vec{w}}\right| \\
+                    &\leq\iprod{\vec{v}}{\vec{v}}+\iprod{\vec{w}}{\vec{w}}+2||\vec{v}||||\vec{w}|| \\
+                    &=(||\vec{v}||+||\vec{w}||)^2,
+                \end{align*}
+                as desired.
+            \end{proof}
 
         \end{theorem}
+        \vphantom
+        \\
+        \\
+        We now provide notions of distance and angle.
         \begin{definition}{\Stop\,\,Distance}{distance}
 
             Let \(V\) be an inner product space. The distance betwen \(\vec{v},\vec{w}\in V\) is \(||\vec{v}-\vec{w}||\).
@@ -110,7 +171,7 @@
         \end{definition}
         \begin{definition}{\Stop\,\,Angle}{angle}
 
-            Let \(V\) be an inner product space. Let \(\mathbb{F}=\mathbb{R}\). The angle betwen \(\vec{v},\vec{w}\neq\vec{0}_V\) is given by
+            Let \(V\) be a real inner product space. That is, \(\mathbb{F}=\mathbb{R}\). The angle between \(\vec{v}\neq\vec{0}_V\) and \(\vec{w}\neq\vec{0}_V\) is given by
             \begin{equation*}
                 \theta =\arccos\left(\frac{\langle\vec{v},\vec{w}\rangle}{||\vec{v}||||\vec{w}||}\right)
             \end{equation*}
@@ -135,9 +196,14 @@
             The set \(\{\vec{e}_1,\ldots,\vec{e}_n\}\) is orthonormal when considered as a subset of \(\mathbb{R}^n\) or \(\mathbb{C}^n\).
             
         \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorems and definitions.
         \begin{theorem}{\Stop\,\,Orthonormal Implies Linearly Independent}{orthlinindep}
             
-            If \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is orthonormal, \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent.
+            If \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is orthonormal in an inner product space \(V\), \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent.
             \begin{proof}
                 Suppose
                 \begin{equation*}
@@ -150,44 +216,47 @@
                     &=c_1\langle \vec{v}_1,\vec{v}_i\rangle+\cdots+c_n\langle \vec{v}_n,\vec{v}_i\rangle \\
                     &=c_i\langle \vec{v}_i,\vec{v}_i\rangle
                 \end{align*}
-                We see that \(\langle\vec{v}_i,\vec{v}_i\rangle>0\), since \(\vec{v}_i\neq\vec{0}_V\), we have \(0=c_i||\vec{v}_i||^2\), implying that \(c_i=0\) for each \(i\).
+                We see that \(\langle\vec{v}_i,\vec{v}_i\rangle>0\), since \(\vec{v}_i\neq\vec{0}_V\). We have \(0=c_i||\vec{v}_i||^2\), implying that \(c_i=0\) for each \(i\).
             \end{proof}
             The converse is false.
 
         \end{theorem}
-        \pagebreak
-        \vphantom
-        \\
-        \\
-        Given a linearly indepedent set \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\), we seek to construct a set \(S_2=\{\vec{v}_1,\ldots,\vec{v}_k\}\) such that \(S\) is orthogonal and \(\Span(S_1)=\Span(S_2)\). We present the Gram-Schmidt process.
-        \begin{theorem}{\Stop\,\,Gram-Schmidt Process}{gramschmidt}
-            
-            Let \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\) such that \(S_1\) is linearly independent.
-            \begin{enumerate}
-                \item Let \(\vec{v}_1=\vec{w}_1\)
-                \item Let \(\vec{v}_2=\vec{w}_2-\left(\frac{\langle\vec{w}_2,\vec{v}_1\rangle}{\langle(\vec{v}_1,\vec{v}_1\rangle)}\right)\vec{v}_1\)
-                \item \(\vdots\)
-                \item Let \(\vec{v}_k=\)
-            \end{enumerate}
-            \DOTHISLATER
+        \begin{definition}{\Stop\,\,Orthogonal Bases}{orthogonalbasis}
 
-        \end{theorem}
-        \vphantom
-        \\
-        \\
-        We can also normalize an orthogonal set into an orthonormal one by just dividing by the magnitude of each \(\vec{v}_i\).
-        \DOTHISLATER
+            A set \(B\subseteq V\) is an orthogonal basis if and only if \(B\) is a basis of \(V\) and \(B\) is orthogonal.
+            
+        \end{definition}
         \begin{definition}{\Stop\,\,Orthonormal Bases}{orthonormalbasis}
 
             A set \(B\subseteq V\) is an orthonormal basis if and only if \(B\) is a basis of \(V\) and \(B\) is orthonormal.
             
         \end{definition}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We would like to form an orthogonal set of \(k\) vectors from any linearly independent set of \(k\) vectors such that both sets span the same subspace. We present the Gram-Schmidt process.
+        \begin{theorem}{\Stop\,\,The Gram-Schmidt Process}{gramschmidt}
+            
+            Let \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\) such that \(S_1\) is linearly independent. We will create \(S_2=\{\vec{v}_1,\ldots,\vec{v}_n\}\) such that \(\Span(S_1)=\Span(S_2)\).
+            \begin{itemize}
+                \item Let \(\vec{v}_1=\vec{w}_1\).
+                \item Let \(\vec{v}_2=\vec{w}_2-\left(\frac{\iprod{\vec{w}_2}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1\).
+                \item Let \(\vec{v}_3=\vec{w}_3-\left(\frac{\iprod{\vec{w}_3}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1-\left(\frac{\iprod{\vec{v}_3}{\vec{v}_2}}{\iprod{\vec{v}_2}{\vec{v}_2}}\right)\vec{v}_2\).
+                \item Continue.
+                \item Let \(\vec{v}_n=\vec{w}_n-\left(\frac{\iprod{\vec{w}_n}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1-\left(\frac{\iprod{\vec{v}_n}{\vec{v}_2}}{\iprod{\vec{v}_2}{\vec{v}_2}}\right)\vec{v}_2-\cdots-\left(\frac{\iprod{\vec{v}_n}{\vec{v}_{n-1}}}{\iprod{\vec{v}_{n-1}}{\vec{v}_{n-1}}}\right)\vec{v}_{n-1}\).
+            \end{itemize}
+
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We can also normalize an orthogonal set into an orthonormal one by just dividing each \(\vec{v}_i\) by \(||\vec{v}_i||\).
         \begin{theorem}{\Stop\,\,Every Inner Product Space Has an Orthonormal Basis}{innerproductspaceorthobasis}
 
             Every inner product space has an orthonormal basis.
             \begin{proof}
-                Suppose \(V\) is a finite dimensional inner product space. Let \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis for \(V\). Apply the Gram-Schmidt process to find orthogonal \(\{\vec{v}_1,ldots,\vec{v}_n\}\) and normalize it. This set is orthonormal and, therefore, linearly indepedent, and the spans are the same.
-                \DOTHISLATER
+                Suppose \(V\) is a finite dimensional inner product space. Let \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis for \(V\). Apply the Gram-Schmidt process to find orthogonal \(C=\{\vec{v}_1,\ldots,\vec{v}_n\}\) and normalize it. This set is orthonormal and, therefore, linearly indepedent, and \(\Span(B)=V=\Span(C)\).
             \end{proof}
             
         \end{theorem}
