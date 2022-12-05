@@ -235,7 +235,7 @@
         \vphantom
         \\
         \\
-        We would like to form an orthogonal set of \(k\) vectors from any linearly independent set of \(k\) vectors such that both sets span the same subspace. We present the Gram-Schmidt process.
+        We would like to form an orthogonal set of \(n\) vectors from any linearly independent set of \(n\) vectors such that both sets span the same subspace. We present the Gram-Schmidt process.
         \begin{theorem}{\Stop\,\,The Gram-Schmidt Process}{gramschmidt}
             
             Let \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\) such that \(S_1\) is linearly independent. We will create \(S_2=\{\vec{v}_1,\ldots,\vec{v}_n\}\) such that \(\Span(S_1)=\Span(S_2)\).
@@ -256,7 +256,7 @@
 
             Every inner product space has an orthonormal basis.
             \begin{proof}
-                Suppose \(V\) is a finite dimensional inner product space. Let \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis for \(V\). Apply the Gram-Schmidt process to find orthogonal \(C=\{\vec{v}_1,\ldots,\vec{v}_n\}\) and normalize it. This set is orthonormal and, therefore, linearly indepedent, and \(\Span(B)=V=\Span(C)\).
+                Suppose \(V\) is a finite dimensional inner product space. Let \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis for \(V\). Apply the Gram-Schmidt process to find orthogonal \(C=\{\vec{v}_1,\ldots,\vec{v}_n\}\) and normalize it. This set is orthonormal and, therefore, linearly independent, and \(\Span(B)=V=\Span(C)\).
             \end{proof}
             
         \end{theorem}
@@ -265,7 +265,7 @@
 
 \section{Lecture 36: November 30, 2022}
 
-    \subsection{Orthogonal Complements and Projections}
+    \subsection{Orthogonal Complements}
 
         Consider the following definition.
         \begin{definition}{\Stop\,\,Orthogonal Complements}{orthocomp}
@@ -282,12 +282,12 @@
         Consider the following example.
         \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 1}{findorthocomp1}
 
-            Let \(W=\Span([1,0,0],[0,1,0])\subseteq\mathbb{R}^3\). Find \(W^\perp\).
+            Let \(W=\Span(\{[1,0,0],[0,1,0]\})\subseteq\mathbb{R}^3\). Find \(W^\perp\).
             \\
             \\
             We see that 
             \begin{equation*}
-                W^\perp=\Span([0,0,1]).
+                W^\perp=\Span(\{[0,0,1]\}).
             \end{equation*}
             Geometrically, \(W\) is the \(xy\) plane and \(W^\perp\) is the \(z\) axis.
             
@@ -311,7 +311,19 @@
             \begin{enumerate}
                 \item \(S^\perp\) is a subspace of \(V\).
                 \begin{proof}
-                    Outline: Show nonempty, show closure properties.
+                    We know that \(\vec{0}_V\in S^\perp\) since \(\iprod{\vec{0}_V}{\vec{w}}=0\) for all \(\vec{w}\in S\). If we take \(\vec{v}_1,\vec{v}_2\in S^\perp\), we consider
+                    \begin{align*}
+                        \iprod{\vec{v}_1+\vec{v}_2}{\vec{w}}&=\iprod{\vec{v}_1}{\vec{w}}+\iprod{\vec{v}_2}{\vec{w}} \\
+                        &=0+0 \\
+                        &=0,
+                    \end{align*}
+                    so \(\vec{v}_1+\vec{v}_2\in S^\perp\). For \(c\in\mathbb{F}\), we consider
+                    \begin{align*}
+                        \iprod{c\vec{v}_1}{\vec{w}}&=c\iprod{\vec{v}_1}{\vec{w}} \\
+                        &=c(0) \\
+                        &=0,
+                    \end{align*}
+                    so \(c\vec{v}_1\in S^\perp\), as desired.
                 \end{proof}
                 \item If \(W\) is a subspace of \(V\), \(W\cap W^\perp=\{\vec{0}_V\}\).
                 \begin{proof}
@@ -346,15 +358,60 @@
             \end{enumerate}
 
         \end{theorem}
+
+        \DOTHISLATER
+        \DOTHISLATER
+
         \pagebreak
+
+\section{Lecture 37: December 2, 2022}
+
+    \subsection{Projections Onto a Subspace}
+
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Projections Onto a Subspace}{projectionssubspc}
+
+            Let \(V\) be an inner product space. Let \(W\) be a subspace of \(V\). Let \(\{\vec{w}_1,\ldots,\vec{w}_n\}\) be an orthonormal basis for \(W\). Let \(\vec{v}\in V\). Then,
+            \begin{equation*}
+                \proj_W{\vec{v}}=\iprod{\vec{v}}{\vec{w}_1}\vec{w}_1+\cdots+\iprod{\vec{v}}{\vec{w}_n}\vec{w}_n.
+            \end{equation*}
+            If \(W\) is the trivial subspace, \(\proj_W{\vec{v}}=0\).
+        \end{definition}
         \vphantom
         \\
         \\
-        Consider the following definitions.
-        \begin{definition}{\Stop\,\,Projections Onto a Subspace}{projectionssubspc}
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Projection 1}{proj1}
 
-            Let \(V\) be an inner product space. Let \(W\) be a subspace of \(V\).
+            Let \(V=\mathbb{R}^3\). Let \(W\) be the \(xy\) plane with basis \(B_V=\{[1,0.0],[0,1,0]\}\). Find \(\proj_W{\vec{v}}\).
+            \DOTHISLATER
             
-        \end{definition}
-        \DOTHISLATER
-        \DOTHISLATER
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Projection Theorem}{projthm}
+
+            If \(W\) is a finite dimensional subspace of an inner product space \(V\), with \(\vec{v}\in V\), there exist unique \(\vec{w}\in W\) and \(\hat{w}\in W^\perp\) such that \(\vec{v}=\vec{w}+\hat{w}\).
+            \begin{proof}
+                Let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_k\}\) be an orthonormal basis for \(W\). We extend this basis to be an orthonormal basis of \(B_V=\{\vec{w}_1,\ldots,\vec{w}_k,\vec{v}_1,\ldots,\vec{v}_\ell\}\). Then, \(B_{W^\perp}=\{\vec{v}_1,\ldots,\vec{v}_\ell\}\) is a basis of \(W^\perp\). For some \(\vec{v}\in V\), we can write
+                \begin{equation*}
+                    \vec{v}=c_1\vec{w}_1+\cdots+c_k\vec{w}_k+d_1\vec{v}_1+\cdots+d_\ell\vec{v}_\ell
+                \end{equation*}
+                for some \(c_1,\ldots,c_k,d_1,\ldots,d_\ell\in\mathbb{F}\). We know
+                \begin{equation*}
+                    c_1\vec{w}_1+\cdots+c_k\vec{w}_k\in W,\quad d_1\vec{v}_1+\cdots+d_\ell\vec{v}_\ell\in W^\perp.
+                \end{equation*}
+                Thus, \(\vec{w}=c_1\vec{w}_1+\cdots+c_k\vec{w}_k\) and \(\hat{w}=d_1\vec{v}_1+\cdots+d_\ell\vec{v}_\ell\) so \(\vec{v}=\vec{w}+\hat{w}\). We have shown existence. For uniqueness, suppose \(\vec{v}=\vec{q}+\hat{q}\) where \(\vec{q}\in W\) and \(\hat{q}\in W^\perp\). We will show \(\vec{w}=\vec{q}\) and \(\hat{w}=\hat{q}\). We have
+                \begin{equation*}
+                    \vec{v}=\vec{q}+\hat{q}=\vec{w}+\hat{w},
+                \end{equation*}
+                which implies
+                \begin{equation*}
+                    \vec{q}-\vec{w}=\hat{w}-\hat{q}.
+                \end{equation*}
+                We see that \(\vec{q}-\vec{w}\in W\), meaning that \(\hat{w}-\hat{q}\in W\). But, we also know \(\hat{w}-\hat{q}\in W^\perp\), so \(\vec{q}-\vec{w}\in W^\perp\). Thus, \(\vec{q}-\vec{w},\hat{w}-\hat{q}\in W\cap W^\perp\). Since \(W\cap W^\perp=\{\vec{0}_V\}\), we have \(\vec{q}-\vec{w}=\vec{0}_V\) and \(\hat{w}-\hat{q}=\vec{0}_V\), as desired.
+            \end{proof}
+            
+        \end{theorem}
