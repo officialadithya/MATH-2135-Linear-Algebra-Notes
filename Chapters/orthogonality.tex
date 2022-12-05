@@ -415,3 +415,60 @@
             \end{proof}
             
         \end{theorem}
+    
+\pagebreak
+
+\section{Lecture 38: December 5, 2022}
+
+    \subsection{Orthogonal and Unitary Matrices}
+
+        Consider the following definitions and theorems.
+        \begin{definition}{\Stop\,\,Orthogonal Matrices}{orthomat}
+
+            The nonsingular matrix \(A\in\mathcal{M}_{nn}^\mathbb{R}\) is orthogonal if and only if \(A^{-1}=A^T\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Unitary Matrices}{unitmat}
+
+            The nonsingular matrix \(A\in\mathcal{M}_{nn}^\mathbb{C}\) is unitary if and only if \(A^{-1}=A^*\).
+            
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Orthogonal Matrices and Orthonormal Bases}{orthomatorthobas}
+
+            The matrix \(A\in\mathcal{M}_{nn}^\mathbb{R}\) is orthogonal if and only if the columns of \(A\) form an orthonormal basis for \(\mathbb{R}^n\).
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Unitary Matrices and Orthonormal Bases}{unitarymatorthobas}
+
+            The matrix \(A\in\mathcal{M}_{nn}^\mathbb{C}\) is unitary if and only if the columns of \(A\) form an orthonormal basis for \(\mathbb{C}^n\).
+            
+        \end{theorem}
+        \begin{definition}{\Stop\,\,Orthogonal Diagonalizability}{orthodiag}
+
+            The matrix \(A\in\mathcal{M}_{nn}^\mathbb{R}\) is orthogonally diagonalizable if and only if there exists some orthogonal \(P\) such that
+            \begin{equation*}
+                D=P^{-1}AP=P^TAP
+            \end{equation*}
+            for some diagonal matrix \(D\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Unitary Diagonalizability}{unitdiag}
+
+            The matrix \(A\in\mathcal{M}_{nn}^\mathbb{C}\) is unitarily diagonalizable if and only if there exists some unitary \(P\) such that
+            \begin{equation*}
+                D=P^{-1}AP=P^*AP
+            \end{equation*}
+            for some diagonal matrix \(D\).
+            
+        \end{definition}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Orthogonal Diagonalizability}{orthodiag}
+
+            The matrix \(A\in\mathcal{M}_{nn}^\mathbb{R}\) is orthogonally diagonalizable if and only if \(A\) is symmetric. That is, \(A=A^T\).
+
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Unitary Diagonalizability}{unitdiag}
+
+            The matrix \(A\in\mathcal{M}_{nn}^\mathbb{C}\) is unitarily diagonalizable if and only if \(A\) is normal. That is, \(A^*A=AA^*\).
+
+        \end{theorem}
