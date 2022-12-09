@@ -197,9 +197,9 @@
             
         \end{example}
         \pagebreak
-        \vphantom
-        \\
-        \\
+        
+    \subsection{Orthonormal Bases and the Gram-Schmidt Process}
+
         Consider the following theorems and definitions.
         \begin{theorem}{\Stop\,\,Orthonormal Implies Linearly Independent}{orthlinindep}
             
@@ -251,6 +251,75 @@
         \vphantom
         \\
         \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Gram-Schmidt 1}{gramschmidt1}
+
+            Apply the Gram-Schmidt process to \(\{[1,1,0,0],[1,1,0,-1]\}\subseteq\mathbb{R}^4\).
+            \\
+            \\
+            Let \(\vec{v}_1=[1,1,0,0]\). Then,
+            \begin{align*}
+                v_2&=[1,1,0,-1]-\frac{\iprod{[1,1,0,-1]}{[1,1,0,0]}}{\iprod{[1,1,0,0]}{[1,1,0,0]}}[1,1,0,0] \\
+                &=[1,1,0,-1]-\frac{2}{2}[1,1,0,0] \\
+                &=[0,0,0,-1].
+            \end{align*}
+            Let \(S=\{[1,1,0,0],[0,0,0,-1]\}\). Then, \(\Span(S)=\Span(\{[1,1,0,0],[1,1,0,-1]\})\).
+            
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        \begin{example}{\Difficulty\,\Difficulty\,\,Gram-Schmidt 2}{gramschmidt2}
+
+            Apply the Gram-Schmidt process to \(\{[i,-i,1,1],[i,0,0,1],[0,1,-i,0]\}\subseteq\mathbb{C}^4\).
+            \\
+            \\
+            Let \(\vec{v}_1=[i,-i,1,1]\). Then,
+            \begin{align*}
+                \vec{v}_2&=[i,0,0,1]-\frac{\iprod{[i,0,0,1]}{[i,-i,1,1]}}{\iprod{[i,-i,1,1]}{[i,-i,1,1]}}[i,-i,1,1] \\
+                &=[i,0,0,1]-\frac{1}{2}[i,-i,1,1] \\
+                &=\left[\frac{1}{2}i,\frac{1}{2}i,-\frac{1}{2},\frac{1}{2}\right].
+            \end{align*}
+            Then,
+            \begin{align*}
+                \vec{v}_3&=[0,1,-i,0]-\frac{\iprod{[0,1,-i,0]}{[i,-i,1,1]}}{\iprod{[i,-i,1,1]}{[i,-i,1,1]}}[i,-i,1,1]\\&\quad-\frac{\iprod{[0,1,-i,0]}{[i,-i,1,1]}}{\iprod{\left[\frac{1}{2}i,\frac{1}{2}i,-\frac{1}{2},\frac{1}{2}\right]}{\left[\frac{1}{2}i,\frac{1}{2}i,-\frac{1}{2},\frac{1}{2}\right]}}\left[\frac{1}{2}i,\frac{1}{2}i,-\frac{1}{2},\frac{1}{2}\right] \\
+                &=[0,1,-i,0].
+            \end{align*}
+            Let \(S=\left\{[i,-i,1,1],\left[\frac{1}{2}i,\frac{1}{2}i,-\frac{1}{2},\frac{1}{2}\right],[0,1,-i,0]\right\}\). Then, 
+            \begin{equation*}
+                \Span(S)=\Span(\{[i,-i,1,1],[i,0,0,1],[0,1,-i,0]\}).
+            \end{equation*}
+
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Gram-Schmidt 3}{gramschmidt3}
+            
+            Apply the Gram-Schmidt process to \(\{1,x,x^2\}\subseteq\mathcal{P}\) with inner product given by
+            \begin{equation*}
+                \iprod{p(x)}{q(x)}=\int_0^1 p(x)q(x) \dd x.
+            \end{equation*}
+            Let \(\vec{v}_1=1\). Then,
+            \begin{align*}
+                \vec{v}_2&=x-\frac{\iprod{x}{1}}{\iprod{1}{1}}1 \\
+                &=x-\frac{1}{2}.
+            \end{align*}
+            Then,
+            \begin{align*}
+                \vec{v}_3&=x^2-\frac{\iprod{x^2}{1}}{\iprod{1}{1}}1-\frac{\iprod{x^2}{x-\frac{1}{2}}}{\iprod{x-\frac{1}{2}}{x-\frac{1}{2}}}\left(x-\frac{1}{2}\right) \\
+                &=x^2-\frac{1}{3}-\frac{\frac{1}{4}-\frac{1}{6}}{\frac{\left(1-\frac{1}{2}\right)^3-\left(0-\frac{1}{2}\right)^3}{3}}\left(x-\frac{1}{2}\right) \\
+                &=x^2-\frac{1}{3}-\frac{\frac{1}{4}}{\frac{1}{4}}\left(x-\frac{1}{2}\right) \\
+                &=x^2-x+\frac{1}{6}.
+            \end{align*}
+            Let \(S=\left\{1,x-\frac{1}{2},x^2-x+\frac{1}{6}\right\}\). Then,
+            \begin{equation*}
+                \Span(S)=\Span(\{1,x,x^2\}).
+            \end{equation*}
+            
+        \end{example}
+        \vphantom
+        \\
+        \\
         We can also normalize an orthogonal set into an orthonormal one by just dividing each \(\vec{v}_i\) by \(||\vec{v}_i||\).
         \begin{theorem}{\Stop\,\,Every Inner Product Space Has an Orthonormal Basis}{innerproductspaceorthobasis}
 
@@ -260,6 +329,64 @@
             \end{proof}
             
         \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        \begin{example}{\Difficulty\,\Difficulty\,\,Finding an Orthonormal Basis}{findorthnormbasis}
+
+            Let \(W=\{[x,y,z,w]:x+y-z-w=0;x,y,z,w\in\mathbb{C}\}\). Find an orthonormal basis for \(W\).
+            \\
+            \\
+            By the membership condition of \(W\), we can rewrite it as
+            \begin{equation*}
+                W=\{[x,y,z,x+y-z]:x,y,z,w\in\mathbb{C}\}.
+            \end{equation*}
+            We note that \([1,-1,0,0],[1,0,1,0],[1,1,1,1]\in W\). Let \(B_\neg=\{[1,-1,0,0],[1,0,1,0],[1,1,1,1]\}\). Consider
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -1 & 0 & 0 \\
+                    1 & 0 & 1 & 0 \\
+                    1 & 1 & 1 & 1
+                \end{bmatrix}\underbrace{\to}_\text{RREF}
+                \begin{bmatrix}
+                    1 & 0 & 0 & 1 \\
+                    0 & 1 & 0 & 1 \\
+                    0 & 0 & 1 & -1
+                \end{bmatrix}
+            \end{equation*}
+            implying that \(\Span(B_\neg)=\{[c_1,c_2,c_3,c_1+c_2-c_3]:c_1,c_2,c_3\in\mathbb{C}\}=W\). Now, consider
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 1 & 1 \\
+                    -1 & 0 & 1 \\
+                    0 & 1 & 1 \\
+                    0 & 0 & 1
+                \end{bmatrix}\underbrace{\to}_\text{RREF}
+                \begin{bmatrix}
+                    1 & 0 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 1 \\
+                    0 & 0 & 0
+                \end{bmatrix},
+            \end{equation*}
+            implying that \(B_\neg\) is linearly independent and therefore a basis for \(W\). Now, we apply the Gram-Schmidt process to obtain an orthogonal basis. Let \(\vec{v}_1=[1,-1,0,0]\). Then,
+            \begin{align*}
+                \vec{v}_2&=[1,0,1,0]-\frac{\iprod{1,0,1,0}{[1,-1,0,0]}}{\iprod{[1,-1,0,0]}{[1,-1,0,0]}}[1,-1,0,0] \\
+                &=[1,0,1,0]-\frac{1}{2}[1,-1,0,0] \\
+                &=\left[\frac{1}{2},\frac{1}{2},1,0\right].
+            \end{align*}
+            Then,
+            \begin{align*}
+                \vec{v}_3&=[1,1,1,1]-\frac{\iprod{[1,1,1,1]}{[1,-1,0,0]}}{\iprod{1,-1,0,0}{1,-1,0,0}}[1,-1,0,0]-\frac{\iprod{[1,1,1,1]}{\left[\frac{1}{2},\frac{1}{2},1,0\right]}}{\iprod{\left[\frac{1}{2},\frac{1}{2},1,0\right]}{\left[\frac{1}{2},\frac{1}{2},1,0\right]}}\left[\frac{1}{2},\frac{1}{2},1,0\right] \\
+                &=[1,1,1,1]-\frac{4}{3}\left[\frac{1}{2},\frac{1}{2},1,0\right] \\
+                &=\left[\frac{1}{3},\frac{1}{3},-\frac{1}{3},1\right].
+            \end{align*}
+            Our orthogonal basis for \(W\) is then \(B_\perp=\left\{[1,-1,0,0],\left[\frac{1}{2},\frac{1}{2},1,0\right],\left[\frac{1}{3},\frac{1}{3},-\frac{1}{3},1\right]\right\}\). To find an orthonormal basis, we simply normalize each vector to obtain
+            \begin{align*}
+                B_{\hat{\perp}}&=\left\{\left[\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2},0,0\right],\left[\frac{\sqrt{6}}{6},\frac{\sqrt{6}}{6},\frac{\sqrt{6}}{3},0\right],\left[\frac{\sqrt{3}}{6},\frac{\sqrt{3}}{6},-\frac{\sqrt{3}}{6},\frac{\sqrt{3}}{2}\right]\right\}.
+            \end{align*}
+        \end{example}
 
         \pagebreak
 
@@ -330,9 +457,13 @@
                     Since \(W\) is a subspace of \(V\), \(\vec{0}_V\in W\). Since \(W^\perp\) is a subspace of \(V\) because \(W\subseteq V\), \(\vec{0}_V\in W^\perp\). Then, suppose \(\vec{w}\in W\cap W^\perp\). By Definition \ref{def:orthocomp}, \(\iprod{\vec{w}}{\vec{w}}=0\), so \(\vec{w}=\vec{0}_V\).
                 \end{proof}
                 \item \(S\subseteq (S^\perp)^\perp\).
+                \begin{proof}
+                    Suppose we have \(\vec{v}\in S\). We wish to show that \(\vec{v}\in (S^{\perp})^\perp\). That is, we must show that \(\vec{v}\) is orthogonal to all vectors in \(S^\perp\), which is true since \(\vec{v}\in S\).
+                \end{proof}
             \end{enumerate}
             
         \end{theorem}
+        \pagebreak
         \begin{theorem}{\Stop\,\,Finite Dimensional Inner Product Spaces and Subspaces}{subspcs}
             
             Suppose \(V\) is a finite dimensional inner product space and \(W\) is a subspace of \(V\). Then,
