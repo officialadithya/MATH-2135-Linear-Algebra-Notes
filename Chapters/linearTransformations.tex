@@ -801,6 +801,121 @@
         \vphantom
         \\
         \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Determining Injectivity and Surjectivity 1}{detinjsurj1}
+
+            Consider the linear transformation
+            \begin{equation*}
+                L:\mathbb{R}^2\to\mathbb{R},\begin{bmatrix} x \\ y \end{bmatrix}\mapsto x+2y.
+            \end{equation*}
+            Is \(L\) injective? Is \(L\) surjective?
+            \\
+            \\
+            With respect to the standard basis for \(\mathbb{R}^2\), the matrix for \(L\) is
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & 2
+                \end{bmatrix}.
+            \end{equation*}
+            Consider the linear system
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            with solution set \(\{(-2c,c):c\in\mathbb{R}\}\). Therefore, \(\ker(L)=\{c[-2,1]:c\in\mathbb{R}\}\). Since \(\ker(L)\neq\{\vec{0}\}\), \(L\) is not injective. By the Rank-Nullity Theorem, we have
+            \begin{align*}
+                \dim(\range(L))&=\dim\mathbb{R}^2-\dim(\ker(L)) \\
+                &=2-1=\dim\mathbb{R},
+            \end{align*}
+            meaning that \(L\) is surjective.
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Determining Injectivity and Surjectivity 2}{detinjsurj2}
+
+            Consider the linear transformation
+            \begin{equation*}
+                L:\mathcal{M}_{22}\to\mathbb{R},\begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}\mapsto a_{11}+a_{22}.
+            \end{equation*}
+            Is \(L\) injective? Is \(L\) surjective?
+            \\
+            \\
+            With respect to the standard basis for \(\mathcal{M}_{22}\), the matrix for \(L\) is
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & 0 & 0 & 1
+                \end{bmatrix}.
+            \end{equation*}
+            Consider the linear system
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 0 & 0 & 1 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            with solution set \(\{(-c_3,c_1,c_2,c_3):c_1,c_2,c_3\in\mathbb{R}\}\). Therefore, 
+            \begin{equation*}
+                \ker(L)=\{c_1[0,1,0,0]+c_2[0,0,1,0]+c_3[-1,0,0,1]:c_1,c_2,c_3\in\mathbb{R}\}.
+            \end{equation*}     
+            Since \(\ker(L)\neq\{\vec{0}\}\), \(L\) is not injective. By the Rank-Nullity Theorem, we have
+            \begin{align*}
+                \dim(\range(L))&=\dim\mathcal{M}_{22}-\dim(\ker(L)) \\
+                &=4-3=\dim\mathbb{R},
+            \end{align*}
+            meaning that \(L\) is surjective.
+            
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Determining Injectivity and Surjectivity 3}{detinjsurj3}
+
+            Consider the linear transformation
+            \begin{equation*}
+                L:\mathbb{R}^2\to\mathbb{R}^2,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto \begin{bmatrix} x-y \\ 3y \end{bmatrix}.
+            \end{equation*}
+            Is \(L\) injective? Is \(L\) surjective?
+            \\
+            \\
+            With respect to the standard basis for \(\mathbb{R}^2\), the matrix for \(L\) is
+            \begin{equation*}
+                A=\begin{bmatrix}
+                    1 & -1 \\
+                    0 & 3
+                \end{bmatrix}.
+            \end{equation*}
+            Consider the linear system
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -1 & | & 0 \\
+                    0 & 3 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            Since \(A\) is nonsingular, there exists only a trivial solution for the above system, so \(\ker(L)=\{\vec{0}\}\) and \(L\) is injective. Since the dimensions of the domain and codomain of \(L\) are equal, and \(L\) is injective, \(L\) is surjective.
+            
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,Determining Injectivity and Surjectivity 4}{detinjsurj4}
+
+            Consider the linear transformation
+            \begin{equation*}
+                L:\mathcal{P}\to\mathcal{P},p(x)\mapsto x^2p(x)+xp'(x).
+            \end{equation*}
+            Is \(L\) injective? Is \(L\) surjective?
+            \\
+            \\
+            Consider the polynomial
+            \begin{equation*}
+                p(x)=c_0+c_1x+c_2x^2+\cdots+c_nx^n
+            \end{equation*}
+            with \(c_0,\ldots,c_n\in\mathbb{R}\). Then,
+            \begin{align*}
+                L(p(x))&=x^2(c_0+c_1x+c_2x^2+\cdots+c_nx^n)+x(c_1+2c_2x+\cdots+nc_nx^{n-1}) \\
+                &=c_0x^2+c_1x^3+c_2x^4+\cdots+c_nx^{n+2}+c_1x+2c_2x^2+3c_3x^3+\cdots+nc_nx^n \\
+                &=c_1x+(c_0+2c_2)x^2+(c_1+3c_3)x^3+\cdots+(c_{n-3}+(n-1)c_{n-1})\\&\quad+(c_{n-2}+nc_n)x^n+c_{n-1}x^{n+1}+c_nx^{n+2}.
+            \end{align*}
+            We have expressed \(L(p(x))\) as a finite linear combination of a basis of \(\mathcal{P}\). Therefore, if \(L(p(x))=0\), \(c_1=c_{n-1}=c_n=0\) and \(c_0+2c_2=c_1+3c_3=\cdots=c_{n-2}+nc_n=0\). Since \(c_n=0\), \(c_{n-2}=0\). Similarly, since \(c_{n-1}=0\), \(c_{n-3}=0\). We see that all previous terms \(c_0=\cdots=c_{n-4}=0\) because we can substitute terms we know to be zero into the summation. For example, next, we will have that since \(c_{n-2}=0\), and \(c_{n-4}+(n-2)c_{n-2}\) is a term in the summation, \(c_{n-4}=0\). We will proceed accordingly to find that \(c_0=\cdots=c_n=0\), meaning that \(p(x)=0\). Thus, \(\ker(L)=\{\vec{0}\}\) and \(L\) is injective. Now, we will note that the degree of \(L(p(x))\) is always greater than or equal to \(2\), unless \(p(x)=0\), in which case the degree of \(L(p(x))\) is zero. Thus, there does not exist \(p(x)\) such that \(L(p(x))=1\), and \(L\) is not surjective.
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
         Consider the following theorem about linear independence and spanning, with regards to linear transformations.
         \begin{theorem}{\Stop\,\,Injectivity Implies Linear Independence, Surjectivity Implies Spanning}{injlinindepsurjspan}
 
@@ -838,6 +953,7 @@
             \end{enumerate}
             
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -1143,7 +1259,7 @@
         \vphantom
         \\
         \\
-        We will now define what it means for a linear operator to be diagonizable, while also providing a theorem to provide an equivalent condition.
+        We will now define what it means for a linear operator to be diagonalizable, while also providing a theorem to provide an equivalent condition.
         \begin{definition}{\Stop\,\,Diagonalizability of a Linear Operator}{diaglintrans}
 
             A linear operator \(L\) on a finite dimensional vector space is diagonizable if and only if the matrix representation of \(L\) with respect to some ordered basis for \(V\) is a diagonal matrix.
