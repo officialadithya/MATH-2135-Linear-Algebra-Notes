@@ -7,9 +7,9 @@ Algebra*\[1\] by Stephen Andrilli and David Hecker as its primary text.
 As such, many theorems, definitions, and content may be quoted from the
 book. This course was taught by Robin Deeley, Ph. D.  
   
-Appendix [\[appendix:a\]](#appendix:a) is provided as a nonexhaustive
+Appendix A is provided as a nonexhaustive
 refresher on proof techniques commonly covered in a Discrete Mathematics
-course. Appendix [\[appendix:a\]](#appendix:a) is a result of lecture
+course. Appendix A is a result of lecture
 notes compiled during the Summer 2022 semester for MATH2520: Discrete
 Mathematics at Front Range Community College. This course was taught by
 Kenneth M. Monks, Ph. D. The primary text was Oscar Levin’s *Discrete
@@ -18,8 +18,7 @@ Proof*\[3\] was also used as supplement.
   
 Appendix [\[appendix:b\]](#appendix:b) is provided as a nonexhaustive
 refresher on functions, as preparation for Chapter
-[\[chapter:lintrans\]](#chapter:lintrans). Appendix
-[\[appendix:b\]](#appendix:b) is a result of both content covered in
+5. Appendix B is a result of both content covered in
 *Elementary Linear Algebra* and MATH2520 lecture notes.  
   
 The author would like to provide the following resources for students
