@@ -16,7 +16,7 @@ Kenneth M. Monks, Ph. D. The primary text was Oscar Levin’s *Discrete
 Mathematics: An Open Introduction*\[2\], but Richard Hammack’s *Book of
 Proof*\[3\] was also used as supplement.  
   
-Appendix [\[appendix:b\]](#appendix:b) is provided as a nonexhaustive
+Appendix B is provided as a nonexhaustive
 refresher on functions, as preparation for Chapter
 5. Appendix B is a result of both content covered in
 *Elementary Linear Algebra* and MATH2520 lecture notes.  
