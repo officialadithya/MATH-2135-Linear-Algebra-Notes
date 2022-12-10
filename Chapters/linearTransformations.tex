@@ -886,7 +886,7 @@
         \\
         \\
         The following theorem allows us to determine whether a linear transformation between finite dimensional vector spaces is an isomorphism, and if so, how to find the inverse.
-        \begin{theorem}{\Stop\,\,Finding an Inverse, if it Exists}{findinv}
+        \begin{theorem}{\Stop\,\,Finding an Inverse Matrix, if it Exists}{findinv}
 
             Suppose \(V\) and \(W\) are nontrivial finite dimensional vector spaces with ordered bases \(B\) and \(C\), respectively. Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if the matrix representation \(A_{BC}\) associated to \(L\) is nonsingular. If \(L\) is indeed an isomorphism, the matrix \(A_{CB}\) for \(L^{-1}\) is \(A_{BC}^{-1}\).
             
@@ -985,11 +985,14 @@
             \begin{proof}
                 We must show that \(\cong\) is reflexive, symmetric and transitive. Consider the following.
                 \begin{enumerate}
-                    \item We wish to show \(V\cong V\). Consider the linear transformation \(i:V\to V,\vec{v}\mapsto\vec{v}\), the identity linear operator, defined by Definition \ref{def:idlinop}. We wish to show that \(i:V\to V\) is an isomorphism. We need only show that \(i\) is injective. Since \(i(\vec{0}_V)=\vec{0}_V\), \(\{\vec{0}_V\}\subseteq\ker(i)\).
-                    \item Suppose \(V\cong W\) via \(L:V\to W\), and we must show that \(L^{-1}:W\to V\) is an isomorphism from \(W\) to \(V\).
-                    \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). Show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism.
+                    \item We wish to show \(V\cong V\). Consider the linear transformation \(i:V\to V,\vec{v}\mapsto\vec{v}\), the identity linear operator, defined by Definition \ref{def:idlinop}. We wish to show that \(i:V\to V\) is an isomorphism. Suppose we have \(\vec{v}_1,\vec{v}_2\in V\) such that \(\vec{v}_1\neq\vec{v}_2\). By definition, \(i(\vec{v}_1)=\vec{v}_1\) and \(i(\vec{v}_2)=\vec{v}_2\) meaning \(i(\vec{v}_1)\neq i(\vec{v}_2)\), so \(i\) is injective. Suppose we have \(\vec{w}\in V\). We wish to show there exists some \(\vec{v}\in V\) such that \(i(\vec{v})=\vec{w}\). By definition, \(\vec{v}=\vec{w}\), so \(i\) is surjective. We have found that \(i\) is an isomorphism from \(V\) to \(V\), so \(V\cong V\).
+                    \item Suppose \(V\cong W\) via \(L:V\to W\), and we must show that \(L^{-1}:W\to V\) is an isomorphism from \(W\) to \(V\). By Theorem \ref{thm:findinv}, \(L\) is an isomorphism if and only if the matrix \(A\) associated to \(L\) is nonsingular, and if \(L\) is an isomorphism, the matrix for \(L^{-1}\) is \(A^{-1}\). Since \(A^{-1}\) is nonsingular, since \((A^{-1})^{-1}=A\), \(L^{-1}\) is an isomorphism, so \(W\cong V\).
+                    \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). We wish to show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism. Suppose
+                    \begin{equation*}
+                        (L_2\circ L_1)(\vec{v_1})=L_2(L_1(\vec{v_1}))=(L_2\circ L_1)(\vec{v}_2)=L_2(L_1(\vec{v}_2))
+                    \end{equation*}
+                    for \(\vec{v}_1,\vec{v}_2\in V_1\). We wish to show \(\vec{v}_1=\vec{v}_2\). Since \(L_2\) is injective, \(L_1(\vec{v}_1)=L_1(\vec{v}_2)\). Then, since \(L_1\) is injective, \(\vec{v}_1=\vec{v}_2\), as desired. Thus, \(L_2\circ L_1\) is injective. Now, suppose we have \(\vec{w}\in V_3\). We wish to show there exists some \(\vec{v}\in V_1\) such that \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))=\vec{w}\). Since \(L_2\) is surjective, there exists some \(\hat{v}\in V_2\) such that \(L_2(\hat{v})=\vec{w}\). Since \(L_1\) is surjective, there exists some \(\vec{v}\in V_1\) such that \(L_1(\vec{v})=\hat{v}\). Thus, \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))=L_2(\hat{v})=\vec{w}\), so \(L_2\circ L_1\) is surjective. We have shown that \(L_2\circ L_1\) is both injective and surjective, so it is an isomorphism, as desired.
                 \end{enumerate}
-                \DOTHISLATER
             \end{proof}
 
         \end{theorem}
