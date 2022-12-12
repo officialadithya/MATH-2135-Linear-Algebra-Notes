@@ -62,7 +62,7 @@
         \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Is it a Linear Transformation? 3}{lintrans3}
 
-            Let \(F:\mathcal{P}_{n}\to W\) where \(W=\Span\left\{\frac{1}{s},\ldots,\frac{1}{s^{n+1}}\right\}\) and
+            Let \(F:\mathcal{P}_{n}\to W\) where \(W=\Span\left(\left\{\frac{1}{s},\ldots,\frac{1}{s^{n+1}}\right\}\right)\) and
             \begin{align*}
                 F(\vec{p})&=\laplace{\vec{p}(t)}(s) \\
                 &=\int_0^\infty e^{-st}\vec{p}(t)\dd t.
@@ -450,7 +450,7 @@
             \begin{equation*}
                 L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
             \end{equation*}
-            As seen in Example \ref{exa:findmat3}, the matrix for \(L\) using the standard bases for \(\mathcal{P_3}\) and \(\mathbb{R}^3\) was
+            As seen in Example \ref{exa:findmat3}, the matrix for \(L\) using the standard bases for \(\mathcal{P}_3\) and \(\mathbb{R}^3\) was
             \begin{equation*}
                 A_{BC}=\begin{bmatrix}
                     0 & 0 & 1 & 1 \\
@@ -793,7 +793,7 @@
             
             Suppose \(V\) and \(W\) are finite dimensional vector spaces with \(\dim V=\dim W\). Let \(L:V\to W\) be a linear transformation. Then, \(L\) is injective if and only if \(L\) is surjective.
             \begin{proof}
-                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the dimension theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition. Conversely, if \(L\) is surjective, \(\dim(\ker(L))=0\), meaning that \(\ker(L)=\{\vec{0}_V\}\), which is equivalent to \(L\) being injective.
+                We know \(L\) is injective if and only if \(\ker(L)=\{\vec{0}_V\}\), meaning \(\dim (\ker(L))=0\). By the Rank-Nullity Theorem, \(\dim V=\dim(\range(L))+\dim(\ker(L))=\dim(\range(L))\). Since \(\dim V=\dim W\), \(\dim W=\dim(\range(L))\), meaning \(L\) is surjective, by definition. Conversely, if \(L\) is surjective, \(\dim(\ker(L))=0\), meaning that \(\ker(L)=\{\vec{0}_V\}\), which is equivalent to \(L\) being injective.
             \end{proof}
 
         \end{theorem}
@@ -939,7 +939,7 @@
                 \end{proof}
                 \item If \(L\) is surjective and \(S\) spans \(V\), \(L(S)\) spans \(W\).
                 \begin{proof}
-                    Suppose that \(L\) is surjective and \(S\) spans \(V\). We wish to show that all \(\vec{w}\in W\) can be written as a linear combination of vectors in \(L(T)\). Since \(L\) is surjective, there exists \(\vec{v}\in V\) with \(L(\vec{v})=\vec{w}\). Since \(S\) spans \(V\), we have
+                    Suppose that \(L\) is surjective and \(S\) spans \(V\). We wish to show that all \(\vec{w}\in W\) can be written as a linear combination of vectors in \(L(S)\). Since \(L\) is surjective, there exists \(\vec{v}\in V\) with \(L(\vec{v})=\vec{w}\). Since \(S\) spans \(V\), we have
                     \begin{equation*}
                         \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
                     \end{equation*}
@@ -1007,7 +1007,6 @@
             Suppose \(V\) and \(W\) are nontrivial finite dimensional vector spaces with ordered bases \(B\) and \(C\), respectively. Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if the matrix representation \(A_{BC}\) associated to \(L\) is nonsingular. If \(L\) is indeed an isomorphism, the matrix \(A_{CB}\) for \(L^{-1}\) is \(A_{BC}^{-1}\).
             
         \end{theorem}
-        \pagebreak
         \vphantom
         \\
         \\
@@ -1035,6 +1034,7 @@
                 &,\begin{bmatrix} x \\ y \end{bmatrix}\mapsto \begin{bmatrix} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{3}{2} \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}.
             \end{align*}
         \end{example}
+        \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Find Inverse 2}{findinv2}
 
             Consider
@@ -1152,7 +1152,7 @@
                 \end{equation*}
                 If we subtract the right hand side from both sides, we have
                 \begin{equation*}
-                    b_1\vec{v}_1+\cdots+b_n\vec{v}_n+(-d_1\vec{u}_1)+\cdots+(-d_m)\vec{u}_m=\vec{0}_V
+                    b_1\vec{v}_1+\cdots+b_n\vec{v}_n+(-d_1)\vec{u}_1+\cdots+(-d_m)\vec{u}_m=\vec{0}_V
                 \end{equation*}
                 Since \(B_V\) is a basis for \(V\), \(B_V\) is linearly independent, so \(b_1=\cdots=b_n=d_1=\cdots=d_m=0\). Since \(b_1=\cdots=b_n=0\), \(B_{\range(L)}:=\{L(\vec{v}_1),\ldots,L(\vec{v}_n)\}\) is linearly independent. Since \(B_{\range(L)}\) both spans \(\range(L)\) and is linearly independent, \(B_{\range(L)}\) is a basis for \(\range(L)\). We see that \(\dim(\range(L))=n\), so
                 \begin{align*}
@@ -1262,7 +1262,7 @@
         We will now define what it means for a linear operator to be diagonalizable, while also providing a theorem to provide an equivalent condition.
         \begin{definition}{\Stop\,\,Diagonalizability of a Linear Operator}{diaglintrans}
 
-            A linear operator \(L\) on a finite dimensional vector space is diagonizable if and only if the matrix representation of \(L\) with respect to some ordered basis for \(V\) is a diagonal matrix.
+            A linear operator \(L\) on a finite dimensional vector space is diagonalizable if and only if the matrix representation of \(L\) with respect to some ordered basis for \(V\) is a diagonal matrix.
             
         \end{definition}
         \pagebreak
@@ -1280,7 +1280,6 @@
                 \end{equation*}
                 Thus, \(A\) is diagonal, and \(L\) is diagonalizable, as desired.
             \end{proof}
-
         \end{theorem}
         \pagebreak
         \vphantom
