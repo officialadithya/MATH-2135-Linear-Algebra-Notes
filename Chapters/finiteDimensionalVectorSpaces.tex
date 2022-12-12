@@ -1101,7 +1101,7 @@
         \\
         \\
         Consider the following theorems.
-        \begin{theorem}{\Stop\,\,A Useful Lemma Regarding Bases}{basislemma}
+        \begin{theorem}{\Stop\,\,A Useful Lemma for Bases}{basislemma}
 
             Let \(S\) and \(T\) be subsets of a vector space \(V\) such that \(\Span(S)=V\) where \(S\) is finite and \(T\) is linearly independent. Then, \(T\) is finite and \(|T|\leq|S|\).
             \begin{proof}
@@ -1213,21 +1213,17 @@
         Consider the following theorems.
         \begin{theorem}{\Stop\,\,Dimensions of Subspaces}{dimsubspc}
 
-            If \(W\) is a subspace of a vector space \(V\),
+            If \(W\) is a subspace of a finite dimensional vector space \(V\),
             \begin{equation*}
                 \dim W\leq \dim V.
             \end{equation*}
-            Moreover, if \(\dim V\) is finite and \(\dim W=\dim V\), then, \(W=V\).
+            Moreover, if \(\dim W=\dim V\), then, \(W=V\).
             \begin{proof}
                 Suppose that \(W\) is the trivial subspace, that is, \(W=\{\vec{0}\}\). Then, \(\dim W=0\leq\dim V\). Othersie, we take some \(\vec{w}_1\in W\) where \(\vec{w}_1\neq\vec{0}\). Then, \(\{\vec{w}_1\}\) is linearly independent. If \(\Span(\{\vec{w}_1\})\neq W\), we can take some \(\vec{w}_2\in (W-\Span(\{\vec{w}_1\}))\). Then, \(\{\vec{w}_1,\vec{w}_2\}\) is linearly independent. Until our set spans \(W\), we can keep adding \(\vec{w}_{k+1}\in (W-\Span(\{\vec{w}_1,\ldots,\vec{w}_k\}))\) to eventually obtain a linearly independent spanning set
                 \begin{equation*}
                     \{\vec{w}_1,\ldots,\vec{w}_{k+1}\}\in W.
                 \end{equation*}
-                Since this set is linearly independent in \(W\), it is also linearly independent in \(V\) since \(W\subseteq V\). Then, we have \(\dim W=k+1\leq \dim V\). For the next part of the theorem, suppose \(\dim W=\dim V\). Let
-                \begin{equation*}
-                    B_W=\{\vec{w}_1,\ldots,\vec{w}_{k+1}\}
-                \end{equation*}
-                be a basis of \(W\). Suppose, for the sake of contradiction, that \(W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin W\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\). However, this union has size \(k+2\). But, \(\dim W=k+1\), and \(\dim V=k+1\) as well, which provides the necessary contradiction.
+                Since this set is linearly independent in \(W\), it is also linearly independent in \(V\), meaning \(|\{\vec{w}_1,\ldots,\vec{w}_{k+1}\}|\leq\dim V\), as desired. For the next part of the theorem, suppose \(\dim W=\dim V=n\). Then, let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_n\}\) and \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
             \end{proof}
             
         \end{theorem}
