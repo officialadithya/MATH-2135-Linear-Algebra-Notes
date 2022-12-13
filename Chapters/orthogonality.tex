@@ -394,7 +394,7 @@
 
     \subsection{Orthogonal Complements}
 
-        Consider the following definition.
+        Consider the following theorems and definitions.
         \begin{definition}{\Stop\,\,Orthogonal Complements}{orthocomp}
 
             Let \(V\) be an inner product space. Let \(S\subseteq V\). Then,
@@ -403,16 +403,38 @@
             \end{equation*}
 
         \end{definition}
+        \begin{theorem}{\Stop\,\,A Useful Lemma for Finding Orthogonal Complements}{lemmafindorthocomp}
+            Let \(V\) be an inner product space, and let \(W\) be a subspace of \(V\). Let \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) be a basis of \(W\). Then, \(\vec{v}\in W^\perp\) if and only if \(\iprod{\vec{v}}{\vec{w}_1}=\cdots=\iprod{\vec{v}}{\vec{w}_n}=0\).
+            \begin{proof}
+                If \(\vec{v}\in W^\perp\), we easily have that \(\iprod{\vec{v}}{\vec{w}_1}=\cdots=\iprod{\vec{v}}{\vec{w}_n}=0\) since \(B\subseteq W\). Now, suppose \(\iprod{\vec{v}}{\vec{w}_1}=\cdots=\iprod{\vec{v}}{\vec{w}_n}=0\). Since \(B\) is a basis for \(W\), for \(\vec{w}\in W\), we have
+                \begin{equation*}
+                    \vec{w}=c_1\vec{w}_1+\cdots+c_n\vec{w}_n
+                \end{equation*}
+                for \(c_1,\ldots,c_n\in\mathbb{F}\). Then,
+                \begin{align*}
+                    \iprod{\vec{v}}{\vec{w}}&=\iprod{\vec{v}}{c_1\vec{w}_1+\cdots+c_n\vec{w}_n} \\
+                    &=\iprod{\vec{v}}{c_1\vec{w}_1}+\cdots+\iprod{\vec{v}}{c_n\vec{w}_n} \\
+                    &=\bar{c}_1\iprod{\vec{v}}{\vec{w}_1}+\cdots+\bar{c}_n\iprod{\vec{v}}{\vec{w}_n} \\
+                    &=c_1(0)+\cdots+c_n(0) \\
+                    &=0,
+                \end{align*}
+                so \(\vec{v}\in W^\perp\), as desired.
+            \end{proof}
+        \end{theorem}
         \vphantom
         \\
         \\
-        Consider the following example.
+        Theorem \ref{thm:lemmafindorthocomp} allows us to only consider the basis vectors of a subspace when finding basis vectors for the orthogonal complement of that subspace. In general, we will form a linear system by setting the inner product of an arbitrary vector and each basis vector to zero and solving.
+        \pagebreak
+        \\
+        \\
+        Consider the following examples.
         \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 1}{findorthocomp1}
 
             Let \(W=\Span(\{[1,0,0],[0,1,0]\})\subseteq\mathbb{R}^3\). Find \(W^\perp\).
             \\
             \\
-            We see that 
+            We, without any degree of formality, see that 
             \begin{equation*}
                 W^\perp=\Span(\{[0,0,1]\}).
             \end{equation*}
@@ -421,11 +443,32 @@
         \end{example}
         \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 2}{findorthocomp2}
 
-           Let \(V\) be an inner product space. Find \(\{\vec{0_V}\}^\perp\).
-           \\
-           \\
-           We see \(\{\vec{0_V}\}^\perp=V\). Also, \(V^\perp=\{\vec{0}_V\}\).
-        
+            Let \(W=\Span(\{[1,-1,0,0],[1,0,1,0]\})\). Find \(W^\perp\).
+            \\
+            \\
+            We see that \(W\) is a subspace of \(\mathbb{C}^4\). We must find linearly independent \(\vec{v}_1,\vec{v}_2\in\mathbb{C}^4\) such that
+            \begin{equation*}
+                \iprod{\vec{v}_1}{[1,-1,0,0]}=\iprod{\vec{v}_1}{[1,0,1,0]}=0
+            \end{equation*}
+            and
+            \begin{equation*}
+                \iprod{\vec{v}_2}{[1,-1,0,0]}=\iprod{\vec{v}_2}{[1,0,1,0]}=0.
+            \end{equation*}
+            Let \(\vec{v}_1=[x_1,y_1,z_1,w_1]\) and \(\vec{v}_2=[x_2,y_2,z_2,w_2]\). We can then form the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & -1 & 0 & 0 & | & 0 \\
+                    1 & 0 & 1 & 0 & | & 0
+                \end{bmatrix}\underbrace{\to}_{\text{RREF}}\begin{bmatrix}
+                    1 & 0 & 1 & 0 & | & 0 \\
+                    0 & 1 & 1 & 0 & | & 0
+                \end{bmatrix},
+            \end{equation*}
+            implying that \(\vec{v}_1=[0,0,0,1]\) and \(\vec{v}_2=[-1,-1,1,0]\). Note that both vectors are particular solutions to the linear system. Then, we have
+            \begin{equation*}
+                W^\perp=\Span(\{[0,0,0,1],[-1,-1,1,0]\}).
+            \end{equation*}
+            
         \end{example}
         \pagebreak
         \vphantom
@@ -489,8 +532,30 @@
             \end{enumerate}
 
         \end{theorem}
+        \begin{theorem}{\Stop\,\,The Orthogonal Complement of the Ambient Space}{orthocompambientspc}
 
-        \DOTHISLATER
+            Let \(V\) be an inner product space. Then, \(V^\perp=\{\vec{0}_V\}\).
+            \begin{proof}
+                Let \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for \(V\). Then, by Theorem \ref{thm:subspcs}, the basis for \(V^\perp\), or \(B_{V^\perp}\) is \(\emptyset\). Therefore,
+                \begin{equation*}
+                    V^\perp=\Span(B_{V^\perp})=\vec{0}_V,
+                \end{equation*}
+                as desired.
+            \end{proof}
+            
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Orthogonal Complement of the Zero Vector}{orthocompzerovec}
+
+            Let \(V\) be an inner product space. Then, \(\{\vec{0}_V\}^\perp=V\).
+            \begin{proof}
+                By definition, \(\emptyset\) is a basis for \(\vec{0}_V\). Then, let \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be a basis for \(V\). By Theorem \ref{thm:subspcs},
+                \begin{equation*}
+                    \{\vec{0}_V\}^\perp=\Span(B_V)=V,
+                \end{equation*}
+                as desired.
+            \end{proof}
+            
+        \end{theorem}
         \DOTHISLATER
 
         \pagebreak
@@ -500,24 +565,42 @@
     \subsection{Projections Onto a Subspace}
 
         Consider the following definition.
-        \begin{definition}{\Stop\,\,Projections Onto a Subspace}{projectionssubspc}
+        \begin{definition}{\Stop\,\,Projections Onto a Subspace With Orthogonal Bases}{projectionssubspcog}
+
+            Let \(V\) be an inner product space. Let \(W\) be a subspace of \(V\). Let \(\{\vec{w}_1,\ldots,\vec{w}_n\}\) be an orthogonal basis for \(W\). Let \(\vec{v}\in V\). Then,
+            \begin{equation*}
+                \proj_W{\vec{v}}=\frac{\iprod{\vec{v}}{\vec{w}_1}}{\iprod{\vec{w}_1}{\vec{w}_1}}\vec{w}_1+\cdots+\frac{\iprod{\vec{v}}{\vec{w}_n}}{\iprod{\vec{w}_n}{\vec{w}_n}}\vec{w}_n.
+            \end{equation*}
+            If \(W\) is the trivial subspace, \(\proj_W{\vec{v}}=\vec{0}_V\).
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Projections Onto a Subspace With Orthonormal Bases}{projectionssubspcon}
 
             Let \(V\) be an inner product space. Let \(W\) be a subspace of \(V\). Let \(\{\vec{w}_1,\ldots,\vec{w}_n\}\) be an orthonormal basis for \(W\). Let \(\vec{v}\in V\). Then,
             \begin{equation*}
                 \proj_W{\vec{v}}=\iprod{\vec{v}}{\vec{w}_1}\vec{w}_1+\cdots+\iprod{\vec{v}}{\vec{w}_n}\vec{w}_n.
             \end{equation*}
-            If \(W\) is the trivial subspace, \(\proj_W{\vec{v}}=0\).
-        \end{definition}
+            If \(W\) is the trivial subspace, \(\proj_W{\vec{v}}=\vec{0}_V\).
+            \begin{proof}
+                If \(\{\vec{w}_1,\ldots,\vec{w}_n\}\) is orthonormal, \(\iprod{\vec{w}_1}{\vec{w}_1}=\cdots=\iprod{\vec{w}_n}{\vec{w}_n}=1\), so Definition \ref{def:projectionssubspcog} simplifies to the above.
+            \end{proof}
+        \end{theorem}
         \vphantom
         \\
         \\
         Consider the following example.
         \begin{example}{\Difficulty\,\Difficulty\,\,Projection 1}{proj1}
 
-            Let \(V=\mathbb{R}^3\). Let \(W\) be the \(xy\) plane with basis \(B_V=\{[1,0.0],[0,1,0]\}\). Find \(\proj_W{\vec{v}}\).
-            \DOTHISLATER
+            Let \(V=\mathbb{R}^3\). Let \(W\) be the \(xy\) plane with basis \(B_W=\{[1,0.0],[0,1,0]\}\). Find \(\proj_W{\vec{v}}\).
+            \\
+            \\
+            Note that \(B_W\) is an orthonormal basis of \(W\). If \(\vec{v}=[v_1,v_2,v_3]\),
+            \begin{align*}
+                \proj_W\vec{v}&=\iprod{v}{[1,0,0]}[1,0,0]+\iprod{v}{[0,1,0]}[0,1,0] \\
+                &=[v_1,v_2,0],
+            \end{align*}
             
         \end{example}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -546,7 +629,36 @@
             \end{proof}
             
         \end{theorem}
-    
+        \pagebreak
+        \begin{example}{Projection 2}{projection2}
+
+            Let \(V=\mathbb{R}^2\). Let \(W=\{[x,y]:x-y=0;x,y\in\mathbb{R}\}\). For \(\vec{v}\in\mathbb{R}^2\), we want to find \(\vec{w}_1+\vec{w}_2\) such that \(\vec{v}=\vec{w}_1+\vec{w}_2\).
+            \\
+            \\
+            Notice that \(\Span(\{[1,1]\})=W\). Let \(\vec{v}=[v_1,v_2]\). Then,
+            \begin{align*}
+                \vec{w}_1&=\frac{\iprod{[v_1,v_2]}{[1,1]}}{\iprod{[1,1]}{[1,1]}}[1,1] \\
+                &=\frac{v_1+v_2}{2}[1,1] \\
+                &=\left[\frac{v_1+v_2}{2},\frac{v_1+v_2}{2}\right].
+            \end{align*}
+            Then,
+            \begin{align*}
+                \vec{w}_2&=[v_1,v_2]-\left[\frac{v_1+v_2}{2},\frac{v_1+v_2}{2}\right] \\
+                &=\left[\frac{2v_1-v_1-v_2}{2},\frac{2v_2-v_1-v_2}{2}\right] \\
+                &=\left[\frac{v_1-v_2}{2},\frac{v_1-v_2}{2}\right].
+            \end{align*}
+            
+        \end{example}
+        \begin{example}{Projection 3}{projection3}
+
+            Let \(V\) be the vector space of real continuous functions. Define the inner product in \(V\) with
+            \begin{equation*}
+                \iprod{\vec{f}}{\vec{g}}=\int_{-\pi}^\pi f(t)g(t) \dd t.
+            \end{equation*}
+            Write every continuous function \(\vec{f}\in V\) as \(\vec{f}_1+\vec{f}_2\).
+            
+        \end{example}
+
 \pagebreak
 
 \section{Lecture 38: December 5, 2022}
