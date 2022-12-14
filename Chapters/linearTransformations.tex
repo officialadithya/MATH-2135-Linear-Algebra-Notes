@@ -1109,6 +1109,10 @@
                     \end{equation*}
                     for \(\vec{v}_1,\vec{v}_2\in V_1\). We wish to show \(\vec{v}_1=\vec{v}_2\). Since \(L_2\) is injective, \(L_1(\vec{v}_1)=L_1(\vec{v}_2)\). Then, since \(L_1\) is injective, \(\vec{v}_1=\vec{v}_2\), as desired. Thus, \(L_2\circ L_1\) is injective. Now, suppose we have \(\vec{w}\in V_3\). We wish to show there exists some \(\vec{v}\in V_1\) such that \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))=\vec{w}\). Since \(L_2\) is surjective, there exists some \(\hat{v}\in V_2\) such that \(L_2(\hat{v})=\vec{w}\). Since \(L_1\) is surjective, there exists some \(\vec{v}\in V_1\) such that \(L_1(\vec{v})=\hat{v}\). Thus, \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))=L_2(\hat{v})=\vec{w}\), so \(L_2\circ L_1\) is surjective. We have shown that \(L_2\circ L_1\) is both injective and surjective, so it is an isomorphism, as desired.
                 \end{enumerate}
+                \vphantom
+                \\
+                \\
+                We have now shown that \(\cong\) satisfies the necessary properties.
             \end{proof}
 
         \end{theorem}
@@ -1160,7 +1164,6 @@
                     &=\dim(\ker(L))+\dim(\range(L)),
                 \end{align*}
                 as desired.
-
             \end{proof}
 
         \end{theorem}
