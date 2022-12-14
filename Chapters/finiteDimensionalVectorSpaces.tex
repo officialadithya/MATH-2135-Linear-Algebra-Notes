@@ -1770,6 +1770,7 @@
             as desired.
             
         \end{example}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -1779,6 +1780,13 @@
             Suppose \(B_1\), \(B_2\), and \(B_3\) are ordered bases of \(\mathbb{R}^n\). Then,
             \begin{enumerate}
                 \item The transition matrix from \(B_1\) to \(B_2\) is unique and nonsingular.
+                \begin{proof}
+                    Suppose we have \(P[\vec{v}]_{B_1}=Q[\vec{v}]_{B_1}=[\vec{v}]_{B_2}\). Then, we have \(P[\vec{v}_i]_{B_1}=Q[\vec{v}_i]_{B_1}\) for each \(\vec{v}_i\in B_1\). Also, note that for each \(\vec{v}_i\in B_1\), \([\vec{v}_i]_{B_1}=\vec{e}_i\), so we have
+                    \begin{equation*}
+                        P\vec{e}_i=Q\vec{e}_i.
+                    \end{equation*}
+                    For any matrix \(A\), we have that \(A\vec{e}_i\) is the \(i\)th column of \(A\). Therefore, each column of \(P\) is equal to the respective corresponding column of \(Q\), so \(P=Q\), as desired.
+                \end{proof}
                 \item If \(P\) is the transition matrix from \(B_1\) to \(B_2\) and \(Q\) is the transition matrix from \(B_2\) to \(B_3\), \(QP\) is the transition matrix from \(B_1\) to \(B_3\).
                 \begin{proof}
                     We consider 
@@ -1800,7 +1808,6 @@
             \end{enumerate}
             
         \end{theorem}
-        \pagebreak
         \vphantom
         \\
         \\
