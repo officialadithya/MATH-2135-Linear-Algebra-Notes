@@ -5,7 +5,7 @@
         Consider the following definition.
         \begin{definition}{\Stop\,\,Inner Products and Inner Product Spaces}{innerprod}
 
-            An \(\mathbb{F}\) valued inner product on a vector space \(V\) is a function 
+            An \(\mathbb{F}\)-valued inner product on a vector space \(V\) is a function 
             \begin{equation*}
                 \langle\cdot,\cdot\rangle:V\times V\to \mathbb{F}
             \end{equation*}
@@ -242,9 +242,9 @@
             \begin{itemize}
                 \item Let \(\vec{v}_1=\vec{w}_1\).
                 \item Let \(\vec{v}_2=\vec{w}_2-\left(\frac{\iprod{\vec{w}_2}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1\).
-                \item Let \(\vec{v}_3=\vec{w}_3-\left(\frac{\iprod{\vec{w}_3}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1-\left(\frac{\iprod{\vec{v}_3}{\vec{v}_2}}{\iprod{\vec{v}_2}{\vec{v}_2}}\right)\vec{v}_2\).
+                \item Let \(\vec{v}_3=\vec{w}_3-\left(\frac{\iprod{\vec{w}_3}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1-\left(\frac{\iprod{\vec{w}_3}{\vec{v}_2}}{\iprod{\vec{v}_2}{\vec{v}_2}}\right)\vec{v}_2\).
                 \item Continue.
-                \item Let \(\vec{v}_n=\vec{w}_n-\left(\frac{\iprod{\vec{w}_n}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1-\left(\frac{\iprod{\vec{v}_n}{\vec{v}_2}}{\iprod{\vec{v}_2}{\vec{v}_2}}\right)\vec{v}_2-\cdots-\left(\frac{\iprod{\vec{v}_n}{\vec{v}_{n-1}}}{\iprod{\vec{v}_{n-1}}{\vec{v}_{n-1}}}\right)\vec{v}_{n-1}\).
+                \item Let \(\vec{v}_n=\vec{w}_n-\left(\frac{\iprod{\vec{w}_n}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1-\left(\frac{\iprod{\vec{w}_n}{\vec{v}_2}}{\iprod{\vec{v}_2}{\vec{v}_2}}\right)\vec{v}_2-\cdots-\left(\frac{\iprod{\vec{w}_n}{\vec{v}_{n-1}}}{\iprod{\vec{v}_{n-1}}{\vec{v}_{n-1}}}\right)\vec{v}_{n-1}\).
             \end{itemize}
 
         \end{theorem}
@@ -267,9 +267,6 @@
             
         \end{example}
         \pagebreak
-        \vphantom
-        \\
-        \\
         \begin{example}{\Difficulty\,\Difficulty\,\,Gram-Schmidt 2}{gramschmidt2}
 
             Apply the Gram-Schmidt process to \(\{[i,-i,1,1],[i,0,0,1],[0,1,-i,0]\}\subseteq\mathbb{C}^4\).
@@ -387,7 +384,50 @@
                 B_{\hat{\perp}}&=\left\{\left[\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2},0,0\right],\left[\frac{\sqrt{6}}{6},\frac{\sqrt{6}}{6},\frac{\sqrt{6}}{3},0\right],\left[\frac{\sqrt{3}}{6},\frac{\sqrt{3}}{6},-\frac{\sqrt{3}}{6},\frac{\sqrt{3}}{2}\right]\right\}.
             \end{align*}
         \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We have mentioned many methods of finding orthogonal and orthonormal bases and spanning sets. The following theorems illustrate the utility of doing so.
+        \begin{theorem}{\Stop\,\,Coordinatization With Respect to an Orthogonal Basis}{coordsorthogonal}
 
+            Let \(V\) be a finite dimensional inner product space. Let \(W\) be a subspace of \(V\). Suppose \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) is a nonempty ordered orthogonal basis for \(W\). Then, for all \(\vec{w}\in W\),
+            \begin{equation*}
+                [\vec{w}]_B=\left[\frac{\iprod{\vec{w}}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}},\ldots,\frac{\iprod{\vec{w}}{\vec{v}_n}}{\iprod{\vec{v}_n}{\vec{v}_n}}\right].
+            \end{equation*}
+            \begin{proof}
+                We know that \([\vec{w}]_B=[c_1,\ldots,c_n]\) for \(c_1,\ldots,c_n\in\mathbb{F}\). We wish to show that for each \(c_i\), with \(1\leq i\leq n\),
+                \begin{equation*}
+                    c_i=\frac{\iprod{\vec{v}_i}{\vec{v}_i}}{\iprod{\vec{v}_i}{\vec{v}_i}}.
+                \end{equation*}
+                We have that
+                \begin{equation*}
+                    \vec{w}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n.
+                \end{equation*}
+                Then,
+                \begin{align*}
+                    \iprod{\vec{w}}{\vec{v}_i}&=\iprod{c_1\vec{v}_1+\cdots+c_n\vec{v}_n}{\vec{v}_i} \\
+                    &=c_1\iprod{\vec{v}_1}{\vec{v}_i}+\cdots+c_n\iprod{\vec{v}_n}{\vec{v}_i} \\
+                    &=c_i\iprod{\vec{v}_i}{\vec{v}_i}.
+                \end{align*}
+                Therefore,
+                \begin{equation*}
+                    c_i=\frac{\iprod{\vec{w}}{\vec{v}_i}}{\iprod{\vec{v}_i}{\vec{v}_i}},
+                \end{equation*}
+                as desired.
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Coordinatization With Respect to an Orthonormal Basis}{coordsorthonormal}
+
+            Let \(V\) be a finite dimensional inner product space. Let \(W\) be a subspace of \(V\). Suppose \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) is a nonempty ordered orthonormal basis for \(W\). Then, for all \(\vec{w}\in W\),
+            \begin{equation*}
+                [\vec{w}]_B=\left[\iprod{\vec{w}}{\vec{v}_1},\ldots,\iprod{\vec{w}}{\vec{v}_n}\right].
+            \end{equation*}
+            \begin{proof}
+                If \(B\) is orthonormal, \(\iprod{\vec{v}_1}{\vec{v}_1}=\cdots=\iprod{\vec{v}_n}{\vec{v}_n}=1\), so Theorem \ref{thm:coordsorthogonal} simplifies to the above.
+            \end{proof}
+
+        \end{theorem}
         \pagebreak
 
 \section{Lecture 36: November 30, 2022}
@@ -511,27 +551,39 @@
             
             Suppose \(V\) is a finite dimensional inner product space and \(W\) is a subspace of \(V\). Then,
             \begin{enumerate}
-                \item If \(\{\vec{v}_1,\ldots,\vec{v}_k\}\) is an orthonormal basis of \(W\) and \(\{\vec{v}_1,\ldots,\vec{v}_k,\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is an orthonormal basis for \(V\), \(\{\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is an orthonormal basis for \(W^\perp\).
+                \item If \(B_W=\{\vec{v}_1,\ldots,\vec{v}_k\}\) is an orthonormal basis of \(W\) and \(B_V=\{\vec{v}_1,\ldots,\vec{v}_k,\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is an orthonormal basis for \(V\), \(\{\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is an orthonormal basis for \(W^\perp\).
                 \begin{proof}
-                    Since \(\{\vec{w}_1,\ldots,\vec{w}_{\ell}\}\) is orthonormal, it is linearly independent. We wish to show that \(\vec{w}_i\in W^\perp\) for \(1\leq i \leq \ell\) and \(\Span(\{\vec{w}_1,\ldots,\vec{w}_\ell\})=W^\perp\). For the spanning property, let \(\vec{w}\in W^\perp\). Then, \(\vec{w}\in V\), so
+                    We have that \(\{\vec{w}_1,\ldots,\vec{w}_\ell\}\) is linearly independent because it is a subset of a linearly independent set. Let \(S=\Span(\{\vec{w}_1,\ldots,\vec{w}_\ell\})\). We wish to show that \(S\subseteq W^\perp\) and \(W^\perp\subseteq S\). Suppose we have some \(\vec{s}\in S\). Then,
                     \begin{equation*}
-                        \vec{w}=c_1\vec{v}_1+\cdots+c_k\vec{v}_k+d_1\vec{w}_1+\cdots+d_\ell\vec{v}_\ell
+                        \vec{s}=c_1\vec{w}_1+\cdots+c_\ell\vec{w}_\ell
                     \end{equation*}
-                    for \(c_1,\ldots,c_k\in\mathbb{F}\) and \(d_1,\ldots,d_\ell\in\mathbb{F}\). We wish to show \(c_1=\cdots=c_k=0\). Since \(\vec{w}\in W^\perp\) and \(\vec{v}_i\in W\), we have that \(\iprod{\vec{w}}{\vec{v}_i}=0\) for \(1\leq i\leq k\). But, we have
+                    for \(c_1,\ldots,c_\ell\in\mathbb{F}\). Since \(B_V\) is orthonormal, each of \(\vec{w}_1,\ldots,\vec{w}_\ell\) is orthogonal to each of \(\vec{v}_1,\ldots,\vec{v}_k\). As a result, \(\vec{s}\) is orthogonal to each \(\vec{v}_i\in B_W\) for \(1\leq i \leq k\). Therefore, \(\vec{s}\in W^\perp\), so \(S\subseteq W\). Now, suppose \(\vec{s}\in W^\perp\). By Theorem \ref{thm:coordsorthogonal}, 
+                    \begin{align*}
+                        [\vec{s}]_{B_V}&=\left[\frac{\iprod{\vec{s}}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}},\ldots,\frac{\iprod{\vec{s}}{\vec{v}_k}}{\iprod{\vec{v}_k}{\vec{v}_k}},\frac{\iprod{\vec{s}}{\vec{w}_1}}{\iprod{\vec{w}_1}{\vec{w}_1}},\ldots,\frac{\iprod{\vec{s}}{\vec{w}_\ell}}{\iprod{\vec{w}_\ell}{\vec{w}_\ell}}\right] \\
+                        &=\left[0,\ldots,0,\frac{\iprod{\vec{s}}{\vec{w}_1}}{\iprod{\vec{w}_1}{\vec{w}_1}},\ldots,\frac{\iprod{\vec{s}}{\vec{w}_\ell}}{\iprod{\vec{w}_\ell}{\vec{w}_\ell}}\right],
+                    \end{align*}
+                    so
                     \begin{equation*}
-                        \iprod{\vec{w}}{\vec{v}}=\iprod{\vec{w}_1=c_1\vec{v}_1+\cdots+c_k\vec{v}_k+d_1\vec{w}_1+\cdots+d_\ell\vec{v}_\ell}{\vec{v}_i}=c_i\iprod{\vec{v}_i}{\vec{v}_i}.
-                    \end{equation*}
-                    This implies \(c_i\iprod{\vec{v}_i}{\vec{v}_i}=0\). Since \(\vec{v}_i\neq\vec{0}_V\), \(c_i=0\), so
-                    \begin{equation*}
-                        \vec{w}=d_1\vec{w}_1+\cdots+d_\ell\vec{v}_\ell,
-                    \end{equation*}
-                    so \(W=\Span(\{\vec{w}_1,\ldots,\vec{w}_\ell\})\).
+                        \vec{s}=\frac{\iprod{\vec{s}}{\vec{w}_1}}{\iprod{\vec{w}_1}{\vec{w}_1}}\vec{w}_1+\cdots+\frac{\iprod{\vec{s}}{\vec{w}_\ell}}{\iprod{\vec{w}_\ell}{\vec{w}_\ell}}\vec{w}_\ell,
+                    \end{equation*} 
+                    meaning that \(\vec{s}\in\Span(\{\vec{w}_1,\ldots,\vec{w}_\ell\})\), or equivalently, \(\vec{s}\in S\), so \(W^\perp\subseteq S\), as desired.
                 \end{proof}
                 \item \(\dim V=\dim W+\dim W^\perp\).
+                \begin{proof}
+                    By the previous part, \(B_W\) is a basis for \(W\), \(B_V\) is a basis for \(V\), and \(B_{W^\perp}=\{\vec{w}_1,\ldots,\vec{w}_\ell\}\) is a basis of \(W^\perp\). We see that \(|B_W|=k\), \(|B_{W^\perp}|=\ell\), and \(|B_V|=k+\ell\). Then,
+                    \begin{equation*}
+                        \dim W+\dim W^\perp=|B_W|+|B_{W^\perp}|=n+\ell=|B_V|=\dim V,
+                    \end{equation*}
+                    as desired.
+                \end{proof}
                 \item \(W=(W^\perp)^\perp\).
+                \begin{proof}
+                    By Theorem \ref{thm:subsub}, \(W\subseteq (W^\perp)^\perp\). Let \(\dim V=n\). Then, by the previous parts, \(\dim ((W^\perp)^\perp)=n-(n-\dim W)=\dim W\). Therefore, \(W=(W^\perp)^\perp\), as desired.
+                \end{proof}
             \end{enumerate}
 
         \end{theorem}
+        \pagebreak
         \begin{theorem}{\Stop\,\,The Orthogonal Complement of the Ambient Space}{orthocompambientspc}
 
             Let \(V\) be an inner product space. Then, \(V^\perp=\{\vec{0}_V\}\).
@@ -556,7 +608,6 @@
             \end{proof}
             
         \end{theorem}
-        \DOTHISLATER
 
         \pagebreak
 
