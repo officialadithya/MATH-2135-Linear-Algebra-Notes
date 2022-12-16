@@ -50,9 +50,9 @@
         
     \end{definition}
     \begin{definition}{\Stop\,\,Vector Equality}{vecequal}
-        Two vectors \(\vec{v}=[v_1,v_2,\ldots,v_n]\) and \(\vec{w}=[w_1,w_2,\ldots,w_n]\) are equal if and only if
+        Two vectors \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) are equal if and only if
         \begin{equation*}
-            v_1=w_1,v_2=w_2,\ldots,v_n=w_n.
+            v_1=w_1,\ldots,v_n=w_n.
         \end{equation*}
     \end{definition}
     \begin{definition}{\Stop\,\,Vector Magnitude}{vecmagn}
@@ -116,18 +116,18 @@
     \begin{theorem}{\Stop\,\,Unit Vectors Represent Direction}{unitvecdir}
         Given a nonzero \(\vec{v}\in\mathbb{R}^n\), there exists a unique unit vector in the same direction as \(\vec{v}\).
         \begin{proof}
-            Since \(\vec{v}\neq\vec{0}\), \(||\vec{v}||\neq0\). % CHECK THIS! 
-            Let \(\vec{u}=\frac{1}{||\vec{v}||}\vec{v}\), meaning that
+            Since \(\vec{v}\neq\vec{0}\), \(||\vec{v}||\neq0\). Let \(\vec{u}=\frac{1}{||\vec{v}||}\vec{v}\), meaning that
             \begin{align*}
                 ||\vec{u}||&=\left|\left|\frac{1}{||\vec{v}||}\vec{v}\right|\right| \\
                 &=\left|\frac{1}{||\vec{v}||}\right|||\vec{v}|| \\
+                &=\frac{1}{||\vec{v}||}||\vec{v}|| \\
                 &=1.
             \end{align*}
-            This means that \(\vec{u}\) is a unit vector and, because \(\frac{1}{||\vec{v}||}\) is a scalar, is in the same direction as \(\vec{v}\). We have now shown existence. For uniqueness, assume \(\vec{w}\) is a unit vector in the same direction as \(\vec{v}\). Then, for a positive \(c\in\mathbb{R}\), \(\vec{w}=c\vec{v}\) and \(||\vec{w}||=1\). That is,
+            This means that \(\vec{u}\) is a unit vector and, because \(\frac{1}{||\vec{v}||}\) is a positive scalar, is in the same direction as \(\vec{v}\). We have now shown existence. For uniqueness, assume \(\vec{w}\) is a unit vector in the same direction as \(\vec{v}\). Then, for a positive \(c\in\mathbb{R}\), \(\vec{w}=c\vec{v}\) and \(||\vec{w}||=1\). That is,
             \begin{align*}
                 ||\vec{w}||=|c|||\vec{v}||=1,
             \end{align*}
-            meaning that \(|c|=\frac{1}{||\vec{v}||}\). Because \(c>0\), \(|c|=c\), so \(\vec{w}=\vec{u}\).
+            meaning that \(|c|=\frac{1}{||\vec{v}||}\). Because \(c>0\), \(|c|=c\), so \(\vec{w}=\frac{1}{||\vec{v}||}\vec{v}=\vec{u}\).
         \end{proof}
     \end{theorem}
     \pagebreak
@@ -150,31 +150,6 @@
         \end{proof}
         
     \end{theorem}
-    
-
-    \begin{comment}
-    \vphantom
-    \\
-    \\
-    The famous Cauchy-Schwarz Inequality is stated below.
-    \begin{theorem}{\Stop\,\,The Cauchy-Schwarz Inequality}{cauchyschwarz}
-
-        Let \(\vec{v},\vec{w}\in\mathbb{R}^n\). Then,
-        \begin{equation*}
-            \vec{v}\cdot\vec{w}\leq||\vec{v}||||\vec{w}||.
-        \end{equation*}
-        \begin{proof}
-            We may rewrite the equation as
-            \begin{align*}
-                \sum_{k=1}^n v_kw_k&\leq\sqrt{\left(\sum_{k=1}^nv_k^2\right)\left(\sum_{k=1}^nw_k^2\right)} \\
-                &\leq\sqrt{(v_1^2+v_2^2\cdots+v_n^2)(w_1^2+w_2^2+\cdots+w_n^2)} \\
-                &\leq\sqrt{v_1^2w_1^2+v_1^2w_2^2+v_2^2w_1^2+v_2^2w_2^2+\cdots+v_1^2w_n^2+v_2^2w_n^2+v_n^2w_1^2+v_n^2w_2^2+v_n^2w_n^2}
-            \end{align*}
-            The terms \(v_1^2w_1^2, v_2^2w_2^2,\ldots,v_n^2w_n^2\) are all present on the left hand side, but do not make up all the addends on the right hand side.
-        \end{proof}
-        
-    \end{theorem}
-    \end{comment}
 
 \pagebreak
 
@@ -217,7 +192,7 @@
     \\
     \\
     We will now define addition and subtraction with vectors and provide a few properties.
-    \begin{definition}{\Stop\,\,Addition and Subtraction With Vectors}{addsubvec}
+    \begin{definition}{\Stop\,\,Vector Addition}{addsubvec}
 
         Let \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Then,
         \begin{equation*}
@@ -250,14 +225,14 @@
 
         Let \(\vec{u}=[u_1,\ldots,u_n]\), \(\vec{v}=[v_1,\ldots,v_n]\), and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Let \(c\) and \(d\) be scalars. Then,
         \begin{enumerate}
-            \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\)
-            \item \(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\)
-            \item \(\vec{0}+\vec{u}=\vec{u}+\vec{0}=\vec{u}\)
-            \item \(\vec{u}+(-\vec{u})=(-\vec{u})+\vec{u}=\vec{0}\)
-            \item \(c(\vec{u}+\vec{v})=c\vec{u}+c\vec{v}\)
-            \item \((c+d)\vec{u}=c\vec{u}+d\vec{u}\)
-            \item \((cd)\vec{u}=c(d\vec{u})\)
-            \item \(1\vec{u}=\vec{u}\)
+            \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\).
+            \item \(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\).
+            \item \(\vec{0}+\vec{u}=\vec{u}+\vec{0}=\vec{u}\).
+            \item \(\vec{u}+(-\vec{u})=(-\vec{u})+\vec{u}=\vec{0}\).
+            \item \(c(\vec{u}+\vec{v})=c\vec{u}+c\vec{v}\).
+            \item \((c+d)\vec{u}=c\vec{u}+d\vec{u}\).
+            \item \((cd)\vec{u}=c(d\vec{u})\).
+            \item \(1\vec{u}=\vec{u}\).
         \end{enumerate}
         
     \end{theorem}
@@ -315,7 +290,7 @@
             \begin{equation*}
                 \vec{0}=c\vec{v}=[cv_1,\ldots,cv_n].
             \end{equation*}
-            There must be some nonzero \(v_1,\ldots,v_n\). Let this nonzero number be \(n\). The only way \(cn=0\) is if \(c=0\).
+            There must be some nonzero \(v_1,\ldots,v_n\). Let this nonzero number be \(v_i\). The only way \(cv_i=0\) is if \(c=0\).
         \end{proof} 
         
     \end{theorem}
@@ -499,7 +474,7 @@
         \\
         \\
         Consider the following theorems.
-        \begin{theorem}{\Stop\,\,Transpose Properties}{transprop}
+        \begin{theorem}{\Stop\,\,Properties of the Transpose}{transprop}
         
             Suppose \(A,B\in\mathcal{M}_{mn}\) and \(c\in\mathbb{R}\). Then,
             \begin{enumerate}
@@ -657,12 +632,12 @@
     
             Let \(\vec{u}=[u_1,\ldots,u_n]\), \(\vec{v}=[v_1,\ldots,v_n]\), and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Let \(c\) be a scalar. Then,
             \begin{enumerate}
-                \item \(\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u}\)
-                \item \(\vec{u}\cdot\vec{u}=||\vec{u}||^2\geq0\) 
-                \item \(\vec{u}\cdot\vec{u}=0\iff\vec{u}=\vec{0}\)
-                \item \(c(\vec{u}\cdot\vec{v})=(c\vec{u})\cdot\vec{v}=\vec{u}\cdot(c\vec{v})\)
-                \item \(\vec{u}\cdot(\vec{v}+\vec{w})=(\vec{u}\cdot\vec{v})+(\vec{u}\cdot\vec{w})\)
-                \item \((\vec{u}+\vec{v})\cdot\vec{w}=(\vec{u}\cdot\vec{w})+(\vec{v}\cdot\vec{w})\)
+                \item \(\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u}\).
+                \item \(\vec{u}\cdot\vec{u}=||\vec{u}||^2\geq0\).
+                \item \(\vec{u}\cdot\vec{u}=0\iff\vec{u}=\vec{0}\).
+                \item \(c(\vec{u}\cdot\vec{v})=(c\vec{u})\cdot\vec{v}=\vec{u}\cdot(c\vec{v})\).
+                \item \(\vec{u}\cdot(\vec{v}+\vec{w})=(\vec{u}\cdot\vec{v})+(\vec{u}\cdot\vec{w})\).
+                \item \((\vec{u}+\vec{v})\cdot\vec{w}=(\vec{u}\cdot\vec{w})+(\vec{v}\cdot\vec{w})\).
             \end{enumerate}
         
         \end{theorem}
@@ -695,7 +670,7 @@
         Consider the following theorem regarding the angle between two vectors.
         \begin{theorem}{\Stop\,\,The Angle Between Two Vectors}{angletwovec}
         
-            Given nonzero \(\vec{v},\vec{w}\in\mathbb{R}^n\),
+            Given nonzero \(\vec{v},\vec{w}\in\mathbb{R}^2\),
             \begin{equation*}
                 \vec{v}\cdot\vec{w}=||\vec{v}||||\vec{w}||\cos\theta,
             \end{equation*}
@@ -979,9 +954,9 @@
         
             Suppose \(A\), \(B\), and \(C\) are matrices such that matrix multipication is well-defined. Then,
             \begin{enumerate}
-                \item \(A(BC)=(AB)C\)
-                \item \(A(B+C)=AB+AC\)
-                \item \((A+B)C=AC+BC\) 
+                \item \(A(BC)=(AB)C\).
+                \item \(A(B+C)=AB+AC\).
+                \item \((A+B)C=AC+BC\).
                 \item \(c(AB)=(cA)B=A(cB)\).
             \end{enumerate}
         
