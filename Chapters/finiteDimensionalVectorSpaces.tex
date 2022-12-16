@@ -1149,7 +1149,7 @@
         \vphantom
         \\
         \\
-        Consider the following theorem.
+        Consider the following theorems.
         \begin{theorem}{\Stop\,\,General Statements About Span and Dimension 1}{spandim1}
             
             Suppose \(V\) is a vector space. If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(\dim V\leq|S|\).
@@ -1219,11 +1219,7 @@
             \end{equation*}
             Moreover, if \(\dim W=\dim V\), then, \(W=V\).
             \begin{proof}
-                Suppose that \(W\) is the trivial subspace, that is, \(W=\{\vec{0}\}\). Then, \(\dim W=0\leq\dim V\). Othersie, we take some \(\vec{w}_1\in W\) where \(\vec{w}_1\neq\vec{0}\). Then, \(\{\vec{w}_1\}\) is linearly independent. If \(\Span(\{\vec{w}_1\})\neq W\), we can take some \(\vec{w}_2\in (W-\Span(\{\vec{w}_1\}))\). Then, \(\{\vec{w}_1,\vec{w}_2\}\) is linearly independent. Until our set spans \(W\), we can keep adding \(\vec{w}_{k+1}\in (W-\Span(\{\vec{w}_1,\ldots,\vec{w}_k\}))\) to eventually obtain a linearly independent spanning set
-                \begin{equation*}
-                    \{\vec{w}_1,\ldots,\vec{w}_{k+1}\}\in W.
-                \end{equation*}
-                Since this set is linearly independent in \(W\), it is also linearly independent in \(V\), meaning \(|\{\vec{w}_1,\ldots,\vec{w}_{k+1}\}|\leq\dim V\), as desired. For the next part of the theorem, suppose \(\dim W=\dim V=n\). Then, let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_n\}\) and \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
+                Let \(\dim V=n\). If some \(S\subseteq W\) is linearly independent in \(W\), \(S\) is linearly independent in \(V\), and therefore, \(|S|\leq n\). Let \(m\in\mathbb{N}\) be the maximum number of elements a linearly independent set in \(W\) can have. Let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_m\}\) be a linearly independent subset of \(W\). Then, for the sake of contradiction, suppose that \(\Span(B_W)\neq W\), meaning that there exists some \(\vec{w}\in W\) such that \(\vec{w}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{w}\}\) is linearly independent in \(W\), but \(|B_W\cup\{\vec{w}\}|=m+1\), contradicting our definition of \(m\). Therefore, \(B_W\) is a basis for \(W\), and since \(|B_W|=m\leq n=\dim V\), \(\dim W\leq \dim V\). For the next part of the theorem, suppose \(\dim W=\dim V=n\). Then, let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_n\}\) and \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be bases of \(W\) and \(V\), respectively. Suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
             \end{proof}
             
         \end{theorem}
