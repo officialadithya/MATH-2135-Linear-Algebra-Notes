@@ -769,12 +769,12 @@
         Consider the following example.
         \begin{example}{\Difficulty\,\Difficulty\,\,Projection 2}{projection2}
 
-            Let \(V=\mathbb{R}^2\). Let \(W=\{[x,y]:x-y=0;x,y\in\mathbb{R}\}\). For \(\vec{v}\in\mathbb{R}^2\), we want to find \(\vec{w}_1+\vec{w}_2\) such that \(\vec{v}=\vec{w}_1+\vec{w}_2\).
+            Let \(V=\mathbb{R}^2\). Let \(W=\{[x,y]:x-y=0;x,y\in\mathbb{R}\}\). For \(\vec{v}\in\mathbb{R}^2\), find \(\vec{w}_1\in W\) and \(\vec{w}_2\in W^\perp\) such that \(\vec{v}=\vec{w}_1+\vec{w}_2\).
             \\
             \\
             Notice that \(\Span(\{[1,1]\})=W\). Let \(\vec{v}=[v_1,v_2]\). Then,
             \begin{align*}
-                \vec{w}_1&=\frac{\iprod{[v_1,v_2]}{[1,1]}}{\iprod{[1,1]}{[1,1]}}[1,1] \\
+                \vec{w}_1=\proj_W\vec{v}&=\frac{\iprod{[v_1,v_2]}{[1,1]}}{\iprod{[1,1]}{[1,1]}}[1,1] \\
                 &=\frac{v_1+v_2}{2}[1,1] \\
                 &=\left[\frac{v_1+v_2}{2},\frac{v_1+v_2}{2}\right].
             \end{align*}
@@ -786,14 +786,25 @@
             \end{align*}
             
         \end{example}
-        \begin{example}{Projection 3}{projection3}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Projection 3}{projection3}
 
-            Let \(V\) be the vector space of real continuous functions. Define the inner product in \(V\) with
+            Let \(V\) be the vector space of real continuous functions on \([-\pi,\pi]\). Define the inner product in \(V\) with
             \begin{equation*}
                 \iprod{\vec{f}}{\vec{g}}=\int_{-\pi}^\pi f(t)g(t) \dd t.
             \end{equation*}
-            Write every continuous function \(\vec{f}\in V\) as \(\vec{f}_1+\vec{f}_2\).
-            
+            Note that \(\left\{\frac{1}{\sqrt{2\pi}},\frac{\sin t}{\sqrt{\pi}}\right\}\) is an orthonormal, and therefore, set in \(V\). Let \(W=\Span\left(\left\{\frac{1}{\sqrt{2\pi}},\frac{\sin t}{\sqrt{\pi}}\right\}\right)\subseteq V\). Write an arbitrary continuous function \(\vec{f}\in V\) as \(\vec{f}_1+\vec{f}_2\) where \(\vec{f}_1\in W\) and \(\vec{f}_2\in W^\perp\).
+            \\
+            \\
+            We have that
+            \begin{align*}
+                \vec{f}_1=\proj_W\vec{f}&=\iprod{\vec{f}}{\frac{1}{\sqrt{2\pi}}}\frac{1}{\sqrt{2\pi}}+\iprod{\vec{f}}{\frac{\sin t}{\sqrt{\pi}}}\frac{\sin t}{\sqrt{\pi}} \\
+                &=\frac{1}{2\pi}\int_{-\pi}^\pi \vec{f}\dd t+\frac{\sin t}{\pi}\int_{-\pi}^\pi f\sin t \dd t.
+            \end{align*}
+            Then,
+            \begin{equation*}
+                \vec{f}_2=\vec{f}-\frac{1}{2\pi}\int_{-\pi}^\pi \vec{f}\dd t-\frac{\sin t}{\pi}\int_{-\pi}^\pi f\sin t \dd t.
+            \end{equation*}
         \end{example}
 
 \pagebreak
