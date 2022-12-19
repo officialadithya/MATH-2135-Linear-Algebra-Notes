@@ -33,11 +33,11 @@
             \item The pair \((\mathbb{C}^n, \iprod{\vec{u}}{\vec{v}}=\vec{u}\cdot\vec{v}=u_1\bar{v_1}+\cdots+u_n\bar{v_n})\) is a complex inner product space.
             \item The pair 
                 \begin{equation*}
-                    \left(V,\iprod{\vec{f}}{\vec{g}}=\int_0^1 f(x)g(x)\dd x\right)
+                    \left(V,\iprod{\vec{f}}{\vec{g}}=\int_a^b f(x)g(x)\dd x\right)
                 \end{equation*}
                 is an real inner product space, for 
                 \begin{equation*}
-                    V=\left\{f:[0,1]\to\mathbb{R}:\forall c, \lim_{x\to c}=f(c)\right\}.
+                    V=\left\{f:[a,b]\to\mathbb{R}:\forall c\in[a,b], \lim_{x\to c}=f(c)\right\}.
                 \end{equation*}
             \item The pair
             \begin{equation*}
@@ -650,7 +650,7 @@
                 \begin{proof}
                     By the previous part, \(B_W\) is a basis for \(W\), \(B_V\) is a basis for \(V\), and \(B_{W^\perp}=\{\vec{w}_1,\ldots,\vec{w}_\ell\}\) is a basis of \(W^\perp\). We see that \(|B_W|=k\), \(|B_{W^\perp}|=\ell\), and \(|B_V|=k+\ell\). Then,
                     \begin{equation*}
-                        \dim W+\dim W^\perp=|B_W|+|B_{W^\perp}|=n+\ell=|B_V|=\dim V,
+                        \dim W+\dim W^\perp=|B_W|+|B_{W^\perp}|=k+\ell=|B_V|=\dim V,
                     \end{equation*}
                     as desired.
                 \end{proof}
@@ -740,13 +740,17 @@
             \begin{proof}
                 Let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_k\}\) be an orthonormal basis for \(W\). We extend this basis to be an orthonormal basis of \(B_V=\{\vec{w}_1,\ldots,\vec{w}_k,\vec{v}_1,\ldots,\vec{v}_\ell\}\). Then, \(B_{W^\perp}=\{\vec{v}_1,\ldots,\vec{v}_\ell\}\) is a basis of \(W^\perp\). For some \(\vec{v}\in V\), we can write
                 \begin{equation*}
-                    \vec{v}=c_1\vec{w}_1+\cdots+c_k\vec{w}_k+d_1\vec{v}_1+\cdots+d_\ell\vec{v}_\ell
+                    \vec{v}=\iprod{\vec{v}}{\vec{w}_1}\vec{w}_1+\cdots+\iprod{\vec{v}}{\vec{w}_k}\vec{w}_k+\iprod{\vec{v}}{\vec{v}_1}\vec{v}_1+\cdots+\iprod{\vec{v}}{\vec{v}_\ell}\vec{v}_\ell
                 \end{equation*}
-                for some \(c_1,\ldots,c_k,d_1,\ldots,d_\ell\in\mathbb{F}\). We know
+                by Theorem \ref{thm:coordsorthonormal}. We know
                 \begin{equation*}
-                    c_1\vec{w}_1+\cdots+c_k\vec{w}_k\in W,\quad d_1\vec{v}_1+\cdots+d_\ell\vec{v}_\ell\in W^\perp.
+                    \proj_W\vec{v}=\iprod{\vec{v}}{\vec{w}_1}\vec{w}_1+\cdots+\iprod{\vec{v}}{\vec{w}_k}\vec{w}_k\in W,\quad \proj_{W^\perp}\vec{v}=\iprod{\vec{v}}{\vec{v}_1}\vec{v}_1+\cdots+\iprod{\vec{v}}{\vec{v}_\ell}\vec{v}_\ell\in W^\perp.
                 \end{equation*}
-                Thus, \(\vec{w}=c_1\vec{w}_1+\cdots+c_k\vec{w}_k\) and \(\hat{w}=d_1\vec{v}_1+\cdots+d_\ell\vec{v}_\ell\) so \(\vec{v}=\vec{w}+\hat{w}\). We have shown existence. For uniqueness, suppose \(\vec{v}=\vec{q}+\hat{q}\) where \(\vec{q}\in W\) and \(\hat{q}\in W^\perp\). We will show \(\vec{w}=\vec{q}\) and \(\hat{w}=\hat{q}\). We have
+                Let \(\vec{w}=\proj_W\vec{v}\) and \(\hat{w}=\proj_{W^\perp}\vec{v}\). Also, note that \(\vec{v}-\proj_W\vec{v}=\proj_{W^\perp}\vec{v}\). Thus,
+                \begin{equation*}
+                    \vec{v}=\vec{w}+\hat{w}=\proj_W\vec{v}+\proj_{W^\perp}\vec{v}.
+                \end{equation*}
+                We have shown existence. For uniqueness, suppose \(\vec{v}=\vec{q}+\hat{q}\) where \(\vec{q}\in W\) and \(\hat{q}\in W^\perp\). We will show \(\vec{w}=\vec{q}\) and \(\hat{w}=\hat{q}\). We have
                 \begin{equation*}
                     \vec{v}=\vec{q}+\hat{q}=\vec{w}+\hat{w},
                 \end{equation*}
@@ -759,6 +763,10 @@
             
         \end{theorem}
         \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following example.
         \begin{example}{\Difficulty\,\Difficulty\,\,Projection 2}{projection2}
 
             Let \(V=\mathbb{R}^2\). Let \(W=\{[x,y]:x-y=0;x,y\in\mathbb{R}\}\). For \(\vec{v}\in\mathbb{R}^2\), we want to find \(\vec{w}_1+\vec{w}_2\) such that \(\vec{v}=\vec{w}_1+\vec{w}_2\).
@@ -774,7 +782,7 @@
             \begin{align*}
                 \vec{w}_2&=[v_1,v_2]-\left[\frac{v_1+v_2}{2},\frac{v_1+v_2}{2}\right] \\
                 &=\left[\frac{2v_1-v_1-v_2}{2},\frac{2v_2-v_1-v_2}{2}\right] \\
-                &=\left[\frac{v_1-v_2}{2},\frac{v_1-v_2}{2}\right].
+                &=\left[\frac{v_1-v_2}{2},\frac{-v_1+v_2}{2}\right].
             \end{align*}
             
         \end{example}
