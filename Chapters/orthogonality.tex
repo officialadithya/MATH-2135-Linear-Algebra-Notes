@@ -79,7 +79,7 @@
                 \end{proof}
                 \item \(\iprod{\vec{u}}{c\vec{v}}=\bar{c}\iprod{\vec{u}}{\vec{v}}\).
                 \begin{proof}
-                    Consider \(\iprod{\vec{u}}{c\vec{v}}=\bar{\iprod{c\vec{v}}{\vec{u}}}=\bar{c}\bar{\iprod{\vec{v}}{\vec{w}}}=\bar{c}\iprod{\vec{u}}{\vec{v}}\).
+                    Consider \(\iprod{\vec{u}}{c\vec{v}}=\bar{\iprod{c\vec{v}}{\vec{u}}}=\bar{c}\bar{\iprod{\vec{v}}{\vec{u}}}=\bar{c}\iprod{\vec{u}}{\vec{v}}\).
                 \end{proof}
             \end{enumerate}
             
@@ -99,7 +99,7 @@
             \begin{enumerate}
                 \item \(||\vec{v}||=0\iff\vec{v}=\vec{0}_V\).
                 \begin{proof}
-                    If \(\vec{v}=\vec{0}_V\), \(\iprod{\vec{v}}{\vec{v}}=\sqrt{\iprod{\vec{v}}{\vec{v}}}=||\vec{v}||=0\). If \(||\vec{v}||=0\), \(\sqrt{\iprod{\vec{v}}{\vec{v}}}=\iprod{\vec{v}}{\vec{v}}=0\), meaning that \(\vec{v}=\vec{0}_V\).
+                    If \(\vec{v}=\vec{0}_V\), \(||\vec{v}||=\sqrt{\iprod{\vec{v}}{\vec{v}}}=0\). If \(||\vec{v}||=0\), \(\sqrt{\iprod{\vec{v}}{\vec{v}}}=\iprod{\vec{v}}{\vec{v}}=0\), meaning that \(\vec{v}=\vec{0}_V\).
                 \end{proof}
                 \item \(\forall c\in\mathbb{F},||c\vec{v}||=|c|||\vec{v}||\).
                 \begin{proof}
@@ -191,7 +191,7 @@
         \\
         \\
         Consider the following example.
-        \begin{example}{\Difficulty\,\,The Standard Basis of \(\mathbb{R}^n\)}{stdbasisrn}
+        \begin{example}{\Difficulty\,\,The Standard Basis of \(\mathbb{F}^n\)}{stdbasisfn}
 
             The set \(\{\vec{e}_1,\ldots,\vec{e}_n\}\) is orthonormal when considered as a subset of \(\mathbb{R}^n\) or \(\mathbb{C}^n\).
             
@@ -209,7 +209,7 @@
                 \begin{equation*}
                     c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0}_V
                 \end{equation*}
-                for some \(c\in\mathbb{F}\). We must show \(c_1=\cdots=c_n=0\). For each \(i\), \(1\leq i\leq n\), consider 
+                for some \(c_1,\ldots,c_n\in\mathbb{F}\). We must show \(c_1=\cdots=c_n=0\). For each \(i\), \(1\leq i\leq n\), consider 
                 \begin{align*}
                     0&=\langle c_1\vec{v}_1+\cdots+c_n\vec{v}_n,\vec{v}_i \rangle \\
                     &=\langle c_1\vec{v}_1,\vec{v}_i\rangle+\cdots+\langle c_n\vec{v}_n,\vec{v}_i\rangle \\
@@ -238,7 +238,7 @@
         We would like to form an orthogonal set of \(n\) vectors from any linearly independent set of \(n\) vectors such that both sets span the same subspace. We present the Gram-Schmidt process.
         \begin{theorem}{\Stop\,\,The Gram-Schmidt Process}{gramschmidt}
             
-            Let \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\) such that \(S_1\) is linearly independent. We will create \(S_2=\{\vec{v}_1,\ldots,\vec{v}_n\}\) such that \(\Span(S_1)=\Span(S_2)\).
+            Let \(S_1=\{\vec{w}_1,\ldots,\vec{w}_n\}\) such that \(S_1\) is linearly independent. We will create orthogonal \(S_2=\{\vec{v}_1,\ldots,\vec{v}_n\}\) such that \(\Span(S_1)=\Span(S_2)\).
             \begin{itemize}
                 \item Let \(\vec{v}_1=\vec{w}_1\).
                 \item Let \(\vec{v}_2=\vec{w}_2-\left(\frac{\iprod{\vec{w}_2}{\vec{v}_1}}{\iprod{\vec{v}_1}{\vec{v}_1}}\right)\vec{v}_1\).
@@ -395,7 +395,7 @@
             \begin{proof}
                 We know that \([\vec{w}]_B=[c_1,\ldots,c_n]\) for \(c_1,\ldots,c_n\in\mathbb{F}\). We wish to show that for each \(c_i\), with \(1\leq i\leq n\),
                 \begin{equation*}
-                    c_i=\frac{\iprod{\vec{v}_i}{\vec{v}_i}}{\iprod{\vec{v}_i}{\vec{v}_i}}.
+                    c_i=\frac{\iprod{\vec{w}}{\vec{v}_i}}{\iprod{\vec{v}_i}{\vec{v}_i}}.
                 \end{equation*}
                 We have that
                 \begin{equation*}
@@ -452,7 +452,7 @@
                     \iprod{\vec{v}}{\vec{w}}&=\iprod{\vec{v}}{c_1\vec{w}_1+\cdots+c_n\vec{w}_n} \\
                     &=\iprod{\vec{v}}{c_1\vec{w}_1}+\cdots+\iprod{\vec{v}}{c_n\vec{w}_n} \\
                     &=\bar{c}_1\iprod{\vec{v}}{\vec{w}_1}+\cdots+\bar{c}_n\iprod{\vec{v}}{\vec{w}_n} \\
-                    &=c_1(0)+\cdots+c_n(0) \\
+                    &=\bar{c}_1(0)+\cdots+\bar{c}_n(0) \\
                     &=0,
                 \end{align*}
                 so \(\vec{v}\in W^\perp\), as desired.
@@ -506,6 +506,87 @@
                 W^\perp=\Span(\{[0,0,0,1],[-1,-1,1,0]\}).
             \end{equation*}
             
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 3}{findorthocomp3}
+
+            Let \(W=\{[x,y,z]:x,y,z\in\mathbb{R};x+2y+3z=0;2x+4y+6z=0\}\). Find \(W^\perp\).
+            \\
+            \\
+            First, to rewrite \(W\), consider the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & 3 & | & 0 \\
+                    2 & 4 & 6 & | & 0
+                \end{bmatrix}\underbrace{\to}_\text{RREF}
+                \begin{bmatrix}
+                    1 & 2 & 3 & | & 0 \\
+                    0 & 0 & 0 & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We have the solution set \(\{(-2c_1-3c_2,c_1,c_2):c_1,c_2\in\mathbb{R}\}\). Therefore,
+            \begin{equation*}
+                W=\{[-2c_1-3c_2,c_1,c_2]:c_1,c_2\in\mathbb{R}\}.
+            \end{equation*}
+            The particular solutions to our system allow us to also write
+            \begin{equation*}
+                W=\{c_1[-2,1,0]+c_2[-3,0,1]:c_1,c_2\in\mathbb{R}\},
+            \end{equation*}
+            making the basis for \(W\) visible. We need to find linearly independent \(\vec{v}\in\mathbb{R}^3\) such that
+            \begin{equation*}
+                \iprod{\vec{v}}{[-2,1,0]}=\iprod{\vec{v}}{[-3,0,1]}=0.
+            \end{equation*}
+            Let \(\vec{v}=[x,y,z]\). We can then form the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    -2 & 1 & 0 & | & 0 \\
+                    -3 & 0 & 1 & | & 0
+                \end{bmatrix}\underbrace{\to}_\text{RREF}
+                \begin{bmatrix}
+                    1 & 0 & -\frac{1}{3} & | & 0 \\
+                    0 & 1 & -\frac{2}{3} & | & 0
+                \end{bmatrix}
+            \end{equation*}
+            implying that \(\vec{v}=[\frac{1}{3},\frac{2}{3},1]\). Therefore,
+            \begin{equation*}
+                W^\perp=\Span([1,2,3]).
+            \end{equation*}
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\Difficulty\,\,Find Orthogonal Complement 4}{findorthocomp4}
+
+            Let \(W=\{[x,y,z]:x,y,z\in\mathbb{R};x+2y+3z=0;4x+4y+6z=0\}\). Find \(W^\perp\).
+            \\
+            \\
+            First, to rewrite \(W\), consider the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & 3 & | & 0 \\
+                    4 & 4 & 6 & | & 0
+                \end{bmatrix}\underbrace{\to}_\text{RREF}
+                \begin{bmatrix}
+                    1 & 0 & 0 & | & 0 \\
+                    0 & 1 & \frac{3}{2} & | & 0
+                \end{bmatrix}.
+            \end{equation*}
+            We have the solution set \(\{(0,-\frac{3}{2}c,c):c\in\mathbb{R}\}\). Therefore,
+            \begin{equation*}
+                W=\left\{c\left[0,-\frac{3}{2},1\right]:c\in\mathbb{R}\right\}.
+            \end{equation*}
+            We need to find linearly independent \(\vec{v}_1,\vec{v}_2\in\mathbb{R}^3\) such that
+            \begin{equation*}
+                \iprod{\vec{v}}{[0,-3,2]}=0.
+            \end{equation*}
+            Let \(\vec{v}_1=[x_1,y_1,z_1]\) and \(\vec{v}_2=[x_2,y_2,z_2]\). We can then form the system
+            \begin{equation*}
+                \begin{bmatrix}
+                    0 & -3 & 2 & | & 0
+                \end{bmatrix}
+            \end{equation*}
+            implying that \(\vec{v}_1=[1,0,0]\) and \(\vec{v}_2=[0,2,3]\). Therefore,
+            \begin{equation*}
+                W^\perp=\Span([1,0,0],[0,2,3]).
+            \end{equation*}
         \end{example}
         \pagebreak
         \vphantom
