@@ -823,6 +823,7 @@
             \end{equation*}
 
         \end{definition}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -832,12 +833,18 @@
             \begin{equation*}
                 (A\vec{v})\cdot\vec{w}=\vec{v}\cdot(A^T\vec{w})
             \end{equation*}
+            \begin{proof}
+                Consider \((A\vec{v})\cdot\vec{w}=(A\vec{v})^T\vec{w}=\vec{v}^T A^T\vec{w}=\vec{v}\cdot (A^T\vec{w})\).
+            \end{proof}
         \end{theorem}
         \begin{theorem}{\Stop\,\,The Adjoint and The Dot Product}{transposedot}
             If \(\vec{v},\vec{w}\in\mathbb{C}^n\), and \(A\in\mathcal{M}_{nn}^\mathbb{C}\), 
             \begin{equation*}
                 (A\vec{v})\cdot\vec{w}=\vec{v}\cdot(A^*\vec{w})
             \end{equation*}
+            \begin{proof}
+                Consider \((A\vec{v})\cdot\vec{w}=(A\vec{v})^T\bar{\vec{w}}=\vec{v}^TA^T\bar{\vec{w}}=\vec{v}^T\bar{(A^*\vec{v})}=\vec{v}\cdot(A^*\vec{v})\).
+            \end{proof}
         \end{theorem}
         \vphantom
         \\
