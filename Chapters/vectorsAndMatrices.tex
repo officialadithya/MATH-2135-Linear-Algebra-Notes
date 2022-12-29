@@ -277,13 +277,13 @@
             \end{equation*}
             We wish to show that all of \(cv_1,\ldots,cv_n\) must be zero, no matter the components of \(\vec{v}\). By basic arithmetic, zero multiplied by any other number is also zero, so if \(c=0\), \(c\vec{v}\) must be \(\vec{0}\), as all the components of \(c\vec{v}\) are zero. Suppose \(\vec{v}=\vec{0}\). We again have
             \begin{equation*}
-                \vec{0}=c\vec{v}=[cv_1,\ldots,cv_n]
+                c\vec{v}=[cv_1,\ldots,cv_n]
             \end{equation*}
             and wish to show that all of \(cv_1,\ldots,cv_n\) must be zero, no matter the value of \(c\). If \(\vec{v}=0\), all components of \(\vec{v}\) are zero, and again, zero multiplied by any other number is zero, so all components of \(c\vec{v}\) are zero. We have now shown that, indeed, \((c=0\vee\vec{v}=\vec{0})\implies c\vec{v}=\vec{0}\). Now, we wish to show that
             \begin{equation*}
                 c\vec{v}=\vec{0}\implies(c=0\vee\vec{v}=\vec{0}).
             \end{equation*}
-            Suppose that \(\vec{v}\neq\vec{0}\). Again, we have 
+            Suppose that \(\vec{v}\neq\vec{0}\). We have 
             \begin{equation*}
                 \vec{0}=c\vec{v}=[cv_1,\ldots,cv_n].
             \end{equation*}
@@ -653,8 +653,8 @@
                 Consider
                 \begin{align*}
                      c(\vec{v}\cdot\vec{w})&=c(v_1w_1+\cdots+v_nw_n) \\
-                     &=(cv_1w_1+\cdots+cv_nw_n) \\
-                     &=((cv_1)w_1+\cdots+(cv_n)w_n) \\
+                     &=cv_1w_1+\cdots+cv_nw_n \\
+                     &=(cv_1)w_1+\cdots+(cv_n)w_n \\
                      &=(c\vec{v})\cdot\vec{w}.
                 \end{align*}
                 The proposition is hence proved.
@@ -716,7 +716,7 @@
                 \begin{equation*}
                     2\vec{v}\cdot\vec{w}\geq-2 \implies \vec{v}\cdot\vec{w}\geq -1.
                 \end{equation*}
-                Similarly, consider that \(||\vec{v}-\vec{w}||^2\geq0\). We then have
+                Similarly, consider \(||\vec{v}-\vec{w}||^2\geq0\). We then have
                 \begin{align*}
                     ||\vec{v}-\vec{w}||^2&=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w}) \\
                     &=||\vec{v}||^2-2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
@@ -743,7 +743,7 @@
                 |\vec{v}\cdot\vec{w}|\leq||\vec{v}||||\vec{w}||.
             \end{equation*}
             \begin{proof}
-                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by Theorem \ref{thm:cauchyschwarzineq}, 
+                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by Theorem \ref{thm:lemmacauchyschwarzineq}, 
                 \begin{equation*}
                     -1\leq \frac{1}{||\vec{v}||}\vec{v}\cdot \frac{1}{||\vec{w}||}\vec{w} \leq 1.
                 \end{equation*}

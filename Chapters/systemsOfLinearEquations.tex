@@ -51,7 +51,7 @@
         Consider the following operations.
         \begin{enumerate}
             \item Multiplication of a row by a nonzero scalar. Notated as \(c\langle r_1\rangle\to\langle r_1\rangle\).
-            \item Addition of a scalar multiple of one row to another. Notated as \(\langle r_1\rangle +(c)\langle r_2\rangle\to\langle r_1\rangle\)
+            \item Addition of a scalar multiple of one row to another. Notated as \(\langle r_1\rangle +(c)\langle r_2\rangle\to\langle r_1\rangle\).
             \item Switching the elements of two rows. Notated as \(\langle r_1 \rangle \leftrightarrow \langle r_2 \rangle\).
         \end{enumerate}
         \vphantom
@@ -161,7 +161,7 @@
                 0 & 0 & 0 & 0 & | & 0
                 \end{bmatrix}.
             \end{equation*}
-            We see that \(x_1\), \(x_2\), and \(x_4\) are determined because their respective column has a \(1\) in the correct position. In contrast, \(x_3\) is a free variable. To find the solution set, let \(x_3=c\in\mathbb{R}\) and solve for \(x_1\), \(x_2\), and \(x_4\) in terms of \(c\). We have \(x_4=-2\). Then to find \(x_2\) we have
+            We see that \(x_1\), \(x_2\), and \(x_4\) are determined because their respective column has a \(1\) in the correct position. In contrast, \(x_3\) is a free variable. To find the solution set, let \(x_3=c\in\mathbb{R}\) and solve for \(x_1\), \(x_2\), and \(x_4\) in terms of \(c\). We have \(x_4=-2\). Then, to find \(x_2\) we have
             \begin{equation*}
                 x_2-2x_3+\frac{1}{2}x_4=4\implies x_2-2+\frac{1}{2}(-2)=4\implies x_2=2c+5.
             \end{equation*}
@@ -505,7 +505,7 @@
         \\
         \\
         \begin{proof}
-            We will consider row equivalence first, and wish to show that row equivalence is reflexive, symmetric, and transitive. Reflexivity is trivial. We can simply not perform any row operations on a matrix \(A\), and we are left with \(A\). The above table can be used to show that row equivalence is symmetric. If a sequence of row operations is carried out on \(A\) and produces a matrix \(B\), we can simply carry out the reverse operations on \(B\) to lead us back to \(A\). For transitivity, if a sequence of row operations is carried out on \(A\) and leads to \(B\), and a second sequence of row operations is performed on \(B\) and leads to \(C\), we simply carry out the sequences, in sequence, on \(A\) to get us to \(C\).
+            We will consider row equivalence first, and wish to show that row equivalence is reflexive, symmetric, and transitive. Reflexivity is trivial. We can simply not perform any row operations on a matrix \(A\), and we are left with \(A\). The above table can be used to show that row equivalence is symmetric. If a sequence of row operations is carried out on \(A\) and produces a matrix \(B\), we can simply carry out the reverse operations on \(B\) to lead us back to \(A\). For transitivity, if a sequence of row operations is carried out on \(A\) and leads to \(B\), and a second sequence of row operations is performed on \(B\) and leads to \(C\), we simply carry out the operations, in sequence, on \(A\) to get us to \(C\).
             \\
             \\
             Now, we consider system equivalence. The system \([A|B]\), of course, has the same solution set as itself. If the system \([A|B]\) has the same solution set as \([C|D]\), \([C|D]\) has the same solution set as \([A|B]\). If \([A|B]\) has the same solution set as \([C|D]\) and \([C|D]\) has the same solution set as the system \([E|F]\), \([A|B]\) has the same solution set as \([E|F]\).
