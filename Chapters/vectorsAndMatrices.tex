@@ -45,7 +45,7 @@
 
         We define 
         \begin{equation*}
-            \vec{0}=[0,0,\ldots,0].
+            \vec{0}=[0,\ldots,0].
         \end{equation*}
         
     \end{definition}
@@ -57,7 +57,7 @@
     \end{definition}
     \begin{definition}{\Stop\,\,Vector Magnitude}{vecmagn}
 
-        Given a \(\vec{v}=[v_1,\ldots, v_n]\in\mathbb{R}^n\), we define \(||\vec{v}||\), the magnitude, or norm, of \(\vec{v}\), as
+        Given some \(\vec{v}=[v_1,\ldots, v_n]\in\mathbb{R}^n\), we define \(||\vec{v}||\), the magnitude, or norm, of \(\vec{v}\), as
         \begin{equation*}
             ||\vec{v}||=\sqrt{v_1^2+\cdots+v_n^2}.
         \end{equation*}
@@ -65,7 +65,7 @@
     \end{definition}
     \begin{definition}{\Stop\,\,Scalar Multiplication}{scalmult}
 
-        Given a \(\vec{v}=[v_1,\ldots v_n]\in\mathbb{R}^n\), and a scalar \(c\in\mathbb{R}\), we define scalar multiplication as
+        Given some \(\vec{v}=[v_1,\ldots v_n]\in\mathbb{R}^n\), and a scalar \(c\in\mathbb{R}\), we define scalar multiplication as
         \begin{equation*}
             c\vec{v}=[cv_1,\ldots, cv_n].
         \end{equation*}
@@ -77,11 +77,12 @@
     Consider the following theorem.
     \begin{theorem}{\Stop\,\,Scalar Multiplication and Magnitude}{scalmultandmagn}
 
-        Given a scalar \(c\in\mathbb{R}\) and \(\vec{v}\in\mathbb{R}^n\), 
+        Given a scalar \(c\in\mathbb{R}\) and some \(\vec{v}\in\mathbb{R}^n\), 
         \begin{equation*}
             ||c\vec{v}||=|c|||\vec{v}||.
         \end{equation*}
         \begin{proof}
+        Consider
         \begin{align*}
             ||c\vec{v}||&=\sqrt{(cv_1)^2+\cdots+(cv_n)^2} \\
             &=\sqrt{c^2v_1^2+\cdots+c^2v_n^2} \\
@@ -112,7 +113,23 @@
     \vphantom
     \\
     \\
-    Consider the following theorem.
+    Consider the following theorems.
+    \begin{theorem}{\Stop\,\,Nonzero Vector Implies Nonzero Magnitudes}{nonzerovecnonzeromagn}
+
+        For some \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{R}^n\), 
+        \begin{equation*}
+            \vec{v}\neq\vec{0}\implies||\vec{v}||\neq0.
+        \end{equation*}
+        \begin{proof}
+            We will proceed by proving the contrapositive. Suppose that \(||\vec{v}||=0\), meaning that
+            \begin{equation*}
+                ||\vec{v}||=\sqrt{v_1^2+\cdots+v_n^2}=0.
+            \end{equation*}
+            The only way this is true is if all of \(v_1,\ldots,v_n\) are zero, which, by definition, means that \(\vec{v}=\vec{0}\).
+        \end{proof}
+        
+    \end{theorem}
+    \pagebreak
     \begin{theorem}{\Stop\,\,Unit Vectors Represent Direction}{unitvecdir}
         Given a nonzero \(\vec{v}\in\mathbb{R}^n\), there exists a unique unit vector in the same direction as \(\vec{v}\).
         \begin{proof}
@@ -129,26 +146,6 @@
             \end{align*}
             meaning that \(|c|=\frac{1}{||\vec{v}||}\). Because \(c>0\), \(|c|=c\), so \(\vec{w}=\frac{1}{||\vec{v}||}\vec{v}=\vec{u}\).
         \end{proof}
-    \end{theorem}
-    \pagebreak
-    \vphantom
-    \\
-    \\
-    In Theorem \ref{thm:unitvecdir}, we used the fact that for some \(\vec{v}\in\mathbb{R}^n\), \(\vec{v}\neq\vec{0}\implies||\vec{v}||\neq0\). We will now provide a proof.
-    \begin{theorem}{\Stop\,\,Nonzero Vector Implies Nonzero Magnitudes}{nonzerovecnonzeromagn}
-
-        For some \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{R}^n\), 
-        \begin{equation*}
-            \vec{v}\neq\vec{0}\implies||\vec{v}||\neq0.
-        \end{equation*}
-        \begin{proof}
-            We will proceed by proving the contrapositive. Suppose that \(||\vec{v}||=0\), meaning that
-            \begin{equation*}
-                ||\vec{v}||=\sqrt{v_1^2+\cdots+v_n^2}=0.
-            \end{equation*}
-            The only way this is true is if all of \(v_1,\ldots,v_n\) are zero, which, by definition, means that \(\vec{v}=\vec{0}\).
-        \end{proof}
-        
     \end{theorem}
 
 \pagebreak
@@ -251,7 +248,7 @@
             \vec{v}+\vec{w}=\vec{w}+\vec{v}.
         \end{equation*}
         \begin{proof}
-            Consider the following.
+            Consider
             \begin{align*}
                 \vec{v}+\vec{w}&=[v_1,\ldots,v_n]+[w_1,\ldots,w_n] \\
                 &=[v_1+w_1,\ldots,v_n+w_n] \\
@@ -276,7 +273,7 @@
             \end{equation*}
             Suppose \(c=0\). We have
             \begin{equation*}
-                \vec{0}=c\vec{v}=[cv_1,\ldots,cv_n].
+                c\vec{v}=[cv_1,\ldots,cv_n].
             \end{equation*}
             We wish to show that all of \(cv_1,\ldots,cv_n\) must be zero, no matter the components of \(\vec{v}\). By basic arithmetic, zero multiplied by any other number is also zero, so if \(c=0\), \(c\vec{v}\) must be \(\vec{0}\), as all the components of \(c\vec{v}\) are zero. Suppose \(\vec{v}=\vec{0}\). We again have
             \begin{equation*}
@@ -304,7 +301,7 @@
         Consider the following warm-up exercise.
         \begin{example}{\Difficulty\,\Difficulty\,\,General Vector Movement}{genvecmvt}
 
-            What is the formula for the vector \(\vec{v}\) representing the movement from \(A=(a_1,\ldots,a_n)\) to \(B=(b_1,\ldots,b_n)\). Then, find the magnitude of \(\vec{v}\).
+            Write the formula for the vector \(\vec{v}\) representing the movement from \(A=(a_1,\ldots,a_n)\) to \(B=(b_1,\ldots,b_n)\). Then, find the magnitude of \(\vec{v}\).
             \\
             \\
             We see that
@@ -332,7 +329,7 @@
         \end{definition}
         \begin{definition}{\Stop\,\,Square Matrices}{sqmatrices}
         
-            A matrix is square if and only if \(m=n\).
+            A \(m\times n\) matrix is square if and only if \(m=n\).
         
         \end{definition}
         \begin{definition}{\Stop\,\,Diagonal Matrices}{diagmatrices}
@@ -653,7 +650,7 @@
                 c(\vec{v}\cdot\vec{w})=(c\vec{v})\cdot\vec{w}.
             \end{equation*}
             \begin{proof}
-                Consider the following transitive chain of equality:
+                Consider
                 \begin{align*}
                      c(\vec{v}\cdot\vec{w})&=c(v_1w_1+\cdots+v_nw_n) \\
                      &=(cv_1w_1+\cdots+cv_nw_n) \\
@@ -698,7 +695,47 @@
         \vphantom
         \\
         \\
-        We will now state the famous Cauchy-Schwarz Inequality.
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,Lemma for the Cauchy-Schwarz Inequality}{lemmacauchyschwarzineq}
+            
+            If \(\vec{v},\vec{w}\in\mathbb{R}^n\), with \(||\vec{v}||=||\vec{w}||=1\), 
+            \begin{equation*}
+                -1\leq\vec{v}\cdot\vec{w}\leq 1.
+            \end{equation*}
+            \begin{proof}
+                We will start by showing that \(-1\leq\vec{v}\cdot\vec{w}\). Consider \(||\vec{v}+\vec{w}||^2\geq0\). We have that 
+                \begin{align*}
+                    ||\vec{v}+\vec{w}||^2&=(\vec{v}+\vec{w})\cdot(\vec{v}+\vec{w}) \\
+                    &=\vec{v}\cdot\vec{v}+\vec{v}\cdot\vec{w}+\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w} \\
+                    &=||\vec{v}||^2+2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
+                    &=1+2\vec{v}\cdot\vec{w}+1 \\
+                    &=2+2\vec{v}\cdot\vec{w} \\
+                    &\geq 0.
+                \end{align*}
+                We then solve the resulting inequality which yields
+                \begin{equation*}
+                    2\vec{v}\cdot\vec{w}\geq-2 \implies \vec{v}\cdot\vec{w}\geq -1.
+                \end{equation*}
+                Similarly, consider that \(||\vec{v}-\vec{w}||^2\geq0\). We then have
+                \begin{align*}
+                    ||\vec{v}-\vec{w}||^2&=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w}) \\
+                    &=||\vec{v}||^2-2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
+                    &=2-2\vec{v}\cdot\vec{w} \\
+                    &\geq 0.
+                \end{align*}
+                Then, we have
+                \begin{equation*}
+                    2-2\vec{v}\cdot\vec{w}\geq 0 \implies \vec{v}\cdot\vec{w}\leq 1
+                \end{equation*}
+                as desired.
+            \end{proof}
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We will now state the famous Cauchy-Schwarz Inequality itself.
         \begin{theorem}{\Stop\,\,The Cauchy-Schwarz Inequality}{cauchyschwarzineq}
 
             If \(\vec{v},\vec{w}\in\mathbb{R}^n\), 
@@ -706,40 +743,7 @@
                 |\vec{v}\cdot\vec{w}|\leq||\vec{v}||||\vec{w}||.
             \end{equation*}
             \begin{proof}
-            
-                Consider the following lemma. If \(\vec{v},\vec{w}\in\mathbb{R}^n\),
-                with \(||\vec{v}||=||\vec{w}||=1\), 
-                \begin{equation*}
-                    -1\leq\vec{v}\cdot\vec{w}\leq 1.
-                \end{equation*}
-                \begin{proof}
-                    We will start by showing that \(-1\leq\vec{v}\cdot\vec{w}\). Consider \(||\vec{v}+\vec{w}||^2\geq0\). We have that 
-                    \begin{align*}
-                        ||\vec{v}+\vec{w}||^2&=(\vec{v}+\vec{w})\cdot(\vec{v}+\vec{w}) \\
-                        &=\vec{v}\cdot\vec{v}+\vec{v}\cdot\vec{w}+\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w} \\
-                        &=||\vec{v}||^2+2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
-                        &=1+2\vec{v}\cdot\vec{w}+1 \\
-                        &=2+2\vec{v}\cdot\vec{w} \\
-                        &\geq 0.
-                    \end{align*}
-                    We then solve the resulting inequality which yields
-                    \begin{equation*}
-                        2\vec{v}\cdot\vec{w}\geq-2 \implies \vec{v}\cdot\vec{w}\geq -1.
-                    \end{equation*}
-                    Similarly, consider that \(||\vec{v}-\vec{w}||^2\geq0\). We then have
-                    \begin{align*}
-                        ||\vec{v}-\vec{w}||^2&=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w}) \\
-                        &=||\vec{v}||^2-2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
-                        &=2-2\vec{v}\cdot\vec{w} \\
-                        &\geq 0.
-                    \end{align*}
-                    Then, we have
-                    \begin{equation*}
-                        2-2\vec{v}\cdot\vec{w}\geq 0 \implies \vec{v}\cdot\vec{w}\leq 1
-                    \end{equation*}
-                    as desired.
-                \end{proof}
-                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by the lemma, 
+                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by Theorem \ref{thm:cauchyschwarzineq}, 
                 \begin{equation*}
                     -1\leq \frac{1}{||\vec{v}||}\vec{v}\cdot \frac{1}{||\vec{w}||}\vec{w} \leq 1.
                 \end{equation*}
@@ -755,7 +759,6 @@
             \end{proof}
             
         \end{theorem}
-        \pagebreak
         \vphantom
         \\
         \\
@@ -782,6 +785,7 @@
             \end{proof}
         
         \end{theorem}
+        \pagebreak
         \vphantom
         \\
         \\
@@ -841,7 +845,7 @@
                 \proj_{\vec{w}}\vec{v}=\proj_{c\vec{w}}\vec{v}.
             \end{equation*}
             \begin{proof}
-                Consider the expansion of the left hand side, that is,
+                Consider
                 \begin{align*}
                     \proj_{c\vec{w}}\vec{v}&=\frac{\vec{v}\cdot c\vec{w}}{c\vec{w}\cdot c\vec{w}}c\vec{w} \\
                     &=\frac{\vec{v}\cdot \vec{w}}{\vec{w}\cdot \vec{w}}\vec{w} \\
@@ -851,6 +855,7 @@
             \end{proof}
         
         \end{theorem}
+    
 \pagebreak
 
 \section{Lecture 5: August 31, 2022}
@@ -863,25 +868,25 @@
             For \(A\in\mathcal{M}_{mn}\) and \(B\in\mathcal{M}_{np}\), such that
             \begin{equation*}
                 A=\begin{bmatrix} 
-                     a_{11} &  a_{12} & \cdots &  a_{1n} \\
-                     a_{21} &  a_{22} & \cdots &  a_{2n} \\
+                     a_{11} & a_{12} & \cdots & a_{1n} \\
+                     a_{21} & a_{22} & \cdots & a_{2n} \\
                     \vdots & \vdots & \ddots & \vdots \\
-                     a_{m1} &  a_{m2} & \cdots &  a_{mn} \\
+                     a_{m1} & a_{m2} & \cdots & a_{mn} \\
                 \end{bmatrix},\quad
                 B=\begin{bmatrix} 
-                     b_{11} &  b_{12} & \cdots &  b_{1p} \\
-                     b_{21} &  b_{22} & \cdots &  b_{2p} \\
+                     b_{11} & b_{12} & \cdots & b_{1p} \\
+                     b_{21} & b_{22} & \cdots & b_{2p} \\
                     \vdots & \vdots & \ddots & \vdots \\
-                     b_{n1} &  b_{n2} & \cdots &  b_{np} \\
+                     b_{n1} & b_{n2} & \cdots & b_{np} \\
                 \end{bmatrix},
             \end{equation*}
             the matrix product \(C=AB\) is defined such that \(C\in\mathcal{M}_{mp}\) and is given by
             \begin{equation*}
                 C=\begin{bmatrix} 
-                     c_{11} &  c_{12} & \cdots &  c_{1p} \\
-                     c_{21} &  c_{22} & \cdots &  c_{2p} \\
+                     c_{11} & c_{12} & \cdots & c_{1p} \\
+                     c_{21} & c_{22} & \cdots & c_{2p} \\
                     \vdots & \vdots & \ddots & \vdots \\
-                     c_{m1} &  c_{m2} & \cdots &  c_{mp} \\
+                     c_{m1} & c_{m2} & \cdots & c_{mp} \\
                 \end{bmatrix}
             \end{equation*}
             such that \(c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{in}b_{nj}=\sum_{k=1}^na_{ik}b_{kj}\). The matrix product is only defined if the number of columns of the matrix on the left is equal to the number of the rows of the matrix on the right. Note that matrix multiplication is not commutative. We may also say that the entry in \(c_{ij}\) is the dot product of the \(i\)th row of \(A\) and the \(j\)th column of \(B\).
@@ -976,8 +981,7 @@
         Consider the following definition.
         \begin{definition}{\Stop\,\,Raising a Matrix to a Power}{matpow}
 
-            Let \(A\in\mathcal{M}_{nn}\). Then
-            Consider an \(n\times n\) matrix \(A\). Then, \(A^0=I_n\), \(A^1=A\), and for \(k\geq 2\),
+            Let \(A\in\mathcal{M}_{nn}\). Consider an \(n\times n\) matrix \(A\). Then, \(A^0=I_n\), \(A^1=A\), and for \(k\geq 2\),
             \begin{equation*}
                 A^k=(A^{k-1})A.
             \end{equation*}
