@@ -133,7 +133,7 @@
         \\
         \\
         We can use Theorem \ref{thm:detrowops} in conjunction with row operations to compute the determinant of a matrix easily. We simply use row operations to create an upper triangular matrix, while keeping track of how the determinant changes. We then apply Theorem \ref{thm:uppertriangulardet}. Consider the following examples.
-        \begin{example}{\Difficulty\,\Difficulty\,\,Computing a Determinant by Row Reduction}{compdetrowred}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Computing a Determinant by Row Reduction 1}{compdetrowred1}
             
             Compute \(\det\begin{bmatrix} 1 & 1 & 1 \\ 2 & 3 & -2 \\ 4 & 9 & 4 \end{bmatrix}\).
             \\
@@ -164,7 +164,7 @@
 
         \end{example}
         \pagebreak
-        \begin{example}{\Difficulty\,\Difficulty\,\,Computing a Determinant by Row Reduction}{compdetrowred}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Computing a Determinant by Row Reduction 2}{compdetrowred2}
             
             Compute \(\det\begin{bmatrix} 0 & -14 & -8 \\ 1 & 3 & 2 \\ -2 & 0 & 6 \end{bmatrix}\).
             \\
@@ -836,7 +836,7 @@
                 Consider \((A\vec{v})\cdot\vec{w}=(A\vec{v})^T\vec{w}=\vec{v}^T A^T\vec{w}=\vec{v}\cdot (A^T\vec{w})\).
             \end{proof}
         \end{theorem}
-        \begin{theorem}{\Stop\,\,The Adjoint and The Dot Product}{transposedot}
+        \begin{theorem}{\Stop\,\,The Adjoint and The Dot Product}{adjointdot}
             If \(\vec{v},\vec{w}\in\mathbb{C}^n\), and \(A\in\mathcal{M}_{nn}^\mathbb{C}\), 
             \begin{equation*}
                 (A\vec{v})\cdot\vec{w}=\vec{v}\cdot(A^*\vec{w})
