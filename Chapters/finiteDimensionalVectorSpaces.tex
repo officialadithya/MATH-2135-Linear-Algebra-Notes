@@ -18,7 +18,7 @@
                 \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\).
                 \item \(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\).
                 \item \(\exists \vec{0}\in V, \forall \vec{v}\in V, \vec{v}+\vec{0}=\vec{v}\).
-                \item \(\forall \vec{v}\in V, \exists! (-\vec{v})\in V, \vec{v}+(-\vec{v})=\vec{0}\).
+                \item \(\forall \vec{v}\in V, \exists (-\vec{v})\in V, \vec{v}+(-\vec{v})=\vec{0}\).
                 \item \(c_1(\vec{u}+\vec{v})=c_1\vec{u}+c_1\vec{v}\).
                 \item \((c_1+c_2)\vec{u}=c_1\vec{u}+c_2\vec{u}\).
                 \item \((c_1c_2)\vec{u}=c_1(c_2\vec{u})\).
@@ -97,8 +97,9 @@
 
             Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
             \begin{equation*}
-                (-1)\vec{v}=-\vec{v}.
+                -\vec{v}=(-1)\vec{v}.
             \end{equation*}
+            and \(-\vec{v}\) is unique.
             \begin{proof}
                 We have that
                 \begin{align*}
@@ -133,7 +134,7 @@
                 c\vec{v}=\vec{0}\iff c=0\vee \vec{v}=\vec{0}
             \end{equation*}
             \begin{proof}
-                The statement \(c=0\vee\vec{v}=\vec{0}\implies c\vec{v}=\vec{0}\) is governed by the first two derived results. Then, to show that \(c\vec{v}=\vec{0}\implies c=0\vee\vec{v}=\vec{0}\), we suppose that \(c\neq0\) and wish to show that \(\vec{v}=\vec{0}\). We have
+                The statement \(c=0\vee\vec{v}=\vec{0}\implies c\vec{v}=\vec{0}\) is governed by Theorems \ref{thm:derpropvcspc1} and \ref{thm:derpropvcspc2}. Then, to show that \(c\vec{v}=\vec{0}\implies c=0\vee\vec{v}=\vec{0}\), we suppose that \(c\neq0\) and wish to show that \(\vec{v}=\vec{0}\). We have
                 \begin{equation*}
                     c\vec{v}=\vec{0}
                 \end{equation*}
@@ -1017,7 +1018,7 @@
                 \\
                 We start by computing \(\Span(B)\), to produce
                 \begin{align*}
-                    \Span(B)&=\{c_0x_0+\cdots+c_nx^n:c_0,\ldots,c_n\in\mathbb{R}^n\} \\
+                    \Span(B)&=\{c_0x^0+\cdots+c_nx^n:c_0,\ldots,c_n\in\mathbb{R}^n\} \\
                     &=\mathcal{P}_n.
                 \end{align*}
                 Then, to verify linear independence, see Example \ref{exa:proplinindep2}. Thus, \(B\) is a basis for \(\mathcal{P}_n\).
@@ -1162,11 +1163,11 @@
             
             Suppose \(V\) is a vector space. If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(S\) is a basis if and only if \(\dim V = |S|\).
             \begin{proof}
-                Suppose \(S\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
+                Suppose \(S\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Let \(B\) be a basis for \(V\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
                 \begin{equation*}
-                    \Span(\{\vec{v}_1,\ldots,\vec{v}_{i-1},\vec{v}_{i+1},\vec{v}_n\})=V.
+                    \Span(S-\{\vec{v}_i\})=\Span(\{\vec{v}_1,\ldots,\vec{v}_{i-1},\vec{v}_{i+1},\ldots,\vec{v}_n\})=V.
                 \end{equation*}
-                This contradicts \(\dim V = n\). 
+                Since \(B\) is linearly independent, we have \(|B|\leq|S-\{\vec{v}_i\}|\) by Theorem \ref{thm:basislemma}, which is contradictory.
             \end{proof}
 
         \end{theorem}
@@ -1193,13 +1194,13 @@
                 \end{equation*}
                 for \(c_1,\ldots,c_{n+1}\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_k\in T\). We have that \(c_{n+1}=0\) since, otherwise, 
                 \begin{equation*}
-                    \vec{v}=-\frac{1}{c_{n+1}}(c_1\vec{v}_1+\cdots+c_n\vec{v}_n).
+                    \vec{v}=\left(-\frac{c_1}{c_{n+1}}\right)\vec{v}_1+\cdots+\left(-\frac{c_n}{c_{n+1}}\right)\vec{v}_n.
                 \end{equation*}
                 Since we've written \(\vec{v}\) as a linear combination of the elements of \(T\), \(\vec{v}\in\Span(T)\), which is contradictory. We also have
                 \begin{equation*}
                     \vec{0}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
                 \end{equation*}
-                since \(T\) is linearly independent and \(\vec{v}_1,\ldots,\vec{v}_n\in T\). Thus, \(c_1=\cdots=c_n=c_{n+1}=0\). By the previous part, we have \(|T\cup\{\vec{v}\}|\leq\dim V\). However, the left hand side is \(\dim V+1\), which is contradictory. Thus, \(\Span(T)=V\), so \(T\) is a basis for \(V\).
+                since \(T\) is linearly independent and \(\vec{v}_1,\ldots,\vec{v}_n\in T\). Thus, \(c_1=\cdots=c_n=c_{n+1}=0\). By Theorem \ref{thm:lindim1}, we have \(|T\cup\{\vec{v}\}|\leq\dim V\). However, the left hand side is \(\dim V+1\), which is contradictory. Thus, \(\Span(T)=V\), so \(T\) is a basis for \(V\).
             \end{proof}
         
         \end{theorem}
@@ -1219,7 +1220,7 @@
             \end{equation*}
             Moreover, if \(\dim W=\dim V\), then, \(W=V\).
             \begin{proof}
-                Let \(\dim V=n\). If some \(S\subseteq W\) is linearly independent in \(W\), \(S\) is linearly independent in \(V\), and therefore, \(|S|\leq n\). Let \(m\in\mathbb{N}\) be the maximum number of elements a linearly independent set in \(W\) can have. Let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_m\}\) be a linearly independent subset of \(W\). Then, for the sake of contradiction, suppose that \(\Span(B_W)\neq W\), meaning that there exists some \(\vec{w}\in W\) such that \(\vec{w}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{w}\}\) is linearly independent in \(W\), but \(|B_W\cup\{\vec{w}\}|=m+1\), contradicting our definition of \(m\). Therefore, \(B_W\) is a basis for \(W\), and since \(|B_W|=m\leq n=\dim V\), \(\dim W\leq \dim V\). For the next part of the theorem, suppose \(\dim W=\dim V=n\). Then, let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_n\}\) and \(B_V=\{\vec{v}_1,\ldots,\vec{v}_n\}\) be bases of \(W\) and \(V\), respectively. Suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
+                Suppose, for the sake of contradiction, \(\dim W>\dim V\). Let \(n=\dim V\), and let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_{n+1},\ldots,\vec{w}_{n+k}\}\) be a basis of \(W\). By Theorem \ref{thm:lindim1}, \(B_W\) is linearly dependent in \(V\), which is contradictory. For the next part of the theorem, suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
             \end{proof}
             
         \end{theorem}
@@ -1240,8 +1241,8 @@
             
             If \(\Span(S)=V\), where \(V\) is a finite dimensional vector space, there exists some \(B\subseteq S\) where \(B\) is a basis for \(V\). Given \(S=\{\vec{v}_1,\ldots,\vec{v}_k\}\subseteq\mathbb{R}^n\). Consider the following steps.
             \begin{enumerate}
-                \item We form the matrix \(A\) with the elements of \(S\) as columns.
-                \item We row reduce \(A\) into reduced row echelon form to obtain a matrix \(C\).
+                \item Form the matrix \(A\) with the elements of \(S\) as columns.
+                \item Row reduce \(A\) into reduced row echelon form to obtain a matrix \(C\).
                 \item The basis of \(\Span(S)\), \(B\), is formed by removing the vectors in \(A\) associated with the columns containing free variables.
             \end{enumerate}
             \vphantom
@@ -1270,7 +1271,10 @@
         Consider the following examples.
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 1}{basis1}
 
-            Let \(S=\{[1,2,0,1],[3,1,5,-7],[-2,4,-8,14]\}\). We form the matrix \(A\) with the elements of \(S\) as columns, giving
+            Let \(S=\{[1,2,0,1],[3,1,5,-7],[-2,4,-8,14]\}\). Find a basis \(B\) for \(\Span(S)\) such that \(B\subseteq S\).
+            \\
+            \\
+            We form the matrix \(A\) with the elements of \(S\) as columns, giving
             \begin{equation*}
                 A=\begin{bmatrix}
                     1 & 3 & -2 \\ 
@@ -1295,7 +1299,10 @@
         \end{example}
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 2}{basis2}
 
-            Let \(S=\{x^3-3x^2+2,2x^3-7x^2+x-3,4x^3-13x^2+x+5\}\). We instead equivalently consider \(S'=\{[2,0,-3,1],[-3,1,-7,2],[5,1,-13,4]\}\). We form the matrix \(A\) with the elements of \(S'\) as columns, giving
+            Let \(S=\{x^3-3x^2+2,2x^3-7x^2+x-3,4x^3-13x^2+x+5\}\). Find a basis \(B\) for \(\Span(S)\) such that \(B\subseteq S\).
+            \\
+            \\
+            We instead equivalently consider \(S'=\{[2,0,-3,1],[-3,1,-7,2],[5,1,-13,4]\}\). We form the matrix \(A\) with the elements of \(S'\) as columns, giving
             \begin{equation*}
                 A=\begin{bmatrix}
                     1 & -3 & 5 \\
@@ -1318,7 +1325,14 @@
         \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 3}{basis3}
 
-            Let \(S=\{x^3-8x^2+1,3x^3-2x^2+x,4x^3+2x-10,x^3-20x^2-x+12,x^3+24x^2+2x-13\}\). We instead equivalently consider \(S'=\{[1,0,-8,1],[0,1,-2,3],[-10,2,0,4],[12,-1,-20,1],[-13,2,24,1]\}\). We form the matrix \(A\) with the elements of \(S'\) as columns, giving
+            Let \(S=\{x^3-8x^2+1,3x^3-2x^2+x,4x^3+2x-10,x^3-20x^2-x+12,x^3+24x^2+2x-13\}\). Find a basis \(B\) for \(\Span(S)\) such that \(B\subseteq S\).
+            \\
+            \\
+            We instead equivalently consider 
+            \begin{equation*}
+                S'=\{[1,0,-8,1],[0,1,-2,3],[-10,2,0,4],[12,-1,-20,1],[-13,2,24,1]\}.
+            \end{equation*}
+            We form the matrix \(A\) with the elements of \(S'\) as columns, giving
             \begin{equation*}
                 A=\begin{bmatrix}
                    1 & 0 & -10 & 12 & -13 \\
@@ -1340,7 +1354,10 @@
         \end{example}
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 4}{basis4}
 
-            Let \(T=\{[1,2,0,1],[3,1,5,-7]\}\). We consider 
+            Let \(T=\{[1,2,0,1],[3,1,5,-7]\}\). Find a basis \(B\) for \(\mathbb{R}^4\) such that \(T\subseteq B\).
+            \\
+            \\
+            We consider 
             \begin{equation*}
                 S=\{[1,2,0,1],[3,1,5,-7],[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
             \end{equation*}
@@ -1374,7 +1391,10 @@
         \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Basis 5}{basis5}
 
-            Let \(T=\{[2,0,4,-12],[0,-1,-3,9]\}\). We consider 
+            Let \(T=\{[2,0,4,-12],[0,-1,-3,9]\}\). Find a basis \(B\) for \(\mathbb{R}^4\) such that \(T\subseteq B\).
+            \\
+            \\
+            We consider 
             \begin{equation*}
                 S=\{[2,0,4,-12],[0,-1,-3,9],[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
             \end{equation*}
@@ -1382,7 +1402,7 @@
             \begin{equation*}
                 \{[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]\}
             \end{equation*}
-            is a basis of \(\mathbb{R}^4\), \(\Span(T)=\mathbb{R}^4\). Now, we form
+            is a basis of \(\mathbb{R}^4\), \(\Span(S)=\mathbb{R}^4\). Now, we form
             \begin{equation*}
                 A=\begin{bmatrix}
                     2 & 0 & 1 & 0 & 0 & 0 \\
