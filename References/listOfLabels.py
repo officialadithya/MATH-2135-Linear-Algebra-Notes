@@ -22,5 +22,5 @@ for i, _ in enumerate(lines):
     reference = lines[i][lines[i].find("{")+1:lines[i].find("}")]
     lines[i] = title[reference[0:reference.find(":")]]+" \\ref{"+reference+"}, Page \\pageref{"+reference+"} \\\\"
     
-nonempty = [i for i in lines if i != ""]
+nonempty = [i for i in lines if i != "" and i[0] != " "]
 print("\n".join(nonempty))
