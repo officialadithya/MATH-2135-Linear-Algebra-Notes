@@ -240,7 +240,7 @@
             \begin{enumerate}
                 \item \(\det (AB) = \det A\det B\).
                 \begin{proof}
-                    If \(A\) or \(B\) is singular, \(\det A\det B=0\). For now, let \(B\) be singular. We don't make any assumptions about \(A\), for now. Since \(B\) is singular, there exists some \(X\neq0\) such that \(BX=0\). We consider \((AB)X=A(BX)=A(0)=0\). Thus, \(X\) is a nontrivial solution to the homogeneous equation associated with \(AB\). Thus \(AB\) is singular and \(\det (AB) = 0 = \det A\det B\). Now, suppose that \(A\) is singular and \(B\) is nonsingular. There exists a nontrivial solution for \(Y\) in the system \(AY=0\). Since \(B\) is nonsingular, \(B^{-1}\) exists. We define \(X=B^{-1}Y\) where \(X\neq0\). Then \(ABX=AB(B^{-1}Y)=AY=0\). Thus, \(ABX\) and \(X\neq 0\) implies that \(AB\) is singular, so \(\det (AB)=0\). Now, we consider the case where \(A\) and \(B\) are both nonsingular. There exists row operations \(R_1,\ldots,R_k\) such that \(A=R_1(\ldots(R_k(I_n)\ldots))\) and 
+                    If \(A\) or \(B\) is singular, \(\det A\det B=0\). For now, let \(B\) be singular. We don't make any assumptions about \(A\), for now. Since \(B\) is singular, there exists some \(X\neq\vec{0}\) such that \(BX=\vec{0}\). We consider \((AB)X=A(BX)=A(\vec{0})=\vec{0}\). Thus, \(X\) is a nontrivial solution to the homogeneous equation associated with \(AB\). Thus \(AB\) is singular and \(\det (AB) = 0 = \det A\det B\). Now, suppose that \(A\) is singular and \(B\) is nonsingular. There exists a nontrivial solution for \(Y\) in the system \(AY=\vec{0}\). Since \(B\) is nonsingular, \(B^{-1}\) exists. We define \(X=B^{-1}Y\) where \(X\neq\vec{0}\). Then \(ABX=AB(B^{-1}Y)=AY=\vec{0}\). Thus, \(ABX\) and \(X\neq \vec{0}\) implies that \(AB\) is singular, so \(\det (AB)=0\). Now, we consider the case where \(A\) and \(B\) are both nonsingular. There exists row operations \(R_1,\ldots,R_k\) such that \(A=R_1(\ldots(R_k(I_n)\ldots))\) and 
                     \begin{align*}
                         \det (AB)&=\det(R_1(\ldots(R_k(I_n)\ldots))B) \\
                         &=c_1\cdots c_k\det (I_nB) \\
@@ -427,7 +427,7 @@
             Let \(A\in\mathcal{M}_{nn}\). Consider the following steps.
             \begin{enumerate}
                 \item Find the solutions of \(\det(A-\lambda I_n)=0\). The solutions \(\lambda_1,\ldots,\lambda_k\) are the eigenvalues of \(A\).
-                \item For each eigenvalue \(\lambda_m\), solve the system \([A-\lambda_mI_n|0]\) by row reduction.
+                \item For each eigenvalue \(\lambda_m\), solve the system \([A-\lambda_mI_n|\vec{0}]\) by row reduction.
                 \item If there are less than \(n\) fundamental eigenvectors, \(A\) cannot be diagonalized.
                 \item Form \(P=\begin{bmatrix} \vec{v}_1 & \cdots & \vec{v}_n \end{bmatrix}\). Note that \(P\) is nonsingular.
                 \item Verify that \(D=P^{-1}AP\) is a diagonal matrix where each entry \(d_{ii}\) is the eigenvalue for the fundamental eigenvector forming the \(i\)th column of \(P\).
