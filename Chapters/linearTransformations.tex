@@ -45,17 +45,17 @@
             Let \(F:\mathcal{P}_n\to\mathcal{P}_{n-1}\) where \(F(\vec{p})=\vec{p}'\), the derivative of \(\vec{p}\). Is \(F\) a linear transformation?
             \\
             \\
-            For \(\vec{p}_1,\vec{p}_2\in \mathcal{P}_n\), we know, from Calculus, that the derivative of a sum is the sum of the derivatives, so
+            For \(\vec{p}_1,\vec{p}_2\in \mathcal{P}_n\), we know, from calculus, that the derivative of a sum is the sum of the derivatives, so
             \begin{align*}
-                F(\vec{p}_1+\vec{p_2})&=(\vec{p}_1+\vec{p}_2)' \\
+                F(\vec{p}_1+\vec{p}_2)&=(\vec{p}_1+\vec{p}_2)' \\
                 &=\vec{p}_1'+\vec{p}_2' \\
                 &=F(\vec{p}_1)+F(\vec{p}_2).
             \end{align*}
-            For \(c\in\mathbb{R}\), the constant multiple rule, from Calculus, tells us that
+            For \(c\in\mathbb{R}\), the constant multiple rule, from calculus, tells us that
             \begin{align*}
                 F(c\vec{p}_1)&=(c\vec{p}_1)' \\
-                &=c\vec{p_1}' \\
-                &=cF(\vec{p_1}).
+                &=c\vec{p}_1' \\
+                &=cF(\vec{p}_1).
             \end{align*}
             Thus, \(F\) is a linear transformation.
         \end{example}
@@ -64,24 +64,24 @@
 
             Let \(F:\mathcal{P}_{n}\to W\) where \(W=\Span\left(\left\{\frac{1}{s},\ldots,\frac{1}{s^{n+1}}\right\}\right)\) and
             \begin{align*}
-                F(p(t))&=\laplace{p(t)}(s) \\
-                &=\int_0^\infty e^{-st}p(t)\dd t.
+                F(\vec{p}(t))&=\laplace{\vec{p}(t)}(s) \\
+                &=\int_0^\infty e^{-st}\vec{p}(t)\dd t.
             \end{align*}
             Is \(F\) a linear transformation?
             \\
             \\
-            For \(p_1(t),p_2(t)\in\mathcal{P}_n\), we have
+            For \(\vec{p}_1(t),\vec{p}_2(t)\in\mathcal{P}_n\), we have
             \begin{align*}
-                F(p_1(t)+p_2(t))&=\int_0^\infty e^{-st}(p_1(t)+p_2(t))\dd t \\
-                &=\int_0^\infty e^{-st}p_1(t)+e^{-st}p_2(t)\dd t \\
-                &=\int_0^\infty e^{-st}p_1(t)\dd t+\int_0^\infty e^{-st}p_2(t)\dd t \\
-                &=F(p_1(t))+F(p_2(t)).
+                F(\vec{p}_1(t)+\vec{p}_2(t))&=\int_0^\infty e^{-st}(\vec{p}_1(t)+\vec{p}_2(t))\dd t \\
+                &=\int_0^\infty (e^{-st}\vec{p}_1(t)+e^{-st}\vec{p}_2(t))\dd t \\
+                &=\int_0^\infty e^{-st}\vec{p}_1(t)\dd t+\int_0^\infty e^{-st}\vec{p}_2(t)\dd t \\
+                &=F(\vec{p}_1(t))+F(\vec{p}_2(t)).
             \end{align*}
             For \(c\in\mathbb{R}\), we have 
             \begin{align*}
-                F(cp_1(t))&=\int_0^\infty ce^{-st}p_1(t)\dd t \\
-                &=c\int_0^\infty e^{-st}p_1(t)\dd t \\
-                &=cF(p_1(t)).
+                F(c\vec{p}_1(t))&=\int_0^\infty ce^{-st}\vec{p}_1(t)\dd t \\
+                &=c\int_0^\infty e^{-st}\vec{p}_1(t)\dd t \\
+                &=cF(\vec{p}_1(t)).
             \end{align*}
             Thus, \(F\) is a linear transformation.
         \end{example}
@@ -251,7 +251,7 @@
                     L(\vec{v}+\vec{v}')&=L(c_1\vec{v}_1+\cdots+c_n\vec{v}_n+c_1'\vec{v}_1+\cdots+c_n'\vec{v}_n) \\
                     &=L((c_1+c_1')\vec{v}_1+\cdots+(c_n+c_n')\vec{v}_n) \\
                     &=(c_1+c_1')\vec{w}_1+\cdots+(c_n+c_n')\vec{w}_n \\
-                    &=c_1\vec{w}_1+c_1'\vec{w}_1+\cdots+c_n\vec{w}_n+c_2'\vec{w}_n \\
+                    &=c_1\vec{w}_1+c_1'\vec{w}_1+\cdots+c_n\vec{w}_n+c_n'\vec{w}_n \\
                     &=c_1\vec{w}_1+\cdots+c_n\vec{w}_n+c_1'\vec{w}_1+\cdots+c_n'\vec{w}_n \\
                     &=L(\vec{v})+L(\vec{v}').
                 \end{align*}
@@ -608,7 +608,7 @@
                 meaning \(\vec{w}_1+\vec{w}_2\in \range(L)\). Then, we also have
                 \begin{align*}
                     L(c\vec{v}_1)&=cL(\vec{v}_1) \\
-                    &=c\vec{w}
+                    &=c\vec{w}_1
                 \end{align*}
                 for some \(c\in\mathbb{F}\). Thus, \(c\vec{w}\in\range(L)\), as desired.
             \end{proof}
