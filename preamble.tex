@@ -145,13 +145,16 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{bggray}{gray}{0.9}
 
+\renewcommand{\ttdefault}{pcr}
 \lstdefinestyle{code}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    backgroundcolor=\color{bggray},   
+    commentstyle=\color{gray},
+    keywordstyle=\bfseries,
+    morekeywords={def},
+    numberstyle=\tiny\color{black},
+    %stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
