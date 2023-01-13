@@ -58,4 +58,3 @@ semester; Spring 2023, at the time of writing.\
     (3rd ed.). Oscar Levin.
 
 [^3]: Hammack, R. (2018). *Book of Proof* (3rd ed.). Richard Hammack.
-# MATH-1300-Calculus-I-Notes
