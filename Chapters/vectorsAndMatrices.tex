@@ -1,0 +1,990 @@
+\section{Lecture 1: August 22, 2022}
+
+    \subsection{Notations, Definitions, and Conventions}
+
+    Consider the following table for a very basic review of fundamental sets.
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            \hline
+            Symbol & Explanation \\
+            \hline
+            \hline
+            \(\mathbb{N}\) & Natural Numbers (\(\mathbb{N}=\{1,2,\ldots\}\)) \\
+            \hline
+            \(\mathbb{Z}\) & Integers \\
+            \hline
+            \(\mathbb{Q}\) & Rationals \\
+            \hline
+            \(\mathbb{R}\) & Reals \\
+            \hline
+            \(\mathbb{R}^n\) & \(\{[v_1,\ldots,v_n]:v_1,\ldots,v_n\in\mathbb{R}\}\) \\
+            \hline 
+        \end{tabular}.
+    \end{center}
+    We will also note that there is an important distinction between vectors and points. Vectors describe ``movement,'' whereas points describe location. For example, the vector \([1,2]\) starting at the point \((1,1)\) ends at the point \((2,3)\). Consider the following diagram.
+    \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+            \draw[-to] (0, -5) -- (0, 5) node[above] {\(y\)};
+            \draw[-to] (-5, 0) -- (5, 0) node[right] {\(x\)};
+            \draw[-to] (1, 1) -- (2, 3) node[right] {\(\vec{v}\)};
+            \tkzDefPoint(1,1){INIT};
+            \tkzLabelPoint[right, xshift=0mm, yshift=0mm](INIT){\((1,1)\)};
+            \node at (INIT)[circle, fill, inner sep=1.5pt]{};
+            \tkzDefPoint(2,3){TERM};
+            \tkzLabelPoint[left, xshift=0mm, yshift=0mm](TERM){\((2,3)\)};
+            % \node at (TERM)[circle, fill, inner sep=1.5pt]{};
+        \end{tikzpicture}
+    \end{center}
+    \vphantom
+    \pagebreak
+    \\
+    \\
+    Consider the following definitions and statements.
+    \begin{definition}{\Stop\,\,The Zero Vector}{zerovec}
+
+        We define 
+        \begin{equation*}
+            \vec{0}=[0,\ldots,0].
+        \end{equation*}
+        
+    \end{definition}
+    \begin{definition}{\Stop\,\,Vector Equality}{vecequal}
+        Two vectors \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) are equal if and only if
+        \begin{equation*}
+            v_1=w_1,\ldots,v_n=w_n.
+        \end{equation*}
+    \end{definition}
+    \begin{definition}{\Stop\,\,Vector Magnitude}{vecmagn}
+
+        Given some \(\vec{v}=[v_1,\ldots, v_n]\in\mathbb{R}^n\), we define \(||\vec{v}||\), the magnitude, or norm, of \(\vec{v}\), as
+        \begin{equation*}
+            ||\vec{v}||=\sqrt{v_1^2+\cdots+v_n^2}.
+        \end{equation*}
+        
+    \end{definition}
+    \begin{definition}{\Stop\,\,Scalar Multiplication}{scalmult}
+
+        Given some \(\vec{v}=[v_1,\ldots v_n]\in\mathbb{R}^n\), and a scalar \(c\in\mathbb{R}\), we define scalar multiplication as
+        \begin{equation*}
+            c\vec{v}=[cv_1,\ldots, cv_n].
+        \end{equation*}
+        
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Consider the following theorem.
+    \begin{theorem}{\Stop\,\,Scalar Multiplication and Magnitude}{scalmultandmagn}
+
+        Given a scalar \(c\in\mathbb{R}\) and some \(\vec{v}\in\mathbb{R}^n\), 
+        \begin{equation*}
+            ||c\vec{v}||=|c|||\vec{v}||.
+        \end{equation*}
+        \begin{proof}
+        Consider
+        \begin{align*}
+            ||c\vec{v}||&=\sqrt{(cv_1)^2+\cdots+(cv_n)^2} \\
+            &=\sqrt{c^2v_1^2+\cdots+c^2v_n^2} \\
+            &=\sqrt{c^2}\sqrt{v_1^2+\cdots+v_n^2} \\
+            &=|c|||\vec{v}||.
+        \end{align*}    
+        The theorem is hence proved.
+        \end{proof}
+            
+    \end{theorem}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    Consider the following definitions.
+    \begin{definition}{\Stop\,\,Vector Direction}{vectdir}
+
+        Two nonzero vectors \(\vec{v},\vec{w}\in\mathbb{R}^n\) are
+        \begin{enumerate}
+            \item in the same direction if there exists \(c>0\) such that \(\vec{v}=c\vec{w}\).
+            \item in opposite directions if there exists \(c<0\) such that \(\vec{v}=c\vec{w}\).
+        \end{enumerate}
+        
+    \end{definition}
+    \begin{definition}{\Stop\,\,Unit Vectors}{unitvec}
+        The vector \(\vec{v}\in\mathbb{R}^n\) is a unit vector if and only if \(||\vec{v}||=1\).
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Consider the following theorems.
+    \begin{theorem}{\Stop\,\,Nonzero Vector Implies Nonzero Magnitude}{nonzerovecnonzeromagn}
+
+        For some \(\vec{v}=[v_1,\ldots,v_n]\in\mathbb{R}^n\), 
+        \begin{equation*}
+            \vec{v}\neq\vec{0}\implies||\vec{v}||\neq0.
+        \end{equation*}
+        \begin{proof}
+            We will proceed by proving the contrapositive. Suppose that \(||\vec{v}||=0\), meaning that
+            \begin{equation*}
+                ||\vec{v}||=\sqrt{v_1^2+\cdots+v_n^2}=0.
+            \end{equation*}
+            The only way this is true is if all of \(v_1,\ldots,v_n\) are zero, which, by definition, means that \(\vec{v}=\vec{0}\).
+        \end{proof}
+        
+    \end{theorem}
+    \pagebreak
+    \begin{theorem}{\Stop\,\,Unit Vectors Represent Direction}{unitvecdir}
+        Given a nonzero \(\vec{v}\in\mathbb{R}^n\), there exists a unique unit vector in the same direction as \(\vec{v}\).
+        \begin{proof}
+            Since \(\vec{v}\neq\vec{0}\), \(||\vec{v}||\neq0\). Let \(\vec{u}=\frac{1}{||\vec{v}||}\vec{v}\), meaning that
+            \begin{align*}
+                ||\vec{u}||&=\left|\left|\frac{1}{||\vec{v}||}\vec{v}\right|\right| \\
+                &=\left|\frac{1}{||\vec{v}||}\right|||\vec{v}|| \\
+                &=\frac{1}{||\vec{v}||}||\vec{v}|| \\
+                &=1.
+            \end{align*}
+            This means that \(\vec{u}\) is a unit vector and, because \(\frac{1}{||\vec{v}||}\) is a positive scalar, is in the same direction as \(\vec{v}\). We have now shown existence. For uniqueness, assume \(\vec{w}\) is a unit vector in the same direction as \(\vec{v}\). Then, for a positive \(c\in\mathbb{R}\), \(\vec{w}=c\vec{v}\) and \(||\vec{w}||=1\). That is,
+            \begin{align*}
+                ||\vec{w}||=|c|||\vec{v}||=1,
+            \end{align*}
+            meaning that \(|c|=\frac{1}{||\vec{v}||}\). Because \(c>0\), \(|c|=c\), so \(\vec{w}=\frac{1}{||\vec{v}||}\vec{v}=\vec{u}\).
+        \end{proof}
+    \end{theorem}
+
+\pagebreak
+
+\section{Lecture 2: August 24, 2022}
+
+    \subsection{Vector Operations}
+
+    As a review from the previous lecture, consider the following exercises.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Vector Representing Movement}{movevec}
+
+        Find the vector representing the movement from \((3,1)\) to \((-1,2)\).
+        \\
+        \\
+        We simply find the change in the \(y\) coordinates and the change in the \(x\) coordinates to find the vector \([-4, 1]\), \textit{starting from} \((3,1)\). This is illustrated below.
+        \begin{center}
+            \begin{tikzpicture}[scale=0.5]
+                \draw[-to] (0, -5) -- (0, 5) node[above] {\(y\)};
+                \draw[-to] (-5, 0) -- (5, 0) node[right] {\(x\)};
+                \draw[-to] (3, 1) -- (-1, 2) node[above] {\(\vec{v}\)};
+                \tkzDefPoint(3,1){INIT};
+                \tkzLabelPoint[right, xshift=0mm, yshift=0mm](INIT){\((3,1)\)};
+                \node at (INIT)[circle, fill, inner sep=1.5pt]{};
+                \tkzDefPoint(-1, 2){TERM};
+                \tkzLabelPoint[left, xshift=0mm, yshift=0mm](TERM){\((-1,2)\)};
+                %\node at (TERM)[circle, fill, inner sep=1.5pt]{};
+            \end{tikzpicture}
+        \end{center}
+        
+    \end{example}
+    \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Unit Vector}{unitvec}
+
+        Find the unit vector in the direction \([3,-1,-\pi]\).
+        \\
+        \\
+        We construct the unit vector by normalization. This produces \(\frac{[3,-1,-\pi]}{\sqrt{3^2+(-1)^2+(-\pi)^2}}\).
+    
+    \end{example}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    We will now define addition and subtraction with vectors and provide a few properties.
+    \begin{definition}{\Stop\,\,Vector Addition}{addsubvec}
+
+        Let \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Then,
+        \begin{equation*}
+            \vec{v}\pm\vec{w}=[v_1\pm w_1,\ldots,v_n\pm w_n].
+        \end{equation*}
+        
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Geometrically, we may visualize vector addition as
+    \begin{center}
+    \begin{tikzpicture}[scale=0.5]
+        \draw[-to] (0, -5) -- (0, 5) node[above] {\(y\)};
+        \draw[-to] (-5, 0) -- (5, 0) node[right] {\(x\)};
+        \draw[-to] (0, 0) -- (2, 1) node[below] {\(\vec{v}\)};
+        \draw[-to] (2, 1) -- (1.5, 3) node[above] {\(\vec{w}\)};
+        \draw[dashed, -to] (0, 0) -- (1.5, 3) node[right] {\(\vec{v}+\vec{w}\)};
+        \tkzDefPoint(0,0){ORIGIN};
+        \node at (ORIGIN)[circle, fill, inner sep=1.5pt]{};
+        \tkzDefPoint(2,1){INIT};
+        \tkzLabelPoint[right, xshift=0mm, yshift=0mm](INIT){\((v_1,v_2)\)};
+        \node at (INIT)[circle, fill, inner sep=1.5pt]{};
+        \tkzDefPoint(1.5, 3){TERM};
+        \tkzLabelPoint[left, xshift=0mm, yshift=0mm](TERM){\((w_1,w_2)\)};
+        % \node at (TERM)[circle, fill, inner sep=1.5pt]{};
+        \end{tikzpicture}.
+    \end{center}
+    \begin{theorem}{\Stop\,\,Properties of Vector Addition and Scalar Multiplication}{addscalmult}
+
+        Let \(\vec{u}=[u_1,\ldots,u_n]\), \(\vec{v}=[v_1,\ldots,v_n]\), and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Let \(c\) and \(d\) be scalars. Then,
+        \begin{enumerate}
+            \item \(\vec{u}+\vec{v}=\vec{v}+\vec{u}\).
+            \item \(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\).
+            \item \(\vec{0}+\vec{u}=\vec{u}+\vec{0}=\vec{u}\).
+            \item \(\vec{u}+(-\vec{u})=(-\vec{u})+\vec{u}=\vec{0}\).
+            \item \(c(\vec{u}+\vec{v})=c\vec{u}+c\vec{v}\).
+            \item \((c+d)\vec{u}=c\vec{u}+d\vec{u}\).
+            \item \((cd)\vec{u}=c(d\vec{u})\).
+            \item \(1\vec{u}=\vec{u}\).
+        \end{enumerate}
+        
+    \end{theorem}
+    \vphantom
+    \\
+    \\
+    Note that \(\vec{0}\) is called the \textit{identity element} for addition and \(-\vec{u}\) is the \textit{additive inverse element of \(\vec{u}\)}.
+    \pagebreak
+    \\
+    \\
+    We present the proof of one of the components of Theorem \ref{thm:addscalmult}.
+    \begin{example}{\Difficulty\,\Difficulty\,\,Commutativity of Addition}{addcommut}
+
+        Let \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Prove that
+        \begin{equation*}
+            \vec{v}+\vec{w}=\vec{w}+\vec{v}.
+        \end{equation*}
+        \begin{proof}
+            Consider
+            \begin{align*}
+                \vec{v}+\vec{w}&=[v_1,\ldots,v_n]+[w_1,\ldots,w_n] \\
+                &=[v_1+w_1,\ldots,v_n+w_n] \\
+                &=[w_1+v_1,\ldots w_n+v_n] \\
+                &=\vec{w}+\vec{v}.
+            \end{align*}
+            The proposition is hence proved.
+        \end{proof}
+
+    
+    \end{example}
+    \begin{theorem}{\Stop\,\,Scalar Multiplication Producing the Zero Vector}{scalmultzero}
+
+        Let \(\vec{v}\in\mathbb{R}^n\) and let \(c\) be a scalar. Then,
+        \begin{equation*}
+            (c=0\vee\vec{v}=\vec{0})\iff c\vec{v}=\vec{0}.
+        \end{equation*}
+        \begin{proof}
+            First, we wish to show that 
+            \begin{equation*}
+                (c=0\vee\vec{v}=\vec{0})\implies c\vec{v}=\vec{0}.
+            \end{equation*}
+            Suppose \(c=0\). We have
+            \begin{equation*}
+                c\vec{v}=[cv_1,\ldots,cv_n].
+            \end{equation*}
+            We wish to show that all of \(cv_1,\ldots,cv_n\) must be zero, no matter the components of \(\vec{v}\). By basic arithmetic, zero multiplied by any other number is also zero, so if \(c=0\), \(c\vec{v}\) must be \(\vec{0}\), as all the components of \(c\vec{v}\) are zero. Suppose \(\vec{v}=\vec{0}\). We again have
+            \begin{equation*}
+                c\vec{v}=[cv_1,\ldots,cv_n]
+            \end{equation*}
+            and wish to show that all of \(cv_1,\ldots,cv_n\) must be zero, no matter the value of \(c\). If \(\vec{v}=0\), all components of \(\vec{v}\) are zero, and again, zero multiplied by any other number is zero, so all components of \(c\vec{v}\) are zero. We have now shown that, indeed, \((c=0\vee\vec{v}=\vec{0})\implies c\vec{v}=\vec{0}\). Now, we wish to show that
+            \begin{equation*}
+                c\vec{v}=\vec{0}\implies(c=0\vee\vec{v}=\vec{0}).
+            \end{equation*}
+            Suppose that \(\vec{v}\neq\vec{0}\). We have 
+            \begin{equation*}
+                \vec{0}=c\vec{v}=[cv_1,\ldots,cv_n].
+            \end{equation*}
+            There must be some nonzero \(v_1,\ldots,v_n\). Let this nonzero number be \(v_i\). The only way \(cv_i=0\) is if \(c=0\).
+        \end{proof} 
+        
+    \end{theorem}
+
+\pagebreak
+
+\section{Lecture 3: August 26, 2022}
+
+    \subsection{Matrices}
+
+        Consider the following warm-up exercise.
+        \begin{example}{\Difficulty\,\Difficulty\,\,General Vector Movement}{genvecmvt}
+
+            Write the formula for the vector \(\vec{v}\) representing the movement from \(A=(a_1,\ldots,a_n)\) to \(B=(b_1,\ldots,b_n)\). Then, find the magnitude of \(\vec{v}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+                \vec{v}=[b_1-a_1,\ldots,b_n-a_n],
+            \end{equation*}
+            starting from \(A\). Then,
+            \begin{equation*}
+                ||\vec{v}||=\sqrt{(b_1-a_1)^2+\cdots+(b_n-a_n)^2}.
+            \end{equation*}
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following definitions.
+        \begin{definition}{\Stop\,\,Matrices}{matrices}
+        
+            Let \(m,n\in\mathbb{N}\). An \(m\times n\) matrix is a rectangular array of real or complex numbers with \(m\) rows and \(n\) columns. Matrices are often denoted with capital letters. The elements are called entries, and are usually written as
+            \begin{equation*}
+                A=\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1} & \cdots & a_{mn} \end{bmatrix}.
+            \end{equation*}
+            The main diagonal of \(A\) consists of \(a_{11},a_{22},a_{33},\ldots\).
+        
+        \end{definition}
+        \begin{definition}{\Stop\,\,Square Matrices}{sqmatrices}
+        
+            A \(m\times n\) matrix is square if and only if \(m=n\).
+        
+        \end{definition}
+        \begin{definition}{\Stop\,\,Diagonal Matrices}{diagmatrices}
+        
+            A matrix is diagonal if and only if it is square and \(a_{ij}=0\) whenever \(i\neq j\). That is, all elements not on the main diagonal are zero.
+        
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Identity Matrix}{identitymatrices}
+        
+            The identity matrix \(A\) is an \(n\times n\) matrix where
+            \begin{equation*}
+                a_{ij}=\begin{cases} 1 & i=j \\ 0 & i\neq j \end{cases}.
+            \end{equation*}
+        
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Zero Matrix}{zeromatrices}
+        
+            The zero matrix \(A\) is an \(m\times n\) matrix where \(a_{ij}=0\) for all \(i\) and \(j\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Upper Triangular Matrices}{uppertriangularmatrices}
+        
+            An upper triangular matrix is a matrix such that \(a_{ij}=0\) for all \(i>j\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Lower Triangular Matrices}{lowertriangularmatrices}
+        
+            An lower triangular matrix is a matrix such that \(a_{ij}=0\) for all \(i<j\).
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,The Set of All \(m\times n\) Matrices}{matset}
+        
+            The set \(\mathcal{M}_{mn}\) is the set of all \(m\times n\) matrices. We can distinguish between real and complex matrices with \(\mathcal{M}_{mn}^\mathbb{R}\) and \(\mathcal{M}_{mn}^\mathbb{C}\), respectively. By default, we take \(\mathcal{M}_{mn}=\mathcal{M}_{mn}^\mathbb{R}\). 
+            
+        \end{definition}
+        \begin{definition}{\Stop\,\,Matrix Addition}{matrixaddition}
+        
+            Given \(A,B\in\mathcal{M}_{mn}\), we define \(A\pm B\) to be the matrix in \(\mathcal{M}_{mn}\) with entries \(a_{ij}\pm b_{ij}\).
+        
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Addition}{matadd}
+        
+            Consider the following addition.
+            \begin{equation*}
+                \begin{bmatrix} 3 & 1 & e \\ 0 & \pi & 5 \end{bmatrix}+\begin{bmatrix} -1 & 3 & e \\ 5 & 0 & -2 \end{bmatrix}=\begin{bmatrix} 2 & 4 & 2e \\ 5 & \pi & 3 \end{bmatrix}.
+            \end{equation*}
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Scalar Multiplication With Matrices}{scalmultmat}
+        
+            Given \(A\in\mathcal{M}_{mn}\) and \(c\in\mathbb{R}\), we define \(cA\) as the matrix with elements \(ca_{ij}\).
+        
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Scalar Multiplication With Matrices}{scalmultmat}
+        
+            Consider the following scalar multiplication.
+            \begin{equation*}
+                5\begin{bmatrix} 5 & 1 \\ -1 & 0 \end{bmatrix}=\begin{bmatrix} 25 & 5 \\ -5 & 0 \end{bmatrix}.
+            \end{equation*}
+        
+        \end{example}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Matrix Transpose}{transpose}
+        
+            Given \(A\in\mathcal{M}_{mn}\), we define \(A^T\in\mathcal{M}_{nm}\) to be the matrix with the \((i,j)\) entry equal to the \((j,i)\) entry of \(A\).
+        
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Transpose}{transpose}
+        
+            Consider the following transpose.
+            \begin{equation*}
+                \begin{bmatrix} 2 & -5 \\ 3 & -1 \\ \pi & -\pi \end{bmatrix}^T=\begin{bmatrix} 2 & 3 & \pi \\ -5 & -1 & -\pi \end{bmatrix}.
+            \end{equation*}
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Symmetric and Skew-Symmetric Matrices}{symmetricmatrices}
+        
+            Suppose \(A\in\mathcal{M}_{nn}\). Then,
+            \begin{enumerate}
+                \item \(A\) is symmetric if and only if \(A=A^T\)
+                \item \(A\) is skew-symmetric if and only if \(A=-A^T\).
+            \end{enumerate}
+            \vphantom
+            \\
+            \\
+            Note that \(A\) being square is necessary for the above conditions, but this condition is not sufficient.
+        
+        \end{definition}
+        \begin{example}{\Difficulty\,\,A Symmetric Matrix}{symmat}
+        
+            Let \(A=\begin{bmatrix} 2 & 1 \\ 1 & 1\end{bmatrix}\). Is \(A\) symmetric?
+            \\
+            \\
+            We see that
+            \begin{equation*}
+                A^T=\begin{bmatrix} 2 & 1 \\ 1 & 1\end{bmatrix},
+            \end{equation*}
+            so \(A\) is symmetric.
+        
+        \end{example}
+        \pagebreak
+        \begin{example}{\Difficulty\,\,A Skew-Symmetric Matrix}{skewsymmat}
+        
+            Let \(A=\begin{bmatrix} 0 & -1 \\ 1 & 0\end{bmatrix}\). Is \(A\) symmetric?
+            \\
+            \\
+            We see that
+            \begin{equation*}
+                A^T=\begin{bmatrix} 0 & 1 \\ -1 & 0\end{bmatrix}=-A,
+            \end{equation*}
+            so \(A\) is skew-symmetric.
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Properties of the Transpose}{transprop}
+        
+            Suppose \(A,B\in\mathcal{M}_{mn}\) and \(c\in\mathbb{R}\). Then,
+            \begin{enumerate}
+                \item \((A^T)^T=A\)
+                \item \((A+B)^T=A^T+B^T\)
+                \item \((cA)^T=cA^T\).
+            \end{enumerate}
+            \begin{proof}
+                Consider the matrix 
+                \begin{equation*}
+                    A=\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\
+                    a_{m1} & \cdots & a_{mn} \end{bmatrix}.
+                \end{equation*}
+                We see that
+                \begin{equation*}
+                    A^T=\begin{bmatrix} a_{11} & \cdots & a_{m1} \\ \vdots & \ddots & \vdots \\
+                    a_{1n} & \cdots & a_{mn} \end{bmatrix}.
+                \end{equation*}
+                We will take the transpose of \(A^T\), that is \((A^T)^T\), to yield
+                \begin{align*}
+                    (A^T)^T&=\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\
+                    a_{m1} & \cdots & a_{mn} \end{bmatrix} \\
+                    &=A.
+                \end{align*}
+                We have proved the first property. Let the matrix
+                \begin{equation*}
+                    B=\begin{bmatrix} b_{11} & \cdots & b_{1n} \\ \vdots & \ddots & \vdots \\
+                    b_{m1} & \cdots & b_{mn} \end{bmatrix},
+                \end{equation*}
+                and therefore,
+                \begin{equation*}
+                    A+B=\begin{bmatrix} a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\ \vdots & \ddots & \vdots \\
+                    a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn} \end{bmatrix}.
+                \end{equation*}
+                Then,
+                \begin{align*}
+                    (A+B)^T&=\begin{bmatrix} a_{11}+b_{11} & \cdots & a_{m1}+b_{m1} \\ \vdots & \ddots & \vdots \\ a_{1n}+b_{1n} & \cdots & a_{mn}+b_{mn} \\
+                    \end{bmatrix} \\
+                    &=\begin{bmatrix} a_{11} & \cdots & a_{m1} \\
+                    \vdots & \ddots & \vdots \\
+                    a_{1n} & \cdots & a_{mn} \end{bmatrix}+\begin{bmatrix} b_{11} & \cdots & b_{m1} \\
+                    \vdots & \ddots & \vdots \\
+                    b_{1n} & \cdots & b_{mn} \end{bmatrix} \\
+                    &=A^T+B^T.
+                \end{align*}
+                Thus, we have proved the second property. Finally, consider the matrix
+                \begin{equation*}
+                    cA=\begin{bmatrix} ca_{11} & \cdots & ca_{1n} \\ \vdots & \ddots & \vdots \\
+                    ca_{m1} & \cdots & ca_{mn} \end{bmatrix}.
+                \end{equation*}
+                Then,
+                \begin{align*}
+                    (cA)^T&=\begin{bmatrix} ca_{11} & \cdots & ca_{m1} \\ \vdots & \ddots & \vdots \\
+                    ca_{1n} & \cdots & ca_{mn} \end{bmatrix} \\
+                    &=c\begin{bmatrix} a_{11} & \cdots & a_{m1} \\ \vdots & \ddots & \vdots \\
+                    a_{1n} & \cdots & a_{mn} \end{bmatrix} \\
+                    &=cA^T.
+                \end{align*}
+                The final property is hence proved.
+            \end{proof}
+        
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Trace}{trace}
+            
+            Let \(A\in\mathcal{M}_{nn}\). Then,
+            \begin{equation*}
+                \trace A=\sum_{i=1}^na_{ii}.
+            \end{equation*}
+            That is, the sum of the elements on the main diagonal.
+            
+        \end{definition}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Sum and Difference of Matrices and Their Transpose}{sumdiftrans}
+        
+            Suppose \(A\) is an \(n\times n\) matrix. Then,
+            \begin{enumerate}
+                \item \(A+A^T\) is symmetric.
+                \item \(A-A^T\) is skew-symmetric.
+            \end{enumerate}
+            \begin{proof}
+                Consider the transpose of \(A+A^T\). That is,
+                \begin{align*}
+                    (A+A^T)^T&=A^T+(A^T)^T \\
+                    &=A^T+A \\
+                    &=A+A^T.
+                \end{align*}
+                This means that \(A+A^T\) is symmetric. Similarly, Consider the transpose of \(A-A^T\). That is,
+                \begin{align*}
+                    (A-A^T)^T&=A^T-(A^T)^T \\
+                    &=A^T-A \\
+                    &=-(A-A^T).
+                \end{align*}
+                This means that \(A-A^T\) is skew-symmetric.
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,The Relation Between Square, Symmetric, and Skew-Symmetric}{sqsymskew}
+        
+            Suppose \(A\) is a square matrix. There exists a symmetric matrix \(S\) and a skew-symmetric matrix \(R\) such that
+            \begin{equation*}
+                A=S+R.
+            \end{equation*}
+            \begin{proof}
+                Note that
+                \begin{equation*}
+                    2A=(A+A^T)+(A-A^T).
+                \end{equation*}
+                Dividing both sides by \(2\) produces
+                \begin{equation*}
+                    A=\frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T),
+                \end{equation*}
+                meaning \(S=\frac{1}{2}(A+A^T)\) and \(R=\frac{1}{2}(A-A^T)\). By Theorem \ref{thm:sumdiftrans}, and basic properties of the transpose operation, \(S\) is symmetric and \(R\) is skew-symmetric, as desired. We have now shown existence, and will now show uniqueness. Suppose \(P\) is a symmetric matrix and \(Q\) is a skew-symmetric matrix, and \(A=P+Q\). Then, \(A^T=P^T+Q^T=P-Q\). Note that \(A+A^T=2P\) so \(P=\frac{1}{2}(A+A^T)=S\). Then, \(A-A^T=2Q\) so \(Q=\frac{1}{2}(A-A^T)=R\). 
+            \end{proof}
+        \end{theorem}
+        
+\pagebreak
+        
+\section{Lecture 4: August 29, 2022}
+
+    \subsection{The Dot Product}
+    
+    We will now define another vector operation: the dot product. We will also provide some important properties.
+        \begin{definition}{\Stop\,\,The Dot Product}{dotprod}
+    
+            Let \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). The dot product, or inner product, of \(\vec{v}\) and \(\vec{w}\) is given by
+            \begin{equation*}
+                \vec{v}\cdot\vec{w}=\sum_{k=1}^nv_kw_k.
+            \end{equation*}
+        
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Note that \(\vec{v}\) and \(\vec{w}\) are orthogonal if and only if \(\vec{v}\cdot\vec{w}=0\). Consider the following examples.
+        \begin{example}{\Difficulty\,\,Dot Product 1}{dp1}
+        
+            Find \([1,\pi]\cdot[-1,\pi]\).
+            \\
+            \\
+            We see that \([1,\pi]\cdot[-1,\pi]=-1+\pi^2\).
+        
+        \end{example}
+         \begin{example}{\Difficulty\,\,Dot Product 2}{dp2}
+        
+            Find \([1,0]\cdot[0,1]\).
+            \\
+            \\
+            We see that \([1,0]\cdot[0,1]=0\).
+        
+        \end{example}
+        \begin{theorem}{\Stop\,\,Properties of the Dot Product}{dotprodprop}
+    
+            Let \(\vec{u}=[u_1,\ldots,u_n]\), \(\vec{v}=[v_1,\ldots,v_n]\), and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Let \(c\) be a scalar. Then,
+            \begin{enumerate}
+                \item \(\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u}\).
+                \item \(\vec{u}\cdot\vec{u}=||\vec{u}||^2\geq0\).
+                \item \(\vec{u}\cdot\vec{u}=0\iff\vec{u}=\vec{0}\).
+                \item \(c(\vec{u}\cdot\vec{v})=(c\vec{u})\cdot\vec{v}=\vec{u}\cdot(c\vec{v})\).
+                \item \(\vec{u}\cdot(\vec{v}+\vec{w})=(\vec{u}\cdot\vec{v})+(\vec{u}\cdot\vec{w})\).
+                \item \((\vec{u}+\vec{v})\cdot\vec{w}=(\vec{u}\cdot\vec{w})+(\vec{v}\cdot\vec{w})\).
+            \end{enumerate}
+        
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Proving a Dot Product Property}{pfdpprop}
+                
+            Let \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Let \(c\) be a scalar. Prove that
+            \begin{equation*}
+                c(\vec{v}\cdot\vec{w})=(c\vec{v})\cdot\vec{w}.
+            \end{equation*}
+            \begin{proof}
+                Consider
+                \begin{align*}
+                     c(\vec{v}\cdot\vec{w})&=c(v_1w_1+\cdots+v_nw_n) \\
+                     &=cv_1w_1+\cdots+cv_nw_n \\
+                     &=(cv_1)w_1+\cdots+(cv_n)w_n \\
+                     &=(c\vec{v})\cdot\vec{w}.
+                \end{align*}
+                The proposition is hence proved.
+            \end{proof}
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorem regarding the angle between two vectors.
+        \begin{theorem}{\Stop\,\,The Angle Between Two Vectors}{angletwovec}
+        
+            Given nonzero \(\vec{v},\vec{w}\in\mathbb{R}^2\),
+            \begin{equation*}
+                \vec{v}\cdot\vec{w}=||\vec{v}||||\vec{w}||\cos\theta,
+            \end{equation*}
+            where \(\theta\) is the angle between the two vectors.
+            \begin{proof}
+                Consider two unit vectors \(\hat{v}\) and \(\hat{w}\) where
+                \begin{equation*}
+                    \hat{v}=[\cos\alpha,\sin\alpha],\quad\hat{w}=[\cos\beta,\sin\beta].
+                \end{equation*}
+                The angle between the two vectors is \(\theta=\beta-\alpha\). The dot product between the two vectors is
+                \begin{align*}
+                    \hat{v}\cdot\hat{w}&=\cos\alpha\cos\beta+\sin\beta\sin\alpha \\
+                    &=\cos(\beta-\alpha) \\
+                    &=\cos\theta.
+                \end{align*}
+                Now, if we consider \(\vec{v}=c_1\hat{v}\) and \(\vec{w}=c_2\hat{w}\), meaning that \(||\vec{v}||=c_1\) and \(||\vec{w}||=c_2\), we simply scale the above result with \(\hat{v}\) and \(\hat{v}\) by the magnitudes of \(\vec{v}\) and \(\vec{w}\) to produce
+                \begin{equation*}
+                \vec{v}\cdot\vec{w}=||\vec{v}||||\vec{w}||\cos\theta,
+            \end{equation*}
+                The proposition is hence proved, but it is also of note to realize that the same proposition can be proved with the law of cosines.
+            \end{proof}
+        
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Consider the following theorem.
+        \begin{theorem}{\Stop\,\,A Useful Lemma for the Cauchy-Schwarz Inequality}{lemmacauchyschwarzineq}
+            
+            If \(\vec{v},\vec{w}\in\mathbb{R}^n\), with \(||\vec{v}||=||\vec{w}||=1\), 
+            \begin{equation*}
+                -1\leq\vec{v}\cdot\vec{w}\leq 1.
+            \end{equation*}
+            \begin{proof}
+                We will start by showing that \(-1\leq\vec{v}\cdot\vec{w}\). Consider \(||\vec{v}+\vec{w}||^2\geq0\). We have that 
+                \begin{align*}
+                    ||\vec{v}+\vec{w}||^2&=(\vec{v}+\vec{w})\cdot(\vec{v}+\vec{w}) \\
+                    &=\vec{v}\cdot\vec{v}+\vec{v}\cdot\vec{w}+\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w} \\
+                    &=||\vec{v}||^2+2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
+                    &=1+2\vec{v}\cdot\vec{w}+1 \\
+                    &=2+2\vec{v}\cdot\vec{w} \\
+                    &\geq 0.
+                \end{align*}
+                We then solve the resulting inequality which yields
+                \begin{equation*}
+                    2\vec{v}\cdot\vec{w}\geq-2 \implies \vec{v}\cdot\vec{w}\geq -1.
+                \end{equation*}
+                Similarly, consider \(||\vec{v}-\vec{w}||^2\geq0\). We then have
+                \begin{align*}
+                    ||\vec{v}-\vec{w}||^2&=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w}) \\
+                    &=||\vec{v}||^2-2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
+                    &=2-2\vec{v}\cdot\vec{w} \\
+                    &\geq 0.
+                \end{align*}
+                Then, we have
+                \begin{equation*}
+                    2-2\vec{v}\cdot\vec{w}\geq 0 \implies \vec{v}\cdot\vec{w}\leq 1
+                \end{equation*}
+                as desired.
+            \end{proof}
+
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We will now state the famous Cauchy-Schwarz Inequality itself.
+        \begin{theorem}{\Stop\,\,The Cauchy-Schwarz Inequality}{cauchyschwarzineq}
+
+            If \(\vec{v},\vec{w}\in\mathbb{R}^n\), 
+            \begin{equation*}
+                |\vec{v}\cdot\vec{w}|\leq||\vec{v}||||\vec{w}||.
+            \end{equation*}
+            \begin{proof}
+                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by Theorem \ref{thm:lemmacauchyschwarzineq}, 
+                \begin{equation*}
+                    -1\leq \frac{1}{||\vec{v}||}\vec{v}\cdot \frac{1}{||\vec{w}||}\vec{w} \leq 1.
+                \end{equation*}
+                This implies that 
+                \begin{equation*}
+                    -||\vec{v}||||\vec{w}||\leq\vec{v}\cdot\vec{w}\leq||\vec{v}||||\vec{w}||.
+                \end{equation*}
+                That is,
+                \begin{equation*}
+                    |\vec{v}\cdot\vec{w}|\leq||\vec{v}||||\vec{w}||,
+                \end{equation*}
+                which is precisely the statement of the theorem.
+            \end{proof}
+            
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        We will now state the famous Triangle Inequality, or Minkowski's Inequality.
+        \begin{theorem}{\Stop\,\,The Triangle Inequality}{triineq}
+        
+            If \(\vec{v},\vec{w}\in\mathbb{R}^n\),
+            \begin{equation*}
+                ||\vec{v}+\vec{w}||\leq||\vec{v}||+||\vec{w}||.
+            \end{equation*}
+            \begin{proof}
+                Since \(f(x)=\sqrt{x}\) is always increasing, we need only prove
+                \begin{equation*}
+                    ||\vec{v}+\vec{w}||^2\leq(||\vec{v}||+||\vec{w}||)^2.
+                \end{equation*}
+                We have
+                \begin{align*}
+                    ||\vec{v}+\vec{w}||^2&=||\vec{v}||^2+2\vec{v}\cdot\vec{w}+||\vec{w}||^2 \\
+                    &\leq||\vec{v}||^2+2|\vec{v}\cdot\vec{w}|+||\vec{w}||^2 \\
+                    &\leq||\vec{v}||^2+2||\vec{v}||||\vec{w}||+||\vec{w}||^2 \\
+                    &=(||\vec{v}||+||\vec{w}||)^2.
+                \end{align*}
+                The theorem is hence proved.
+            \end{proof}
+        
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We will now define the projection onto a vector.
+        \begin{definition}{\Stop\,\,The Projection Onto a Vector}{proj}
+        
+            Given \(\vec{v},\vec{w}\in\mathbb{R}^n\), where \(\vec{w}\neq\vec{0}\), we conclude that the projection of \(\vec{v}\) onto \(\vec{w}\) is
+            \begin{align*}
+                \proj_{\vec{w}}{\vec{v}}&=||\vec{v}||\cos\theta\frac{\vec{w}}{||\vec{w}||} \\
+                &=||\vec{v}||\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||||\vec{w}||}\frac{\vec{w}}{||\vec{w}||} \\
+                &=\frac{\vec{v}\cdot\vec{w}}{||\vec{w}||^2}\vec{w} \\
+                &=\frac{\vec{v}\cdot\vec{w}}{\vec{w}\cdot\vec{w}}\vec{w}.
+            \end{align*}
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following example.
+        \begin{example}{\Difficulty \,\,Projections}{projes}
+        
+            Given \(\vec{v}=[x,y]\), find \(\proj_{[1,0]}\vec{v}\) and \(\proj_{[0,1]}\vec{v}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+                \proj_{[1,0]}\vec{v}=[x,0],\quad\proj_{[0,1]}\vec{v}=[0,y].
+            \end{equation*}
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following theorems.
+        \begin{theorem}{\Stop\,\,Sum of Parallel and Perpendicular Projections}{sumparperpproj}
+        
+            Given \(\vec{w}\neq0\) where \(\vec{v},\vec{w}\in\mathbb{R}^n\), 
+            \begin{equation*}
+                \vec{v}=\proj_{\vec{w}}\vec{v}+(\vec{v}-\proj_{\vec{w}}\vec{v}).
+            \end{equation*}
+            The first addend returns a vector parallel to \(\vec{w}\), and the second added returns a vector perpendicular to \(\vec{w}\).
+            \begin{proof}
+                Consider the expansion of the right hand side, that is,
+                \begin{align*}
+                    \proj_{\vec{w}}\vec{v}+(\vec{v}-\proj_{\vec{w}}\vec{v})&=\frac{\vec{v}\cdot\vec{w}}{\vec{w}\cdot\vec{w}}\vec{w}+\left(\vec{v}-\frac{\vec{v}\cdot\vec{w}}{\vec{w}\cdot\vec{w}}\vec{w}\right) \\
+                    &=\vec{v}.
+                \end{align*}
+                We have arrived at the desired result.
+            \end{proof}
+            
+        
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Projections Depend on Lines}{projline}
+        
+            Given \(\vec{w}\neq0\) where \(\vec{v},\vec{w}\in\mathbb{R}^n\), and \(c\in\mathbb{R}\) where \(c\neq0\),
+            \begin{equation*}
+                \proj_{\vec{w}}\vec{v}=\proj_{c\vec{w}}\vec{v}.
+            \end{equation*}
+            \begin{proof}
+                Consider
+                \begin{align*}
+                    \proj_{c\vec{w}}\vec{v}&=\frac{\vec{v}\cdot c\vec{w}}{c\vec{w}\cdot c\vec{w}}c\vec{w} \\
+                    &=\frac{\vec{v}\cdot \vec{w}}{\vec{w}\cdot \vec{w}}\vec{w} \\
+                    &=\proj_{\vec{w}}\vec{v}.
+                \end{align*}
+                The proposition is hence proved.
+            \end{proof}
+        
+        \end{theorem}
+    
+\pagebreak
+
+\section{Lecture 5: August 31, 2022}
+        
+    \subsection{Matrix Multiplication}
+    
+        Consider the following definition of matrix multiplication.
+        \begin{definition}{\Stop\,\,Matrix Multiplication}{matmul}
+        
+            For \(A\in\mathcal{M}_{mn}\) and \(B\in\mathcal{M}_{np}\), such that
+            \begin{equation*}
+                A=\begin{bmatrix} 
+                     a_{11} & a_{12} & \cdots & a_{1n} \\
+                     a_{21} & a_{22} & \cdots & a_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                     a_{m1} & a_{m2} & \cdots & a_{mn} \\
+                \end{bmatrix},\quad
+                B=\begin{bmatrix} 
+                     b_{11} & b_{12} & \cdots & b_{1p} \\
+                     b_{21} & b_{22} & \cdots & b_{2p} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                     b_{n1} & b_{n2} & \cdots & b_{np} \\
+                \end{bmatrix},
+            \end{equation*}
+            the matrix product \(C=AB\) is defined such that \(C\in\mathcal{M}_{mp}\) and is given by
+            \begin{equation*}
+                C=\begin{bmatrix} 
+                     c_{11} & c_{12} & \cdots & c_{1p} \\
+                     c_{21} & c_{22} & \cdots & c_{2p} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                     c_{m1} & c_{m2} & \cdots & c_{mp} \\
+                \end{bmatrix}
+            \end{equation*}
+            such that \(c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{in}b_{nj}=\sum_{k=1}^na_{ik}b_{kj}\). The matrix product is only defined if the number of columns of the matrix on the left is equal to the number of the rows of the matrix on the right. Note that matrix multiplication is not commutative. We may also say that the entry in \(c_{ij}\) is the dot product of the \(i\)th row of \(A\) and the \(j\)th column of \(B\).
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Multiplication 1}{matmul1}
+        
+            Find \(\begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}\begin{bmatrix} 3 \\ -1 \end{bmatrix}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+                \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}\begin{bmatrix} 3 \\ -1 \end{bmatrix}=\begin{bmatrix} 5 \\ 2 \end{bmatrix}.
+            \end{equation*}
+                
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Multiplication 2}{matmul2}
+        
+            Find \(\begin{bmatrix} 3 & 1 & -1 \end{bmatrix}\begin{bmatrix} \pi \\ -3 \\ 7 \end{bmatrix}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+               \begin{bmatrix} 3 & 1 & -1 \end{bmatrix}\begin{bmatrix} \pi \\ -3 \\ 7 \end{bmatrix}=\begin{bmatrix} 3\pi-10 \end{bmatrix}.
+            \end{equation*}
+                
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Multiplication 3}{matmul3}
+        
+            Find \(\begin{bmatrix} 3 & 1 & -1 \end{bmatrix}\begin{bmatrix} 2 & 1 \\ 1 & 7 \\ 1 & 3 \end{bmatrix}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+               \begin{bmatrix} 3 & 1 & -1 \end{bmatrix}\begin{bmatrix} 2 & 1 \\ 1 & 7 \\ 1 & -3 \end{bmatrix}=\begin{bmatrix} 6 & 13 \end{bmatrix}.
+            \end{equation*}
+                
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Multiplication 4}{matmul4}
+        
+            Find \(\begin{bmatrix} 3 & 1 \\ -1 & 5 \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+               \begin{bmatrix} 3 & 1 \\ -1 & 5 \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}=\begin{bmatrix} 3 & 1 \\ -1 & 5 \end{bmatrix}.
+            \end{equation*}
+                
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Matrix Multiplication 5}{matmul5}
+        
+            Find \(\begin{bmatrix} 3 & 1 \\ -1 & 5 \end{bmatrix}\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}\).
+            \\
+            \\
+            We see that
+            \begin{equation*}
+               \begin{bmatrix} 3 & 1 \\ -1 & 5 \end{bmatrix}\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+            \end{equation*}
+                
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Consider the following properties of matrix multiplication.
+        \begin{theorem}{\Stop\,\,Properties of Matrix Multiplication}{propmatmul}
+        
+            Suppose \(A\), \(B\), and \(C\) are matrices such that matrix multipication is well-defined. Then,
+            \begin{enumerate}
+                \item \(A(BC)=(AB)C\).
+                \item \(A(B+C)=AB+AC\).
+                \item \((A+B)C=AC+BC\).
+                \item \(c(AB)=(cA)B=A(cB)\).
+            \end{enumerate}
+        
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We now ponder two questions.
+        \begin{enumerate}
+            \item Does \(AB=BA\)? No.
+            \item If \(AB=0\), does \(A=0\) or \(B=0\)? No.
+        \end{enumerate}
+        \vphantom
+        \\
+        \\
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Raising a Matrix to a Power}{matpow}
+
+            Let \(A\in\mathcal{M}_{nn}\). Consider an \(n\times n\) matrix \(A\). Then, \(A^0=I_n\), \(A^1=A\), and for \(k\geq 2\),
+            \begin{equation*}
+                A^k=(A^{k-1})A.
+            \end{equation*}
+        \end{definition}
+        
+        

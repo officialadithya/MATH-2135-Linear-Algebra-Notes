@@ -1,0 +1,80 @@
+% WILL NOT APPEAR IN FIRST EDITION
+% WILL WAIT UNTIL ORTHOGONAL DIAGONALIZATION IS COVERED PROPERLY
+\section{Taylor's Theorem in \(\mathbb{R}^n\)}
+
+    Before stating Taylor's Theorem, consider the following definition.
+    \begin{definition}{\Stop\,\,Hyperspheres}{hypersphere}
+
+        An open hypersphere centered at \(\vec{x}_0\in\mathbb{R}^n\) is defined by
+        \begin{equation*}
+            \{\vec{x}\in\mathbb{R}^n:0<||\vec{x}-\vec{x}_0||<r;r\in\mathbb{R}\}.
+        \end{equation*}
+        Similarly, a closed hypersphere centered at \(\vec{x}_0\) is defined by
+        \begin{equation*}
+            \{\vec{x}\in\mathbb{R}^n:0<||\vec{x}-\vec{x}_0||\leq r;r\in\mathbb{R}\}.
+        \end{equation*}
+
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Now, consider Taylor's Theorem, stated without proof.
+    \begin{theorem}{\Stop\,\,Taylor's Theorem in \(\mathbb{R}^n\)}{taylorsthm}
+
+        Let \(A\) be an open hypersphere centered at \(\vec{x}_0\in\mathbb{R}^n\) and \(\vec{u}\in\mathbb{R}^n\) be a unit vector. Then, let \(t\in\mathbb{R}\) where \(\vec{x}_0+t\vec{u}\in A\). Suppose \(f:A\to\mathbb{R}\) has continuous second-order partial derivatives throughout \(A\). Then, there exists some \(c\) with \(0\leq c\leq t\) such that
+        \begin{equation*}
+            f(\vec{x}_0+t\vec{u})=f(\vec{x}_0)+\sum_{i=1}^n \frac{\partial f}{\partial x_i}\Big|_{\vec{x}_0}(tu_i)+\frac{1}{2}\sum_{i=1}^n \frac{\partial^2f}{\partial x_i^2}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_i^2)+\sum_{i=1}^n\sum_{j=i+1}^n\frac{\partial^2f}{\partial x_i\partial x_j}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_iu_j).
+        \end{equation*}
+        
+    \end{theorem}
+    \pagebreak
+    \vphantom
+    \\
+    \\
+    Theorem \ref{thm:taylorsthm} is derived from Taylor's Theorem in \(\mathbb{R}\) by applying it to
+    \begin{equation*}
+        g(t)=f(\vec{x}_0+t\vec{u}).
+    \end{equation*}
+    Consider the following definition.
+    \begin{definition}{\Stop\,\,The Hessian Matrix}{hessian}
+
+        The matrix
+        \begin{equation*}
+            H=\begin{bmatrix}
+                \frac{\partial^2f}{\partial x_1^2} & \cdots & \frac{\partial^2f}{\partial x_1\partial x_n} \\
+                \vdots & \ddots & \vdots \\
+                \frac{\partial^2f}{\partial x_n\partial x_1} & \cdots & \frac{\partial^2f}{\partial x_n^2}
+            \end{bmatrix}.
+        \end{equation*}
+        is the \(n\times n\) Hessian matrix.
+        
+    \end{definition}
+    \vphantom
+    \\
+    \\
+    Let \(\vec{v}=[tu_1,\ldots,tu_n]^T=[v_1,\ldots,v_n]^T\) and recall that \(\nabla f=\left[\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right]\). Then, we can rewrite the formula in Theorem \ref{thm:taylorsthm} as
+    \begin{equation*}
+        f(\vec{x}_0+\vec{v})=f(\vec{x}_0)+\left(\nabla f\Big|_{\vec{x}_0}\right)\cdot\vec{v}+\frac{1}{2}\vec{v}^T\left(H\Big|_{\vec{x}_0+k\vec{v}}\right)\vec{v}
+    \end{equation*}
+    where \(0\leq k=\frac{c}{t}\leq 1\). This result is difficult to see in \(\mathbb{R}^n\), but we will provide a brief explanation of why it is true in \(\mathbb{R}^2\). In \(\mathbb{R}^2\), Theorem \ref{thm:taylorsthm} states
+    \begin{align*}
+        f(\vec{x}_0+t\vec{u})=&f(\vec{x}_0)+\frac{\partial f}{\partial x}\Big|_{\vec{x}_0}(tu_1)+\frac{\partial f}{\partial y}\Big|_{\vec{x}_0}(tu_2)\\&+\frac{1}{2}\frac{\partial^2 f}{\partial x^2}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_1^2)+\frac{1}{2}\frac{\partial^2 f}{\partial y^2}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_2^2)+\frac{\partial^2f}{\partial x\partial y}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_1u_2).
+    \end{align*}
+    and \(\vec{v}=[tu_1,tu_2]^T=[v_1,v_2]^T\). We see that \(\frac{\partial f}{\partial x}\Big|_{\vec{x}_0}(tu_1)+\frac{\partial f}{\partial y}\Big|_{\vec{x}_0}(tu_2)=\left(\nabla f\Big|_{\vec{x}_0}\right)\cdot\vec{v}\). Then, consider
+    \begin{align*}
+        \frac{1}{2}\frac{\partial^2 f}{\partial x^2}(t^2u_1^2)+\frac{1}{2}\frac{\partial^2 f}{\partial y^2}(t^2u_2^2)+\frac{\partial^2f}{\partial x\partial y}(t^2u_1u_2)&=\frac{1}{2}v_1\left(\frac{\partial^2f}{\partial x^2}v_1+\frac{\partial^2f}{\partial x\partial y}v_2\right)+\frac{1}{2}v_2\left(\frac{\partial^2f}{\partial y\partial x}v_1+\frac{\partial^2f}{\partial y^2}v_2\right) \\
+        &=\frac{1}{2}\vec{v}^T\begin{bmatrix} \frac{\partial^2f}{\partial x^2} & \frac{\partial^2f}{\partial x\partial y} \\ \frac{\partial^2f}{\partial y\partial x} & \frac{\partial^2f}{\partial y^2} \end{bmatrix}\vec{v} \\
+        &=\frac{1}{2}\vec{v}^TH\vec{v}.
+    \end{align*}
+    Making the necessary substitutions provides the desired result.
+
+\pagebreak
+
+\section{Critical Points}
+
+    Consider the following theorems and definitions.
+    \begin{definition}{\Stop\,\,Local Maximums and Local Minimums}{localmaxmin}
+
+        Let \(A\subseteq\mathbb{R}^n\). Then, \(f:A\to\mathbb{R}\) has a local maximum at \(\vec{x}_0\in A\) if and only if there exists an open neighborhood \(\mathcal{U}\) of \(\vec{x}_0\) such that \(f(\vec{x}_0)\geq f(\vec{x})\) for all \(\vec{x}\in\mathcal{U}\). Similarly, \(f\) has a local minimum at \(\vec{x}_0\) if and only if there exists some \(\mathcal{U}\) such that \(f(\vec{x}_0)\leq f(\vec{x})\) for all \(\vec{x}\in\mathcal{U}\).
+        
+    \end{definition}
