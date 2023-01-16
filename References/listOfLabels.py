@@ -1,9 +1,15 @@
 from collections import defaultdict
 
 lines = []
-with open("main.aux") as f:
+with open("../main.aux") as f:
 
   lines = [i.strip() for i in f.readlines()]
+
+print("""
+\\begin{multicols}{2}
+      \\setlength{\\parindent}{0pt}
+      \\footnotesize{
+""")
 
 for i, _ in enumerate(lines):
 
@@ -30,3 +36,8 @@ for i, _ in enumerate(lines):
     
 nonempty = [i for i in lines if i != "" and i[0] != " "]
 print("\n".join(nonempty))
+
+print("""
+      }
+\\end{multicols}
+""")
