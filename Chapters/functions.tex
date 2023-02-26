@@ -392,3 +392,111 @@
         \end{proof}
     
     \end{example}
+
+\section{The Cardinalities of Sets}
+
+        We now introduce a theorem explaining what it means for two sets to have the same size.
+        \begin{theorem}{\Stop\,\,Equal Cardinalities of Two Sets}{eqsizeset}
+        
+            For two sets \(A\) and \(B\), \(|A|=|B|\) if and only if there exists a bijection \(F:A\to B\).
+        
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Theorem \ref{thm:eqsizeset} allows us to both consider sets of both finite and infinite cardinality. We examine the latter case.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Natural Numbers and Positive Natural Numbers}{natnum}
+        
+            Prove that \(|\mathbb{N}|=|\mathbb{N}^+|\).
+            \begin{proof}
+                Let \(F:\mathbb{N}\to\mathbb{N}^+\) be defined by \(F(n)=n+1\). We see that \(F\) is a bijection between the two sets.
+            \end{proof}
+        
+        \end{example}
+        \vphantom
+        \\
+        \\
+        Example \ref{exa:natnum} provides a very interesting result. For finite sets \(A\) and \(B\), 
+        \begin{equation*}
+            A\subset B \implies |A|\neq|B|.
+        \end{equation*}
+        For infinite sets, the above equality is not necessarily true. Here, we will also define the notion of countable sets.
+        \begin{definition}{\Stop\,\,Countable Sets}{countsets}
+            
+            An infinite set \(A\) is countable if and only if \(|A|=|\mathbb{N}|\).
+            
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Consider the following examples.
+        \begin{example}{\Difficulty\,\Difficulty\,\,Natural Numbers and Integers}{natint}
+        
+            Prove that \(|\mathbb{N}|=|\mathbb{Z}|\).
+            \begin{proof}
+                We wish to essentially map half of the natural numbers to the positive integers and the other half to the negative integers. Here, we map the positive integers to the even natural numbers and the negative integers to the odd natural numbers. Let \(F:\mathbb{Z}\to\mathbb{N}\) be defined by 
+                \begin{equation*}
+                    F(n)=\begin{cases} 2n & n\geq 0 \\ -2n-1 & n<0\end{cases}.
+                \end{equation*}
+                We see that \(F\) is a bijection between the two sets.
+            \end{proof}
+        
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\,Natural Numbers and Rational Numbers}{natrat}
+        
+            Prove that \(|\mathbb{N}|=|\mathbb{Q}|\).
+            \begin{proof}
+                We wish to write \(\mathbb{Q}\) in bijection with \(\mathbb{N}\). We will start at \((0,0)\) and visit all points of \(\mathbb{Z}\times\mathbb{Z}\) in an outward counterclockwise spiral. At each point \((a,b)\), calculate the slope to the origin, namely \(\frac{b}{a}\). If the slope is undefined or already used, discard it. Otherwise, fill in the following table accordingly.
+                \begin{center}
+                    \begin{tabular}{ccccccccc}
+                        \hline
+                        \(\mathbb{N}\) & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & 6 & \(\cdots\) \\
+                        \hline
+                        \(\mathbb{Q}\) & \(0\) & \(1\) & \(-1\) & \(-\frac{1}{2}\) & \(\frac{1}{2}\) & \(2\) & \(-2\) & \(\cdots\) \\
+                        \hline
+                    \end{tabular}
+                \end{center}
+                This method will generate all rational numbers once and only once and is a bijective map from \(\mathbb{N}\) to \(\mathbb{Q}\).
+            \end{proof}
+        
+        \end{example}
+        \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\Difficulty\,\,Natural Numbers and Real Numbers}{natrea}
+        
+            Prove that \(|\mathbb{N}|\neq|\mathbb{R}|\).
+            \begin{proof}
+                To prove that there does not exist a bijection between \(\mathbb{N}\) and \(\mathbb{R}\), implying that \(\mathbb{R}\) is uncountable, we must show that for all functions \(F:\mathbb{N}\to\mathbb{R}\), \(F\) is not bijective. That is, for all \(F\), \(F\) is not injective, or \(F\) is not surjective. We will show that all functions \(F\) are not surjective. We do so by Georg Cantor's Diagonal Argument.
+                \\
+                \\
+                Let \(F:\mathbb{N}\to\mathbb{R}\) be a function given by the following table. We list the decimal expansions of all outputs, in order.
+                \begin{center}
+                    \begin{tabular}{c|cc}
+                        \hline
+                        \(\mathbb{N}\) & \(\mathbb{R}\) \\
+                        \hline
+                        \(n\) & \(F(n)\) \\
+                        \hline
+                        \(0\) & \(b_0.\boxed{a_{00}}a_{01}a_{02}a_{03}a_{04}a_{05}\) & \(\cdots\) \\
+                        \(1\) & \(b_1.a_{10}\boxed{a_{11}}a_{12}a_{13}a_{14}a_{15}\) & \(\cdots\) \\
+                        \(2\) & \(b_2.a_{20}a_{21}\boxed{a_{22}}a_{23}a_{24}a_{25}\) & \(\cdots\) \\
+                        \(3\) & \(b_3.a_{30}a_{31}a_{32}\boxed{a_{33}}a_{34}a_{35}\) & \(\cdots\) \\
+                        \(4\) & \(b_4.a_{40}a_{41}a_{42}a_{43}\boxed{a_{44}}a_{45}\) & \(\cdots\) \\
+                        \(5\) & \(b_5.a_{50}a_{51}a_{52}a_{53}a_{54}\boxed{a_{55}}\) & \(\cdots\) \\
+                        \(\vdots\) & \(\vdots\) & \(\ddots\) \\
+                        \hline
+                    \end{tabular}
+                \end{center}
+                \vphantom
+                \\
+                \\
+                Here, \(b_n\) is the integer part of \(F(n)\) and \(a_{ij}\) is the \(j\)th digit past the decimal in the number \(f(i)\). We wish to show that there exists some real number \(m\) not in the range of \(F\). We construct 
+                \begin{equation*}
+                    m=0.m_0m_1m_2m_3m_4m_5\ldots
+                \end{equation*}
+                where
+                \begin{equation*}
+                    m_0=\begin{cases} 4 & a_{00}\neq 4 \\ 7 & a_{00}=4 \end{cases}, \quad m_1=\begin{cases} 4 & a_{11}\neq 4 \\ 7 & a_{11}=4 \end{cases},\ldots, m_n=\begin{cases} 4 & a_{nn}\neq 4 \\ 7 & a_{nn}=4 \end{cases}.
+                \end{equation*}
+                By this construction, \(m\) will differ from \(F(n)\) in at least digit \(n\) past the decimal point. Therefore, \(\forall n\in\mathbb{N}, m\neq F(n)\). Therefore \(m\) is not present in the range of \(F(n)\) and \(F(n)\) is therefore not surjective. Therefore, there does not exist a bijection between \(\mathbb{N}\) and \(\mathbb{R}\); therefore, \(\mathbb{R}\) is uncountable.
+            \end{proof}
+        
+        \end{example}
