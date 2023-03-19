@@ -134,7 +134,7 @@
                         L(c_1\vec{v}_1+c_2\vec{v}_2)&=L(c_1\vec{v}_1)+L(c_2\vec{v}_2) \\
                         &=c_1L(\vec{v}_1)+c_2L(\vec{v}_2).
                     \end{align*}
-                    Then, suppose that for all \(n=k\), 
+                    Then, suppose that for some \(n=k\), 
                     \begin{equation*}
                         L(c_1\vec{v}_1+\cdots+c_k\vec{v}_k)=c_1L(\vec{v}_1)+\cdots+c_kL(\vec{v}_k).
                     \end{equation*}
@@ -1289,7 +1289,7 @@
             Suppose \(L\) is a linear operator on \(V\). Let \(\lambda_1,\ldots,\lambda_n\) be distinct eigenvalues for \(L\). If \(\vec{v}_1,\ldots,\vec{v}_n\) are eigenvectors for \(L\) corresponding to \(\lambda_1,\ldots,\lambda_n\), respectively, the set \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent.
             \begin{proof}
                 
-                We proceed by induction on \(n\). For \(n=1\), any eigenvector \(\vec{v}_1\), for any eigenvalue, by definition is nonzero, so \(\{\vec{v}_1\}\) is linearly independent. Suppose that for all \(k\in\mathbb{N}\), the proposition holds. Now, for distinct eigenvalues \(\lambda_1,\ldots,\lambda_{k+1}\). We wish to show that \(\{\vec{v}_1,\ldots,\vec{v}_{k+1}\}\) is linearly independent. Consider
+                We proceed by induction on \(n\). For \(n=1\), any eigenvector \(\vec{v}_1\), for any eigenvalue, by definition is nonzero, so \(\{\vec{v}_1\}\) is linearly independent. Suppose that for some \(k\in\mathbb{N}\), the proposition holds. Now, for distinct eigenvalues \(\lambda_1,\ldots,\lambda_{k+1}\). We wish to show that \(\{\vec{v}_1,\ldots,\vec{v}_{k+1}\}\) is linearly independent. Consider
                 \begin{equation*}
                     c_1\vec{v}_1+\cdots+c_{k+1}\vec{v}_{k+1}=\vec{0}_V
                 \end{equation*}

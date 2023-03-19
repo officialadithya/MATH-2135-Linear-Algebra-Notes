@@ -82,7 +82,7 @@
             \end{equation*}
             Recall that \(A\) is upper triangular if and only if all elements below the main diagonal are zero.
             \begin{proof}
-                We proceed by induction on \(n\). For \(n=1\), \(A=\begin{bmatrix} a_{11} \end{bmatrix}\), so \(\det A = a_{11}\). Suppose for all \(k\in\mathbb{N}\), and some upper triangular \(A\in\mathcal{M}_{kk}\),
+                We proceed by induction on \(n\). For \(n=1\), \(A=\begin{bmatrix} a_{11} \end{bmatrix}\), so \(\det A = a_{11}\). Suppose for some \(k\in\mathbb{N}\), and some upper triangular \(A\in\mathcal{M}_{kk}\),
                 \begin{equation*}
                     a_{11} a_{22} \cdots a_{kk}.
                 \end{equation*}
@@ -701,7 +701,7 @@
                 \begin{equation*}
                     A^2=AA=(PDP^{-1})(PDP^{-1})=PD(P^{-1}P)DP^{-1}=PDI_nDP^{-1}=PD^2P^{-1}.
                 \end{equation*}
-                Suppose that for all \(m\in\mathbb{N}\), \(A^m=PD^mP^{-1}\). Then,
+                Suppose that for some \(m\in\mathbb{N}\), \(A^m=PD^mP^{-1}\). Then,
                 \begin{equation*}
                     A^{m+1}=A^mA=PD^mP^{-1}(PDP^{-1})=PD^m(P^{-1}P)DP^{-1}=PD^mI_nDP^{-1}=PD^{m+1}P^{-1},
                 \end{equation*}
