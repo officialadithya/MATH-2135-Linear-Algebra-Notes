@@ -471,14 +471,12 @@
         \\
         \\
         Consider the following theorems.
-        \begin{theorem}{\Stop\,\,Properties of the Transpose}{transprop}
+        \begin{theorem}{\Stop\,\,Transpose Property 1}{transprop1}
         
             Suppose \(A,B\in\mathcal{M}_{mn}\) and \(c\in\mathbb{R}\). Then,
-            \begin{enumerate}
-                \item \((A^T)^T=A\)
-                \item \((A+B)^T=A^T+B^T\)
-                \item \((cA)^T=cA^T\).
-            \end{enumerate}
+            \begin{equation*}
+                (A^T)^T=A.
+            \end{equation*}
             \begin{proof}
                 Consider the matrix 
                 \begin{equation*}
@@ -494,9 +492,20 @@
                 \begin{align*}
                     (A^T)^T&=\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\
                     a_{m1} & \cdots & a_{mn} \end{bmatrix} \\
-                    &=A.
+                    &=A,
                 \end{align*}
-                We have proved the first property. Let the matrix
+                as desired.
+            \end{proof}
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Transpose Property 2}{transprop2}
+        
+            Suppose \(A,B\in\mathcal{M}_{mn}\) and \(c\in\mathbb{R}\). Then,
+            \begin{equation*}
+                (A+B)^T=A^T+B^T.
+            \end{equation*}
+            \begin{proof}
+                Let the matrix
                 \begin{equation*}
                     B=\begin{bmatrix} b_{11} & \cdots & b_{1n} \\ \vdots & \ddots & \vdots \\
                     b_{m1} & \cdots & b_{mn} \end{bmatrix},
@@ -515,9 +524,20 @@
                     a_{1n} & \cdots & a_{mn} \end{bmatrix}+\begin{bmatrix} b_{11} & \cdots & b_{m1} \\
                     \vdots & \ddots & \vdots \\
                     b_{1n} & \cdots & b_{mn} \end{bmatrix} \\
-                    &=A^T+B^T.
+                    &=A^T+B^T,
                 \end{align*}
-                Thus, we have proved the second property. Finally, consider the matrix
+                as desired.
+            \end{proof}
+        \end{theorem}
+        \pagebreak
+        \begin{theorem}{\Stop\,\,Transpose Property 3}{transprop3}
+        
+            Suppose \(A,B\in\mathcal{M}_{mn}\) and \(c\in\mathbb{R}\). Then,
+            \begin{equation*}
+                (cA)^T=cA^T.
+            \end{equation*}
+            \begin{proof}
+                Consider the matrix
                 \begin{equation*}
                     cA=\begin{bmatrix} ca_{11} & \cdots & ca_{1n} \\ \vdots & \ddots & \vdots \\
                     ca_{m1} & \cdots & ca_{mn} \end{bmatrix}.
@@ -528,11 +548,10 @@
                     ca_{1n} & \cdots & ca_{mn} \end{bmatrix} \\
                     &=c\begin{bmatrix} a_{11} & \cdots & a_{m1} \\ \vdots & \ddots & \vdots \\
                     a_{1n} & \cdots & a_{mn} \end{bmatrix} \\
-                    &=cA^T.
+                    &=cA^T,
                 \end{align*}
-                The final property is hence proved.
+                as desired.
             \end{proof}
-        
         \end{theorem}
         \vphantom
         \\
