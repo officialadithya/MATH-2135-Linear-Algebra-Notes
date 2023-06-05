@@ -427,9 +427,9 @@
         Also, consider the following.
         \begin{enumerate}
             \item If \(m<n\), the solution set is infinite. 
-            \item If \(X=\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}\) and \(X_\sim=\begin{bmatrix} x_{\sim 1} \\ \vdots \\ x_{\sim n} \end{bmatrix}\) are solutions,
+            \item If \(X=\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}\) and \(\tilde{X}=\begin{bmatrix} \tilde{x}_1 \\ \vdots \\ \tilde{x}_n \end{bmatrix}\) are solutions,
             \begin{equation*}
-                cX+X_\sim
+                cX+\tilde{X}
             \end{equation*}
             is a solution for any \(c\in\mathbb{R}\).
             \item If \(AX=\begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix}\) and \(A\hat{X}=B=\begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix}\),
@@ -452,9 +452,9 @@
     
     \end{theorem}
     \begin{definition}{\Stop\,\,Equivalence of Linear Systems}{sysequiv}
-        Two systems \([A|B]\) and \([A_\sim|B_\sim]\) are equivalent if and only if
+        Two systems \([A|B]\) and \([\tilde{A}|\tilde{B}]\) are equivalent if and only if
         \begin{equation*}
-            AX=B\wedge A_\sim X=B_\sim.
+            AX=B\wedge \tilde{A}X=\tilde{B}.
         \end{equation*}
         That is, if they have the same solution sets.
     \end{definition}
