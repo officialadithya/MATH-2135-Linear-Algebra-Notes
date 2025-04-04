@@ -1,11 +1,9 @@
 \documentclass[oneside]{book}
-
-\include{preamble.tex}
+\include{Auxillary/preamble}
+\include{Auxillary/title}
 \geometry{left=2.54cm}
 \geometry{right=2.54cm}
 \colorlet{chaptergrey}{black}
-
-\include{title}
 
 \begin{comment}
 \usepackage{draftwatermark}
@@ -34,7 +32,7 @@
 \end{center}
 
 \vfill
-\rightline{\textbf{EDITION 2}}
+\rightline{\textbf{EDITION 3}}
 \frontmatter
 
 \begin{center}
@@ -43,17 +41,16 @@
 
 \pagebreak
 
-\tableofcontents
-
-\setcounter{tocdepth}{4}
-\setcounter{secnumdepth}{4}
-
-\pagebreak
-
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
 
 \input{Chapters/preface.tex}
+
+\pagebreak
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\tableofcontents
 
 \mainmatter
 
@@ -148,6 +145,7 @@ Victor (Vector) Perkins
 \appendixpage
 \noappendicestocpagenum
 \addappheadtotoc
+
 \begin{savequote}
     \includegraphics[scale=0.5]{Graphics/proofxkcd.png}
 \end{savequote}
@@ -162,11 +160,28 @@ Victor (Vector) Perkins
 
     \input{Chapters/functions.tex}
 
+\begin{savequote}
+    Numerical analysis is often considered neither beautiful nor, indeed, profound. 
+    \\
+    \\
+    Pure mathematics is beautiful if your heart goes after the joy of abstraction, applied mathematics is beautiful if you are excited by mathematics as a means to explain the mystery of the world around us.
+    \\
+    \\
+    But numerical analysis? Surely, we compute only when everything else fails, when mathematical theory cannot deliver an answer in a comprehensive, pristine form and thus we are compelled to throw a problem onto a number-crunching computer and produce boring numbers by boring calculations. This, I believe, is nonsense.
+    \\
+    \\
+    Arieh Iserles
+\end{savequote}
+\addtocontents{toc}{\protect\newpage}
+\chapter{Numerical Linear Algebra} \label{appendix:c}
+
+    \input{Chapters/numericalLinearAlgebra.tex}
+
 \pagebreak
 
-\chapter*{}
-\addcontentsline{toc}{chapter}{List of Theorems and Definitions}
-\markboth{LIST OF THEOREMS AND DEFINITIONS}{LIST OF THEOREMS AND DEFINITIONS}
+\backmatter
+
+\chapter{List of Theorems and Definitions}
 
     \input{References/listOfLabels.tex}
 
@@ -181,5 +196,9 @@ Victor (Vector) Perkins
         \input{Chapters/optimizationHessian.tex}
 
 \end{comment}
+
+\bibliographystyle{alpha}
+\pagebreak
+\bibliography{Auxillary/refs}
 
 \end{document}

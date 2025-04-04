@@ -1,0 +1,33 @@
+\begin{thebibliography}{Ham18}
+
+\bibitem[AH16]{andrilli2016linear}
+Stephen Andrilli and David Hecker.
+\newblock {\em Elementary Linear Algebra}.
+\newblock Academic Press, 5 edition, 2016.
+
+\bibitem[Axl24]{axler2024linear}
+Sheldon Axler.
+\newblock {\em Linear Algebra Done Right}.
+\newblock Springer, 4 edition, 2024.
+
+\bibitem[Ham18]{hammack2018book}
+Richard~H. Hammack.
+\newblock {\em Book of Proof}.
+\newblock Richard Hammack, 3 edition, 2018.
+
+\bibitem[Lev21]{levin2021discrete}
+Oscar Levin.
+\newblock {\em Discrete Mathematics: An Open Introduction}.
+\newblock Oscar Levin, 3 edition, 2021.
+
+\bibitem[OS10]{olver2006applied}
+Peter~J. Olver and Chehrzad Shakiban.
+\newblock {\em Applied Linear Algebra}.
+\newblock Springer, 2 edition, 2010.
+
+\bibitem[Tre16]{treil2017linear}
+Sergei Treil.
+\newblock {\em Linear Algebra Done Wrong}.
+\newblock Academic Press, 2016.
+
+\end{thebibliography}

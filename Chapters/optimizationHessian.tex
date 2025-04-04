@@ -31,7 +31,7 @@
     \vphantom
     \\
     \\
-    Theorem \ref{thm:taylorsthm} is derived from Taylor's Theorem in \(\mathbb{R}\) by applying it to
+    Theorem~\ref{thm:taylorsthm} is derived from Taylor's Theorem in \(\mathbb{R}\) by applying it to
     \begin{equation*}
         g(t)=f(\vec{x}_0+t\vec{u}).
     \end{equation*}
@@ -52,11 +52,11 @@
     \vphantom
     \\
     \\
-    Let \(\vec{v}=[tu_1,\ldots,tu_n]^T=[v_1,\ldots,v_n]^T\) and recall that \(\nabla f=\left[\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right]\). Then, we can rewrite the formula in Theorem \ref{thm:taylorsthm} as
+    Let \(\vec{v}=[tu_1,\ldots,tu_n]^T=[v_1,\ldots,v_n]^T\) and recall that \(\nabla f=\left[\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right]\). Then, we can rewrite the formula in Theorem~\ref{thm:taylorsthm} as
     \begin{equation*}
         f(\vec{x}_0+\vec{v})=f(\vec{x}_0)+\left(\nabla f\Big|_{\vec{x}_0}\right)\cdot\vec{v}+\frac{1}{2}\vec{v}^T\left(H\Big|_{\vec{x}_0+k\vec{v}}\right)\vec{v}
     \end{equation*}
-    where \(0\leq k=\frac{c}{t}\leq 1\). This result is difficult to see in \(\mathbb{R}^n\), but we will provide a brief explanation of why it is true in \(\mathbb{R}^2\). In \(\mathbb{R}^2\), Theorem \ref{thm:taylorsthm} states
+    where \(0\leq k=\frac{c}{t}\leq 1\). This result is difficult to see in \(\mathbb{R}^n\), but we will provide a brief explanation of why it is true in \(\mathbb{R}^2\). In \(\mathbb{R}^2\), Theorem~\ref{thm:taylorsthm} states
     \begin{align*}
         f(\vec{x}_0+t\vec{u})=&f(\vec{x}_0)+\frac{\partial f}{\partial x}\Big|_{\vec{x}_0}(tu_1)+\frac{\partial f}{\partial y}\Big|_{\vec{x}_0}(tu_2)\\&+\frac{1}{2}\frac{\partial^2 f}{\partial x^2}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_1^2)+\frac{1}{2}\frac{\partial^2 f}{\partial y^2}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_2^2)+\frac{\partial^2f}{\partial x\partial y}\Big|_{\vec{x}_0+c\vec{u}}(t^2u_1u_2).
     \end{align*}

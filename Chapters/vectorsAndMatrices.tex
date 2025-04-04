@@ -240,7 +240,7 @@
     \pagebreak
     \\
     \\
-    We present the proof of one of the components of Theorem \ref{thm:addscalmult}.
+    We present the proof of one of the components of Theorem~\ref{thm:addscalmult}.
     \begin{example}{\Difficulty\,\Difficulty\,\,Commutativity of Addition}{addcommut}
 
         Let \(\vec{v}=[v_1,\ldots,v_n]\) and \(\vec{w}=[w_1,\ldots,w_n]\) be vectors in \(\mathbb{R}^n\). Prove that
@@ -343,6 +343,7 @@
             \begin{equation*}
                 a_{ij}=\begin{cases} 1 & i=j \\ 0 & i\neq j \end{cases}.
             \end{equation*}
+            We often denote \(A=I_n\); when \(n\) is clear, we refer to the identity matrix as \(I\).
         
         \end{definition}
         \begin{definition}{\Stop\,\,The Zero Matrix}{zeromatrices}
@@ -436,9 +437,6 @@
                 \item \(A\) is symmetric if and only if \(A=A^T\)
                 \item \(A\) is skew-symmetric if and only if \(A=-A^T\).
             \end{enumerate}
-            \vphantom
-            \\
-            \\
             Note that \(A\) being square is necessary for the above conditions, but this condition is not sufficient.
         
         \end{definition}
@@ -605,7 +603,7 @@
                 \begin{equation*}
                     A=\frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T),
                 \end{equation*}
-                meaning \(S=\frac{1}{2}(A+A^T)\) and \(R=\frac{1}{2}(A-A^T)\). By Theorem \ref{thm:sumdiftrans}, and basic properties of the transpose operation, \(S\) is symmetric and \(R\) is skew-symmetric, as desired. We have now shown existence, and will now show uniqueness. Suppose \(P\) is a symmetric matrix and \(Q\) is a skew-symmetric matrix, and \(A=P+Q\). Then, \(A^T=P^T+Q^T=P-Q\). Note that \(A+A^T=2P\) so \(P=\frac{1}{2}(A+A^T)=S\). Then, \(A-A^T=2Q\) so \(Q=\frac{1}{2}(A-A^T)=R\). 
+                meaning \(S=\frac{1}{2}(A+A^T)\) and \(R=\frac{1}{2}(A-A^T)\). By Theorem~\ref{thm:sumdiftrans}, and basic properties of the transpose operation, \(S\) is symmetric and \(R\) is skew-symmetric, as desired. We have now shown existence, and will now show uniqueness. Suppose \(P\) is a symmetric matrix and \(Q\) is a skew-symmetric matrix, and \(A=P+Q\). Then, \(A^T=P^T+Q^T=P-Q\). Note that \(A+A^T=2P\) so \(P=\frac{1}{2}(A+A^T)=S\). Then, \(A-A^T=2Q\) so \(Q=\frac{1}{2}(A-A^T)=R\). 
             \end{proof}
         \end{theorem}
         
@@ -762,7 +760,7 @@
                 |\vec{v}\cdot\vec{w}|\leq||\vec{v}||||\vec{w}||.
             \end{equation*}
             \begin{proof}
-                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by Theorem \ref{thm:lemmacauchyschwarzineq}, 
+                Consider the following cases. If \(\vec{v}=\vec{0}\) or \(\vec{w}=\vec{0}\), then, \(\vec{v}\cdot\vec{w}=0\) and \(||\vec{v}||\vec{w}||=0\). Thus, in this case, \(|\vec{v}\cdot\vec{w}|=||\vec{v}||||\vec{w}||=0\). If \(\vec{v}\neq\vec{0}\) and \(\vec{w}\neq\vec{0}\), Consider the unit vectors \(\frac{1}{||\vec{v}||}\vec{v}\) and \(\frac{1}{||\vec{w}||}\vec{w}\). Hence, by Theorem~\ref{thm:lemmacauchyschwarzineq}, 
                 \begin{equation*}
                     -1\leq \frac{1}{||\vec{v}||}\vec{v}\cdot \frac{1}{||\vec{w}||}\vec{w} \leq 1.
                 \end{equation*}
@@ -994,9 +992,6 @@
             \item Does \(AB=BA\)? No.
             \item If \(AB=0\), does \(A=0\) or \(B=0\)? No.
         \end{enumerate}
-        \vphantom
-        \\
-        \\
         Consider the following definition.
         \begin{definition}{\Stop\,\,Raising a Matrix to a Power}{matpow}
 

@@ -2,7 +2,7 @@
 
     \subsection{An Introduction to Linear Transformations}
 
-        Before proceeding into linear transformations, for a review of functions and associated terminology, consult Appendix \ref{appendix:b}. Consider the following definition.
+        Before proceeding into linear transformations, for a review of functions and associated terminology, consult Appendix~\ref{appendix:b}. Consider the following definition.
         \begin{definition}{\Stop\,\,Linear Transformations}{lineartransformation}
 
             Let \(V\) and \(W\) be vector spaces. Let \(F:V\to W\) be a function. Then, \(F\) is a linear transformation if and only if both the following conditions hold:
@@ -101,13 +101,13 @@
                 &=[\vec{v}_1]_B+[\vec{v}_2]_B \\
                 &=F(\vec{v}_1)+F(\vec{v}_2),
             \end{align*}
-            by Theorem \ref{thm:propcoords}. Then, for \(c\in\mathbb{R}\), we have
+            by Theorem~\ref{thm:propcoords}. Then, for \(c\in\mathbb{R}\), we have
             \begin{align*}
                 F(c\vec{v}_1)&=[c\vec{v}_1]_B \\
                 &=c[\vec{v}_1]_B \\
                 &=cF(\vec{v}),
             \end{align*}
-            also by Theorem \ref{thm:propcoords}. Thus, \(F\) is a linear transformation.
+            also by Theorem~\ref{thm:propcoords}. Thus, \(F\) is a linear transformation.
 
         \end{example}
         \pagebreak
@@ -151,7 +151,7 @@
         \vphantom
         \\
         \\
-        We remark that not every function between vector spaces is a linear transformation. To show that some function between vector spaces is not a linear transformation, we must show a counterexample of the conditions in Definition \ref{def:lineartransformation}.
+        We remark that not every function between vector spaces is a linear transformation. To show that some function between vector spaces is not a linear transformation, we must show a counterexample of the conditions in Definition~\ref{def:lineartransformation}.
         \pagebreak
         \\
         \\
@@ -317,7 +317,7 @@
         \vphantom
         \\
         \\
-        As a remark, Theorem \ref{thm:matlintrans} shows that once we have picked ordered bases for \(V\) and \(W\), each linear transformation \(L:V\to W\) is equivalent to multiplication by a unique corresponding matrix. This matrix, \(A_{BC}\) is called the matrix of the linear transformation \(L\) with respect to the ordered bases \(B\) and \(C\). To compute \(A_{BC}\), we simply apply the linear transformation on each basis element \(\vec{v}_i\), and then express the result with respect to \(C\) to get the respective columns of \(A_{BC}\).
+        As a remark, Theorem~\ref{thm:matlintrans} shows that once we have picked ordered bases for \(V\) and \(W\), each linear transformation \(L:V\to W\) is equivalent to multiplication by a unique corresponding matrix. This matrix, \(A_{BC}\) is called the matrix of the linear transformation \(L\) with respect to the ordered bases \(B\) and \(C\). To compute \(A_{BC}\), we simply apply the linear transformation on each basis element \(\vec{v}_i\), and then express the result with respect to \(C\) to get the respective columns of \(A_{BC}\).
         \pagebreak
         \vphantom
         \\
@@ -366,7 +366,7 @@
                     1 & 1
                 \end{bmatrix}.
             \end{align*}
-            Note that \(L\) is the same linear transformation as the one given in Example \ref{exa:findmat1}; however, we did need to explicitly coordinatize, since we had a nonstandard basis.
+            Note that \(L\) is the same linear transformation as the one given in Example~\ref{exa:findmat1}; however, we did need to explicitly coordinatize, since we had a nonstandard basis.
         \end{example}
         \pagebreak
         \begin{example}{\Difficulty\,\Difficulty\,\,Finding a Matrix for a Linear Transformation 3}{findmat3}
@@ -450,7 +450,7 @@
             \begin{equation*}
                 L:\mathcal{P}_3\to\mathbb{R}^3, c_0+c_1x+c_2x^2+c_3x^3\mapsto[c_0+c_1,2c_2,c_3-c_0].
             \end{equation*}
-            As seen in Example \ref{exa:findmat3}, the matrix for \(L\) using the standard bases for \(\mathcal{P}_3\) and \(\mathbb{R}^3\) was
+            As seen in Example~\ref{exa:findmat3}, the matrix for \(L\) using the standard bases for \(\mathcal{P}_3\) and \(\mathbb{R}^3\) was
             \begin{equation*}
                 A_{BC}=\begin{bmatrix}
                     0 & 0 & 1 & 1 \\
@@ -458,7 +458,7 @@
                     1 & 0 & 0 & -1
                 \end{bmatrix},
             \end{equation*}
-            where, again \(B=(x^3,x^2,x,1)\) and \(C=([1,0,0],[0,1,0],[0,0,1])\). We will now check our work in Example \ref{exa:findmat4}, where we saw the matrix for \(L\), with respect to the bases \(D=(x^3+x^2,x^2+x,x+1,1)\) and \(E=([-2,1,-3],[1,3,0],[3,-6,2])\) was
+            where, again \(B=(x^3,x^2,x,1)\) and \(C=([1,0,0],[0,1,0],[0,0,1])\). We will now check our work in Example~\ref{exa:findmat4}, where we saw the matrix for \(L\), with respect to the bases \(D=(x^3+x^2,x^2+x,x+1,1)\) and \(E=([-2,1,-3],[1,3,0],[3,-6,2])\) was
             \begin{equation*}
                 A_{DE}=\begin{bmatrix}
                     -1 & -10 & -15 & -9 \\
@@ -535,7 +535,7 @@
         We now revisit and consider similar matrices.
         \begin{theorem}{\Stop\,\,Similar Matrices and Linear Operators}{simmatlinops}
 
-            Let \(V\) be a vector space with bases \(C\) and \(D\). Let \(L:V\to V\) be a linear operator, so there exists some \(A_{CC}\) and \(A_{DD}\). Let \(P\) be the transition matrix from \(D\) to \(C\). Then, by Theorem \ref{thm:matricesconsdiffbases}, 
+            Let \(V\) be a vector space with bases \(C\) and \(D\). Let \(L:V\to V\) be a linear operator, so there exists some \(A_{CC}\) and \(A_{DD}\). Let \(P\) be the transition matrix from \(D\) to \(C\). Then, by Theorem~\ref{thm:matricesconsdiffbases}, 
             \begin{equation*}
                 A_{CC}=PA_{DD}P^{-1}
             \end{equation*}
@@ -543,7 +543,7 @@
             \begin{equation*}
                 A_{DD}=P^{-1}A_{CC}P.
             \end{equation*}
-            Thus, \(A_{CC}\) and \(A_{DD}\) are similar. Generally, any two matrices for the same linear operator, with respect to different bases, are similar, by Definition \ref{def:similarity}.
+            Thus, \(A_{CC}\) and \(A_{DD}\) are similar. Generally, any two matrices for the same linear operator, with respect to different bases, are similar, by Definition~\ref{def:similarity}.
              
         \end{theorem}
         \vphantom
@@ -579,7 +579,6 @@
             \end{equation*}
             
         \end{definition}
-        \pagebreak
         \vphantom
         \\
         \\
@@ -591,14 +590,12 @@
                 For \(\ker(L)\), we have \(\vec{0}_V\in\ker(L)\) since \(L(\vec{0}_V)=\vec{0}_W\). Then, for \(\vec{v}_1,\vec{v}_2\in \ker(L)\), we have
                 \begin{align*}
                     L(\vec{v}_1+\vec{v}_2)&=L(\vec{v}_1)+L(\vec{v}_2) \\
-                    &=\vec{0}_W+\vec{0}_W \\
-                    &=\vec{0}_W,
+                    &=\vec{0}_W+\vec{0}_W=\vec{0}_W,
                 \end{align*}
                 so \(\vec{v}_1+\vec{v}_2\in\ker(L)\). Then, we also have
                 \begin{align*}
                     L(c\vec{v}_1)&=cL(\vec{v}_1) \\
-                    &=c\vec{0}_W \\
-                    &=\vec{0}_W,
+                    &=c\vec{0}_W=\vec{0}_W,
                 \end{align*}
                 for some \(c\in\mathbb{F}\). Thus, \(c\vec{v}_1\in\ker(L)\), as desired. For \(\range(L)\), we have \(\vec{0}_W\in\range(L)\) since \(L(\vec{0}_V)=\vec{0}_W\). Then, if \(\vec{w}_1,\vec{w}_2\in\range(L)\), \(L(\vec{v}_1)=\vec{w}_1\) and \(L(\vec{v}_2)=\vec{w}_2\) for some \(\vec{v}_1,\vec{v}_2\in V\). Then,
                 \begin{align*}
@@ -716,7 +713,7 @@
         \vphantom
         \\
         \\
-        The next theorems combine the results of Theorem \ref{thm:findker} and Theorem \ref{thm:findrange} to find 
+        The next theorems combine the results of Theorem~\ref{thm:findker} and Theorem~\ref{thm:findrange} to find 
         \begin{equation*}
             \dim(\ker(L))+\dim(\range(L)).
         \end{equation*}
@@ -753,7 +750,7 @@
                 \item \(\dim(\ker(L))=n-\rank A\).
                 \item \(\dim(\ker(L))+\dim(\range(L))=n\).
             \end{enumerate}
-            These results are verified by Theorems \ref{thm:findker} and \ref{thm:findrange}.
+            These results are verified by Theorems~\ref{thm:findker} and~\ref{thm:findrange}.
             
         \end{theorem}
         \begin{theorem*}{\Stop\,\,The Dimension Theorem (The Rank-Nullity Theorem)}
@@ -784,7 +781,7 @@
                 \end{proof}
                 \item The linear transformation \(L\) is surjective if and only if \(\dim(\range(L))=\dim W\).
                 \begin{proof}
-                    By definition, \(L\) is surjective if and only if \(\range(L)=W\). Then, since \(\range(L)\) is a subspace of \(W\), \(\range(L)=W\) if and only if \(\dim(\range(L))=\dim W\) by Theorem \ref{thm:dimsubspc}.
+                    By definition, \(L\) is surjective if and only if \(\range(L)=W\). Then, since \(\range(L)\) is a subspace of \(W\), \(\range(L)=W\) if and only if \(\dim(\range(L))=\dim W\) by Theorem~\ref{thm:dimsubspc}.
                 \end{proof}
             \end{enumerate}
             
@@ -980,7 +977,7 @@
             
             Let \(L:V\to W\) be a linear transformation. Then, \(L\) is an isomorphism if and only if \(L\) is an invertible linear transformation. If \(L\) is invertible, \(L^{-1}\) is also a linear transformation.
             \begin{proof}
-                The first part of this theorem follows from Theorem \ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\). Since \(L\) is surjective, we have \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\) for \(\vec{v}_1,\vec{v}_2\in V\). We have
+                The first part of this theorem follows from Theorem~\ref{thm:existinv}, as by definition, \(L\) is an isomorphism if and only if \(L\) is bijective. Now, we just seek to show that \(L^{-1}\) is a linear transformation. First, consider \(\vec{w}_1,\vec{w}_2\in W\). Since \(L\) is surjective, we have \(\vec{w}_1=L(\vec{v}_1)\) and \(\vec{w}_2=L(\vec{v}_2)\) for \(\vec{v}_1,\vec{v}_2\in V\). We have
                 \begin{align*}
                     L^{-1}(\vec{w}_1+\vec{w}_2)&=L^{-1}(L(\vec{v}_1)+L(\vec{v}_2)) \\
                     &=L^{-1}(L(\vec{v}_1+\vec{v}_2)) \\
@@ -1064,11 +1061,11 @@
             \begin{enumerate}
                 \item If \(T\) is a linearly independent subset of \(V\), \(L(T)\) is linearly independent in \(W\).
                 \begin{proof}
-                    Because \(L\) is an isomorphism, \(L\) is injective. Therefore, \(L(T)\) is linearly independent in \(W\) by the first part of Theorem \ref{thm:injlinindepsurjspan}.
+                    Because \(L\) is an isomorphism, \(L\) is injective. Therefore, \(L(T)\) is linearly independent in \(W\) by the first part of Theorem~\ref{thm:injlinindepsurjspan}.
                 \end{proof}
                 \item If \(S\) spans \(V\), \(L(S)\) spans \(W\).
                 \begin{proof}
-                    Because \(L\) is an isomorphism, \(L\) is surjective. Therefore, \(L(S)\) spans \(W\) by the second part of Theorem \ref{thm:injlinindepsurjspan}.
+                    Because \(L\) is an isomorphism, \(L\) is surjective. Therefore, \(L(S)\) spans \(W\) by the second part of Theorem~\ref{thm:injlinindepsurjspan}.
                 \end{proof}
                 \item If \(B\) is a basis of \(V\), \(L(B)\) is a basis for \(W\).
                 \begin{proof}
@@ -1096,7 +1093,7 @@
             \begin{proof}
                 We must show that \(\cong\) is reflexive, symmetric and transitive. Consider the following.
                 \begin{enumerate}
-                    \item We wish to show \(V\cong V\). Consider the linear transformation \(i:V\to V,\vec{v}\mapsto\vec{v}\), the identity linear operator, defined by Definition \ref{def:idlinop}. We wish to show that \(i:V\to V\) is an isomorphism. Suppose we have \(\vec{v}_1,\vec{v}_2\in V\) such that \(\vec{v}_1\neq\vec{v}_2\). By definition, \(i(\vec{v}_1)=\vec{v}_1\) and \(i(\vec{v}_2)=\vec{v}_2\) meaning \(i(\vec{v}_1)\neq i(\vec{v}_2)\), so \(i\) is injective. Suppose we have \(\vec{w}\in V\). We wish to show there exists some \(\vec{v}\in V\) such that \(i(\vec{v})=\vec{w}\). By definition, \(\vec{v}=\vec{w}\), so \(i\) is surjective. We have found that \(i\) is an isomorphism from \(V\) to \(V\), so \(V\cong V\).
+                    \item We wish to show \(V\cong V\). Consider the linear transformation \(i:V\to V,\vec{v}\mapsto\vec{v}\), the identity linear operator, defined by Definition~\ref{def:idlinop}. We wish to show that \(i:V\to V\) is an isomorphism. Suppose we have \(\vec{v}_1,\vec{v}_2\in V\) such that \(\vec{v}_1\neq\vec{v}_2\). By definition, \(i(\vec{v}_1)=\vec{v}_1\) and \(i(\vec{v}_2)=\vec{v}_2\) meaning \(i(\vec{v}_1)\neq i(\vec{v}_2)\), so \(i\) is injective. Suppose we have \(\vec{w}\in V\). We wish to show there exists some \(\vec{v}\in V\) such that \(i(\vec{v})=\vec{w}\). By definition, \(\vec{v}=\vec{w}\), so \(i\) is surjective. We have found that \(i\) is an isomorphism from \(V\) to \(V\), so \(V\cong V\).
                     \item Suppose \(V\cong W\) via \(L:V\to W\). Because \(L\) is an isomorphism, \(L^{-1}:W\to V\) exists. Since \((L^{-1})^{-1}=L\), \(L^{-1}\) is an isomorphism, and \(W\cong V\).
                     \item Suppose \(V_1 \cong V_2\) via \(L_1:V_1\to V_2\) and \(V_2\cong V_3\) via \(L_2:V_2\to V_3\). We wish to show that \(L_2\circ L_1:V_1\to V_3\) is an isomorphism. Suppose
                     \begin{equation*}
@@ -1104,9 +1101,6 @@
                     \end{equation*}
                     for \(\vec{v}_1,\vec{v}_2\in V_1\). We wish to show \(\vec{v}_1=\vec{v}_2\). Since \(L_2\) is injective, \(L_1(\vec{v}_1)=L_1(\vec{v}_2)\). Then, since \(L_1\) is injective, \(\vec{v}_1=\vec{v}_2\), as desired. Thus, \(L_2\circ L_1\) is injective. Now, suppose we have \(\vec{w}\in V_3\). We wish to show there exists some \(\vec{v}\in V_1\) such that \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))=\vec{w}\). Since \(L_2\) is surjective, there exists some \(\hat{v}\in V_2\) such that \(L_2(\hat{v})=\vec{w}\). Since \(L_1\) is surjective, there exists some \(\vec{v}\in V_1\) such that \(L_1(\vec{v})=\hat{v}\). Thus, \((L_2\circ L_1)(\vec{v})=L_2(L_1(\vec{v}))=L_2(\hat{v})=\vec{w}\), so \(L_2\circ L_1\) is surjective. We have shown that \(L_2\circ L_1\) is both injective and surjective, so it is an isomorphism, as desired.
                 \end{enumerate}
-                \vphantom
-                \\
-                \\
                 We have now shown that \(\cong\) satisfies the necessary properties.
             \end{proof}
 
@@ -1170,7 +1164,7 @@
 
             Suppose \(V\) and \(W\) are finite dimensional vector spaces. Then, \(V\cong W\) if and only if \(\dim V=\dim W\).
             \begin{proof}
-                Suppose \(V\cong W\). Then, there exists some linear transformation \(L:V\to W\) where \(L\) is an isomorphism. Therefore, we have that \(\dim(\range(L))=\dim W\). We also have \(\ker(L)=\{\vec{0}_V\}\), so \(\dim(\ker(L))=0\). Therefore, by Theorem \ref{thm:dimensionthm},
+                Suppose \(V\cong W\). Then, there exists some linear transformation \(L:V\to W\) where \(L\) is an isomorphism. Therefore, we have that \(\dim(\range(L))=\dim W\). We also have \(\ker(L)=\{\vec{0}_V\}\), so \(\dim(\ker(L))=0\). Therefore, by Theorem~\ref{thm:dimensionthm},
                 \begin{align*}
                     \dim V&=\dim(\ker(L))+\dim(\range(L)) \\
                     &=0+\dim W \\
@@ -1180,7 +1174,7 @@
                 \begin{equation*}
                     L:V\to W, c_1\vec{v}_1+\cdots+c_n\vec{v}_n\mapsto c_1\vec{w}_1+\cdots+c_n\vec{w}_n
                 \end{equation*}
-                for \(c_1,\ldots,c_n\in\mathbb{F}\). Consider arbitrary \(\vec{w}\in W\). We wish to find some \(\vec{v}\in V\) such that \(L(\vec{v})=\vec{w}\) to show that \(L\) is surjective. Under the supposition \(\dim V=\dim W\), \(L\) is an isomorphism if and only if \(L\) is surjective by Theorem \ref{thm:detinjsurjequivdim}. We have
+                for \(c_1,\ldots,c_n\in\mathbb{F}\). Consider arbitrary \(\vec{w}\in W\). We wish to find some \(\vec{v}\in V\) such that \(L(\vec{v})=\vec{w}\) to show that \(L\) is surjective. Under the supposition \(\dim V=\dim W\), \(L\) is an isomorphism if and only if \(L\) is surjective by Theorem~\ref{thm:detinjsurjequivdim}. We have
                 \begin{equation*}
                     \vec{w}=c_1\vec{w}_1+\cdots+c_n\vec{w}_n.
                 \end{equation*}
@@ -1196,7 +1190,7 @@
             
             Suppose \(V\) is a finite dimensional vector space over \(\mathbb{F}\) with \(\dim V=n\). Then, \(V\cong \mathbb{F}^n\).
             \begin{proof}
-                We have that \(\dim V=n\), and we know that \(\dim\mathbb{F}^n=n\), so by Theorem \ref{thm:equivdim}, \(V\cong\mathbb{F}^n\).
+                We have that \(\dim V=n\), and we know that \(\dim\mathbb{F}^n=n\), so by Theorem~\ref{thm:equivdim}, \(V\cong\mathbb{F}^n\).
             \end{proof}
 
         \end{theorem}
@@ -1227,7 +1221,7 @@
     \pagebreak
     \subsection{Diagonalization of Linear Operators}
 
-        Consider the following definitions, similar to the notions discussed in Chapter \ref{chapter:deteigen}, but in the context of linear transformations.
+        Consider the following definitions, similar to the notions discussed in Chapter~\ref{chapter:deteigen}, but in the context of linear transformations.
         \begin{definition}{\Stop\,\,Eigenvalues and Eigenvectors}{eigenvaluesandvectorslintrans}
 
             Suppose \(V\) is a vector space. Let \(L:V\to V\) be a linear operator. A scalar \(\lambda\) is an eigenvalue of \(L\) if and only if there exists \(\vec{v}\in V\), where \(\vec{v}\neq\vec{0}_V\), such that \(L(\vec{v})=\lambda \vec{v}\). If \(\lambda\) is an eigenvalue of \(L\), \(\vec{v}\) is an eigenvector of \(L\) with eigenvalue \(\lambda\). 
@@ -1272,7 +1266,7 @@
                 \begin{equation*}
                     [L(\vec{v_i})]_B=D[\vec{v_i}]_B=D\vec{e}_i=d_{ii}\vec{e}_i=d_{ii}[\vec{v_i}]_B=[d_{ii}\vec{v}_i]_B.
                 \end{equation*}
-                We have shown that \(L(\vec{v}_i)=d_{ii}\vec{v}_i\). That is, we have shown that each \(\vec{v}_i\in B\) is an eigenvector of \(L\) with eigenvalue \(d_{ii}\). Thus, \(B\) is a set of \(n\) linearly independent eigenvectors for \(L\). Conversely, suppose \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) is a set of \(n\) linearly independent eigenvectors for \(L\), corresponding to eigenvalues \(\lambda_1,\ldots,\lambda_n\). These eigenvalues need not be distinct. We also note that \(B\) is a basis for \(V\), by Theorem \ref{thm:lindim2}. We wish to show that the matrix representation for \(L\), with respect to \(B\) is diagonal. The \(i\)th column for \(A\) is given by
+                We have shown that \(L(\vec{v}_i)=d_{ii}\vec{v}_i\). That is, we have shown that each \(\vec{v}_i\in B\) is an eigenvector of \(L\) with eigenvalue \(d_{ii}\). Thus, \(B\) is a set of \(n\) linearly independent eigenvectors for \(L\). Conversely, suppose \(B=\{\vec{w}_1,\ldots,\vec{w}_n\}\) is a set of \(n\) linearly independent eigenvectors for \(L\), corresponding to eigenvalues \(\lambda_1,\ldots,\lambda_n\). These eigenvalues need not be distinct. We also note that \(B\) is a basis for \(V\), by Theorem~\ref{thm:lindim2}. We wish to show that the matrix representation for \(L\), with respect to \(B\) is diagonal. The \(i\)th column for \(A\) is given by
                 \begin{equation*}
                     [L(\vec{w}_i)]_B=[\lambda_i\vec{w}_i]_B=\lambda_i[\vec{w}_i]_B=\lambda_i\vec{e}_i.
                 \end{equation*}
@@ -1283,7 +1277,7 @@
         \vphantom
         \\
         \\
-        Note that Theorem \ref{thm:diaglintrans} requires that we find ``enough'' linearly independent eigenvectors. We now provide a theorem guaranteeing the linear independence of eigenvectors in certain conditions.
+        Note that Theorem~\ref{thm:diaglintrans} requires that we find ``enough'' linearly independent eigenvectors. We now provide a theorem guaranteeing the linear independence of eigenvectors in certain conditions.
         \begin{theorem}{\Stop\,\,Eigenvectors With Distinct Eigenvalues are Linearly Independent}{eigenvecsdisteigenvalslinindep}
 
             Suppose \(L\) is a linear operator on \(V\). Let \(\lambda_1,\ldots,\lambda_n\) be distinct eigenvalues for \(L\). If \(\vec{v}_1,\ldots,\vec{v}_n\) are eigenvectors for \(L\) corresponding to \(\lambda_1,\ldots,\lambda_n\), respectively, the set \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) is linearly independent.
@@ -1325,7 +1319,7 @@
         \vphantom
         \\
         \\
-        Note that Theorem \ref{thm:eigenvecsdisteigenvalslinindep} provides that if \(L\) is a linear operator on an \(n\)-dimensional vector space and \(L\) has \(n\) distinct eigenvalues, \(L\) is diagonalizable. The converse is false.
+        Note that Theorem~\ref{thm:eigenvecsdisteigenvalslinindep} provides that if \(L\) is a linear operator on an \(n\)-dimensional vector space and \(L\) has \(n\) distinct eigenvalues, \(L\) is diagonalizable. The converse is false.
         \pagebreak
         \\
         \\
@@ -1360,7 +1354,7 @@
             Let \(V\) be an \(n\)-dimensional vector space and let \(L:V\to V\) be a linear operator. Consider the following steps.
             \begin{enumerate}
                 \item Find a basis, \(C\), for \(V\). Then, find the matrix representation \(A\) of \(L\) with respect to \(C\).
-                \item Apply the steps of Theorem \ref{thm:diagonalization} on \(A\) to find the eigenvalues \(\lambda_1,\ldots,\lambda_k\) and a basis in \(\mathbb{R}^n\) for each eigenspace \(E_\lambda\). If \(\left|\bigcup_{i}E_{\lambda_i}\right|<n\), \(L\) is not diagonalizable. Otherwise, let \(Z=(\vec{w}_1,\ldots,\vec{w}_n)=\bigcup_i E_{\lambda_i}\) be an ordered basis for \(\mathbb{R}^n\).
+                \item Apply the steps of Theorem~\ref{thm:diagonalization} on \(A\) to find the eigenvalues \(\lambda_1,\ldots,\lambda_k\) and a basis in \(\mathbb{R}^n\) for each eigenspace \(E_\lambda\). If \(\left|\bigcup_{i}E_{\lambda_i}\right|<n\), \(L\) is not diagonalizable. Otherwise, let \(Z=(\vec{w}_1,\ldots,\vec{w}_n)=\bigcup_i E_{\lambda_i}\) be an ordered basis for \(\mathbb{R}^n\).
                 \item Find an ordered basis \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) of \(V\) such that \([\vec{v}_i]_C=\vec{w}_i\).
                 \item Form \(D\) by finding the matrix representation for \(L\) with respect to \(B\). Note that \(D\) will be the diagonal matrix with the entry \(d_{ii}\) being the eigenvalue for \(L\) corresponding to \(\vec{v}_i\).
                 \item If needed, form \(P=\begin{bmatrix} [\vec{v}_1]_C & \cdots & [\vec{v}_n]_C \end{bmatrix}=\begin{bmatrix} \vec{w}_1 & \cdots & \vec{w}_n \end{bmatrix}\). Recall \(D=P^{-1}AP\).
@@ -1440,5 +1434,9 @@
                     [L(1)]_Z & [L(x+1)]_Z & [L(2x^2+4x+3)]_Z & [L(6x^3+18x^2+27x+17)]_Z
                 \end{bmatrix},
             \end{equation*}
-            as hypothesized by Theorem \ref{thm:procdiaglinops}.
+            as hypothesized by Theorem~\ref{thm:procdiaglinops}.
         \end{example}
+        \vphantom
+        \\
+        \\
+        For readers wishing more detail on diagonalizability and eigendecomposition, see Section~\ref{sec:eigendecomposition} in Appendix~\ref{appendix:c}.

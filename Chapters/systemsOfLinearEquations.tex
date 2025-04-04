@@ -54,9 +54,6 @@
             \item Addition of a scalar multiple of one row to another. Notated as \(\langle r_1\rangle +(c)\langle r_2\rangle\to\langle r_1\rangle\).
             \item Switching the elements of two rows. Notated as \(\langle r_1 \rangle \leftrightarrow \langle r_2 \rangle\).
         \end{enumerate}
-        \vphantom
-        \\
-        \\
         Consider the following examples.
         \begin{example}{\Difficulty\,\Difficulty\,\,Row Operation 1}{rowop1}
         
@@ -108,17 +105,14 @@
         
 \section{Lecture 8: September 9, 2022}
 
-    \subsection{Solving Linear Systems}
+    \subsection{Solving Linear Systems: Gaussian Elimination}
     
-        Given a linear system of equations, we solve by the following steps.
+        Given a linear system of equations, we may solve it by the following steps; the following is an informal description of Gaussian elimination.
         \begin{enumerate}
             \item Convert the linear system into the matrix equation \(AX=B\), written \([A|B]\).
             \item Use the three row operations to reduce \([A|B]\) to one with ``lots of zeroes and ones.''
             \item Perform back substitution and analyze the solution set.
         \end{enumerate}
-        \vphantom
-        \\
-        \\
         Consider the following examples.
         \begin{example}{\Difficulty\,\Difficulty\,\,No Solution}{nosols}
             
@@ -214,9 +208,6 @@
                 \item If \(R_1,\ldots,R_n\) are row operations, \(R_n(
                 \ldots(R_2(R_1(AB)))\ldots)=(R_n(\ldots(R_2(R_1(A)))\ldots))B\).
             \end{enumerate}
-            \vphantom
-            \\
-            \\
             Note that this result follows from the associativity of matrix multiplication, as any row operation can be represented by a multiplication of two matrices.
         \end{theorem}
         
@@ -464,7 +455,7 @@
     \vphantom
     \\
     \\
-    For example, Gaussian Elimination and Gauss-Jordan Elimination produce matrices that are row equivalent to the original matrix.
+    For example, Gaussian elimination and Gauss-Jordan elimination produce matrices that are row equivalent to the original matrix.
     \\
     \\
     One may ask: What is the relationship between these relations? We see that row equivalence implies system equivalence. But, two systems can have the same solution set, but have different sizes, making row equivalence impossible. For the latter case, consider two matrices of different sizes, but with an empty solution set. Recall the following definition from discrete mathematics.
@@ -940,7 +931,7 @@
         \vphantom
         \\
         \\
-        We will revisit linear maps in much greater detail in Chapter \ref{chapter:lintrans}.
+        We will revisit linear maps in much greater detail in Chapter~\ref{chapter:lintrans}.
 
 \pagebreak
 
@@ -1000,9 +991,9 @@
         \\
         \\
         We denote the unique inverse of \(A\) as \(A^{-1}\). We can use the inverse to define negative integral powers of a nonsingular matrix \(A\). Consider the following definition.
-        \begin{definition}{\Stop\,\,Negative Integral Powers of a Nonsingular Matrices}{nonsingmat}
+        \begin{definition}{\Stop\,\,Negative Integral Powers of a Nonsingular Matrix}{nonsingmat}
 
-            Let \(A\) be a nonsingular matrix. Then, the negative integral powers of \(A\) are given as follows: \(A^{-1}\) is the unique inverse of \(A\). For \(k\geq2\), \(A^{-k}=(A^{-1})^k\).
+            Let \(A\) be a nonsingular matrix. Then, the negative integral powers of \(A\) are given as follows: for \(A^{-1}\) the unique inverse of \(A\), we have that for \(k\geq2\), \(A^{-k}=(A^{-1})^k\).
             
         \end{definition}
         \begin{theorem}{\Stop\,\,Properties of Nonsingular Matrices}{propnonsingmat}
@@ -1072,7 +1063,7 @@
                 \begin{equation*}
                     \left(\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}A\right)A^{-1}=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}A^{-1}=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
                 \end{equation*}
-                This implies \(a=b=c=d=0\), meaning \(A=0_2\). From Example \ref{exa:invzero}, we know that the matrix \(0_n\) is singular.
+                This implies \(a=b=c=d=0\), meaning \(A=0_2\). From Example~\ref{exa:invzero}, we know that the matrix \(0_n\) is singular.
             \end{proof}
         \end{theorem}
         
@@ -1168,7 +1159,7 @@
                     1 & 1
                 \end{bmatrix}.
             \end{equation*}
-            Note that here, we did not apply the formula in Theorem \ref{thm:2by2inv}, but instead, the general algorithm.
+            Note that here, we did not apply the formula in Theorem~\ref{thm:2by2inv}, but instead, the general algorithm.
 
         \end{example}
         \pagebreak

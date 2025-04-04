@@ -1,0 +1,193 @@
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage[english]{babel}
+\usepackage{cancel}
+\usepackage{quotchap}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{appendix}
+\usepackage{array}
+\usepackage{marvosym}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{polynom}
+\usepackage{braket}
+\usepackage{fontawesome}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage[most]{tcolorbox}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{def/.append style={axis x line=middle, axis y line=middle, xlabel={\(x\)}, ylabel={\(y\)}, axis equal}}
+\pgfplotsset{compat=1.17}
+\graphicspath{{./images/}}
+\usetikzlibrary{fit,shapes}
+\usetikzlibrary{graphs}
+\usepackage[chapter]{algorithm}
+\usepackage[noend]{algpseudocode}
+\newcommand{\var}[1]{\textsc{#1}}
+\renewcommand{\thealgorithm}{\Alph{chapter}.\arabic{section}.\arabic{algorithm}}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclareMathOperator{\argmin}{argmin}
+\DeclareMathOperator{\argmax}{argmax}
+
+\usepackage{fix-cm} 
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{50}{60}} 
+\makeatother
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand*{\?}{\stackrel{?}{=}}
+\newcommand*{\dd}{\,\text{d}}
+\newcommand*{\thus}{.^..}
+%\renewcommand*{\and}{\wedge}
+%\renewcommand*{\or}{\vee}
+\newcommand*{\curl}{\text{curl\,}}
+\newcommand*{\range}{\text{range\,}}
+\renewcommand*{\div}{\text{div\,}}
+\newcommand*{\Difficulty}{\Radioactivity}
+%\newcommand*{\Difficulty}{\Frowny}
+\newcommand*{\Stop}{\Stopsign}
+\newcommand*{\DOTHISLATER}{\begin{center}\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\Stop\end{center}}
+\newcommand*{\laplace}[2][]{\mathcal{L}^{#1}\left\{#2\right\}}
+\newcommand*{\powerset}[1]{\mathcal{P}\left(#1\right)}
+\renewcommand*{\vec}[1]{\overset{_{\rightharpoonup}}{#1}}
+\renewcommand*{\bar}[1]{\overline{#1}}
+\renewcommand*{\gcd}[2]{\text{gcd}\left(#1,#2\right)}
+%\renewcommand*{\vec}[1]{\mathbf{#1}}
+\newcommand*{\nin}{\notin}
+\newcommand*{\nequiv}{\not\equiv}
+\newcommand*{\Span}{\text{span\,}}
+\newcommand*{\sgn}{\text{sgn\,}}
+\newcommand*{\proj}{\text{proj\,}}
+\newcommand*{\rank}{\text{rank\,}}
+\newcommand*{\nullity}{\text{nullity\,}}
+\newcommand*{\trace}{\text{trace\,}}
+\newcommand*{\iprod}[2]{\left\langle #1,#2\right\rangle}
+
+
+\usepackage{sfmath}
+\renewcommand{\familydefault}{\sfdefault}
+
+\renewcommand*{\qedsymbol}{\(\blacksquare\)}
+
+\newtcbtheorem[number within=section]{definition}{Definition}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=white,
+                colframe=cadmiumgreen,fonttitle=\bfseries,
+                colbacktitle=cadmiumgreen,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{def}
+                
+\newtcbtheorem[number within=section]{example}{Example}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=white,
+                colframe=violet,fonttitle=\bfseries,
+                colbacktitle=violet,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{exa}
+                
+\newtcbtheorem[number within=section]{exercise}{Exercise}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=white,
+                colframe=violet,fonttitle=\bfseries,
+                colbacktitle=violet,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{exe}
+                
+\newtcbtheorem[number within=section]{theorem}{Theorem}{
+                lower separated=false,
+                breakable,
+                before skip=0.5cm,
+                colback=white,
+                colframe=Blue,fonttitle=\bfseries,
+                colbacktitle=Blue,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{thm}
+
+\newtcbtheorem[number within=section]{lemma}{Lemma}{
+    lower separated=false,
+    breakable,
+    before skip=0.5cm,
+    colback=white,
+    colframe=Blue,fonttitle=\bfseries,
+    colbacktitle=Blue,
+    coltitle=white,
+    enhanced,
+    attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+    }{lem}
+
+\newtcbtheorem[number within=section]{solution}{Solution}{
+                lower separated=false,
+                before skip=0.5cm,
+                breakable,
+                colback=white,
+                colframe=black,fonttitle=\bfseries,
+                colbacktitle=black,
+                coltitle=white,
+                enhanced,
+                attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                }{sol}
+            
+\usepackage{listings}
+
+% Configuration for Syntax Highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{bggray}{gray}{0.9}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{violet}{rgb}{0.32, 0.0, 0.65}
+
+\renewcommand{\ttdefault}{pcr}
+\lstdefinestyle{code}{
+    backgroundcolor=\color{bggray},   
+    commentstyle=\color{gray},
+    keywordstyle=\bfseries,
+    morekeywords={def},
+    numberstyle=\tiny\color{black},
+    %stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=code}
+
+\newenvironment{code}{\fontfamily{lmtt}\selectfont}{\par}

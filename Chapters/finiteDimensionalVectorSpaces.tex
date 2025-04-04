@@ -38,9 +38,6 @@
             \item Let \(S\) be a nonempty set and \(F(S)=\{f:S\to\mathbb{R}\}\) with \((f+g)(s)=f(s)+g(s)\) and \((cf)(s)=cf(s)\). The set \(F(S)\) is a vector space.
             \item The set \(\{a_nx^n+\cdots+a_0x^0:a_0,\ldots a_n\in\mathbb{R}, \text{degree is less than or equal to \(n\)}\}\) is a vector space.
         \end{enumerate}
-        \vphantom
-        \\
-        \\
         We note that all the above examples need \textit{proof}. We remark that, for now, we will primarily consider vector spaces over \(\mathbb{R}\). We will emphasize when we consider vector spaces over \(\mathbb{C}\).  Consider the following examples of sets that are not vector spaces.
         \begin{enumerate}
             \item The set \(\mathbb{R}^+=\{x\in\mathbb{R}:x\geq0\}\), with usual addition and usual multiplication in \(\mathbb{R}\), is not a vector space. The set does not satisfy the closure axiom for scalar multiplication; \((-1)\cdot1=-1\nin\mathbb{R}^+\).
@@ -53,7 +50,7 @@
 
     \subsection{Derived Properties of Vector Spaces}
 
-        Consider the following theorems. While they may seem obvious, they require proof by the vector space axioms, provided in Definition \ref{def:vcspc}.
+        Consider the following theorems. While they may seem obvious, they require proof by the vector space axioms, provided in Definition~\ref{def:vcspc}.
         \begin{theorem}{\Stop\,\,Derived Property of Vector Space 1}{derpropvcspc1}
 
             Suppose \(V\) is a vector space, \(\vec{v}\in V\), and \(c\in\mathbb{F}\). Then,
@@ -106,7 +103,7 @@
                     \vec{v}+(-1)\vec{v}&=1\vec{v}+(-1)\vec{v} &\text{ by axiom \(8\),} \\
                     &=(1+(-1))\vec{v} &\text{ by axiom \(6\),} \\
                     &=0\vec{v} &\text{ by properties of \(\mathbb{R}\),} \\
-                    &=\vec{0} &\text{ by Theorem \ref{thm:derpropvcspc2}.}
+                    &=\vec{0} &\text{ by Theorem~\ref{thm:derpropvcspc2}.}
                 \end{align*}
                 Now, let \(\vec{v}'=(-1)\vec{v}\) and let \(\vec{v}''\in V\) be another vector such that
                 \begin{equation*}
@@ -134,7 +131,7 @@
                 c\vec{v}=\vec{0}\iff c=0\vee \vec{v}=\vec{0}
             \end{equation*}
             \begin{proof}
-                The statement \(c=0\vee\vec{v}=\vec{0}\implies c\vec{v}=\vec{0}\) is governed by Theorems \ref{thm:derpropvcspc1} and \ref{thm:derpropvcspc2}. Then, to show that \(c\vec{v}=\vec{0}\implies c=0\vee\vec{v}=\vec{0}\), we suppose that \(c\neq0\) and wish to show that \(\vec{v}=\vec{0}\). We have
+                The statement \(c=0\vee\vec{v}=\vec{0}\implies c\vec{v}=\vec{0}\) is governed by Theorems~\ref{thm:derpropvcspc1} and~\ref{thm:derpropvcspc2}. Then, to show that \(c\vec{v}=\vec{0}\implies c=0\vee\vec{v}=\vec{0}\), we suppose that \(c\neq0\) and wish to show that \(\vec{v}=\vec{0}\). We have
                 \begin{equation*}
                     c\vec{v}=\vec{0}
                 \end{equation*}
@@ -142,7 +139,7 @@
                 \begin{equation*}
                     \left(\frac{1}{c}\right)(c\vec{v})=\frac{1}{c}\vec{0}=\vec{0},
                 \end{equation*}
-                by Theorem \ref{thm:derpropvcspc1}. But, by axiom \(7\), 
+                by Theorem~\ref{thm:derpropvcspc1}. But, by axiom \(7\), 
                 \begin{equation*}
                     \left(\frac{1}{c}\right)(c\vec{v})=\left(\frac{1}{c}c\vec{v}\right)=\vec{v},
                 \end{equation*}
@@ -175,7 +172,7 @@
                 \item \(c\in\mathbb{F}, \vec{w}\in W\implies c\vec{w}\in W\).
             \end{enumerate}
             \begin{proof}
-                We know that \(W\neq\emptyset\), because \(\vec{0}\in W\). Next, \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\) by the closure property of addition of a vector space \(W\). Then, \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\) by the closure property of scalar multiplication of a vector space \(W\). Now, we must show that all vector space axioms hold in \(W\). Axioms \(1\), \(2\), \(5\), \(6\), \(7\), and \(8\) all hold true, as they relate to the operations of \(W\). Since \(W\) has the same operations as \(V\), a known vector space, these properties hold true in \(W\), a subset of \(V\), as well. We will now prove property \(3\). Since \(W\) is nonempty, we consider some \(\vec{w}\in W\). Since \(W\) is closed under scalar multiplication, \(0\vec{w}\in W\). This is the same operation as the one described in Theorem \ref{thm:derpropvcspc2}, and so \(0\vec{w}=\vec{0}\). Since \(\vec{v}+\vec{0}=\vec{v}\) for all \(\vec{v}\in V\), \(\vec{w}+\vec{0}=\vec{w}\) for all \(\vec{w}\in W\). We will now prove property \(4\). Since \(\vec{w}\in W\), \(\vec{w}\in V\). The additive inverse of \(\vec{w}\) in \(V\) is \((-1)\vec{w}\). We see that \((-1)\vec{w}\in W\), as \(W\) is closed under scalar multiplication.
+                We know that \(W\neq\emptyset\), because \(\vec{0}\in W\). Next, \(\vec{w}_1,\vec{w}_2\in W\implies \vec{w}_1+\vec{w}_2\in W\) by the closure property of addition of a vector space \(W\). Then, \(\vec{w}\in W\implies c\vec{w}\in W, c\in\mathbb{F}\) by the closure property of scalar multiplication of a vector space \(W\). Now, we must show that all vector space axioms hold in \(W\). Axioms \(1\), \(2\), \(5\), \(6\), \(7\), and \(8\) all hold true, as they relate to the operations of \(W\). Since \(W\) has the same operations as \(V\), a known vector space, these properties hold true in \(W\), a subset of \(V\), as well. We will now prove property \(3\). Since \(W\) is nonempty, we consider some \(\vec{w}\in W\). Since \(W\) is closed under scalar multiplication, \(0\vec{w}\in W\). This is the same operation as the one described in Theorem~\ref{thm:derpropvcspc2}, and so \(0\vec{w}=\vec{0}\). Since \(\vec{v}+\vec{0}=\vec{v}\) for all \(\vec{v}\in V\), \(\vec{w}+\vec{0}=\vec{w}\) for all \(\vec{w}\in W\). We will now prove property \(4\). Since \(\vec{w}\in W\), \(\vec{w}\in V\). The additive inverse of \(\vec{w}\) in \(V\) is \((-1)\vec{w}\). We see that \((-1)\vec{w}\in W\), as \(W\) is closed under scalar multiplication.
             \end{proof}
         \end{theorem}
         \pagebreak
@@ -274,9 +271,6 @@
             \item The set of \(n\) dimensional vectors having all integer coordinates.
             \item The set of all \(n\) dimensional vectors whose first two coordinates add up to \(3\).
         \end{enumerate}
-        \vphantom
-        \\
-        \\
         Consider the following examples of subsets of \(\mathcal{M}_{nn}\) that are not subspaces.
         \begin{enumerate}
             \item The set of nonsingular \(n\times n\) matrices.
@@ -454,7 +448,7 @@
                     \begin{equation*}
                         \vec{v}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
                     \end{equation*}
-                    for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). Since \(S\subseteq W\), and \(\vec{v}\) is a linear combination of elements of \(S\), \(\vec{v}\) is a linear combination of elements of \(W\). It follows that \(\vec{v}\in W\), by Theorem \ref{thm:lincombsubspc}.
+                    for some \(c_1,\ldots,c_n\in\mathbb{F}\) and \(\vec{v}_1,\ldots,\vec{v}_n\in S\). Since \(S\subseteq W\), and \(\vec{v}\) is a linear combination of elements of \(S\), \(\vec{v}\) is a linear combination of elements of \(W\). It follows that \(\vec{v}\in W\), by Theorem~\ref{thm:lincombsubspc}.
                 \end{proof}
                 \item \(\Span(S)\) is the smallest subspace of \(V\) containing \(S\). 
                 \begin{proof}
@@ -485,7 +479,7 @@
                 \begin{equation*}
                     \Span(S)\subseteq\bigcap W,\quad \bigcap W\subseteq\Span(S).
                 \end{equation*}
-                By the third part of Theorem \ref{thm:spanchrs}, \(\Span(S)\subseteq \bigcap W\) since \(\Span(S)\) is a subset of all subspaces \(W\). Because \(\Span(S)\), is itself, a subspace of \(V\) containing \(S\), \(\bigcap W\) must be contained in \(\Span(S)\), since if some \(\vec{v}\in \bigcap W\), \(\vec{v}\) is in all subspaces of \(V\) containing \(S\), including \(\Span(S)\). We have now shown both properties, and conclude that
+                By the third part of Theorem~\ref{thm:spanchrs}, \(\Span(S)\subseteq \bigcap W\) since \(\Span(S)\) is a subset of all subspaces \(W\). Because \(\Span(S)\), is itself, a subspace of \(V\) containing \(S\), \(\bigcap W\) must be contained in \(\Span(S)\), since if some \(\vec{v}\in \bigcap W\), \(\vec{v}\) is in all subspaces of \(V\) containing \(S\), including \(\Span(S)\). We have now shown both properties, and conclude that
                 \begin{equation*}
                     \Span(S)=\bigcap W,
                 \end{equation*}
@@ -578,9 +572,6 @@
                     c_1\vec{v}_1+\cdots+c_n\vec{v}_n=\vec{0} \iff c_1=\cdots=c_n=0.
                 \end{equation*}
             \end{enumerate}
-            \vphantom
-            \\
-            \\
             If \(S=\emptyset\), \(S\) is linearly independent.
 
         \end{definition}
@@ -644,7 +635,7 @@
         We will now consider the linear dependence of sets with one or two elements.
         \begin{theorem}{\Stop\,\,Linear Dependence of Sets With One or Two Elements}{onetwosetsdep}
 
-            Let \(S=\{\vec{v}\}\), and we have that if \(c\vec{v}=\vec{0}\) for some \(c\neq0\), \(S\) is linearly dependent. If \(S\) is linearly dependent, we know that \(\vec{v}=\vec{0}\) by Theorem \ref{thm:derpropvcspc4}. If \(\vec{v}=\vec{0}\), then \(1\vec{v}=\vec{0}\) and \(S\) is linearly dependent. Therefore \(S\) is linearly dependent if and only if \(\vec{v}=\vec{0}\). Now, suppose that \(S=\{\vec{v}_1,\vec{v}_2\}\). If \(\vec{v}_1=\vec{0}\), \(S\) is linearly dependent because
+            Let \(S=\{\vec{v}\}\), and we have that if \(c\vec{v}=\vec{0}\) for some \(c\neq0\), \(S\) is linearly dependent. If \(S\) is linearly dependent, we know that \(\vec{v}=\vec{0}\) by Theorem~\ref{thm:derpropvcspc4}. If \(\vec{v}=\vec{0}\), then \(1\vec{v}=\vec{0}\) and \(S\) is linearly dependent. Therefore \(S\) is linearly dependent if and only if \(\vec{v}=\vec{0}\). Now, suppose that \(S=\{\vec{v}_1,\vec{v}_2\}\). If \(\vec{v}_1=\vec{0}\), \(S\) is linearly dependent because
             \begin{equation*}
                 1\vec{v}_1+0\vec{v}_2=\vec{0}.
             \end{equation*}
@@ -1021,14 +1012,14 @@
                     \Span(B)&=\{c_0x^0+\cdots+c_nx^n:c_0,\ldots,c_n\in\mathbb{R}^n\} \\
                     &=\mathcal{P}_n.
                 \end{align*}
-                Then, to verify linear independence, see Example \ref{exa:proplinindep2}. Thus, \(B\) is a basis for \(\mathcal{P}_n\).
+                Then, to verify linear independence, see Example~\ref{exa:proplinindep2}. Thus, \(B\) is a basis for \(\mathcal{P}_n\).
             \end{example}
             \begin{example}{\Difficulty\,\Difficulty\,\Difficulty\,\,A Basis of \(\{\vec{0}\}\)}{basiszero}
 
                 Verify that \(B=\emptyset\) is a basis of \(\{\vec{0}\}\).
                 \\
                 \\
-                We note that \(\Span(B)=\vec{0}\), by Definition \ref{def:span}. Then, we recall that \(B\) is linearly independent, by Definition \ref{def:linindepdep}. Thus, \(B\) is a basis for \(\{\vec{0}\}\).
+                We note that \(\Span(B)=\vec{0}\), by Definition~\ref{def:span}. Then, we recall that \(B\) is linearly independent, by Definition~\ref{def:linindepdep}. Thus, \(B\) is a basis for \(\{\vec{0}\}\).
             
             \end{example}
             \pagebreak
@@ -1106,7 +1097,7 @@
 
             Let \(S\) and \(T\) be subsets of a vector space \(V\) such that \(\Span(S)=V\) where \(S\) is finite and \(T\) is linearly independent. Then, \(T\) is finite and \(|T|\leq|S|\).
             \begin{proof}
-                If \(S=\emptyset\), then we have that \(V=\{\vec{0}\}\). Since \(\{\vec{0}\}\) is linearly independent, \(T=\emptyset\). Suppose \(|S|=n\geq1\). Suppose, for the sake of contradition, that \(T\) is infinite or \(|T|>|S|=n\). Since every finite subset of \(T\) is linearly independent, there is a linearly independent set \(Y\subseteq T\) such that \(|Y|=n+1\). Let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) and let \(Y=\{\vec{w}_1,\ldots,\vec{w}_n,\ldots,\vec{w}_{n+1}\}\). We will show that \(Y\) is linearly dependent. Then, we have \(c_{ij}\in\mathbb{F}\) for \(1\leq i \leq n+1\) and \(1\leq j\leq n\) such that
+                If \(S=\emptyset\), then we have that \(V=\{\vec{0}\}\). Since \(\{\vec{0}\}\) is linearly independent, \(T=\emptyset\). Suppose \(|S|=n\geq1\). Suppose, for the sake of contradition, that \(T\) is infinite or \(|T|>|S|=n\). Since every finite subset of \(T\) is linearly independent, there is a linearly independent set \(Y\subseteq T\) such that \(|Y|=n+1\). Let \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\) and let \(Y=\{\vec{w}_1,\ldots,\vec{w}_n,\vec{w}_{n+1}\}\). We will show that \(Y\) is linearly dependent. Then, we have \(c_{ij}\in\mathbb{F}\) for \(1\leq i \leq n+1\) and \(1\leq j\leq n\) such that
                 \begin{equation*}
                     \vec{w}_1=c_{11}\vec{v}_1+\cdots+c_{1n}\vec{v}_n,\ldots,\vec{w}_{n+1}=c_{n+1,1}\vec{v}_1+\cdots+c_{n+1,n}\vec{v}_n.
                 \end{equation*}
@@ -1155,7 +1146,7 @@
             
             Suppose \(V\) is a vector space. If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(\dim V\leq|S|\).
             \begin{proof}
-                See Theorem \ref{thm:basislemma} and Definition \ref{def:dimension}.
+                See Theorem~\ref{thm:basislemma} and Definition~\ref{def:dimension}.
             \end{proof}
 
         \end{theorem}
@@ -1163,11 +1154,11 @@
             
             Suppose \(V\) is a vector space. If \(S\subseteq V\) is finite and \(\Span(S)=V\), then, \(S\) is a basis if and only if \(\dim V = |S|\).
             \begin{proof}
-                Suppose \(S\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Let \(B\) be a basis for \(V\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
+                Suppose \(S\) is a basis. Then, by Definition~\ref{def:dimension}, \(\dim V = |S|\). If \(\dim V = |S|\), let \(n=|S|=\dim V\) so \(S=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Let \(B\) be a basis for \(V\). Since \(\Span(S)=V\), we need only show that \(S\) is linearly independent. Suppose \(S\) is linearly dependent, then, there exists \(\vec{v}_i\) such that
                 \begin{equation*}
                     \Span(S-\{\vec{v}_i\})=\Span(\{\vec{v}_1,\ldots,\vec{v}_{i-1},\vec{v}_{i+1},\ldots,\vec{v}_n\})=V.
                 \end{equation*}
-                Since \(B\) is linearly independent, we have \(|B|\leq|S-\{\vec{v}_i\}|\) by Theorem \ref{thm:basislemma}, which is contradictory.
+                Since \(B\) is linearly independent, we have \(|B|\leq|S-\{\vec{v}_i\}|\) by Theorem~\ref{thm:basislemma}, which is contradictory.
             \end{proof}
 
         \end{theorem}
@@ -1175,7 +1166,7 @@
             
             Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent, then, \(|T|\leq\dim V\).
             \begin{proof}
-                Let \(S\) be a basis of \(V\). Thus, \(\Span(S)=V\) and \(\dim V=|S|\). By Theorem \ref{thm:basislemma}, if \(T\) is linearly independent, \(|T|\leq|S|\), so \(|T|\leq\dim V\).
+                Let \(S\) be a basis of \(V\). Thus, \(\Span(S)=V\) and \(\dim V=|S|\). By Theorem~\ref{thm:basislemma}, if \(T\) is linearly independent, \(|T|\leq|S|\), so \(|T|\leq\dim V\).
             \end{proof}
         
         \end{theorem}
@@ -1184,7 +1175,7 @@
             
             Suppose \(V\) is a vector space. If \(T\subseteq V\) is linearly independent and finite, \(T\) is a basis for \(V\) if and only if \(\dim V = |T|\).
             \begin{proof}
-                Suppose \(T\) is a basis. Then, by Definition \ref{def:dimension}, \(\dim V = |T|\). If \(\dim V = |T|\), Let \(n=|T|=\dim V\) so \(T=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(T\) is linearly independent, we need only show that \(\Span(T)=V\). Suppose not, then, there exists some \(\vec{v}\in V\) where \(\vec{v}\nin \Span(T)\). Consider the set \(T\cup\{\vec{v}\}\). We see that
+                Suppose \(T\) is a basis. Then, by Definition~\ref{def:dimension}, \(\dim V = |T|\). If \(\dim V = |T|\), Let \(n=|T|=\dim V\) so \(T=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Since \(T\) is linearly independent, we need only show that \(\Span(T)=V\). Suppose not, then, there exists some \(\vec{v}\in V\) where \(\vec{v}\nin \Span(T)\). Consider the set \(T\cup\{\vec{v}\}\). We see that
                 \begin{equation*}
                     |T\cup\{\vec{v}\}|=|T|+1=\dim V+1
                 \end{equation*}
@@ -1200,7 +1191,7 @@
                 \begin{equation*}
                     \vec{0}=c_1\vec{v}_1+\cdots+c_n\vec{v}_n
                 \end{equation*}
-                since \(T\) is linearly independent and \(\vec{v}_1,\ldots,\vec{v}_n\in T\). Thus, \(c_1=\cdots=c_n=c_{n+1}=0\). By Theorem \ref{thm:lindim1}, we have \(|T\cup\{\vec{v}\}|\leq\dim V\). However, the left hand side is \(\dim V+1\), which is contradictory. Thus, \(\Span(T)=V\), so \(T\) is a basis for \(V\).
+                since \(T\) is linearly independent and \(\vec{v}_1,\ldots,\vec{v}_n\in T\). Thus, \(c_1=\cdots=c_n=c_{n+1}=0\). By Theorem~\ref{thm:lindim1}, we have \(|T\cup\{\vec{v}\}|\leq\dim V\). However, the left hand side is \(\dim V+1\), which is contradictory. Thus, \(\Span(T)=V\), so \(T\) is a basis for \(V\).
             \end{proof}
         
         \end{theorem}
@@ -1220,7 +1211,7 @@
             \end{equation*}
             Moreover, if \(\dim W=\dim V\), then, \(W=V\).
             \begin{proof}
-                Suppose, for the sake of contradiction, \(\dim W>\dim V\). Let \(n=\dim V\), and let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_{n+1},\ldots,\vec{w}_{n+k}\}\) be a basis of \(W\). By Theorem \ref{thm:lindim1}, \(B_W\) is linearly dependent in \(V\), which is contradictory. For the next part of the theorem, suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
+                Suppose, for the sake of contradiction, \(\dim W>\dim V\). Let \(n=\dim V\), and let \(B_W=\{\vec{w}_1,\ldots,\vec{w}_{n+1},\ldots,\vec{w}_{n+k}\}\) be a basis of \(W\). By Theorem~\ref{thm:lindim1}, \(B_W\) is linearly dependent in \(V\), which is contradictory. For the next part of the theorem, suppose, for the sake of contradiction, \(W\neq V\). That is, suppose that \(\Span(B_W)=W\neq V\). Then, there exists some \(\vec{v}\in V\) with \(\vec{v}\nin\Span(B_W)\). Then, \(B_W\cup\{\vec{v}\}\) is linearly independent in \(V\), and by construction, \(\Span(B_W\cup\{\vec{v}\})=V\). But, \(|B_W\cup\{\vec{v}\}|=n+1\), and an \(n\)-dimensional space cannot have a basis with \(n+1\) elements, providing our contradiction. Thus, \(W=V\), as desired.
             \end{proof}
             
         \end{theorem}
@@ -1228,7 +1219,7 @@
 
             Suppose \(A\in\mathcal{M}_{nn}\). Then, \(A\) is diagonalizable if and only if there exists a basis of \(\mathbb{R}^n\) that consists of eigenvectors of \(A\).
             \begin{proof}
-                Recall that by Theorem \ref{thm:diagonalizability}, \(A\in\mathcal{M}_{nn}\) is diagonalizable if and only if there exists a set of \(n\) linearly indpendent eigenvectors \(\vec{v}_1,\ldots,\vec{v}_n\). Let \(V=\mathbb{R}^n\) and \(W=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Then, \(\dim V=n\). We also see that \(W\subseteq V\) is linearly independent and finite with \(|W|=\dim V\). By Theorem \ref{thm:lindim2}, \(W\) is a basis for \(V\). Our proof is reversible, as all implications are bidirectional.
+                Recall that by Theorem~\ref{thm:diagonalizability}, \(A\in\mathcal{M}_{nn}\) is diagonalizable if and only if there exists a set of \(n\) linearly indpendent eigenvectors \(\vec{v}_1,\ldots,\vec{v}_n\). Let \(V=\mathbb{R}^n\) and \(W=\{\vec{v}_1,\ldots,\vec{v}_n\}\). Then, \(\dim V=n\). We also see that \(W\subseteq V\) is linearly independent and finite with \(|W|=\dim V\). By Theorem~\ref{thm:lindim2}, \(W\) is a basis for \(V\). Our proof is reversible, as all implications are bidirectional.
             \end{proof}
 
         \end{theorem}
@@ -1245,9 +1236,6 @@
                 \item Row reduce \(A\) into reduced row echelon form to obtain a matrix \(C\).
                 \item The basis of \(\Span(S)\), \(B\), is formed by removing the vectors in \(A\) associated with the columns containing free variables.
             \end{enumerate}
-            \vphantom
-            \\
-            \\
             Note that the vectors in \(B\) are in \(S\).
             \\
             \\
@@ -1260,7 +1248,7 @@
             \begin{enumerate}
                 \item Find a spanning set \(A=\{\vec{a}_1,\ldots,\vec{a}_n\}\). For \(\mathbb{R}^n\), this will often be \(\{\vec{e}_1,\ldots,\vec{e}_n\}\).
                 \item Form the ordered spanning set \(S=\{\vec{t}_1,\ldots,\vec{t}_k,\vec{a}_1,\ldots,\vec{a}_n\}\) for \(V\).
-                \item Use Theorem \ref{thm:basisforspan} to find a basis \(B\) for \(V\), containing \(T\).
+                \item Use Theorem~\ref{thm:basisforspan} to find a basis \(B\) for \(V\), containing \(T\).
             \end{enumerate}
 
         \end{theorem}
@@ -1764,7 +1752,7 @@
         \end{example}
         \begin{example}{\Difficulty\,\Difficulty\,\,Checking a Transition Matrix}{check}
 
-            Check that the \(P\) found in Example \ref{exa:transitionmatrix} yields the correct result for 
+            Check that the \(P\) found in Example~\ref{exa:transitionmatrix} yields the correct result for 
             \begin{equation*}
                 \vec{v}_1=[1,1,0,1].
             \end{equation*}
@@ -1840,6 +1828,6 @@
                     \vec{v}_1 & \cdots & \vec{v}_n
                 \end{bmatrix}.
             \end{equation*}
-            By Theorem \ref{thm:diagrev1}, \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) is an ordered basis of \(\mathbb{R}^n\). Then, \(P\) is the transition matrix from \(B\) to the standard basis.
+            By Theorem~\ref{thm:diagrev1}, \(B=(\vec{v}_1,\ldots,\vec{v}_n)\) is an ordered basis of \(\mathbb{R}^n\). Then, \(P\) is the transition matrix from \(B\) to the standard basis.
             
         \end{theorem}

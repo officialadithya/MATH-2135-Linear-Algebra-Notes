@@ -1,0 +1,588 @@
+In this section, we provide lecture notes for numerical linear algebra, as covered by APPM4600: Numerical Methods and Scientific Computation. We assume basic familiarity with the fundamentals of numerical computation. Lectures were presented by Eduardo Corona, Ph. D, and we additionally referred to \cite{olver2006applied}, especially for pseudocode. This set of notes is significantly less polished than the rest of this document.
+\section{Lecture 1: Nov. 13, 2024}
+
+    \subsection{Gaussian Elimination and the \(LU\) Decomposition}
+
+        Recall that in Chapter~\ref{chapter:syslineq}, we discussed systems of linear equations. There, we described the classic Gaussian elimination method. Here, we formalize this procedure as an algorithm and discuss its efficiency and stability. Recall that given an upper triangular system, we may easily recover our unknowns. That is, given \(A\vec{x}=\vec{b}\) with \(A\) being an upper triangular matrix, we have that
+        \begin{equation*}
+            x_n=\frac{b_n}{a_{nn}},\quad x_j=\frac{1}{a_{jj}}\left(b_j-\sum_{k>j}a_{jk}x_k\right).
+        \end{equation*}
+        We refer to this procedure as ``back substitution.'' An analogous procedure, called ``forward substitution,'' follows if \(A\) is lower triangular. If \(A\in\mathcal{M}_{nn}\), back substitution takes roughly \(2(1+\cdots+(n-1))+n\in O(n^2)\) operations. There are \(n\) divisions total, and for row \(j\), there are \(j\) multiplication and \(j\) addition operations.
+        \\
+        \\
+        The idea behind Gaussian elimination is to perform row operations to transform the matrix \(A\) into an upper triangular matrix, and then apply back substitution. We refer the reader to examples in Chapter~\ref{chapter:syslineq}. To formalize this, consider the below pseudocode, which reveals the \(O(n^3)\) complexity.
+        \begin{algorithm}[H] 
+            \begin{algorithmic}[1]
+                \Require \(A\in\mathcal{M}_{nn}\) 
+                \Procedure{Gaussian\_Elimination}{$A,\vec{b}$} 
+                    \State \(M\gets [A|\vec{b}]\)
+                    \For{\(j\in\{1,\ldots,n\}\)}
+                        \If{\(m_{kj}=0\) for all \(k\geq j\)} \Return{Error: \(A\) is Singular}
+                        \EndIf
+                        \If{\(m_{jj}=0\) but \(m_{kj}\neq0\) for some \(k>j\)} \(\langle k\rangle \leftrightarrow \langle j\rangle\)
+                        \EndIf
+                        \For{\(i \in\{j+1,\ldots, n\}\)}
+                            \State \(\ell_{ij}=\frac{m_{ij}}{m_{jj}}\)
+                            \State \(\langle i\rangle\gets -\ell_{ij}\langle j\rangle+\langle i\rangle\)
+                        \EndFor
+                    \EndFor
+                \EndProcedure 
+            \end{algorithmic}
+            \caption{Gaussian Elimination}
+            \label{alg:gaussianelim}
+        \end{algorithm}
+        \vphantom
+        \\
+        \\
+        Note that \(\langle i\rangle\), as used in Algorithm~\ref{alg:gaussianelim}, refers to the \(i\)th row of the system, just like the convention used in Chapter~\ref{chapter:syslineq}.
+        \\
+        \\
+        Furthermore, note that if we have several linear systems to solve with the same matrix \(A\), we can perform one sequence of row operations on \(A\), and apply these to all systems in parallel. 
+        \\
+        \\
+        Recall that by performing row operations, what we are really doing is multiplying \(A\) by elementary matrices.
+        \begin{definition}{\Stop\,\,Elementary Matrices}{elemmat}
+            The elementary matrix associated with a row operation on a matrix with \(m\) rows is the \(m\times m\) matrix obtained by applying the row operation to \(I_m\).
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        To transform \(A\) into an upper triangular matrix, the elementary matrices are all lower triangular. Formally, we can write
+        \begin{equation*}
+            U=(L_{n-1}\cdots L_1)A, \quad \vec{c}=(L_{n-1}\cdots L_1)\vec{b}
+        \end{equation*} 
+        where \(L_i\) are the lower triangular elementary matrices and \(U\) is the upper triangular matrix we desire. So,
+        \begin{equation*}
+            A=L_1^{-1}\cdots L_{n-1}^{-1}U.
+        \end{equation*}
+        It is not too difficult to show that the product of lower triangular matrices is lower triangular. Let \(L=L_1^{-1}\cdots L_{n-1}^{-1}\). So, with \(A=LU\), we have factorized \(A\) as a product of a lower triangular and an upper triangular matrix. This procedure is called the \(LU\) factorization. Going back to our system of equations, if \(A\vec{x}=\vec{b}\), we indeed have \(LU\vec{x}=\vec{b}\). Let \(\vec{y}=U\vec{x}\). To find \(\vec{y}\), we may use forward substitution on \(L\) and \(\vec{b}\) in \(O(n^2)\) time, and similarly to find \(\vec{x}\), we can use back substitution on \(U\) and \(\vec{y}\) in \(O(n^2)\) time. The \(O(n^3)\) time to compute the \(LU\) factorization is amortized over several solves.
+
+\pagebreak
+
+\section{Lecture 2: Nov. 15, 2024}
+
+    \subsection{Combatting Instability: Pivoting Strategies}
+
+        Here, we show that the standard Gaussian elimination is unstable. Consider
+        \begin{equation*}
+            A_\epsilon=\begin{bmatrix}
+                \epsilon & 1 \\
+                1 & -\epsilon
+            \end{bmatrix},\quad\vec{x}_\epsilon=\frac{1}{1+\epsilon^2}\begin{bmatrix}
+                2+\epsilon \\ 1-2\epsilon
+            \end{bmatrix},\quad
+            \vec{b}=\begin{bmatrix}
+                1 \\ 2
+            \end{bmatrix}.
+        \end{equation*}
+        Note
+        \begin{equation*}
+            A_\epsilon^{-1}=\frac{1}{1+\epsilon^2}A_\epsilon.
+        \end{equation*}
+        If we take \(\epsilon=10^{-6}\). Then, the Gaussian elimination procedure on \([A|\vec{b}]\) gives us the triangular system
+        \begin{equation*}
+            \begin{bmatrix}
+                10^{-6} & 1 & | & 1 \\
+                0 & -10^{-6}-10^6 & | & 2-10^6
+            \end{bmatrix}
+        \end{equation*}
+        But, say our machine only has \(5\) digits of precision. So, really, we instead have
+        \begin{equation*}
+            \begin{bmatrix}
+                10^{-6} & 1 & | & 1 \\
+                0 & -10^6 & | & -10^6
+            \end{bmatrix},
+        \end{equation*}
+        yielding \(x_2=1\) and \(x_1=10^6(1-1)=0\), which is disastrous. With more precision, we'd get \(x_2\approx 1\) and \(x_1\approx 10^6(1-x_2)\). Nothing about \(A_\epsilon\) should bring about this bad behavior; the condition number of \(A_\epsilon\) is \(1\).
+        \\
+        \\
+        The issue arises from pivoting on the small entry \(10^{-6}\). It turns out that small pivots are bad for stability. This issue gives rise to two stategies for selecting a pivot:
+        \begin{enumerate}
+            \item Partial Pivoting: For each column, find the maximal element in absolute value, and permute rows until the maximal element is in the pivot position. Then, pivot on the maximal element.
+            \item Total (Complete) Pivoting: Find the maximal element in absolute value in the matrix, and permute rows and columns until the maximal element is in the pivot position. Then, pivot on the maximal element.
+        \end{enumerate}
+        For both methods, we must be sure to store the permutations in some way; permutation matrices take a lot of space, so we can store the data in vectors. Let \(\vec{\sigma}_i\) be a pointer to the \(i\)th row in memory\footnote{Here, \(\vec{\sigma}\) contains all pointers, and \(\vec{\sigma}_i\) is the \(i\)th entry of \(\vec{\sigma}\).}, and similarly let \(\vec{\tau}_j\) be the pointer to the \(j\)th column. We initialize \(\vec{\sigma}_i=i\) and \(\vec{\tau}_j=j\). For partial pivoting, we only need to keep track of \(\vec{\sigma}\), but for total pivoting, we need both \(\vec{\sigma}\) and \(\vec{\tau}\). We provide pseudocode for partial pivoting in~\ref{alg:gaussianelimpp}.
+        \begin{algorithm}[H] 
+            \begin{algorithmic}[1]
+                \Require \(A\in\mathcal{M}_{nn}\) 
+                \Procedure{Gaussian\_Elimination\_Partial\_Pivoting}{$A,\vec{b}$} 
+                    \State \(M\gets [A|\vec{b}]\)
+                    \State \((\vec{\sigma}_i)_{i=1}^n\gets (i)_{i=1}^n\)
+                    \For{\(j\in\{1,\ldots,n\}\)}
+                        \If{\(m_{\vec{\sigma}_kj}=0\) for all \(k\geq j\)} \Return{Error: \(A\) is Singular}
+                        \State \(i\gets \argmax_{i>j} |m_{\vec{\sigma}_ij}|\)
+                        \State \(\vec{\sigma}_i\leftrightarrow \vec{\sigma}_j\)  
+                        \EndIf
+                        \For{\(i \in\{j+1,\ldots, n\}\)}
+                            \State \(\ell_{\vec{\sigma}_ij}=\frac{m_{\vec{\sigma}_ij}}{m_{\vec{\sigma}_jj}}\)
+                            \For{\(k\in\{j+1,\ldots,n+1\}\)}
+                                \State \(m_{\vec{\sigma}_ik}\gets-\ell_{\vec{\sigma}_ij}m_{\vec{\sigma}_jk}+m_{\vec{\sigma}_ik}\)
+                            \EndFor
+                        \EndFor
+                    \EndFor
+                \EndProcedure 
+            \end{algorithmic}
+            \caption{Gaussian Elimination with Partial Pivoting}
+            \label{alg:gaussianelimpp}
+        \end{algorithm}
+        \vphantom
+        \\
+        \\
+        Note that while Algorithm~\ref{alg:gaussianelimpp} may look complicated, it is really just a modification of Algorithm~\ref{alg:gaussianelim} where we have selected the largest column element to be the pivot, and interchanged rows, storing the changes in \(\vec{\sigma}\), as necessary. Both pivoting strategies give rise to different equivalent systems, which we can solve as previously shown. If we use \(LU\) factorization with partial pivoting, it is important to note \(A\neq LU\), but \(A_{\vec{\sigma}}=LU\) where \(A_{\vec{\sigma}}\) has the elements of \(A\), but with the permutation of the rows we computed. Really, we're solving the system \(A_{\vec{\sigma}}\vec{x}=LU\vec{x}=\vec{b}_\sigma\) by forward solving on \(L\) and \(\vec{b}_\sigma\), and backward solving on \(U\) and \(\vec{y}\).
+        \\
+        \\
+        Partial pivoting is generally stable, as it avoids the small pivots that led to catastrophe in the first example. It indeed almost solves all of our problems; however, there exist pathological examples where partial pivoting is unstable, but these examples are isolated, and peturbations fix the issues. Total pivoting truly fixes all our problems, but is not used as much in practice due to the added cost of searching for the maximal element.
+
+\pagebreak
+
+\section{Lecture 3: Nov. 18, 2024}
+
+    \subsection{Projection Matrices and the \(QR\) Decomposition}
+
+        In this section, we revisit the Gram-Schmidt procedure stated in Theorem~\ref{thm:gramschmidt}. Recall that given an arbitrary basis \(B=\{\vec{v}_1,\ldots,\vec{v}_n\}\) of a vector space \(V\), we can use the Gram-Schmidt procedure to find an orthonormal basis. Suppose that \(B_\perp=\{\vec{q}_1,\ldots,\vec{q}_n\}\) is an orthonormal basis. Then, 
+        \begin{equation*}
+            Q=\begin{bmatrix}
+                \vec{q}_1 & \cdots & \vec{q}_n
+            \end{bmatrix}
+        \end{equation*}
+        is unitary. Note that with respect to \(B_\perp\), we can write
+        \begin{equation*}
+            \vec{v}_k=\sum_{i=1}^k\iprod{\vec{q}_i}{\vec{v}_i}\vec{q}_i.
+        \end{equation*}
+        Now, we can form
+        \begin{equation*}
+            A=\begin{bmatrix}
+                \vec{v}_1 & \cdots & \vec{v}_n
+            \end{bmatrix}.
+        \end{equation*}
+        Then, with 
+        \begin{equation*}
+            R=\begin{bmatrix}
+                \iprod{\vec{q}_1}{\vec{v}_1} & \iprod{\vec{q}_1}{\vec{v}_2} & \iprod{\vec{q}_1}{\vec{v}_3}  & \cdots & \iprod{\vec{q}_1}{\vec{v}_n} \\
+                0 &  \iprod{\vec{q}_2}{\vec{v}_2} & \iprod{\vec{q}_2}{\vec{v}_3} & \cdots & \iprod{\vec{q}_2}{\vec{v}_n} \\
+                0 & 0 & \iprod{\vec{q}_3}{\vec{v}_3} & \cdots & \iprod{\vec{q}_3}{\vec{v}_n} \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & 0 & \cdots & \iprod{\vec{q}_n}{\vec{v}_n}
+            \end{bmatrix},
+        \end{equation*}
+        we have that
+        \begin{equation*}
+            A=QR.
+        \end{equation*}
+        This procedure is called the \(QR\) decomposition of \(A\); however, the Gram-Schmidt process is very unstable.
+        \\
+        \\
+        We will, instead, consider the problem of finding \(Q\) such that \(R=Q^*A\). We study the process using Householder reflector matrices, but we remark that this may be done via Givens rotations.
+        Consider the following definition.
+        \begin{definition}{\Stop\,\,Projector Matrices}{projectormatrices}
+            We say that a matrix \(P\in\mathcal{M}_{nn}\) is a projector matrix if \(P^2=P\). Furthermore, \(P\) is an orthogonal projector if \(P\) is a projector and \(P^*=P\).
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Note that
+        \begin{equation*}
+            \ker P=\{\vec{y}\in\mathbb{C}^n:\vec{y}=\vec{x}-P\vec{x}\}.
+        \end{equation*}
+        since
+        \begin{equation*}
+            P(I-P)=P-P^2=P-P=0.
+        \end{equation*}
+        \pagebreak
+        We have that \(P\) and \(I-P\) are both projector matrices with \(\range(P)=\ker(I-P)\) and \(\range(I-P)=\ker(P)\). If \(P\) is an orthogonal projector, we have the following useful properties.
+        \begin{enumerate}
+            \item \(\range(P)\perp \ker(P)\), and
+            \item \(\range(P)+\ker(P)=\mathbb{C}^n\).
+        \end{enumerate}
+        We use the notion of a Householder reflector.
+        \begin{definition}{\Stop\,\,Householder Reflectors}{householderreflector}
+            Given \(\vec{u}\in \mathbb{R}^n\) with \(||\vec{u}||=1\). Then, define the Householder reflector
+            \begin{equation*}
+                H_{\vec{u}}=I-2\vec{u}\vec{u}^*.
+            \end{equation*}
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Geometrically, the Householder matrix \(H_{\vec{u}}\) is a reflection about \(\vec{u}^\perp=\{\vec{v}\in\mathbb{R}^n:\iprod{\vec{v}}{\vec{u}}=0\}\). It is straightforward to check that \(H_{\vec{u}}^2=H_{\vec{u}}\) and \(H_{\vec{u}}^*=H_{\vec{u}}\). Consider the following lemma.
+        \begin{lemma}{\Stop\,\,Householder Interchange}{householderinterchange}
+            Let \(\vec{v},\vec{w}\in\mathbb{R}^n\) with \(||\vec{v}||=||\vec{w}||\). Let \(\vec{u}=\frac{\vec{v}-\vec{w}}{||\vec{v}-\vec{w}||}\). Then,
+            \begin{equation*}
+                H_{\vec{u}}\vec{v}=\vec{w},\quad H_{\vec{u}}\vec{w}=\vec{v}.
+            \end{equation*}
+            \begin{proof}
+                We have
+                \begin{align*}
+                    H_{\vec{u}}\vec{v}&=(I-2\vec{u}\vec{u}^*)\vec{v} \\
+                    &=\vec{v}-\frac{2(\vec{v}-\vec{w})(\vec{v}-\vec{w})^*\vec{v}}{||\vec{v}-\vec{w}||^2} \\
+                    &=\vec{v}-\frac{2(||\vec{v}||^2-\iprod{\vec{w}}{\vec{v}})(\vec{v}-\vec{w})}{2||\vec{v}||^2-2\iprod{\vec{v}}{\vec{w}}} \\
+                    &=\vec{v}-(\vec{v}-\vec{w})=\vec{w}.
+                \end{align*}
+                The proof of the other equation is analogous.
+            \end{proof}
+        \end{lemma}
+        \vphantom
+        \\
+        \\
+        Let
+        \begin{equation*}
+            A=\begin{bmatrix}
+                \vec{v}_1 & \cdots & \vec{v}_n
+            \end{bmatrix}.
+        \end{equation*}
+        We will now form \(R\) by repeatedly applying Householder matrices. Define, if \(\vec{v}\neq c\vec{e}_1\), for some constant \(c\),
+        \begin{equation*}
+            \vec{w}_1=||\vec{v}_1||\vec{e}_1,\quad \vec{u}_1=\frac{\vec{v}_1-||\vec{v}_1||\vec{e}_1}{||\vec{v}_1-||\vec{v}_1||\vec{e}_1||},\quad H_1=I-2\vec{u}_1\vec{u}_1^*.
+        \end{equation*}
+        If \(\vec{v}=c\vec{e}_1\), let \(\vec{u}_1=\vec{0}\) and \(H_1=I\). By Lemma \ref{lem:householderinterchange}, \(H_1\vec{v}_1=\vec{w}_1\). So, the first column of \(A_2=H_1A\) is in the desired upper triangular form. We have
+        \begin{equation*}
+           A_2=H_1A=\begin{bmatrix}
+                r_{11} & \star & \cdots & \star \\
+                       0 &       &        &       \\
+                  \vdots &       &     A' &       \\
+                       0 &       &        &
+              \end{bmatrix}.
+        \end{equation*}
+        We want to iterate this process to eventually get an upper triangular matrix. But, we don't want to mess up our previous work. So, at the \(k\)th step of this process, let \(\tilde{\vec{v}}_k\) be the \(k\)th column of \(A\) with the first \(k-1\) entries set to \(0\). Then, let
+        \begin{equation*}
+            \vec{w}_1=\tilde{\vec{v}}_k-||\tilde{\vec{v}}_k||\vec{e}_k,\quad \vec{u}_k=\begin{cases} \frac{\vec{w}_k}{||\vec{w}_k||} & \vec{w}_k\neq\vec{0} \\ \vec{0} & \vec{w}_k=\vec{0} \end{cases}, \quad H_k=I-2\vec{u}_k\vec{u}_k^*,\quad A_{k+1}=H_kA_k.
+        \end{equation*}
+        In \(n-1\) steps, we have 
+        \begin{equation*}
+            R=H_{n-1}\cdots H_1A=Q^*A,\quad Q=H_1\cdots H_{n-1},
+        \end{equation*}
+        so
+        \begin{equation*}
+            A=QR,
+        \end{equation*}
+        as desired. This algorithm for \(QR\) decomposition is much more stable than the naive form given by Gram-Schmidt. The complexity is \(O(n^3)\).
+        % Given \(\vec{v}\in\mathbb{R}^n\), we can write \(\vec{v}=\alpha\vec{w}+\vec{y}\) with \(\iprod{\vec{y}}{\vec{w}}=0\). Then,
+        % \begin{equation*}
+        %     H_{\vec{w}}\vec{w}=(I-2\vec{w}\vec{w}^*)\vec{w}=\vec{w}-2\vec{w}(\vec{w}^*\vec{w})=-\vec{w}
+        % \end{equation*}
+        % and
+        % \begin{equation*}
+        %     H_{\vec{w}}\vec{y}=(I-2\vec{w}\vec{w}^*)\vec{y}=\vec{y}-2\vec{w}(\vec{w}^*\vec{y})=\vec{y}.
+        % \end{equation*}
+        % So, 
+        % \begin{equation*}
+        %     H_{\vec{w}}\vec{y}=\vec{y}-\alpha\vec{w}.
+        % \end{equation*}
+        % Now, we wish to find \(\vec{w}_1=H_{\vec{w}_1}\vec{a}_1=r_{11}\vec{e}_1\), so \(|r_{11}|=||\vec{a}_1||\). We have
+        % \begin{equation*}
+        %     \vec{\tilde{w}}_1=\vec{a}_1+\sgn(a_{11})+\vec{e}_1.
+        % \end{equation*}
+        % Then, \(\vec{w}_1=\frac{\vec{\tilde{w}}_1}{||\vec{\tilde{w}}_1||}\). Now, we consider
+        % \begin{equation*}
+        %     H_{\vec{w}_1}A=\begin{bmatrix}
+        %         r_{11} & \star & \cdots & \star \\
+        %                0 &       &        &       \\
+        %           \vdots &       &     A' &       \\
+        %                0 &       &        &
+        %       \end{bmatrix}.
+        % \end{equation*}
+        % We can continue this process to get
+        % \begin{equation*}
+        %     H_k=\begin{bmatrix}
+        %         I_{k-1} & 0 \\
+        %         0 & H_{\vec{w}_k}
+        %     \end{bmatrix}.
+        % \end{equation*}
+        % Finally, 
+        % \begin{equation*}
+        %     H_n\cdots H_1A=R.
+        % \end{equation*}
+        % So, 
+        % \begin{equation*}
+        %     A=\underbrace{(H_1\cdots H_n)}_{Q}R.
+        % \end{equation*}
+
+\pagebreak
+
+\section{Lecture 4: Nov. 20, 2024}
+
+    \subsection{Eigendecomposition} \label{sec:eigendecomposition}
+
+        Recall Definitions,~\ref{def:eigenvaluesandvectors},~\ref{def:eigenspace}, and Theorem~\ref{thm:findeigenvs}. These definitions define eigenvalues, eigenvectors, and the eigenspace of a matrix. The theorem shows how to find eigenspaces. In this section, we want to write a matrix \(A\in\mathcal{M}_{nn}^\mathbb{C}\) as
+        \begin{equation*}
+            A=UDU^*
+        \end{equation*}
+        where \(U\) is unitary and \(D\) is diagonal. We introduce a few basic definitions.
+        \begin{definition}{\Stop\,\,Spectrums}{spectrums}
+            Let \(A\in\mathcal{M}_{nn}^\mathbb{C}\). The set of eigenvalues of \(A\) is called the spectrum \(\sigma(A)\) of \(A\).
+        \end{definition}
+        \begin{definition}{\Stop\,\,Eigenpair}{eigenpair}
+            Let \(A\in\mathcal{M}_{nn}^\mathbb{C}\). If \(\lambda\) is an eigenvalue of \(A\) with eigenvector \(\vec{v}\), then \((\lambda,\vec{v})\) is called an eigenpair of \(A\).
+        \end{definition}
+        \vphantom
+        \\
+        \\
+        Recall that we can characterize the eigenspace of a matrix \(A\) as \(E_\lambda=\ker(A-\lambda I)\). We also recall the notions of algebraic and geometric multiplicity in Definitions~\ref{def:algmultdiag} and~\ref{def:geomultdiag}, and the notion of similarity from Definition~\ref{def:similarity}; intuitively, if \(A\) is similar to \(B\), then \(A\) and \(B\) represent the same linear transformation, just with respect to different bases. When these bases are orthonormal, we have the change of basis matrix \(P\) as unitary. It is not difficult to show that the spectrums of similar matrices are equivalent.
+        \\
+        \\
+        Not all matrices are diagonalizable, see Theorems~\ref{thm:diagonalizability},~\ref{thm:diagandrank},~\ref{thm:diaglintrans}, and~\ref{thm:alggeomultdiag}. Proceeding, we introduce a similar notion in Theorem~\ref{thm:schurdecomp}, which will help us state and prove the spectral theorems. We turn to the notation of linear transformations, for clarity. We reference \cite{treil2017linear}.
+        \\
+        \\
+        First, consider the following definitions, analogous to Definitions~\ref{def:adjoint} and~\ref{def:hermitskewhermit}.
+        \begin{definition}{\Stop\,\,The Adjoint of a Linear Transformation}{adjointlintrans}
+            Let \(L:V\to W\) be a linear transformation from the inner product spaces \(V\) and \(W\). Then, the adjoint \(L^*:W\to V\) is the transformation satisfying
+            \begin{equation*}
+                \iprod{L(\vec{v})}{\vec{w}}=\iprod{\vec{v}}{L^*(\vec{w})}
+            \end{equation*}
+            for all \(\vec{v}\in V\) and \(\vec{w}\in W\). Note that \(L^*\) is well-defined. Let \(B_V\) and \(B_W\) be orthonormal bases for \(V\) and \(W\) respectively. Let \(A_{B_VB_W}\) be the matrix of \(L\) with respect to \(B_V\) and \(B_W\). Then, we can define \(L^*\) by defining its matrix \(A^*_{B_WB_V}\) as
+            \begin{equation*}
+                A^*_{B_WB_V}=A_{B_VB_W}^*.
+            \end{equation*}
+        \end{definition}
+        \begin{definition}{\Stop\,\,Self-Adjoint Operators}{selfadjointops}
+            Let \(L:V\to V\) be a linear operator on the inner product space \(V\). We say \(L\) is self-adjoint if \(L=L^*\).
+        \end{definition}
+        \begin{definition}{\Stop\,\,Normal Operators}{normalops}
+            Let \(L:V\to V\) be a linear operator on the inner product space \(V\). We say \(L\) is normal if \(L\circ L^*=L^*\circ L\).
+        \end{definition}
+        \begin{theorem}{\Stop\,\,Schur Decompositions}{schurdecomp}
+            Let \(L:V\to V\) be a linear operator on the complex inner product space \(V\). There exists an orthonormal basis \(\{\vec{v}_1,\ldots,\vec{v}_n\}\) of \(V\) such that the matrix representation of \(L\) in this basis is upper triangular. That is, any matrix \(A\in\mathcal{M}_{nn}^{\mathbb{C}}\) can be written as
+            \begin{equation*}
+                A=UTU^*
+            \end{equation*}
+            where \(U\) is unitary and \(T\) is upper triangular.
+            \begin{proof}
+                We proceed by induction on \(n=\dim V\). With \(n=1\), the theorem is trivial, since any \(1\times 1\) matrix is upper triangular.
+                \\
+                \\
+                Suppose that for \(\dim E=n-1\), the theorem is true. Let \(\lambda_1\) be an eigenvalue of \(L\) with corresponding unit eigenvector \(\vec{u}_1\). Let \(E=\vec{u}_1^\perp\), and let \(\{\vec{v}_2,\ldots,\vec{v}_n\}\) be an arbitrary orthonormal basis of \(E\); note that \(\dim E=n-1\). We have that
+                \begin{equation*}
+                    \{\vec{u}_1,\vec{v}_2,\ldots,\vec{v}_n\}
+                \end{equation*}
+                is an orthonormal basis of \(V\), and in this basis, the matrix of \(L\) is
+                \begin{equation*}
+                    A_0=\begin{bmatrix}
+                            \lambda_1 & \star & \cdots & \star \\
+                                0 &       &        &       \\
+                            \vdots &       &     A_1 &       \\
+                                0 &       &        &
+                        \end{bmatrix}.
+                \end{equation*}
+                The matrix \(A_1\) corresponds to a linear transformation in \(E\), say \(L_1:E\to E\). Since \(\dim E=n-1\), there exists an basis \(\{\vec{u}_2,\ldots,\vec{u}_n\}\) where the matrix of \(L_1\) with respect to this basis is upper triangular. Then, in the basis of \(V\) given by \(\{\vec{u}_1,\ldots,\vec{u}_n\}\), \(L\) has the form of \(A_0\) with \(A_1\) being upper triangular. So, the matrix of \(L\) with respect to the basis \(\{\vec{u}_1,\ldots,\vec{u}_n\}\) is upper triangular, and we are done.
+            \end{proof}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        Note that the Schur decomposition exists for all \(A\in\mathcal{M}_{nn}^\mathbb{C}\). We now introduce the spectral theorems, and prove them with the Schur decomposition.
+        \begin{theorem}{\Stop\,\,Spectral Theorem (Self-Adjoint)}{spectralthmselfadj}
+            Let \(L:V\to V\) be a self-adjoint operator on the inner product space \(V\). Then, all eigenvalues of \(L\) are real and there exists an orthonormal basis of eigenvectors of \(L\) in \(V\). In matrix form, if \(A\in\mathcal{M}_{nn}^\mathbb{C}\) is Hermitian, then we may write \(A=UDU^*\) where \(U\) is unitary and \(D\) is diagonal with real entries.
+            \begin{proof}
+                First, apply Theorem~\ref{thm:schurdecomp} on \(L\) to find an orthonormal basis in \(V\) where the matrix \(T\) of \(L\) with respect to the basis is upper triangular. Then, \(T\) must also be self-adjoint (i.e. Hermitian). Upper triangular matrices are Hermitian if and only if they are diagonal with real entries. So, \(D=T\) is diagonal with real entries, as desired.
+            \end{proof}
+        \end{theorem}
+        \begin{theorem}{\Stop\,\,Spectral Theorem (Normal)}{spectralthmnormal}
+            Let \(L:V\to V\) be a normal operator on the complex inner product space \(V\). Then, there exists an orthonormal basis of eigenvectors of \(L\) in \(V\). In matrix form, if \(A\in\mathcal{M}_{nn}^\mathbb{C}\) is normal, then we may write \(A=UDU^*\) where \(U\) is unitary and \(D\) is diagonal.
+            \begin{proof}
+                First, apply Theorem~\ref{thm:schurdecomp} on \(L\) to find an orthonormal basis in \(V\) where the matrix \(T\) of \(L\) with respect to the basis is upper triangular. Normal upper triangular matrices are diagonal, and we are done, taking \(D=T\).
+            \end{proof}
+        \end{theorem}
+        \vphantom
+        \\
+        \\
+        The spectral theorems, Theorems \ref{thm:spectralthmselfadj} and \ref{thm:spectralthmnormal} provide sufficient conditions on linear operators, and equivalently \(n\times n\) matrices, to be diagonalizable. As a note, if the matrix in Theorem \ref{thm:spectralthmselfadj} is real, \(U\) can also be chosen to be real. If \(D\) is real in Theorem \ref{thm:spectralthmnormal}, then the matrix must be Hermitian.
+        \\
+        \\
+        We conclude this section by providing an impossibility result on analytically finding eigendecompositions in Theorem~\ref{thm:impossibilityeigendecomp}.
+        \begin{theorem}{\Stop\,\,Impossibility: Direct Methods for Eigendecomposition}{impossibilityeigendecomp}
+            There are no analytic methods to find the eigendecomposition, or all eigenvalues, of \(A\in\mathcal{M}_{nn}^\mathbb{C}\) when \(n\geq 5\).
+            \begin{proof}
+                Suppose such a method exists. It is easy to use this method to algebraically solve any polynomial of degree greater than or equal to \(5\). This is not possible.
+            \end{proof}
+        \end{theorem}
+
+    \pagebreak
+
+\section{Lecture 5: Nov. 22, 2024}
+
+    \subsection{The \(QR\) Iteration to Compute Schur Decompositions}
+
+        Consider the following algorithm to compute the Schur decomposition of \(A\).
+        \begin{algorithm}[H]
+            \begin{algorithmic}[1]
+                \Require \(A\in\mathcal{M}_{nn}\) 
+                \Procedure{QR\_Iteration}{$A,\epsilon$} 
+                    \State \(A_0\gets A\)
+                    \While{\(\max\{\text{lower triangular part of } A_k\}<\epsilon\)}
+                        \State \((Q_k,R_k)\gets \Call{QR}{A_k}\)
+                        \State \(A_{k+1}\gets R_kQ_k\) \Comment{\(R_kQ_k=Q_k^*AQ_k\)}
+                    \EndWhile
+                \EndProcedure 
+            \end{algorithmic}
+            \caption{\(QR\) Iteration to Compute Schur Decompositions}
+            \label{alg:qriteration}
+        \end{algorithm}
+        \vphantom
+        \\
+        \\
+        Then, if \(A\) is Hermitian, \(\lim_{k\to\infty}A_k=T\) and \(\lim_{k\to\infty}(Q_1\cdots Q_k)=U\), where \(T\) and \(U\) are as in Theorem~\ref{thm:schurdecomp}. The convergence of this algorithm is linear; we don't have that kind of time. Importantly, the algorithm may not even terminate, as sometimes, for non-Hermitian matrices, we see \(2\times 2\) block matrices that correspond to complex conjugate eigenvalue pairs; these will not go to \(0\). On the bright side, Algorithm \ref{alg:qriteration} is stable if one uses the Householder method of finding \(QR\) decompositions.
+        \\
+        \\
+        It turns out that the convergence of the \(QR\) iteration is dependent on the ratios of the eigenvalues \(\frac{\lambda_i}{\lambda_{i+1}}\) when the \(\lambda_i\) are ordered by absolute value. The \(QR\) iteration also seems to order the eigenvalues! Furthermore, we need to address thed fact that the cost per iteration is \(O(n^3)\), and there are a large number of iterations.
+        \\
+        \\
+        Given these problems, how do we accelerate the \(QR\) iteration? Maybe \(A_0=A\) isn't a good idea. What about selecting \(A_0\) similar to \(A\) such that \(\textsc{QR}(A_0)\) is cheap? What we may do is use Householder reflections, but as similarity transformations; that is, note that \(A\) and \(HAH\) are similar. However, using \(H_1,\ldots,H_k\) to make \(A\) upper triangular, as in the Householder \(QR\) method does not work, as it would imply a direct method for eigendecomposition, contradicting Theorem~\ref{thm:impossibilityeigendecomp}. The next best thing is to make \(A\) upper Hessenberg.
+        \begin{definition}{\Stop\,\,Upper Hessenberg Matrices}{upperhessenberg}
+            Let \(A\in\mathcal{M}_{nn}\). Then, \(A\) is upper Hessenberg if \(a_{ij}=0\) for all \(i>j+1\); that is, all entries above the first superdiagonal are \(0\).
+        \end{definition}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        Starting with the matrix \(A\), define
+        \begin{equation*}
+            \vec{x}_1=\begin{bmatrix}
+                0 & a_{21} & \cdots & a_{n1}
+            \end{bmatrix}^\top,\quad \vec{y}_1=\begin{bmatrix}
+                0 & \pm ||\vec{x}_1|| & \cdots & 0
+            \end{bmatrix}^\top.
+        \end{equation*}
+        As a note, we usually choose the \(\pm ||\vec{x}_1||\) term to be opposite sign to \(a_{21}\). Now, let
+        \begin{equation*}
+            H_1=I-2\vec{u}_1\vec{u}_1^*,\quad \vec{u}_1=\frac{\vec{x}_1-\vec{y}_1}{||\vec{x}_1-\vec{y}_1||}.
+        \end{equation*}
+        Then, setting \(A_1=H_1AH_1\) produces another matrix. Let \(a_{ij,1}\) denote the \(ij\)th entry of \(A_1\). We continue the iteration as follows. Let
+        \begin{equation*}
+            \vec{x}_{k}=\begin{bmatrix}
+                0 & 0 & a_{k+1,k,k-1} & \cdots & a_{n,k,k-1}
+            \end{bmatrix}^\top,\quad \vec{y}_{k}=\begin{bmatrix}
+                0 & 0 & \pm ||\vec{x}_{k}|| & \cdots & 0
+            \end{bmatrix}^\top.
+        \end{equation*}
+        with \(\pm ||\vec{x}_k||\) chosen to be opposite in sign to \(a_{k+1,k,k}\). Then, let
+        \begin{equation*}
+            H_k=I-2\vec{u}_k\vec{u}_k^*,\quad \vec{u}_k=\frac{\vec{x}_k-\vec{y}_k}{||\vec{x}_k-\vec{y}_k||}.
+        \end{equation*}
+        Proceeding, we get the upper Hessenberg matrix
+        \begin{equation*}
+            \mathcal{H}=H_{n}\cdots H_1 A H_1\cdots H_{n}.
+        \end{equation*}
+        Then, we may apply Algorithm \ref{alg:qriteration} with \(A_0=\mathcal{H}\). If \(A\) is Hermitian, then \(\mathcal{H}\) turns out to be tridiagonal.
+
+\pagebreak
+
+\section{Lecture 5: Dec. 2, 2024}
+
+    \subsection{The Power Method}
+
+        In this section, suppose \(A\in\mathcal{M}_{nn}^{\mathbb{R}}\) is diagonalizable. It may be useful to recall the results of Theorems \ref{thm:diagonalizability}, \ref{thm:diaglintrans}, and \ref{thm:raisematpow}. The first two theorems state that matrices and linear operators, respectively, are diagonalizable if and only if there exists a set of \(n\) linearly independent eigenvectors. The third provides a method for us to easily raise diagonalizable matrices to powers.
+        \\
+        \\
+        Let \(\sigma(A)=\{\lambda_1,\ldots,\lambda_n\}\) with corresponding eigenvectors \(\vec{v}_1,\ldots,\vec{v}_n\). Now, inductively define, for \(\vec{v}\), 
+        \begin{equation*}
+            \vec{v}^{(0)}=\vec{v},\quad \vec{v}^{(k)}=A\vec{v}^{(k-1)}.
+        \end{equation*}
+        It is easy to verify that \(\vec{v}^{(k)}=A^k\vec{v}\). Now, we expand this equation in terms of the eigenbasis \(\{\vec{v}_1,\ldots,\vec{v}_n\}\). We may write
+        \begin{align*}
+            \vec{v}^{(k)}=A^k\vec{v}&=A^k(c_1\vec{v}_1+\cdots+c_n\vec{v}_n) \\
+            &=c_1\lambda_1^k\vec{v}_1+\cdots+c_n\lambda_n^k\vec{v}_n.
+        \end{align*}
+        Now, suppose that \(\lambda_1\in\mathbb{R}\) and \(|\lambda_1|>|\lambda_2|\geq\cdots\geq|\lambda_n|\). Then, as we increase \(k\), we see that
+        \begin{equation*}
+            \vec{v}^{(k)}=A^k\vec{v}\approx c_1\lambda_1^k\vec{v}_1.
+        \end{equation*}
+        since
+        \begin{equation*}
+            \vec{v}^{(k)}=\lambda_1^k\left(c_1\vec{v}_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k+\cdots+c_{n-1}\left(\frac{\lambda_{n-1}}{\lambda_1}\right)^k+c_n\left(\frac{\lambda_n}{\lambda_1}\right)^k\vec{v}_n\right).
+            % \frac{\lambda_1^k\left(c_1\vec{v}_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k+\cdots+c_{n-1}\left(\frac{\lambda_{n-1}}{\lambda_1}\right)^k+c_n\left(\frac{\lambda_n}{\lambda_1}\right)^k\vec{v}_n\right)}{|\lambda_1|^k\left|\left|c_1\vec{v}_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k+\cdots+c_{n-1}\left(\frac{\lambda_{n-1}}{\lambda_1}\right)^k+c_n\left(\frac{\lambda_n}{\lambda_1}\right)^k\vec{v}_n\right|\right|}.
+        \end{equation*}
+        The order of convergence is linear and depends on the spectral gap \(\left|\frac{\lambda_1}{\lambda_2}\right|\).
+        \\
+        \\
+        This leads us to the power method. But first, consider the following theorem.
+        \begin{theorem}{\Stop\,\,Rayleigh Quotient}{rayleighquotient}
+            Let \(A\in\mathcal{M}_{nn}\). Then, if \(\vec{v}\) is an eigenvector of \(A\), then the corresponding eigenvalue \(\lambda\) is given by
+            \begin{equation*}
+                \lambda=\frac{\iprod{A\vec{x}}{\vec{x}}}{\iprod{\vec{x}}{\vec{x}}}.
+            \end{equation*}
+            \begin{proof}
+                We see that
+                \begin{equation*}
+                    \lambda=\frac{\lambda\iprod{\vec{x}}{\vec{x}}}{\iprod{\vec{x}}{\vec{x}}}=\frac{\iprod{\lambda\vec{x}}{\vec{x}}}{\iprod{\vec{x}}{\vec{x}}}=\frac{\iprod{A\vec{x}}{\vec{x}}}{\iprod{\vec{x}}{\vec{x}}},
+                \end{equation*}
+                as desired.
+            \end{proof}
+        \end{theorem}
+        \pagebreak
+        \vphantom
+        \\
+        \\
+        We provide pseudocode for the power method with initial guess \(\vec{v}\) in Algorithm \ref{alg:powermethod}.
+        \begin{algorithm}[H] 
+            \begin{algorithmic}[1]
+                \Require \(A\in\mathcal{M}_{nn}\), \(A\) Diagonalizable 
+                \Procedure{Power Method}{$A,\vec{v},k$} 
+                    \For{\(i\in\{1,\ldots,k\}\)}
+                        \State \(\vec{v}\gets A\vec{v}\)
+                        \State \(\vec{v}\gets \frac{\vec{v}}{||\vec{v}||}\)
+                    \EndFor
+                    \State \(\lambda_1\gets \frac{\iprod{A\vec{v}}{\vec{v}}}{\iprod{\vec{v}}{\vec{v}}}\)
+                    \State \Return \(\left(\lambda_1,\vec{v}\right)\)
+                \EndProcedure 
+            \end{algorithmic}
+            \caption{Power Method}
+            \label{alg:powermethod}
+        \end{algorithm}
+        \vphantom
+        \\
+        \\
+        Importantly, to converge, note that \(A\) must have a dominant eigenvalue with \(\lambda_1\in\mathbb{R}\) and \(|\lambda_1|>|\lambda_2|\geq\cdots\geq|\lambda_n|\). Furthermore, we also require \(\iprod{\vec{v}}{\vec{v}_1}\neq0\) where \(\vec{v}_1\) is an eigenvector associated with \(\lambda_1\). The second requirement is easy to satisfy, as we can, and often do, pick \(\vec{v}\) at random.
+        \\
+        \\
+        Say, now we want to find \(\lambda_n\in\mathbb{R}\) with \(\lambda_n<\lambda_{n-1}\leq\cdots\leq \lambda_1\). It turns out that we can apply the power method on \(A^{-1}\). Consider the following lemma.
+        \begin{lemma}{\Stop\,\,Eigenvalues of an Inverse Matrix}{eigenvaluesinversemat}
+            Let \(A\in\mathcal{M}_{nn}\) be nonsingular. Then, \(\lambda\) is an eigenvalue of \(A\) with eigenvector \(\vec{v}\) if and only if \(\frac{1}{\lambda}\) is an eigenvalue of \(A^{-1}\) with eigenvector \(\vec{v}\).
+            \begin{proof}
+                Suppose \(\lambda\) is an eigenvalue of \(A\) with eigenvector \(\vec{v}\). Let \(\gamma\) be an eigenvalue of \(A^{-1}\) with eigenvector \(\vec{v}\). We show that \(\gamma=\frac{1}{\lambda}\). We have that
+                \begin{align*}
+                    \vec{v}=A^{-1}A\vec{v}=A^{-1}\lambda\vec{v}=\lambda A^{-1}\vec{v}=\lambda\gamma\vec{v}.
+                \end{align*}
+                So, \(1=\gamma\lambda\), and \(\gamma=\frac{1}{\lambda}\), as desired. The other direction is identical.
+            \end{proof}
+        \end{lemma}
+        \vphantom
+        \\
+        \\
+        Then, invoking \(\Call{Power\_Method}{A^{-1},\cdot,\cdot}\) will provide us the largest eigenvalue, say \(\gamma\), of \(A^{-1}\). By an immediate corollary of Lemma \ref{lem:eigenvaluesinversemat}, \(\lambda=\frac{1}{\gamma}\) is an eigenvalue of \(A\) with the same eigenvector. Note \(\lambda\) is maximal since \(\gamma\) is minimal.
+        \\
+        \\
+        We briefly discuss the shifted power method. For \(\mu\in\mathbb{R}\), we can invoke \(\Call{Power\_Method}{A-\mu I,\cdot,\cdot}\). The eigenvalues of \(A-\mu I\) are \(\lambda_1-\mu,\ldots,\lambda_n-\mu\). Choosing \(\mu\) carefully may improve the rate of convergence.
+        \\
+        \\
+        What if we do both?
+        \\
+        \\
+        The inverse shifted power method invokes \(\Call{Power\_Method}{(A-\mu I)^{-1},\cdot,\cdot}\). The eigenvalues are \(\frac{1}{\lambda_1-\mu},\ldots,\frac{1}{\lambda_n-\mu}\). The iteration converges to \((\lambda_k,\vec{v}_k)\) for which \(\mu\) is closest to \(\lambda_k\); this follows since we will find the largest eigenvalue of the form \(\frac{1}{\lambda_k-\mu_k}\). But then \(|\lambda_k-\mu_k|\) must be minimized. The rate of convergence is \(\frac{\frac{1}{|\lambda_j-\mu|}}{\frac{1}{\lambda_k-\mu}}=\left|\frac{\lambda_k-\mu}{\lambda_j-\mu}\right|\) where \(|\lambda_k-\mu|\) is closest to \(0\) and \(|\lambda_j-\mu|\) is the next closest to \(0\). 
+        \\
+        \\
+        To further optimize, we may use the variable inverse shifted power method. Let \(\mu_0\) be an input parameter, and for step \(k\), let \(\mu_{k-1}=\lambda_{k-1}\). Then, apply the inverse shifted power method. This is superlinear convergence. If \(A\in\mathcal{M}_{nn}\), we have quadratic convergence, and if \(A\) is symmetric, and we use Rayleigh shifts, we have cubic convergence.
+
+% \pagebreak
+
+% \section{Lecture \(\spadesuit\): Bonus}
+
+%     \subsection{The Polar and Singular Value Decompositions (SVD)}
+
+%         We believe that this set of notes is incomplete without the coverage of the Singular Value Decomposition (SVD). Hence, we provide it here, despite it not being discussed in either MATH2135 or APPM4600. Consider the following definition. We follow both \cite{treil2017linear} and \cite{olver2006applied}.
+%         \begin{definition}{\Stop\,\,Positive Definite Operators}{positivedefinite}
+%             A self-adjoint operator \(L:V\to V\) is positive semidefinite if
+%             \begin{equation*}
+%                 \iprod{L(\vec{v})}{\vec{v}}\geq0
+%             \end{equation*}
+%             for all \(\vec{v}\in V\). Additionally, we may say that \(L\) is positive definite if
+%             \begin{equation*}
+%                 \iprod{L(\vec{v})}{\vec{v}}>0
+%             \end{equation*}
+%             for \(\vec{v}\neq\vec{0}\). We write \(L\succeq \vec{0}\) if \(L\) is positive semidefinite, and \(L\succ \vec{0}\) if \(L\) is positive definite.
+%         \end{definition}
+%         \begin{theorem}{\Stop\,\,Positive Definiteness and Eigenvalues}{positivedefiniteeigs}
+%             Let \(L:V\to V\) be a self-adjoint operator. Then, \(L\) is positive definite (semidefinite) if and only if all eigenvalues of \(L\) are positive (nonnegative).
+%             \begin{proof}
+%                 By Theorem \ref{thm:spectralthmselfadj}, we may find an orthonormal basis of eigenvectors such that the matrix of \(L\) in this basis is diagonal. Then, we note that a diagonal matrix is positive definite (semidefinite) if and only if its entries, the eigenvalues of \(L\), are positive (nonnegative).
+%             \end{proof}
+%         \end{theorem}
