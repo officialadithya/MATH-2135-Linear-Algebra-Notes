@@ -337,6 +337,20 @@ In this section, we provide lecture notes for numerical linear algebra, as cover
         \begin{definition}{\Stop\,\,Self-Adjoint Operators}{selfadjointops}
             Let \(L:V\to V\) be a linear operator on the inner product space \(V\). We say \(L\) is self-adjoint if \(L=L^*\).
         \end{definition}
+        \begin{theorem}{\Stop\,\,Self-Adjoint Operators Have Real Eigenvalues}{selfadjointrealeigen}
+            Let \(L:V\to V\) be a linear operator on the complex inner product space \(V\). Then, \(L\) has real eigenvalues.
+            \begin{proof}
+                Let \(\lambda\) be an eigenvalue of \(L\) with eigenvector \(\vec{v}\). Then,
+                \begin{equation*}
+                    \iprod{L(\vec{v})}{\vec{v}}=\bar{\iprod{\vec{v}}{L(\vec{v})}}=\bar{\iprod{\vec{v}}{L^*(\vec{v})}}=\bar{\iprod{L(\vec{v})}{\vec{v}}}
+                \end{equation*}
+                so
+                \begin{equation*}
+                    \lambda\iprod{\vec{v}}{\vec{v}}=\iprod{L(\vec{v})}{\vec{v}}=\bar{\iprod{L(\vec{v})}{\vec{v}}}=\bar{\lambda\iprod{\vec{v}}{\vec{v}}}=\bar{\lambda}\iprod{\vec{v}}{\vec{v}}.
+                \end{equation*}
+                Hence, \(\lambda=\bar{\lambda}\) and \(\lambda\in\mathbb{R}\), as desired.
+            \end{proof}
+        \end{theorem}
         \begin{definition}{\Stop\,\,Normal Operators}{normalops}
             Let \(L:V\to V\) be a linear operator on the inner product space \(V\). We say \(L\) is normal if \(L\circ L^*=L^*\circ L\).
         \end{definition}
@@ -423,7 +437,7 @@ In this section, we provide lecture notes for numerical linear algebra, as cover
         Then, if \(A\) is Hermitian, \(\lim_{k\to\infty}A_k=T\) and \(\lim_{k\to\infty}(Q_1\cdots Q_k)=U\), where \(T\) and \(U\) are as in Theorem~\ref{thm:schurdecomp}. The convergence of this algorithm is linear; we don't have that kind of time. Importantly, the algorithm may not even terminate, as sometimes, for non-Hermitian matrices, we see \(2\times 2\) block matrices that correspond to complex conjugate eigenvalue pairs; these will not go to \(0\). On the bright side, Algorithm \ref{alg:qriteration} is stable if one uses the Householder method of finding \(QR\) decompositions.
         \\
         \\
-        It turns out that the convergence of the \(QR\) iteration is dependent on the ratios of the eigenvalues \(\frac{\lambda_i}{\lambda_{i+1}}\) when the \(\lambda_i\) are ordered by absolute value. The \(QR\) iteration also seems to order the eigenvalues! Furthermore, we need to address thed fact that the cost per iteration is \(O(n^3)\), and there are a large number of iterations.
+        It turns out that the convergence of the \(QR\) iteration is dependent on the ratios of the eigenvalues \(\frac{\lambda_i}{\lambda_{i+1}}\) when the \(\lambda_i\) are ordered by absolute value. The \(QR\) iteration also seems to order the eigenvalues! Furthermore, we need to address the fact that the cost per iteration is \(O(n^3)\), and there are a large number of iterations.
         \\
         \\
         Given these problems, how do we accelerate the \(QR\) iteration? Maybe \(A_0=A\) isn't a good idea. What about selecting \(A_0\) similar to \(A\) such that \(\textsc{QR}(A_0)\) is cheap? What we may do is use Householder reflections, but as similarity transformations; that is, note that \(A\) and \(HAH\) are similar. However, using \(H_1,\ldots,H_k\) to make \(A\) upper triangular, as in the Householder \(QR\) method does not work, as it would imply a direct method for eigendecomposition, contradicting Theorem~\ref{thm:impossibilityeigendecomp}. The next best thing is to make \(A\) upper Hessenberg.
